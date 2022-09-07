@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3734545845
+    locked: 0
+  - name: Map
+    uniqueID: 231694527
+    locked: 0
+  - name: Decorate
+    uniqueID: 3906126005
+    locked: 0
+  - name: Player
+    uniqueID: 2038711275
+    locked: 0
+  - name: ForecScence
+    uniqueID: 443368053
     locked: 0
