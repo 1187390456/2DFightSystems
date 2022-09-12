@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
     private bool isCanJump; // 是否能够跳跃
     private bool isTouchGround; // 是否触地
     private bool isTouchWall; // 是否触墙
-    private bool isWalking; // 是否在移动
+    private bool isMoveing; // 是否在移动
     private bool isFacingright = true; // 是否面向右
     private bool isSlidingWall; // 是否在滑墙
+    private bool isRuning = false; //是否奔跑
 
     private int facingDirection = 1; // 面向方向 右1
     private int currentJumpCount; // 当前跳跃次数
+
 
     [Header("移动速度")] public float moveSpeed = 10.0f;
     [Header("跳跃力度")] public float jumpForce = 24.0f;
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         CheckUserInput();
         CheckJumpState();
         CheckPlayerDirection();
-        CheckMovestate();
+        CheckMoveState();
         CheckSlidingWallState();
         UpdateAnimation();
     }
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour
     private void CheckUserInput()
     {
         horizontalDirection = Input.GetAxisRaw("Horizontal");
+        // 跳跃
         if (Input.GetButtonDown("Jump"))
         {
             if (isSlidingWall && Input.GetKey(KeyCode.S))
@@ -92,6 +95,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * airForceMultiplier.y);
         }
+        // 开启奔跑状态
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            isRuning = !isRuning;
+        }
     }
     // 检测跳跃状态
     private void CheckJumpState()
@@ -110,15 +118,15 @@ public class PlayerController : MonoBehaviour
         }
     }
     // 检测移动状态
-    private void CheckMovestate()
+    private void CheckMoveState()
     {
         if (horizontalDirection != 0)
         {
-            isWalking = true;
+            isMoveing = true;
         }
         else
         {
-            isWalking = false;
+            isMoveing = false;
         }
     }
     // 检测玩家方向
@@ -156,8 +164,9 @@ public class PlayerController : MonoBehaviour
     {
         at.SetFloat("yVelocity", rb.velocity.y);
         at.SetBool("isGround", isTouchGround);
-        at.SetBool("isWalking", isWalking);
+        at.SetBool("isMoveing", isMoveing);
         at.SetBool("isSlideWall", isSlidingWall);
+        at.SetBool("isRuning", isRuning);
     }
     // 转身
     private void Turn()
