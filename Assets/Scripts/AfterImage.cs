@@ -40,7 +40,7 @@ public class AfterImage : MonoBehaviour
         // 过了存在时间
         if (Time.time >= (activeTime + existTime))
         {
-
+            ObjectPool.Instance.AddPool(gameObject);
         }
     }
 }

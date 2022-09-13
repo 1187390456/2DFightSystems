@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool isMoveing; // 是否在移动
     private bool isRuning = false; //是否在奔跑
     private bool isDashing; // 是否在冲刺
+    private bool isWallJumping; // 是否正在往墙上跳
 
     private float horizontalDirection; // 水平输入方向
     private bool isFacingright = true; // 是否面向右
@@ -33,20 +34,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 climbEndPos; //  爬墙动画终点
 
     private float lastDashTime; //最后一次冲刺时间点
-
     private float dashTimeLeft; // 剩余冲刺时长
-
-
-
-    private float lastDashPosX; // 最后的残影X轴位置
-
+    private float lastDashPosX; // 上一次残影X轴位置
 
     [Header("爬墙动画终点偏移")] public Vector2 climbEndOffset = new Vector2(0.5f, 2f);
 
-    [Header("最大冲刺时长")] public float dashTimeMax;
-    [Header("冲刺冷却")] public float dashCoolDown;
-    [Header("冲刺速度")] public float dashSpeed;
-    [Header("残影间距")] public float dashSpace;
+    [Header("最大冲刺时长")] public float dashTimeMax = 0.3f;
+    [Header("冲刺冷却")] public float dashCoolDown = 0.5f;
+    [Header("冲刺速度")] public float dashSpeed = 20.0f;
+    [Header("残影间距")] public float dashSpace = 0.5f;
 
     [Header("移动速度")] public float moveSpeed = 10.0f;
     [Header("跳跃力度")] public float jumpForce = 20.0f;
@@ -112,7 +108,16 @@ public class PlayerController : MonoBehaviour
         // 过了冷却时间开启冲刺状态 
         if (Input.GetKeyDown(KeyCode.L) && Time.time > lastDashTime + dashCoolDown)
         {
-            Dash();
+            // 冲刺时 如果在墙上 冲刺墙跳
+            if (isSlidingWall)
+            {
+                JumpInTheWall();
+                Dash();
+            }
+            else
+            {
+                Dash();
+            }
         }
         CheckJumpInput();
     }
@@ -154,6 +159,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = true;
+        }
+        // 墙上跳状态
+        if (isTouchGround)
+        {
+            isWallJumping = false;
         }
     }
     // 检测冲刺状态
@@ -315,14 +325,14 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         lastDashTime = Time.time;
         dashTimeLeft = dashTimeMax;
-
-        // 生成一个残影 记录当前上一次残影位置
+        // 生成一个残影 记录当前残影X位置
         ObjectPool.Instance.GetObjFormPool();
         lastDashPosX = transform.position.x;
     }
     // 在墙上跳跃
     private void JumpInTheWall()
     {
+        isWallJumping = true;
         isSlidingWall = false;
         currentJumpCount--;
         Vector2 forceAdd = new Vector2(wallJumpForce * wallJumpDirection.x * -facingDirection, wallJumpForce * wallJumpDirection.y);
@@ -340,7 +350,7 @@ public class PlayerController : MonoBehaviour
     // 正常跳跃
     private void NormalJump()
     {
-        if (canJump && !isSlidingWall)
+        if (canJump && !isSlidingWall && !isWallJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             currentJumpCount--;
