@@ -15,7 +15,6 @@ public class AfterImage : MonoBehaviour
     private Color color; // 渲染颜色
     private float activeTime; // 激活时间
 
-
     private void Awake()
     {
         afterImageSR = GetComponent<SpriteRenderer>();

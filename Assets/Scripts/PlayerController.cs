@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L) && Time.time > lastDashTime + dashCoolDown)
         {
             // 冲刺时 如果在墙上 冲刺墙跳
-            if (isSlidingWall)
+            if (isTouchWall)
             {
                 JumpInTheWall();
                 Dash();
