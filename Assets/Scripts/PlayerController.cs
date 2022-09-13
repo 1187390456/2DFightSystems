@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb; // 自身刚体
     private Animator at; // 自身动画
 
-
-    private bool canJump; // 是否能够跳跃
+    private bool canJump = true; // 是否能够跳跃
     private bool canMove = true; // 是否能移动
     private bool canTurn = true; // 是否能够翻转
     private bool canClimb = false; // 是否能够爬角
@@ -20,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isSlidingWall; // 是否在滑墙
     private bool isMoveing; // 是否在移动
-    private bool isRuning = false; //是否奔跑
+    private bool isRuning = false; //是否在奔跑
+    private bool isDashing; // 是否在冲刺
 
     private float horizontalDirection; // 水平输入方向
     private bool isFacingright = true; // 是否面向右
@@ -32,7 +32,21 @@ public class PlayerController : MonoBehaviour
     private Vector2 climbStartPos; //  爬墙动画起始点
     private Vector2 climbEndPos; //  爬墙动画终点
 
+    private float lastDashTime; //最后一次冲刺时间点
+
+    private float dashTimeLeft; // 剩余冲刺时长
+
+
+
+    private float lastDashPosX; // 最后的残影X轴位置
+
+
     [Header("爬墙动画终点偏移")] public Vector2 climbEndOffset = new Vector2(0.5f, 2f);
+
+    [Header("最大冲刺时长")] public float dashTimeMax;
+    [Header("冲刺冷却")] public float dashCoolDown;
+    [Header("冲刺速度")] public float dashSpeed;
+    [Header("残影间距")] public float dashSpace;
 
     [Header("移动速度")] public float moveSpeed = 10.0f;
     [Header("跳跃力度")] public float jumpForce = 20.0f;
@@ -71,6 +85,7 @@ public class PlayerController : MonoBehaviour
         CheckPlayerDirection();
         CheckMoveState();
         CheckClimbState();
+        CheckDashState();
         CheckSlidingWallState();
         UpdateAnimation();
     }
@@ -89,7 +104,21 @@ public class PlayerController : MonoBehaviour
     private void CheckUserInput()
     {
         horizontalDirection = Input.GetAxisRaw("Horizontal");
-        // 跳跃
+        // 开启奔跑状态
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            isRuning = !isRuning;
+        }
+        // 过了冷却时间开启冲刺状态 
+        if (Input.GetKeyDown(KeyCode.L) && Time.time > lastDashTime + dashCoolDown)
+        {
+            Dash();
+        }
+        CheckJumpInput();
+    }
+    // 检测跳跃按键
+    private void CheckJumpInput()
+    {
         if (Input.GetButtonDown("Jump"))
         {
             if (isSlidingWall && Input.GetKey(KeyCode.S))
@@ -110,11 +139,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * airForceMultiplier.y);
         }
-        // 开启奔跑状态
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            isRuning = !isRuning;
-        }
     }
     // 检测跳跃状态
     private void CheckJumpState()
@@ -130,6 +154,33 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = true;
+        }
+    }
+    // 检测冲刺状态
+    private void CheckDashState()
+    {
+        if (isDashing)
+        {
+            if (dashTimeLeft > 0)
+            {
+                canMove = false;
+                canTurn = false;
+                rb.velocity = new Vector2(dashSpeed * facingDirection, rb.velocity.y);
+                dashTimeLeft -= Time.deltaTime;
+
+                // 当角色移动距离超过指定距离 从对象池中生成一个残影 即残影间距
+                if (Mathf.Abs(transform.position.x - lastDashPosX) > dashSpace)
+                {
+                    ObjectPool.Instance.GetObjFormPool();
+                    lastDashPosX = transform.position.x;
+                }
+            }
+            if (dashTimeLeft <= 0)
+            {
+                canMove = true;
+                canTurn = true;
+                isDashing = false;
+            }
         }
     }
     // 检测移动状态
@@ -257,6 +308,17 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, -slidingSpeed);
             }
         }
+    }
+    // 冲刺
+    private void Dash()
+    {
+        isDashing = true;
+        lastDashTime = Time.time;
+        dashTimeLeft = dashTimeMax;
+
+        // 生成一个残影 记录当前上一次残影位置
+        ObjectPool.Instance.GetObjFormPool();
+        lastDashPosX = transform.position.x;
     }
     // 在墙上跳跃
     private void JumpInTheWall()
