@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
             {
                 canMove = false;
                 canTurn = false;
+                // 如果想水平冲刺不影响 归零刚体y轴速度
                 rb.velocity = new Vector2(dashSpeed * facingDirection, rb.velocity.y);
                 dashTimeLeft -= Time.deltaTime;
 
@@ -186,7 +187,7 @@ public class PlayerController : MonoBehaviour
     // 检测跳跃按键
     private void CheckJumpInput()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.K))
         {
             if (isSlidingWall && Input.GetKey(KeyCode.S))
             {
@@ -202,7 +203,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.K))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * airForceMultiplier.y);
         }
@@ -233,7 +234,7 @@ public class PlayerController : MonoBehaviour
     // 检测移动状态
     private void CheckMoveState()
     {
-        if (horizontalDirection != 0)
+        if (Mathf.Abs(rb.velocity.x) >= 0.01f)
         {
             isMoveing = true;
         }
