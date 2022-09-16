@@ -5,6 +5,8 @@ using UnityEngine;
 public class BaseEnemyController : MonoBehaviour
 {
     private Transform effectBox; // 特效盒子
+    private GameObject chunkEffect; // 块特效
+    private GameObject bloodEffect; // 血特效
 
     private enum State
     {
@@ -14,13 +16,14 @@ public class BaseEnemyController : MonoBehaviour
     }  // 敌人状态枚举
 
     private State currentState = State.Moving;   // 敌人当前状态
+
     /* 自身属性 */
     #region
     private GameObject aliveGobj; // 活着的敌人
     private Rigidbody2D rb; // 敌人刚体
     private Animator at;  // 敌人动画
-
     #endregion
+
     /* 射线检测 */
     #region
     [SerializeField] [Header("检测层级")] public LayerMask checkLayer;
@@ -54,7 +57,11 @@ public class BaseEnemyController : MonoBehaviour
         aliveGobj = transform.Find("Alive").gameObject;
         rb = aliveGobj.GetComponent<Rigidbody2D>();
         at = aliveGobj.GetComponent<Animator>();
+
         beHitEffect = Resources.Load<GameObject>("Perfabs/Effect/WildBoarHitEffect");
+        chunkEffect = Resources.Load<GameObject>("Perfabs/Effect/DiedChunkEffect");
+        bloodEffect = Resources.Load<GameObject>("Perfabs/Effect/DiedBloodEffect");
+
         effectBox = GameObject.Find("Effect").transform;
     }
 
@@ -228,6 +235,9 @@ public class BaseEnemyController : MonoBehaviour
 
     private void EnterDead()
     {
+        Instantiate(chunkEffect, aliveGobj.transform.position, chunkEffect.transform.rotation);
+        Instantiate(bloodEffect, aliveGobj.transform.position, bloodEffect.transform.rotation);
+        Destroy(gameObject);
     }
 
     private void UpdateDead()

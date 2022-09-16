@@ -62,16 +62,22 @@ public class PlayerAttackController : MonoBehaviour
         }
     }
 
+    // 开始攻击
+    public void StartAttack()
+    {
+        if (canAttack)
+        {
+            isAttackInputing = true;
+            lastInpuTime = Time.time;
+        }
+    }
+
     // 检测输入
     private void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0))
         {
-            if (canAttack)
-            {
-                isAttackInputing = true;
-                lastInpuTime = Time.time;
-            }
+            StartAttack();
         }
     }
 

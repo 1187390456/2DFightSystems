@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour
     private bool isTouchWall; // 是否触墙
     #endregion
 
+    /* 技能 */
+
     // 爬墙动画结束回调
     public void ClimbAnimationDone()
     {
@@ -335,6 +337,23 @@ public class PlayerController : MonoBehaviour
             }
         }
         CheckJumpInput();
+        CheckAbilityInput();
+    }
+
+    // 检测技能输入
+    private void CheckAbilityInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Y) && Time.time > lastDashTime + dashCoolDown)
+        {
+            Ability1();
+        }
+    }
+
+    // 技能1 无影斩
+    private void Ability1()
+    {
+        PlayerAttackController.Instance.StartAttack();
+        Dash();
     }
 
     // 冲刺

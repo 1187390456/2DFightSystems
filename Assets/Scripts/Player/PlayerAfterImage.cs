@@ -7,7 +7,7 @@ public class PlayerAfterImage : MonoBehaviour
     private Transform player; // 玩家
     private float alpha; // 透明度
     private float startAlpha = 0.8f; // 初始透明度
-    private float alphaMultiplier = 0.99f; // 透明度乘数
+    private float alphaDecay = 2.0f; // 透明度固定帧率
     private float existTime = 0.99f; // 残影存在时间
     private float activeTime; // 残影激活时间
     private Color color; // 残影颜色声明
@@ -30,7 +30,7 @@ public class PlayerAfterImage : MonoBehaviour
 
     private void Update()
     {
-        alpha *= alphaMultiplier;
+        alpha -= alphaDecay * Time.deltaTime;
         color = new Color(1, 1, 1, alpha);
         afterImageSR.color = color;
 
