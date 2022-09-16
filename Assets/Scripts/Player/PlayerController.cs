@@ -12,17 +12,13 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance; //单例
     public bool isFacingright = true; // 是否面向右
     public int facingDirection = 1; // 面向方向 1右
+    public float horizontalDirection; // 水平输入
     #endregion
 
     /* 自身属性 */
     #region
     private Rigidbody2D rb; // 刚体
     private Animator at; // 动画
-    #endregion
-
-    /* 用户控制属性 */
-    #region
-    private float horizontalDirection; // 水平输入
     #endregion
 
     /* 爬角 */
@@ -102,6 +98,24 @@ public class PlayerController : MonoBehaviour
         isReachEdge = false;
         transform.position = climbEndPos;
         at.SetBool("canClimb", canClimb);
+    }
+
+    //攻击动画回调 禁用转身
+    private void DisableTurn()
+    {
+        if (!isDashing)
+        {
+            canTurn = false;
+        }
+    }
+
+    //攻击动画回调 启用转身
+    private void EnableTurn()
+    {
+        if (!isDashing)
+        {
+            canTurn = true;
+        }
     }
 
     private void Awake()
@@ -261,7 +275,7 @@ public class PlayerController : MonoBehaviour
     // 检测移动状态
     private void CheckMoveState()
     {
-        if (Mathf.Abs(rb.velocity.x) >= 0.01f)
+        if (horizontalDirection != 0)
         {
             isMoveing = true;
         }
@@ -357,8 +371,8 @@ public class PlayerController : MonoBehaviour
     // 移动
     private void Move()
     {
-        // 地面
-        if (isTouchGround && canMove)
+        // 地面 不是攻击状态
+        if (isTouchGround && canMove && !PlayerAttackController.Instance.isAttacking)
         {
             rb.velocity = new Vector2(horizontalDirection * moveSpeed, rb.velocity.y);
         }
