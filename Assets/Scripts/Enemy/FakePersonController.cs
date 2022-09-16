@@ -43,7 +43,7 @@ public class FakePersonController : MonoBehaviour
         topRg = topBodyGobj.GetComponent<Rigidbody2D>();
         botRg = botBodyGobj.GetComponent<Rigidbody2D>();
 
-        beHitEffect = Resources.Load<GameObject>("Perfabs/Effect/HitEffect");
+        beHitEffect = Resources.Load<GameObject>("Perfabs/Effect/FakePersonHitEffect");
 
         effectBox = GameObject.Find("Effect").transform;
     }
@@ -60,9 +60,9 @@ public class FakePersonController : MonoBehaviour
     }
 
     // 受到伤害回调
-    public void AcceptDamage(float damageValue)
+    public void AcceptDamage(float[] attackInfo)
     {
-        currentHealth -= damageValue;
+        currentHealth -= attackInfo[0];
         at.SetTrigger("damage");
         at.SetBool("isHitFromLeft", isHitFromLeft);
         Instantiate(beHitEffect, at.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)), effectBox);
