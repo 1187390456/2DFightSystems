@@ -2,70 +2,96 @@
 
 public class PlayerController : MonoBehaviour
 {
+    /* 其他 */
+    #region
     [Header("检测层级")] public LayerMask checkLayer;
+    #endregion
+
+    /* 公共属性 */
+    #region
+    public static PlayerController Instance; //单例
+    public bool isFacingright = true; // 是否面向右
+    public int facingDirection = 1; // 面向方向 1右
+    #endregion
 
     /* 自身属性 */
-    private Rigidbody2D rb;
-    private Animator at;
+    #region
+    private Rigidbody2D rb; // 刚体
+    private Animator at; // 动画
+    #endregion
 
     /* 用户控制属性 */
-    private float horizontalDirection;
+    #region
+    private float horizontalDirection; // 水平输入
+    #endregion
 
     /* 爬角 */
+    #region
     [Header("爬墙动画终点偏移")] public Vector2 climbEndOffset = new Vector2(0.5f, 2f);
     [Header("边缘检测点")] public Transform edgeCheck;
     [Header("边缘检测射线距离")] public float edgeCheckDistance = 0.5f;
-    private Vector2 climbEndPos;
-    private Vector2 climbStartPos;
-    private Vector2 edgePoint;
-    private bool isReachEdge;
-    private bool isTouchEdge;
-    private bool canClimb = false;
+    private Vector2 climbEndPos; // 开始爬角复位
+    private Vector2 climbStartPos; // 结束爬角复位
+    private Vector2 edgePoint; // 边缘点
+    private bool isReachEdge; // 是否达到边缘
+    private bool isTouchEdge; // 头部检测
+    private bool canClimb = false; // 是否能够爬角
+    #endregion
 
     /* 冲刺 */
+    #region
     [Header("冲刺冷却")] public float dashCoolDown = 0.5f;
     [Header("冲刺速度")] public float dashSpeed = 20.0f;
     [Header("最大冲刺时长")] public float dashTimeMax = 0.3f;
     [Header("残影间距")] public float dashSpace = 0.5f;
-    private float dashTimeLeft;
-    private float lastDashPosX;
-    private float lastDashTime;
-    private bool isDashing;
+    private float dashTimeLeft; // 剩余冲刺时长
+    private float lastDashPosX; // 上一次冲刺X坐标偏移
+    private float lastDashTime; // 上一次冲刺时间
+    private bool isDashing; // 是否在冲刺
+    #endregion
 
     /* 跳跃 */
+    #region
     [Header("地面检测点")] public Transform groundCheck;
     [Header("地面检测盒子大小")] public Vector2 groundCheckBoxSize = new Vector2(0.58f, 0.02f);
     [Header("跳跃力度")] public float jumpForce = 20.0f;
     [Header("最大跳跃次数")] private int jumpCountMax = 3;
-    private bool canJump = true;
-    private bool isTouchGround;
-    private int currentJumpCount;
+    private bool canJump = true; // 是否能够跳跃
+    private bool isTouchGround; // 是否触地
+    private int currentJumpCount; // 当前跳跃次数
+    #endregion
 
     /* 跳墙 */
+    #region
     [Header("瞪墙方向")] public Vector2 wallHopDirection = new Vector2(1.0f, 0.5f);
     [Header("瞪墙力度")] public float wallHopForce = 3.0f;
     [Header("跳墙方向")] public Vector2 wallJumpDirection = new Vector2(1.0f, 2.0f);
     [Header("跳墙力度")] public float wallJumpForce = 24.0f;
-    private bool isWallJumping;
+    private bool isWallJumping; // 是否在墙上跳跃
+    #endregion
 
     /* 移动 */
+    #region
     [Header("移动速度")] public float moveSpeed = 10.0f;
     [Header("空气阻力乘数")] public Vector2 airForceMultiplier = new Vector2(0.5f, 0.5f);
-    private bool canMove = true;
-    private bool isMoveing;
-    private bool isRuning = false;
+    private bool canMove = true; // 能否移动
+    private bool isMoveing; // 是否移动中
+    private bool isRuning = false; // 是否奔跑中
+    #endregion
 
     /* 转身 */
-    private bool canTurn = true;
-    private bool isFacingright = true;
-    private int facingDirection = 1;
+    #region
+    private bool canTurn = true; // 能否转身
+    #endregion
 
     /* 滑墙 */
+    #region
     [Header("墙壁检测点")] public Transform wallCheck;
     [Header("墙壁检测射线距离")] public float wallCheckDistance = 0.35f;
     [Header("滑墙速度")] public float slidingSpeed = 1f;
-    private bool isSlidingWall;
-    private bool isTouchWall;
+    private bool isSlidingWall; // 是否在滑墙
+    private bool isTouchWall; // 是否触墙
+    #endregion
 
     // 爬墙动画结束回调
     public void ClimbAnimationDone()
@@ -80,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         at = GetComponent<Animator>();
     }
