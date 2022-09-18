@@ -56,10 +56,11 @@ MonoBehaviour:
   knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 5}
   touchCheck: {fileID: 2615632908619164918}
-  touchCheckBox: {x: 0, y: 0}
+  touchCheckBox: {x: 1.6, y: 0.8}
   checkTouchLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  touchDamage: 10
 --- !u!1 &3239908097537975598
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2615632908619164918}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: touchCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3289522958995331874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.04, y: -0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3239908097693320063}

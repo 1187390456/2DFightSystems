@@ -130,8 +130,11 @@ public class PlayerController : MonoBehaviour
     // 受到伤害回调
     public void AcceptTouchDamage(float[] damageInfo)
     {
-        PlayerStates.Instance.DecreaseHealth(damageInfo[0]);
-        Knockback(damageInfo[1]);
+        if (!isDashing)
+        {
+            PlayerStates.Instance.DecreaseHealth(damageInfo[0]);
+            Knockback(damageInfo[1]);
+        }
     }
 
     private void Awake()
@@ -310,16 +313,6 @@ public class PlayerController : MonoBehaviour
             isBeKnockback = false;
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
-        if (isBeKnockback)
-        {
-            canMove = false;
-            canTurn = false;
-        }
-        else
-        {
-            canMove = true;
-            canTurn = true;
-        }
     }
 
     // 检测玩家方向
@@ -425,13 +418,13 @@ public class PlayerController : MonoBehaviour
     // 移动
     private void Move()
     {
-        // 地面 不是攻击状态
-        if (isTouchGround && canMove && !PlayerAttackController.Instance.isAttacking)
+        // 地面
+        if (isTouchGround && canMove && !isDashing && !isBeKnockback)
         {
             rb.velocity = new Vector2(horizontalDirection * moveSpeed, rb.velocity.y);
         }
         // 空中 控制
-        else if (!isTouchGround && !isTouchWall && horizontalDirection != 0 && canMove)
+        else if (!isTouchGround && !isTouchWall && horizontalDirection != 0 && canMove && !isBeKnockback)
         {
             rb.velocity = new Vector2(horizontalDirection * moveSpeed, rb.velocity.y);
         }
@@ -458,7 +451,7 @@ public class PlayerController : MonoBehaviour
     // 转身
     private void Turn()
     {
-        if (!isSlidingWall && canTurn)
+        if (!isSlidingWall && canTurn && !isBeKnockback)
         {
             isFacingright = !isFacingright;
             facingDirection *= -1;

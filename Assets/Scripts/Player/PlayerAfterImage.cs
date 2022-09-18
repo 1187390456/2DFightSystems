@@ -15,12 +15,12 @@ public class PlayerAfterImage : MonoBehaviour
     private void Awake()
     {
         afterImageSR = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerSR = player.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerSR = player.GetComponent<SpriteRenderer>();
         afterImageSR.sprite = playerSR.sprite;
         alpha = startAlpha;
         transform.position = player.position;

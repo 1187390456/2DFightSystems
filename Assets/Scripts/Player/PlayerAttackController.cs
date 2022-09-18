@@ -94,7 +94,6 @@ public class PlayerAttackController : MonoBehaviour
                 at.SetBool("attack1", true);
                 at.SetBool("isAttacking", isAttacking);
                 at.SetBool("attack1Switch", attack1Switch);
-                rb.velocity = new Vector2(attackMoveSpeed * PlayerController.Instance.facingDirection, rb.velocity.y);
             }
         }
         if (Time.time >= lastInpuTime + inputTime)
