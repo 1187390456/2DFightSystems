@@ -89,7 +89,14 @@ public class PlayerController : MonoBehaviour
     private bool isTouchWall; // 是否触墙
     #endregion
 
-    /* 技能 */
+    /* 击退 */
+    #region
+    [Header("击退速度")] public Vector2 knockbackSpeed = new Vector2(10.0f, 8.0f);
+    [Header("击退时间")] public float knockbackTime = 0.2f;
+    private float startKnockbackTime; // 开始击退时间
+    private bool isBeKnockback; // 是否正在被击退
+    private int knockbackDirection; // 击退方向 1来自右边
+    #endregion
 
     // 爬墙动画结束回调
     public void ClimbAnimationDone()
@@ -102,8 +109,8 @@ public class PlayerController : MonoBehaviour
         at.SetBool("canClimb", canClimb);
     }
 
-    //攻击动画回调 禁用转身
-    private void DisableTurn()
+    // 攻击动画回调 禁用转身
+    public void DisableTurn()
     {
         if (!isDashing)
         {
@@ -111,13 +118,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //攻击动画回调 启用转身
-    private void EnableTurn()
+    // 攻击动画回调 启用转身
+    public void EnableTurn()
     {
         if (!isDashing)
         {
             canTurn = true;
         }
+    }
+
+    // 受到伤害回调
+    public void AcceptTouchDamage(float[] damageInfo)
+    {
+        PlayerStates.Instance.DecreaseHealth(damageInfo[0]);
+        Knockback(damageInfo[1]);
     }
 
     private void Awake()
@@ -149,6 +163,7 @@ public class PlayerController : MonoBehaviour
         CheckMoveState();
         CheckClimbState();
         CheckDashState();
+        CheckknockbackState();
         CheckSlidingWallState();
         UpdateAnimation();
     }
@@ -284,6 +299,26 @@ public class PlayerController : MonoBehaviour
         else
         {
             isMoveing = false;
+        }
+    }
+
+    // 检测击退状态
+    private void CheckknockbackState()
+    {
+        if (isBeKnockback && Time.time >= startKnockbackTime + knockbackTime)
+        {
+            isBeKnockback = false;
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+        }
+        if (isBeKnockback)
+        {
+            canMove = false;
+            canTurn = false;
+        }
+        else
+        {
+            canMove = true;
+            canTurn = true;
         }
     }
 
@@ -429,6 +464,22 @@ public class PlayerController : MonoBehaviour
             facingDirection *= -1;
             transform.Rotate(0.0f, 180.0f, 0.0f);
         }
+    }
+
+    // 受到击退
+    public void Knockback(float direction)
+    {
+        isBeKnockback = true;
+        startKnockbackTime = Time.time;
+        if (direction < transform.position.x)
+        {
+            knockbackDirection = -1;
+        }
+        else
+        {
+            knockbackDirection = 1;
+        }
+        rb.velocity = new Vector2(knockbackSpeed.x * -knockbackDirection, knockbackSpeed.y);
     }
 
     // 更新动画

@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class BaseEnemyController : MonoBehaviour
 {
-    private Transform effectBox; // 特效盒子
-    private GameObject chunkEffect; // 块特效
-    private GameObject bloodEffect; // 血特效
-
     private enum State
     {
         Moving,
@@ -48,7 +46,15 @@ public class BaseEnemyController : MonoBehaviour
     private float currentHealth; // 当前生命值
     private float startKnockbackTime; // 开始受击时间
     private int damageDirection; // 伤害来源方向 1右
-    private GameObject beHitEffect; // 受击特效
+
+    /* 接触 */
+    [SerializeField] [Header("接触检测点")] private Transform touchCheck;
+    [SerializeField] [Header("接触检测盒子大小")] private Vector2 touchCheckBox;
+    [SerializeField] [Header("接触检测层级")] private LayerMask checkTouchLayer;
+    [SerializeField] [Header("接触伤害")] private float touchDamage = 10.0f;
+    private float lastTouchTime; //上一次接触时间
+    private float touchCoolDown = 0.2f; // 接触冷却
+    private float[] touchInfo = new float[2]; // 接触传递信息
 
     #endregion
 
@@ -57,12 +63,6 @@ public class BaseEnemyController : MonoBehaviour
         aliveGobj = transform.Find("Alive").gameObject;
         rb = aliveGobj.GetComponent<Rigidbody2D>();
         at = aliveGobj.GetComponent<Animator>();
-
-        beHitEffect = Resources.Load<GameObject>("Perfabs/Effect/WildBoarHitEffect");
-        chunkEffect = Resources.Load<GameObject>("Perfabs/Effect/DiedChunkEffect");
-        bloodEffect = Resources.Load<GameObject>("Perfabs/Effect/DiedBloodEffect");
-
-        effectBox = GameObject.Find("Effect").transform;
     }
 
     private void Start()
@@ -95,13 +95,16 @@ public class BaseEnemyController : MonoBehaviour
     {
         Gizmos.DrawLine(wallCheck.transform.position, new Vector2(wallCheck.transform.position.x + wallCheckDistance, wallCheck.transform.position.y));
         Gizmos.DrawLine(groundCheck.transform.position, new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y - groundCheckDistance));
+        Gizmos.DrawWireCube(touchCheck.position, touchCheckBox);
     }
 
     // 受到伤害回调
     public void AcceptDamage(float[] attackInfo)
     {
         currentHealth -= attackInfo[0];
-        Instantiate(beHitEffect, aliveGobj.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)), effectBox);
+        var pos = aliveGobj.transform.position;
+        var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
+        EffectBox.Instance.WildBoarHit(pos, rot);
         // 判断伤害方向
         if (aliveGobj.transform.position.x < attackInfo[1])
         {
@@ -120,6 +123,22 @@ public class BaseEnemyController : MonoBehaviour
         else if (currentHealth < 0.0f)
         {
             SwitchState(State.Dead);
+        }
+    }
+
+    // 检测接触
+    private void CheckTouch()
+    {
+        if (Time.time >= lastTouchTime + touchCoolDown)
+        {
+            RaycastHit2D hit = Physics2D.BoxCast(touchCheck.position, touchCheckBox, 0.0f, Vector2.zero, 0, checkTouchLayer);
+            if (hit)
+            {
+                lastTouchTime = Time.time;
+                touchInfo[0] = touchDamage;
+                touchInfo[1] = aliveGobj.transform.position.x;
+                hit.collider.transform.SendMessage("AcceptTouchDamage", touchInfo);
+            }
         }
     }
 
@@ -183,8 +202,11 @@ public class BaseEnemyController : MonoBehaviour
 
     private void UpdateMoving()
     {
-        wallDetected = Physics2D.Raycast(wallCheck.transform.position, aliveGobj.transform.right, wallCheckDistance, checkLayer);
-        groundDetected = Physics2D.Raycast(groundCheck.transform.position, Vector2.down, groundCheckDistance, checkLayer);
+        wallDetected = Physics2D.Raycast(wallCheck.position, aliveGobj.transform.right, wallCheckDistance, checkLayer);
+        groundDetected = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, checkLayer);
+
+        // 检测接触
+        CheckTouch();
 
         // 检测到墙壁 或者 未检测到地面
         if (wallDetected || !groundDetected)
@@ -235,8 +257,9 @@ public class BaseEnemyController : MonoBehaviour
 
     private void EnterDead()
     {
-        Instantiate(chunkEffect, aliveGobj.transform.position, chunkEffect.transform.rotation);
-        Instantiate(bloodEffect, aliveGobj.transform.position, bloodEffect.transform.rotation);
+        var pos = aliveGobj.transform.position;
+        EffectBox.Instance.Chunk(pos);
+        EffectBox.Instance.Blood(pos);
         Destroy(gameObject);
     }
 

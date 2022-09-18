@@ -14,11 +14,9 @@ public class FakePersonController : MonoBehaviour
     private GameObject aliveGobj, topBodyGobj, botBodyGobj; // 游戏对象
     private Rigidbody2D aliveRg, topRg, botRg; // 刚体
     private Animator at; // 动画
-    private GameObject beHitEffect; // 被攻击特效
     private float currentHealth; // 当前生命值
     private bool isBeHiting; // 是否受击中
     private float lastBeHitTime; // 上次受击时间点
-    private Transform effectBox; // 特效盒子
 
     private bool isHitFromLeft
     {
@@ -42,10 +40,6 @@ public class FakePersonController : MonoBehaviour
         aliveRg = aliveGobj.GetComponent<Rigidbody2D>();
         topRg = topBodyGobj.GetComponent<Rigidbody2D>();
         botRg = botBodyGobj.GetComponent<Rigidbody2D>();
-
-        beHitEffect = Resources.Load<GameObject>("Perfabs/Effect/FakePersonHitEffect");
-
-        effectBox = GameObject.Find("Effect").transform;
     }
 
     private void Start()
@@ -59,13 +53,19 @@ public class FakePersonController : MonoBehaviour
         CheckKnockbackStatu();
     }
 
+    private void OnDestory()
+    {
+    }
+
     // 受到伤害回调
     public void AcceptDamage(float[] attackInfo)
     {
         currentHealth -= attackInfo[0];
         at.SetTrigger("damage");
         at.SetBool("isHitFromLeft", isHitFromLeft);
-        Instantiate(beHitEffect, at.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)), effectBox);
+        var pos = at.transform.position;
+        var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
+        EffectBox.Instance.FakePersonHit(pos, rot);
         if (canKnockback && currentHealth > 0.0f)
         {
             Knockback();
