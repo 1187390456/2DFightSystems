@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2633441531
+    locked: 0
+  - name: Map
+    uniqueID: 1553308099
+    locked: 0
+  - name: Decorate
+    uniqueID: 3464041347
+    locked: 0
+  - name: Player
+    uniqueID: 1964149279
+    locked: 0
+  - name: Grass
+    uniqueID: 3341154211
+    locked: 0
