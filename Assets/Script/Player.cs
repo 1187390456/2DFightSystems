@@ -25,11 +25,18 @@ public class Player : MonoBehaviour
     public float distance = 0.37f;
     public float slideSpeed = -3f;
 
+    public int jumpAmount;
+    int nowJumpAmount;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         slideV2 = new Vector2(1, 0);
+    }
+    private void Start()
+    {
+        nowJumpAmount = jumpAmount;
     }
     private void Update()
     {
@@ -123,6 +130,10 @@ public class Player : MonoBehaviour
     {
         if (isTouchGround || isTouchWall)
         {
+            nowJumpAmount = jumpAmount;
+        }
+        if (nowJumpAmount > 0)
+        {
             isCanJump = true;
         }
         else
@@ -136,8 +147,15 @@ public class Player : MonoBehaviour
         if (isCanJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, speedV2.y);
+            Invoke("DecreateCount", 0.02f);
         }
     }
+    //
+    void DecreateCount()
+    {
+        nowJumpAmount--;
+    }
+
     //检查滑墙
     void CheckSlideWall()
     {
