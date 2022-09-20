@@ -6,23 +6,30 @@ public class Player : MonoBehaviour
 {
     public Vector2 speedV2;//速度
 
+    Vector2 slideV2;
     Rigidbody2D rb;
     Animator anim;
     public Transform groundCheck;
+    public Transform wallCheck;
 
     bool isCanMove;
     bool isFacing = true;//true右，false左
     bool isCanJump;
     bool isTouchGround = false;
+    bool isTouchWall;
+    bool isSlide;
 
     float inputDirection;
     [SerializeField]
     float groundCheckRadius;
+    public float distance = 0.37f;
+    public float slideSpeed = -3f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        slideV2 = new Vector2(1, 0);
     }
     private void Update()
     {
@@ -32,6 +39,7 @@ public class Player : MonoBehaviour
         CheckMove();
         CheckFlip();
         CheckJump();
+        CheckSlideWall();
     }
     private void FixedUpdate()
     {
@@ -40,6 +48,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + distance, wallCheck.position.y));
     }
     //检查输入
     void CheckInput()
@@ -56,11 +65,13 @@ public class Player : MonoBehaviour
         anim.SetBool("isRunning", isCanMove);
         anim.SetBool("isTouchGround", isTouchGround);
         anim.SetFloat("rbV", rb.velocity.y);
+        anim.SetBool("isSlide", isSlide);
     }
     //检查环境
     void CheckEnvironment()
     {
         isTouchGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
+        isTouchWall = Physics2D.Raycast(wallCheck.position, slideV2, distance, LayerMask.GetMask("Ground"));
     }
     //检查移动
     void CheckMove()
@@ -97,10 +108,12 @@ public class Player : MonoBehaviour
         if (isFacing)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            slideV2 = new Vector2(1, 0);
         }
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
+            slideV2 = new Vector2(-1, 0);
         }
         isFacing = !isFacing;
     }
@@ -122,6 +135,23 @@ public class Player : MonoBehaviour
         if (isCanJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, speedV2.y);
+        }
+    }
+    //检查滑墙
+    void CheckSlideWall()
+    {
+        if (isTouchWall && !isTouchGround && rb.velocity.y < 0)
+        {
+            isSlide = true;
+            if (rb.velocity.y > slideSpeed)
+            {
+                slideSpeed = rb.velocity.y;
+            }
+            rb.velocity = new Vector2(rb.velocity.x, slideSpeed);
+        }
+        if (isTouchGround || !isTouchWall)
+        {
+            isSlide = false;
         }
     }
 }
