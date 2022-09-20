@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     void CheckAnimation()
     {
         anim.SetBool("isRunning", isCanMove);
+        anim.SetBool("isCanJump", isCanJump);
         anim.SetBool("isTouchGround", isTouchGround);
         anim.SetFloat("rbV", rb.velocity.y);
         anim.SetBool("isSlide", isSlide);
@@ -108,19 +109,19 @@ public class Player : MonoBehaviour
         if (isFacing)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            slideV2 = new Vector2(1, 0);
+            slideV2 = new Vector2(-1, 0);
         }
         else
         {
             transform.localScale = new Vector3(1, 1, 1);
-            slideV2 = new Vector2(-1, 0);
+            slideV2 = new Vector2(1, 0);
         }
         isFacing = !isFacing;
     }
     //检查跳跃
     void CheckJump()
     {
-        if (isTouchGround)
+        if (isTouchGround || isTouchWall)
         {
             isCanJump = true;
         }
@@ -149,7 +150,7 @@ public class Player : MonoBehaviour
             }
             rb.velocity = new Vector2(rb.velocity.x, slideSpeed);
         }
-        if (isTouchGround || !isTouchWall)
+        if (isTouchGround || !isTouchWall || rb.velocity.y > 0)
         {
             isSlide = false;
         }
