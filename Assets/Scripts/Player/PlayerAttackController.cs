@@ -15,7 +15,6 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] [Header("攻击检测点")] private Transform attackCheck;
     [SerializeField] [Header("攻击检测半径")] private float attackCheckRadius;
     [SerializeField] [Header("可被攻击层级")] private LayerMask CanBeAttack;
-    [SerializeField] [Header("攻击移动速度")] private float attackMoveSpeed = 8.0f;
 
     private bool canAttack = true; // 是否能够攻击
     private bool attack1Switch = true; // 攻击1切换

@@ -1,0 +1,23 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class E_StateMachine
+{
+    public E_State currentState; // 当前状态
+
+    // 初始状态
+    public void Init(E_State startState)
+    {
+        currentState = startState;
+        currentState.Enter();
+    }
+
+    // 修改状态
+    public void ChangeState(E_State newState)
+    {
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
+    }
+}
