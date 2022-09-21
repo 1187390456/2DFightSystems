@@ -24,7 +24,11 @@ public class WildBoar_Move : E_Move
     public override void FixUpdate()
     {
         base.FixUpdate();
-        if (!entity.CheckEdge() || entity.CheckWall())
+        if (isMinDetected)
+        {
+            stateMachine.ChangeState(wildBoar.detected);
+        }
+        else if (!entity.CheckEdge() || entity.CheckWall())
         {
             // 修改为空闲状态
             stateMachine.ChangeState(wildBoar.idle);

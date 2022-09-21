@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheckDistance: 0.1
   edgeCheckDistance: 0.1
+  minDetectedDistance: 5
+  maxDetectedDistance: 8
