@@ -16,27 +16,36 @@ public class Player : MonoBehaviour
     [Header("滑墙速度")] public float slideSpeed = -3f;
     [Header("跳跃次数")] public int jumpAmount;
 
-    Vector2 startClimbAnimPos;//开始攀爬动画位置
-    Vector2 endClimbAnimPos;//结束攀爬动画位置
-    Vector2 edgePos;//边界点位置
-    Vector2 slideV2;//滑墙方向
-    Rigidbody2D rb;//刚体
-    Animator anim;//动画
+    private Vector2 startClimbAnimPos;//开始攀爬动画位置
+    private Vector2 endClimbAnimPos;//结束攀爬动画位置
+    private Vector2 edgePos;//边界点位置
+    private Vector2 slideV2;//滑墙方向
+    private Rigidbody2D rb;//刚体
+    private Animator anim;//动画
 
-    bool isCanMove;//能否移动
-    bool isFacing = true;//true右，false左
-    bool isCanJump;//能否跳跃
-    bool isSlide;//是否在滑墙
-    bool isTouchGround = false;//接触地面
-    bool isTouchWall;//接触墙壁
-    bool isTouchHeaderWall;//头部接触墙壁
-    bool isReachEdge;//是否到达偏移点
-    bool canClimb;//能否攀爬
+    private bool isCanMove = true;//能否移动
+    private bool isMoving;//是否移动中
+    private bool isFacing = true;//true右，false左
+    private bool isCanJump;//能否跳跃
+    private bool isSlide;//是否在滑墙
+    private bool isTouchGround = false;//接触地面
+    private bool isTouchWall;//接触墙壁
+    private bool isTouchHeaderWall;//头部接触墙壁
+    private bool isReachEdge;//是否到达偏移点
+    private bool canClimb;//能否攀爬
 
-    float inputDirection;//输入方向
-    float groundCheckRadius = 0.23f;//地面检查圆形射线半径
+    private float inputDirection;//输入方向
+    private float groundCheckRadius = 0.23f;//地面检查圆形射线半径
 
-    int nowJumpAmount;//当前跳跃次数
+    private int nowJumpAmount;//当前跳跃次数
+    private int facingInt//面向右为1，左为-1
+    {
+        get
+        {
+            if (isFacing) return 1;
+            return -1;
+        }
+    }
 
     private void Awake()
     {
@@ -70,7 +79,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(headerWallCheck.position, new Vector2(headerWallCheck.position.x + distance, headerWallCheck.position.y));
     }
     //检查输入
-    void CheckInput()
+    private void CheckInput()
     {
         inputDirection = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
@@ -79,16 +88,17 @@ public class Player : MonoBehaviour
         }
     }
     //检查动画
-    void CheckAnimation()
+    private void CheckAnimation()
     {
-        anim.SetBool("isRunning", isCanMove);
+        anim.SetBool("isMoving", isMoving);
         anim.SetBool("isTouchGround", isTouchGround);
         anim.SetFloat("rbV", rb.velocity.y);
         anim.SetBool("isSlide", isSlide);
     }
     //检查环境
-    void CheckEnvironment()
+    private void CheckEnvironment()
     {
+        slideV2 = new Vector2(facingInt, 0);
         isTouchGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
         isTouchWall = Physics2D.Raycast(wallCheck.position, slideV2, distance, LayerMask.GetMask("Ground"));
         isTouchHeaderWall = Physics2D.Raycast(headerWallCheck.position, slideV2, distance, LayerMask.GetMask("Ground"));
@@ -99,24 +109,27 @@ public class Player : MonoBehaviour
         }
     }
     //检查移动
-    void CheckMove()
+    private void CheckMove()
     {
         if (inputDirection != 0)
         {
-            isCanMove = true;
+            isMoving = true;
         }
         else
         {
-            isCanMove = false;
+            isMoving = false;
         }
     }
     //移动
-    void Move()
+    private void Move()
     {
-        rb.velocity = new Vector2(inputDirection * playerSpeedV2.x, rb.velocity.y);
+        if (isCanMove)
+        {
+            rb.velocity = new Vector2(inputDirection * playerSpeedV2.x, rb.velocity.y);
+        }
     }
     //检查转向
-    void CheckFlip()
+    private void CheckFlip()
     {
         if (isFacing && inputDirection < 0)
         {
@@ -128,22 +141,13 @@ public class Player : MonoBehaviour
         }
     }
     //转向
-    void Flip()
+    private void Flip()
     {
-        if (isFacing)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-            slideV2 = new Vector2(-1, 0);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-            slideV2 = new Vector2(1, 0);
-        }
+        transform.localScale = new Vector3(-facingInt, 1, 1);
         isFacing = !isFacing;
     }
     //检查跳跃
-    void CheckJump()
+    private void CheckJump()
     {
         if (isTouchGround || isTouchWall)
         {
@@ -159,7 +163,7 @@ public class Player : MonoBehaviour
         }
     }
     //跳跃
-    void Jump()
+    private void Jump()
     {
         if (isCanJump)
         {
@@ -168,12 +172,12 @@ public class Player : MonoBehaviour
         }
     }
     //减少跳跃次数
-    void DecreateCount()
+    private void DecreateCount()
     {
         nowJumpAmount--;
     }
     //检查滑墙
-    void CheckSlideWall()
+    private void CheckSlideWall()
     {
         if (isTouchWall && !isTouchGround && rb.velocity.y < 0)
         {
@@ -190,7 +194,7 @@ public class Player : MonoBehaviour
         }
     }
     //检查攀爬
-    void CheckClimb()
+    private void CheckClimb()
     {
         if (isReachEdge && !canClimb)
         {
@@ -212,11 +216,16 @@ public class Player : MonoBehaviour
         }
     }
     //攀爬动画完成
-    void ClimbAnimDone()
+    private void ClimbAnimDone()
     {
         isReachEdge = false;
         canClimb = false;
         anim.SetBool("canClimb", canClimb);
         transform.position = endClimbAnimPos;
+    }
+    //检查冲刺状态
+    private void CheckDashState()
+    {
+
     }
 }
