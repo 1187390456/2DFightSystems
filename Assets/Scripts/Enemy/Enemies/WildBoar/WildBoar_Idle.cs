@@ -29,15 +29,15 @@ public class WildBoar_Idle : E_Idle
     public override void Update()
     {
         base.Update();
-        if (isMinDetected)
+        if (entity.CheckMinDetected())
         {
-            SetCanTurn(false);
+            // 阻止转身
+            SetTurn(false);
             stateMachine.ChangeState(wildBoar.detected);
         }
         else if (isIdleTimeOver)
         {
             stateMachine.ChangeState(wildBoar.move);
-            isIdleTimeOver = false;
         }
     }
 }

@@ -24,14 +24,21 @@ public class WildBoar_Detected : E_Detected
     public override void FixUpdate()
     {
         base.FixUpdate();
+        if (isDetectedOver)
+        {
+            if (entity.CheckMinDetected())
+            {
+                stateMachine.ChangeState(wildBoar.charge);
+            }
+            else
+            {
+                stateMachine.ChangeState(wildBoar.findPlayer);
+            }
+        }
     }
 
     public override void Update()
     {
         base.Update();
-        if (!isMaxDetected)
-        {
-            stateMachine.ChangeState(wildBoar.idle);
-        }
     }
 }

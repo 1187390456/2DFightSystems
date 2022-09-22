@@ -5,11 +5,11 @@ using UnityEngine;
 public class E_Idle : E_State
 {
     protected D_E_Idle idleData; // 空闲数据
+
     protected float idleTime; // 空闲时间
 
     protected bool isIdleTimeOver; // 空闲时间是否结束
-    protected bool canTurn; // 是否能够转身
-    protected bool isMinDetected; // 是否最小警备距离
+    protected bool canTurn; // 能否转身
 
     public E_Idle(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Idle idleData) : base(stateMachine, entity, anmName)
     {
@@ -21,9 +21,8 @@ public class E_Idle : E_State
         base.Enter();
         entity.SetVelocity(0.0f);
         SetRandomIdleTime();
-        canTurn = true;
         isIdleTimeOver = false;
-        isMinDetected = entity.CheckMinDetected();
+        canTurn = true;
     }
 
     public override void Exit()
@@ -43,7 +42,6 @@ public class E_Idle : E_State
     public override void Update()
     {
         base.Update();
-        isMinDetected = entity.CheckMinDetected();
         if (!isIdleTimeOver && Time.time >= startTime + idleTime)
         {
             isIdleTimeOver = true;
@@ -56,8 +54,8 @@ public class E_Idle : E_State
         idleTime = Random.Range(idleData.minIdleTime, idleData.maxIdleTime);
     }
 
-    // 设置是否能转身
-    public void SetCanTurn(bool value)
+    // 设置能否转身
+    public void SetTurn(bool value)
     {
         canTurn = value;
     }
