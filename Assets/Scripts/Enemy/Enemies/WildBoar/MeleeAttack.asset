@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0495aafd8130847802990570a534a9, type: 3}
   m_Name: MeleeAttack
   m_EditorClassIdentifier: 
-  meleeAttackRadius: 0.65
+  meleeAttackRadius: 1
   meleeAttackDamage: 10
