@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject afterImage;//残影
     public Transform groundCheck;//地面检查
     public Transform wallCheck;//墙壁检查
     public Transform headerWallCheck;//头部墙壁检查
@@ -15,6 +16,10 @@ public class Player : MonoBehaviour
     [Header("玩家移动速度")] public Vector2 playerSpeedV2 = new Vector2(10.0f, 17.0f);
     [Header("滑墙速度")] public float slideSpeed = -3f;
     [Header("跳跃次数")] public int jumpAmount;
+    [Header("残影速度")] public int dashSpeed;
+    [Header("残影时间")] public float dashTime;
+    [Header("残影冷却时间")] public float dashCoolTime;
+    [Header("残影间距")] public float dashSpace;
 
     private Vector2 startClimbAnimPos;//开始攀爬动画位置
     private Vector2 endClimbAnimPos;//结束攀爬动画位置
@@ -33,9 +38,13 @@ public class Player : MonoBehaviour
     private bool isTouchHeaderWall;//头部接触墙壁
     private bool isReachEdge;//是否到达偏移点
     private bool canClimb;//能否攀爬
+    private bool isDash;//是否冲刺
 
     private float inputDirection;//输入方向
     private float groundCheckRadius = 0.23f;//地面检查圆形射线半径
+    private float residueDashTime;//残影剩余时间
+    private float lastDashTime;//上一次残影时间
+    private float nowAfterPosX;//当前残影x轴位置
 
     private int nowJumpAmount;//当前跳跃次数
     private int facingInt//面向右为1，左为-1
@@ -71,6 +80,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        CheckDashState();
     }
     private void OnDrawGizmos()
     {
@@ -85,6 +95,14 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+        }
+        if (Input.GetKey(KeyCode.L) && Time.time > lastDashTime + dashCoolTime)
+        {
+            isDash = true;
+            lastDashTime = Time.time;
+            residueDashTime = dashTime;
+            ObjectPool.Instance.AddPool(afterImage);
+            nowAfterPosX = transform.position.x;
         }
     }
     //检查动画
@@ -123,7 +141,7 @@ public class Player : MonoBehaviour
     //移动
     private void Move()
     {
-        if (isCanMove)
+        if (isCanMove && !isDash && !canClimb)
         {
             rb.velocity = new Vector2(inputDirection * playerSpeedV2.x, rb.velocity.y);
         }
@@ -131,11 +149,11 @@ public class Player : MonoBehaviour
     //检查转向
     private void CheckFlip()
     {
-        if (isFacing && inputDirection < 0)
+        if (isFacing && inputDirection < 0 && !isDash && !canClimb)
         {
             Flip();
         }
-        else if (!isFacing && inputDirection > 0)
+        else if (!isFacing && inputDirection > 0 && !isDash && !canClimb)
         {
             Flip();
         }
@@ -226,6 +244,22 @@ public class Player : MonoBehaviour
     //检查冲刺状态
     private void CheckDashState()
     {
-
+        if (isDash)
+        {
+            if (residueDashTime > 0)
+            {
+                rb.velocity = new Vector2(dashSpeed * facingInt, rb.velocity.y);
+                residueDashTime -= Time.deltaTime;
+                if (Mathf.Abs(transform.position.x - nowAfterPosX) > dashSpace)
+                {
+                    ObjectPool.Instance.GetPool();
+                    nowAfterPosX = transform.position.x;
+                }
+            }
+            else
+            {
+                isDash = false;
+            }
+        }
     }
 }
