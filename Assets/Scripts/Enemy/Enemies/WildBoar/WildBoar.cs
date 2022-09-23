@@ -11,12 +11,14 @@ public class WildBoar : E_Entity
     public WildBoar_Detected detected; // 警备
     public WildBoar_Charge charge; // 冲锋
     public WildBoar_FindPlayer findPlayer; // 寻找玩家
+    public WildBoar_MeleeAttack meleeAttack; // 近战攻击
 
     [Header("空闲数据")] public D_E_Idle idleData;
     [Header("移动数据")] public D_E_Move moveData;
     [Header("警备数据")] public D_E_Detected detectedData;
     [Header("冲锋数据")] public D_E_Charge chargeData;
     [Header("寻找玩家数据")] public D_E_FindPlayer findPlayerData;
+    [Header("近战攻击数据")] public D_E_MeleeAttack meleeAttackData;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class WildBoar : E_Entity
         detected = new WildBoar_Detected(stateMachine, this, "detected", detectedData, this);
         charge = new WildBoar_Charge(stateMachine, this, "charge", chargeData, this);
         findPlayer = new WildBoar_FindPlayer(stateMachine, this, "findPlayer", findPlayerData, this);
+        meleeAttack = new WildBoar_MeleeAttack(stateMachine, this, "meleeAttack", meleeAttackCheck, meleeAttackData, this);
         stateMachine.Init(move);
     }
 
@@ -32,5 +35,11 @@ public class WildBoar : E_Entity
     {
         base.Awake();
         Instance = this;
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(meleeAttackCheck.transform.position, meleeAttackData.meleeAttackRadius);
     }
 }

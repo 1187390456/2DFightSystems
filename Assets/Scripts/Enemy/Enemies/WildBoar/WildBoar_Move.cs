@@ -33,7 +33,7 @@ public class WildBoar_Move : E_Move
         {
             stateMachine.ChangeState(wildBoar.detected);
         }
-        else if (!entity.CheckEdge() || entity.CheckWall())
+        else if (entity.IsProtect())
         {
             stateMachine.ChangeState(wildBoar.idle);
         }

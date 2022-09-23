@@ -24,7 +24,15 @@ public class WildBoar_Charge : E_Charge
     public override void FixUpdate()
     {
         base.FixUpdate();
-        if (isChargeOver)
+        if (entity.IsReachCanMeleeAttack())
+        {
+            stateMachine.ChangeState(wildBoar.meleeAttack);
+        }
+        else if (entity.IsProtect())
+        {
+            stateMachine.ChangeState(wildBoar.findPlayer);
+        }
+        else if (isChargeOver)
         {
             stateMachine.ChangeState(wildBoar.detected);
         }

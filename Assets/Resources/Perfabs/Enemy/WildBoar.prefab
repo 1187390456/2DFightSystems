@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1895944307044970118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2945508813290630986}
+  m_Layer: 7
+  m_Name: meleeCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2945508813290630986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895944307044970118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.08, y: -0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3239908097693320063}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3239908096561727585
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +69,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3239908096561727584}
-  - component: {fileID: 3239908096561727591}
   - component: {fileID: 4271344606083923670}
   m_Layer: 0
   m_Name: WildBoar
@@ -63,35 +92,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3239908096561727591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3239908096561727585}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cf1f0dded899547b498eb0bcdf16a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheck: {fileID: 3239908097537975597}
-  groundCheckDistance: 0.1
-  wallCheck: {fileID: 3239908098046878558}
-  wallCheckDistance: 0.1
-  moveSpeed: 3
-  maxHealth: 50
-  knockbackDuration: 0.2
-  knockbackSpeed: {x: 10, y: 5}
-  touchCheck: {fileID: 2615632908619164918}
-  touchCheckBox: {x: 1.6, y: 0.8}
-  checkTouchLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  touchDamage: 10
 --- !u!114 &4271344606083923670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,11 +106,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheck: {fileID: 3239908098046878558}
   edgeCheck: {fileID: 3239908097537975597}
-  detectedCheck: {fileID: 0}
+  detectedCheck: {fileID: 882645445}
+  meleeAttackCheck: {fileID: 2945508813290630986}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
   idleData: {fileID: 11400000, guid: c17a6eb84b31a9a428bd4f536679ad5a, type: 2}
   moveData: {fileID: 11400000, guid: de9ee08d6b40b1847baf1a75e954fed4, type: 2}
   detectedData: {fileID: 11400000, guid: 0b57c0d7d2cbc1e44a82dee969f09e56, type: 2}
+  chargeData: {fileID: 11400000, guid: d5356bdd329c68e4b8d8caf4bff670eb, type: 2}
+  findPlayerData: {fileID: 11400000, guid: 0900f5d76cc64a0438387a2e6b9c6f56, type: 2}
+  meleeAttackData: {fileID: 11400000, guid: fbc26b09a5fb1d74ea7fcad7e79b9648, type: 2}
 --- !u!1 &3239908097537975598
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +158,7 @@ GameObject:
   - component: {fileID: 3239908097693320062}
   - component: {fileID: 3239908097693320060}
   - component: {fileID: 3239908097693320051}
+  - component: {fileID: 2471804639630971369}
   m_Layer: 7
   m_Name: Alive
   m_TagString: Enemy
@@ -176,6 +181,7 @@ Transform:
   - {fileID: 3239908097537975597}
   - {fileID: 2615632908619164918}
   - {fileID: 882645445}
+  - {fileID: 2945508813290630986}
   m_Father: {fileID: 3239908096561727584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -296,6 +302,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2471804639630971369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239908097693320056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd14ecf6ffff1ef4596599d5910c23f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3239908098046878559
 GameObject:
   m_ObjectHideFlags: 0

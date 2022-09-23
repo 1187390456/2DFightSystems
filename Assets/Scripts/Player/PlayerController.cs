@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     /* 击退 */
     #region
-    [Header("击退速度")] public Vector2 knockbackSpeed = new Vector2(10.0f, 8.0f);
+    [Header("击退速度")] public Vector2 knockbackSpeed = new Vector2(8.0f, 4.0f);
     [Header("击退时间")] public float knockbackTime = 0.2f;
     private float startKnockbackTime; // 开始击退时间
     private bool isBeKnockback; // 是否正在被击退
@@ -135,6 +135,13 @@ public class PlayerController : MonoBehaviour
             PlayerStates.Instance.DecreaseHealth(damageInfo[0]);
             Knockback(damageInfo[1]);
         }
+    }
+
+    // 受到近战攻击回调
+    public void AcceptMeleeAttackDamage(AttackInfo attackInfo)
+    {
+        PlayerStates.Instance.DecreaseHealth(attackInfo.damage);
+        Knockback(attackInfo.damageSourcePosX);
     }
 
     private void Awake()

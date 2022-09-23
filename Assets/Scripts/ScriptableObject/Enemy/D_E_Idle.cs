@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "Data/Enemy Data/State Data/Idle Data")]
+[CreateAssetMenu(fileName = "Idle", menuName = "Data/Enemy Data/State Data/Idle Data")]
 public class D_E_Idle : ScriptableObject
 {
     [Header("最大空闲时间")] public float maxIdleTime = 3.0f;

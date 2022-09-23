@@ -20,7 +20,6 @@ public class PlayerAttackController : MonoBehaviour
     private bool attack1Switch = true; // 攻击1切换
     private bool isAttackInputing; // 是否正在攻击输入
     private float lastInpuTime; // 上次攻击输入时间
-    private float[] attackInfo = new float[2]; //攻击信息
 
     private void Awake()
     {
@@ -53,11 +52,14 @@ public class PlayerAttackController : MonoBehaviour
     public void AnimationAttack1Hit()
     {
         Collider2D[] objs = Physics2D.OverlapCircleAll(attackCheck.position, attackCheckRadius, CanBeAttack);
-        attackInfo[0] = attack1Damage;
-        attackInfo[1] = transform.position.x;
+        AttackInfo attackInfo = new AttackInfo()
+        {
+            damage = attack1Damage,
+            damageSourcePosX = transform.position.x
+        };
         foreach (var item in objs)
         {
-            item.transform.parent.SendMessage("AcceptDamage", attackInfo);
+            item.transform.parent.SendMessage("AcceptPlayerDamage", attackInfo);
         }
     }
 

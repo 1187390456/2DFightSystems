@@ -99,14 +99,14 @@ public class BaseEnemyController : MonoBehaviour
     }
 
     // 受到伤害回调
-    public void AcceptDamage(float[] attackInfo)
+    public void AcceptPlayerDamage(AttackInfo attackInfo)
     {
-        currentHealth -= attackInfo[0];
+        currentHealth -= attackInfo.damage;
         var pos = aliveGobj.transform.position;
         var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
         EffectBox.Instance.WildBoarHit(pos, rot);
         // 判断伤害方向
-        if (aliveGobj.transform.position.x < attackInfo[1])
+        if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
         {
             // 伤害来源来右边
             damageDirection = 1;

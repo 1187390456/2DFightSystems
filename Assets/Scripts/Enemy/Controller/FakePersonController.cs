@@ -18,14 +18,18 @@ public class FakePersonController : MonoBehaviour
     private bool isBeHiting; // 是否受击中
     private float lastBeHitTime; // 上次受击时间点
 
-    private bool isHitFromLeft
-    {
-        get { return PlayerController.Instance.isFacingright; }
-    } // 受击方向
+    private bool isHitFromLeft;// 受击方向
 
     private int knockBackDirection
     {
-        get { return PlayerController.Instance.facingDirection; }
+        get
+        {
+            if (isHitFromLeft)
+            {
+                return 1;
+            }
+            return -1;
+        }
     }// 击退方向
 
     private void Awake()
@@ -58,10 +62,18 @@ public class FakePersonController : MonoBehaviour
     }
 
     // 受到伤害回调
-    public void AcceptDamage(float[] attackInfo)
+    public void AcceptPlayerDamage(AttackInfo attackInfo)
     {
-        currentHealth -= attackInfo[0];
+        currentHealth -= attackInfo.damage;
         at.SetTrigger("damage");
+        if (attackInfo.damageSourcePosX > transform.position.x)
+        {
+            isHitFromLeft = false;
+        }
+        else
+        {
+            isHitFromLeft = true;
+        }
         at.SetBool("isHitFromLeft", isHitFromLeft);
         var pos = at.transform.position;
         var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));

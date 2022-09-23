@@ -16,3 +16,4 @@ MonoBehaviour:
   edgeCheckDistance: 0.1
   minDetectedDistance: 5
   maxDetectedDistance: 8
+  canMeleeDistance: 1.5

@@ -2,9 +2,9 @@
 
 public class E_FindPlayer : E_State
 {
-    protected D_E_FindPlayer findPlayerData;
-
+    protected D_E_FindPlayer findPlayerData; // 寻找玩家数据
     protected bool findPlayerTimeOver; // 寻找玩家状态是否结束
+
     protected float lastTurnTime; // 上次转身时间
     protected int turnCount; // 转身次数
     protected bool isFindPlayer; // 是否找到玩家
@@ -20,7 +20,6 @@ public class E_FindPlayer : E_State
         findPlayerTimeOver = false;
         turnCount = 3;
         entity.SetVelocity(0.0f);
-        Turn();
     }
 
     public override void Exit()
@@ -36,6 +35,10 @@ public class E_FindPlayer : E_State
     public override void Update()
     {
         base.Update();
+        if (startTime + Time.deltaTime >= startTime + 0.8f)
+        {
+            Turn();
+        }
         if (Time.time >= lastTurnTime + findPlayerData.turnTimeSpace && turnCount > 0)
         {
             Turn();
