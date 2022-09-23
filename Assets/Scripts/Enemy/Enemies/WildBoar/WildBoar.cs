@@ -12,6 +12,7 @@ public class WildBoar : E_Entity
     public WildBoar_Charge charge; // 冲锋
     public WildBoar_FindPlayer findPlayer; // 寻找玩家
     public WildBoar_MeleeAttack meleeAttack; // 近战攻击
+    public WildBoar_Stun stun; // 眩晕
 
     [Header("空闲数据")] public D_E_Idle idleData;
     [Header("移动数据")] public D_E_Move moveData;
@@ -19,6 +20,7 @@ public class WildBoar : E_Entity
     [Header("冲锋数据")] public D_E_Charge chargeData;
     [Header("寻找玩家数据")] public D_E_FindPlayer findPlayerData;
     [Header("近战攻击数据")] public D_E_MeleeAttack meleeAttackData;
+    [Header("眩晕数据")] public D_E_Stun stunData;
 
     private void Start()
     {
@@ -28,6 +30,7 @@ public class WildBoar : E_Entity
         charge = new WildBoar_Charge(stateMachine, this, "charge", chargeData, this);
         findPlayer = new WildBoar_FindPlayer(stateMachine, this, "findPlayer", findPlayerData, this);
         meleeAttack = new WildBoar_MeleeAttack(stateMachine, this, "meleeAttack", meleeAttackCheck, meleeAttackData, this);
+        stun = new WildBoar_Stun(stateMachine, this, "stun", stunData, this);
         stateMachine.Init(move);
     }
 
@@ -41,5 +44,22 @@ public class WildBoar : E_Entity
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(meleeAttackCheck.transform.position, meleeAttackData.meleeAttackRadius);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (canEnterStun && !isStuning)
+        {
+            canEnterStun = false;
+            isStuning = true;
+            stateMachine.ChangeState(stun);
+        }
+        if (canEnterBeHit && !isBeHiting)
+        {
+            canEnterBeHit = false;
+            isBeHiting = true;
+            stateMachine.ChangeState(detected);
+        }
     }
 }

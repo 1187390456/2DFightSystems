@@ -20,6 +20,35 @@ public class E_Entity : MonoBehaviour
     private Vector2 movement;// 刚体速度
     private int facingDirection; // 面向方向 1右
 
+    private int knockbackStunDirection; // 眩晕击退方向 1右
+    [HideInInspector] public bool canEnterStun { get; set; } //是否可以进入眩晕
+    [HideInInspector] public bool isStuning { get; set; } //是否处于眩晕中
+    [HideInInspector] public int currentStunCount { get; set; }  // 当前距离击晕次数
+
+    [HideInInspector] public bool canEnterBeHit { get; set; } //是否可以进入被打
+    [HideInInspector] public bool isBeHiting { get; set; } //是否被打
+
+    // 接收伤害回调
+    public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
+    {
+        if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
+        {
+            knockbackStunDirection = -1;
+        }
+        else
+        {
+            knockbackStunDirection = 1;
+        }
+        if (!isStuning)
+        {
+            SetNoStunVelocity(knockbackStunDirection);
+        }
+        else
+        {
+            SetStunVelocity();
+        }
+    }
+
     public virtual void Awake()
     {
         aliveGobj = transform.Find("Alive").gameObject;
@@ -28,6 +57,13 @@ public class E_Entity : MonoBehaviour
         animationToScript = aliveGobj.GetComponent<AnimationToScript>();
 
         facingDirection = 1;
+
+        currentStunCount = entityData.stunCount;
+        canEnterStun = false;
+        isStuning = false;
+        canEnterBeHit = false;
+        isBeHiting = false;
+
         stateMachine = new E_StateMachine();
     }
 
@@ -54,6 +90,31 @@ public class E_Entity : MonoBehaviour
     public virtual void SetVelocity(float moveSpeed)
     {
         movement.Set(moveSpeed * facingDirection, rb.velocity.y);
+        rb.velocity = movement;
+    }
+
+    // 设置未眩晕刚体速度
+    public virtual void SetNoStunVelocity(int knockbackStunDirection)
+    {
+        currentStunCount--;
+        if (currentStunCount > 0)
+        {
+            movement.Set(rb.velocity.x, entityData.knockbackSpeed.y);
+            rb.velocity = movement;
+            canEnterBeHit = true;
+        }
+        else
+        {
+            movement.Set(entityData.knockbackSpeed.x * knockbackStunDirection, entityData.knockbackSpeed.y);
+            rb.velocity = movement;
+            canEnterStun = true;
+        }
+    }
+
+    // 设置眩晕刚体速度
+    public virtual void SetStunVelocity()
+    {
+        movement.Set(rb.velocity.x, entityData.knockbackSpeed.y);
         rb.velocity = movement;
     }
 
