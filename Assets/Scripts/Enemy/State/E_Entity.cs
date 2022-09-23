@@ -25,8 +25,8 @@ public class E_Entity : MonoBehaviour
     [HideInInspector] public bool isStuning { get; set; } //是否处于眩晕中
     [HideInInspector] public int currentStunCount { get; set; }  // 当前距离击晕次数
 
-    [HideInInspector] public bool canEnterBeHit { get; set; } //是否可以进入被打
-    [HideInInspector] public bool isBeHiting { get; set; } //是否被打
+    [HideInInspector] public bool canEnterHurt { get; set; } //是否可以进入受伤状态
+    [HideInInspector] public bool isHurting { get; set; } //是否受伤
 
     // 接收伤害回调
     public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
@@ -61,8 +61,8 @@ public class E_Entity : MonoBehaviour
         currentStunCount = entityData.stunCount;
         canEnterStun = false;
         isStuning = false;
-        canEnterBeHit = false;
-        isBeHiting = false;
+        canEnterHurt = false;
+        isHurting = false;
 
         stateMachine = new E_StateMachine();
     }
@@ -101,7 +101,7 @@ public class E_Entity : MonoBehaviour
         {
             movement.Set(rb.velocity.x, entityData.knockbackSpeed.y);
             rb.velocity = movement;
-            canEnterBeHit = true;
+            canEnterHurt = true;
         }
         else
         {

@@ -22,8 +22,6 @@ public class E_Detected : E_State
     public override void Exit()
     {
         base.Exit();
-        // 退出警备则受击为假
-        entity.isBeHiting = false;
     }
 
     public override void FixUpdate()
