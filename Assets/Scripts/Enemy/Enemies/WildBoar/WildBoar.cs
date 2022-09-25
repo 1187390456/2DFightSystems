@@ -14,6 +14,7 @@ public class WildBoar : E_Entity
     public WildBoar_MeleeAttack meleeAttack; // 近战攻击
     public WildBoar_Stun stun; // 眩晕
     public WildBoar_Hurt hurt; // 受伤
+    public WildBoar_Dead dead; // 死亡
 
     [Header("空闲数据")] public D_E_Idle idleData;
     [Header("移动数据")] public D_E_Move moveData;
@@ -23,6 +24,7 @@ public class WildBoar : E_Entity
     [Header("近战攻击数据")] public D_E_MeleeAttack meleeAttackData;
     [Header("眩晕数据")] public D_E_Stun stunData;
     [Header("受伤数据")] public D_E_Hurt hurtData;
+    [Header("死亡数据")] public D_E_Dead deadData;
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class WildBoar : E_Entity
         meleeAttack = new WildBoar_MeleeAttack(stateMachine, this, "meleeAttack", meleeAttackCheck, meleeAttackData, this);
         stun = new WildBoar_Stun(stateMachine, this, "stun", stunData, this);
         hurt = new WildBoar_Hurt(stateMachine, this, "hurt", hurtData, this);
+        dead = new WildBoar_Dead(stateMachine, this, "dead", deadData, this);
         stateMachine.Init(move);
     }
 
@@ -52,16 +55,16 @@ public class WildBoar : E_Entity
     public override void Update()
     {
         base.Update();
-        if (canEnterStun && !isStuning)
+        if (isDead && stateMachine.currentState != dead)
         {
-            canEnterStun = false;
-            isStuning = true;
+            stateMachine.ChangeState(dead);
+        }
+        else if (isStuning && stateMachine.currentState != stun)
+        {
             stateMachine.ChangeState(stun);
         }
-        if (canEnterHurt && !isHurting)
+        else if (isHurting && stateMachine.currentState != hurt)
         {
-            canEnterHurt = false;
-            isHurting = true;
             stateMachine.ChangeState(hurt);
         }
     }

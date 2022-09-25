@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Hurt : E_Hurt
 {
-    private WildBoar wildBoar; // 野猪
+    private WildBoar wildBoar;
 
     public WildBoar_Hurt(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Hurt hurtData, WildBoar wildBoar) : base(stateMachine, entity, anmName, hurtData)
     {
@@ -19,8 +19,6 @@ public class WildBoar_Hurt : E_Hurt
     public override void Exit()
     {
         base.Exit();
-        // 退出受伤则受击为假
-        entity.isHurting = false;
     }
 
     public override void FixUpdate()
@@ -31,13 +29,13 @@ public class WildBoar_Hurt : E_Hurt
     public override void Update()
     {
         base.Update();
-        if (isHurtOver)
+        if (entity.IsReachCanMeleeAttack())
         {
-            if (entity.IsReachCanMeleeAttack())
-            {
-                stateMachine.ChangeState(wildBoar.meleeAttack);
-            }
-            else if (entity.CheckMinDetected())
+            stateMachine.ChangeState(wildBoar.meleeAttack);
+        }
+        else if (isHurtOver)
+        {
+            if (entity.CheckMinDetected())
             {
                 stateMachine.ChangeState(wildBoar.charge);
             }

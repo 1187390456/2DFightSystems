@@ -8,6 +8,7 @@ public class E_Entity : MonoBehaviour
     [Header("墙壁检测点")] public Transform wallCheck;
     [Header("边缘检测点")] public Transform edgeCheck;
     [Header("警备检测点")] public Transform detectedCheck;
+    [Header("地面检测点")] public Transform groundCheck;
     [Header("近战攻击检测点")] public Transform meleeAttackCheck;
     [Header("实体数据")] public D_E_Base entityData;
 
@@ -17,35 +18,55 @@ public class E_Entity : MonoBehaviour
     public E_StateMachine stateMachine { get; private set; } // 状态机
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
 
-    private Vector2 movement;// 刚体速度
-    private int facingDirection; // 面向方向 1右
+    [HideInInspector] public Vector2 movement;// 刚体速度
 
-    private int knockbackStunDirection; // 眩晕击退方向 1右
-    [HideInInspector] public bool canEnterStun { get; set; } //是否可以进入眩晕
-    [HideInInspector] public bool isStuning { get; set; } //是否处于眩晕中
-    [HideInInspector] public int currentStunCount { get; set; }  // 当前距离击晕次数
+    [HideInInspector] public int facingDirection = 1; // 面向方向 1右
+    [HideInInspector] public int stunKnockbackDirection; // 眩晕击退方向 1右
 
-    [HideInInspector] public bool canEnterHurt { get; set; } //是否可以进入受伤状态
-    [HideInInspector] public bool isHurting { get; set; } //是否受伤
+    [HideInInspector] public int currentStunCount;// 当前距离击晕次数
+    [HideInInspector] public float currentHealth;  // 当前生命值
+
+    [HideInInspector] public bool isStuning; //是否眩晕
+    [HideInInspector] public bool isHurting; //是否受伤
+    [HideInInspector] public bool isDead; // 是否死亡
 
     // 接收伤害回调
     public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
     {
+        currentHealth -= attackInfo.damage;
+        // 判断受击方向
         if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
         {
-            knockbackStunDirection = -1;
+            stunKnockbackDirection = -1;
         }
         else
         {
-            knockbackStunDirection = 1;
+            stunKnockbackDirection = 1;
         }
-        if (!isStuning)
+        // 生成特效
+        var rot = Quaternion.Euler(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        EffectBox.Instance.WildBoarHit(aliveGobj.transform.position, rot);
+        // 判断死亡
+        if (currentHealth <= 0)
         {
-            SetNoStunVelocity(knockbackStunDirection);
+            isDead = true;
         }
-        else
+        // 判断是否处于眩晕中
+        else if (!isStuning)
         {
-            SetStunVelocity();
+            currentStunCount--;
+            if (currentStunCount > 0)
+            {
+                isHurting = true;
+            }
+            else
+            {
+                isStuning = true;
+            }
+        }
+        else if (CheckGround())
+        {
+            SetVelocityY(entityData.stunKnockbackSpeedY);
         }
     }
 
@@ -56,13 +77,8 @@ public class E_Entity : MonoBehaviour
         at = aliveGobj.GetComponent<Animator>();
         animationToScript = aliveGobj.GetComponent<AnimationToScript>();
 
-        facingDirection = 1;
-
         currentStunCount = entityData.stunCount;
-        canEnterStun = false;
-        isStuning = false;
-        canEnterHurt = false;
-        isHurting = false;
+        currentHealth = entityData.maxHealth;
 
         stateMachine = new E_StateMachine();
     }
@@ -82,39 +98,30 @@ public class E_Entity : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + entityData.wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(edgeCheck.position, new Vector2(edgeCheck.position.x, edgeCheck.position.y - entityData.edgeCheckDistance));
         Gizmos.DrawLine(detectedCheck.position, new Vector2(detectedCheck.position.x + entityData.canMeleeDistance, detectedCheck.position.y));
+        Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - entityData.groundCheckDistance));
         Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.minDetectedDistance * facingDirection, detectedCheck.position.y), 0.5f);
         Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.maxDetectedDistance * facingDirection, detectedCheck.position.y), 0.5f);
     }
 
-    // 设置刚体速度
-    public virtual void SetVelocity(float moveSpeed)
+    // 设置X轴刚体速度
+    public virtual void SetVelocity(float velocity)
     {
-        movement.Set(moveSpeed * facingDirection, rb.velocity.y);
+        movement.Set(velocity * facingDirection, rb.velocity.y);
         rb.velocity = movement;
     }
 
-    // 设置未眩晕刚体速度
-    public virtual void SetNoStunVelocity(int knockbackStunDirection)
+    // 设置Y轴刚体速度
+    public virtual void SetVelocityY(float velocity)
     {
-        currentStunCount--;
-        if (currentStunCount > 0)
-        {
-            movement.Set(rb.velocity.x, entityData.knockbackSpeed.y);
-            rb.velocity = movement;
-            canEnterHurt = true;
-        }
-        else
-        {
-            movement.Set(entityData.knockbackSpeed.x * knockbackStunDirection, entityData.knockbackSpeed.y);
-            rb.velocity = movement;
-            canEnterStun = true;
-        }
+        movement.Set(rb.velocity.x, velocity);
+        rb.velocity = movement;
     }
 
-    // 设置眩晕刚体速度
-    public virtual void SetStunVelocity()
+    // 设置具体刚体速度
+    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
     {
-        movement.Set(rb.velocity.x, entityData.knockbackSpeed.y);
+        angle.Normalize();
+        movement.Set(angle.x * velocity * direction, angle.y * velocity);
         rb.velocity = movement;
     }
 
@@ -129,6 +136,12 @@ public class E_Entity : MonoBehaviour
     public virtual bool CheckWall()
     {
         return Physics2D.Raycast(wallCheck.position, aliveGobj.transform.right, entityData.wallCheckDistance, LayerMask.GetMask("Ground"));
+    }
+
+    // 地面检测
+    public virtual bool CheckGround()
+    {
+        return Physics2D.Raycast(groundCheck.position, Vector2.down, entityData.groundCheckDistance, LayerMask.GetMask("Ground"));
     }
 
     // 边缘检测

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Detected : E_Detected
 {
-    private WildBoar wildBoar;// 野猪
+    private WildBoar wildBoar;
 
     public WildBoar_Detected(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Detected detectedData, WildBoar wildBoar) : base(stateMachine, entity, anmName, detectedData)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Move : E_Move
 {
-    private WildBoar wildBoar; // 野猪
+    private WildBoar wildBoar;
 
     public WildBoar_Move(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Move moveData, WildBoar wildBoar) : base(stateMachine, entity, anmName, moveData)
     {

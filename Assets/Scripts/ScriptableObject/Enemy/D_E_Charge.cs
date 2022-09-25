@@ -6,5 +6,5 @@ using UnityEngine;
 public class D_E_Charge : ScriptableObject
 {
     [Header("冲锋时间")] public float chargeTime = 0.8f;
-    [Header("冲锋速度")] public float chargeSpeed = 10.0f;
+    [Header("冲锋速度")] public float chargeSpeed = 16.0f;
 }

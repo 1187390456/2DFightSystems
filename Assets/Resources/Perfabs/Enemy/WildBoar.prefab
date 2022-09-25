@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &189237308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189237309}
+  m_Layer: 7
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189237309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189237308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3239908097693320063}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882645444
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,14 +137,19 @@ MonoBehaviour:
   wallCheck: {fileID: 3239908098046878558}
   edgeCheck: {fileID: 3239908097537975597}
   detectedCheck: {fileID: 882645445}
+  groundCheck: {fileID: 189237309}
   meleeAttackCheck: {fileID: 2945508813290630986}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
+  stunKnockbackDirection: 0
   idleData: {fileID: 11400000, guid: c17a6eb84b31a9a428bd4f536679ad5a, type: 2}
   moveData: {fileID: 11400000, guid: de9ee08d6b40b1847baf1a75e954fed4, type: 2}
   detectedData: {fileID: 11400000, guid: 0b57c0d7d2cbc1e44a82dee969f09e56, type: 2}
   chargeData: {fileID: 11400000, guid: d5356bdd329c68e4b8d8caf4bff670eb, type: 2}
   findPlayerData: {fileID: 11400000, guid: 0900f5d76cc64a0438387a2e6b9c6f56, type: 2}
   meleeAttackData: {fileID: 11400000, guid: fbc26b09a5fb1d74ea7fcad7e79b9648, type: 2}
+  stunData: {fileID: 11400000, guid: 5b5533d702e256a42b3e37a33d9fabab, type: 2}
+  hurtData: {fileID: 11400000, guid: beb78f3a0e862ce429efe36f6243e61d, type: 2}
+  deadData: {fileID: 11400000, guid: fffb3f7eba240924e9bc5f18d2d4d3d9, type: 2}
 --- !u!1 &3239908097537975598
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +217,7 @@ Transform:
   - {fileID: 2615632908619164918}
   - {fileID: 882645445}
   - {fileID: 2945508813290630986}
+  - {fileID: 189237309}
   m_Father: {fileID: 3239908096561727584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

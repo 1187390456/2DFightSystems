@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Charge : E_Charge
 {
-    private WildBoar wildBoar; // 野猪
+    private WildBoar wildBoar;
 
     public WildBoar_Charge(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Charge chargeData, WildBoar wildBoar) : base(stateMachine, entity, anmName, chargeData)
     {

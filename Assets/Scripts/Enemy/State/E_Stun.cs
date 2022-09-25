@@ -16,11 +16,13 @@ public class E_Stun : E_State
     {
         base.Enter();
         isStunOver = false;
+        entity.SetVelocity(stunData.stunKnockBackVelocity, stunData.stunKnockBackAngle, entity.stunKnockbackDirection);
     }
 
     public override void Exit()
     {
         base.Exit();
+        entity.isStuning = false;
     }
 
     public override void FixUpdate()
@@ -34,7 +36,6 @@ public class E_Stun : E_State
         if (Time.time >= startTime + stunData.stunTime)
         {
             isStunOver = true;
-            entity.isStuning = false;
             entity.currentStunCount = entity.entityData.stunCount;
         }
     }

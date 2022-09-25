@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Stun : E_Stun
 {
-    protected WildBoar wildBoar; // 野猪
+    protected WildBoar wildBoar;
 
     public WildBoar_Stun(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Stun stunData, WildBoar wildBoar) : base(stateMachine, entity, anmName, stunData)
     {

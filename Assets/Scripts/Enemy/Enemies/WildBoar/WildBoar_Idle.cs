@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WildBoar_Idle : E_Idle
 {
-    private WildBoar wildBoar; // 野猪
+    private WildBoar wildBoar;
 
     public WildBoar_Idle(E_StateMachine stateMachine, E_Entity entity, string anmName, D_E_Idle idleData, WildBoar wildBoar) : base(stateMachine, entity, anmName, idleData)
     {

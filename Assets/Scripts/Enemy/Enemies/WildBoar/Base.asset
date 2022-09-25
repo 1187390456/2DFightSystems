@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheckDistance: 0.1
   edgeCheckDistance: 1
+  groundCheckDistance: 0.1
   minDetectedDistance: 6.5
   maxDetectedDistance: 9.5
   canMeleeDistance: 2
   stunCount: 5
-  knockbackSpeed: {x: 5, y: 10}
+  stunKnockbackSpeedY: 15
+  maxHealth: 999

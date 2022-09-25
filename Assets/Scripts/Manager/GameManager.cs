@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
             var player = Instantiate(playerRes, GetRandPos(), Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
             playerCM.Follow = player.transform;
-            tileMap2D.usedByComposite = true;
         }
     }
 
@@ -62,8 +61,8 @@ public class GameManager : MonoBehaviour
         return FindCanRebirth(startPos);
     }
 
-    // 找到最近的可重生坐标
-    private Vector2 FindCanRebirth(Vector2 StartPos)
+    // 从指定位置开始 找到最近的可重生坐标
+    public Vector2 FindCanRebirth(Vector2 StartPos)
     {
         float width = 2f;
         float delet = 1f;
@@ -90,6 +89,7 @@ public class GameManager : MonoBehaviour
                     var hit = Physics2D.OverlapBox(checkPos, new Vector2(0.65f, 1.65f), 0, LayerMask.GetMask("Ground"));
                     if (hit == null)
                     {
+                        tileMap2D.usedByComposite = true;
                         return checkPos;
                     }
                 }

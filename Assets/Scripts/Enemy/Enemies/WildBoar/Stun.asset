@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Stun
   m_EditorClassIdentifier: 
   stunTime: 1.5
+  stunKnockBackVelocity: 15
+  stunKnockBackAngle: {x: 1, y: 2}
