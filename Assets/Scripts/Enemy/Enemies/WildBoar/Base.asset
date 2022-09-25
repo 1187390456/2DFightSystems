@@ -17,7 +17,7 @@ MonoBehaviour:
   groundCheckDistance: 0.1
   minDetectedDistance: 6.5
   maxDetectedDistance: 9.5
-  canMeleeDistance: 2
+  canMeleeDistance: 1.6
   stunCount: 5
   stunKnockbackSpeedY: 15
   maxHealth: 999

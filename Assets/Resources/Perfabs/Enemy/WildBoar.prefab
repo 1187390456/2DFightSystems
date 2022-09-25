@@ -24,11 +24,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189237308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.018, y: -1.012, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882645444
 GameObject:
@@ -58,7 +58,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895944307044970118
 GameObject:
@@ -88,7 +88,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3239908096561727585
 GameObject:
@@ -140,7 +140,14 @@ MonoBehaviour:
   groundCheck: {fileID: 189237309}
   meleeAttackCheck: {fileID: 2945508813290630986}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
+  movement: {x: 0, y: 0}
+  facingDirection: 1
   stunKnockbackDirection: 0
+  currentStunCount: 0
+  currentHealth: 0
+  isStuning: 0
+  isHurting: 0
+  isDead: 0
   idleData: {fileID: 11400000, guid: c17a6eb84b31a9a428bd4f536679ad5a, type: 2}
   moveData: {fileID: 11400000, guid: de9ee08d6b40b1847baf1a75e954fed4, type: 2}
   detectedData: {fileID: 11400000, guid: 0b57c0d7d2cbc1e44a82dee969f09e56, type: 2}
@@ -214,7 +221,6 @@ Transform:
   m_Children:
   - {fileID: 3239908098046878558}
   - {fileID: 3239908097537975597}
-  - {fileID: 2615632908619164918}
   - {fileID: 882645445}
   - {fileID: 2945508813290630986}
   - {fileID: 189237309}
@@ -379,34 +385,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3289522958995331874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2615632908619164918}
-  m_Layer: 0
-  m_Name: touchCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2615632908619164918
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3289522958995331874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.43, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3239908097693320063}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
