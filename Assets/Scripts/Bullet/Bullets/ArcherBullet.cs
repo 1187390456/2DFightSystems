@@ -7,7 +7,7 @@ public class ArcherBullet : MonoBehaviour
 {
     [Header("接触位置")] public Transform touchPos;
     [Header("接触半径")] public float touchradius = 0.17f;
-    [Header("最大存在时间")] public float maxAliveTime = 12.0f;
+    [Header("最大存在时间")] public float maxAliveTime = 3.0f;
 
     private AttackInfo attackInfo; // 攻击信息
     private Rigidbody2D rb; // 刚体

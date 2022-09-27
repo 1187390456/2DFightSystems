@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Archer : E_Entity
 {
+    [Header("远程攻击检测点")] public Transform remoteAttackCheck;
     public static Archer Instance { get; private set; }
 
     public Archer_Dead dead; // 死亡

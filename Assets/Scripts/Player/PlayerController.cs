@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     /* 公共属性 */
     #region
     public static PlayerController Instance; //单例
-    public bool isFacingright = true; // 是否面向右
-    public int facingDirection = 1; // 面向方向 1右
-    public float horizontalDirection; // 水平输入
+    [HideInInspector] public bool isFacingright = true; // 是否面向右
+    [HideInInspector] public int facingDirection = 1; // 面向方向 1右
+    [HideInInspector] public float horizontalDirection; // 水平输入
     #endregion
 
     /* 自身属性 */

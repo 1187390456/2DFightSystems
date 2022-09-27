@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttackController : MonoBehaviour
 {
     public static PlayerAttackController Instance; //单例
-    public bool isAttacking;  // 是否正在攻击
+    [HideInInspector] public bool isAttacking;  // 是否正在攻击
 
     private Animator at; // 自身动画
     private Rigidbody2D rb; // 自身刚体

@@ -10,7 +10,6 @@ public class E_Entity : MonoBehaviour
     [Header("警备检测点")] public Transform detectedCheck;
     [Header("地面检测点")] public Transform groundCheck;
     [Header("近战攻击检测点")] public Transform meleeAttackCheck;
-    [Header("远程攻击检测点")] public Transform remoteAttackCheck;
     [Header("实体数据")] public D_E_Base entityData;
 
     public GameObject aliveGobj { get; private set; } // 存活游戏对象
