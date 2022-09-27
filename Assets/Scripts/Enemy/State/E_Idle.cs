@@ -18,7 +18,7 @@ public class E_Idle : E_State
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocity(0.0f);
+        entity.SetVelocityX(0.0f);
         SetRandomIdleTime();
         isIdleTimeOver = false;
         canTurn = true;

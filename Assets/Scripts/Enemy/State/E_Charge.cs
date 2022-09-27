@@ -26,7 +26,7 @@ public class E_Charge : E_State
     public override void FixUpdate()
     {
         base.FixUpdate();
-        entity.SetVelocity(chargeData.chargeSpeed);
+        entity.SetVelocityX(chargeData.chargeSpeed);
     }
 
     public override void Update()

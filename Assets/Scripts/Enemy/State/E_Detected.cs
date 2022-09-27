@@ -16,7 +16,7 @@ public class E_Detected : E_State
     {
         base.Enter();
         isDetectedOver = false;
-        entity.SetVelocity(0.0f);
+        entity.SetVelocityX(0.0f);
     }
 
     public override void Exit()

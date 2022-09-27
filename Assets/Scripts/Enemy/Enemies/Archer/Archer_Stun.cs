@@ -33,12 +33,18 @@ public class Archer_Stun : E_Stun
         {
             if (entity.IsReachCanMeleeAttack())
             {
-                stateMachine.ChangeState(archer.meleeAttack);
+                if (archer.CheckCanDodge())
+                {
+                    stateMachine.ChangeState(archer.dodge);
+                }
+                else
+                {
+                    stateMachine.ChangeState(archer.meleeAttack);
+                }
             }
-            else if (entity.CheckMinDetected())
+            else if (entity.CheckMaxDetected())
             {
-                // 远程
-                stateMachine.ChangeState(archer.move);
+                stateMachine.ChangeState(archer.remoteAttack);
             }
             else
             {

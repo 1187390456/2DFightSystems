@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609871610000178030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -0.17, z: 0}
+  m_LocalPosition: {x: 0.783, y: -0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1609871610839976378}
@@ -79,22 +79,26 @@ MonoBehaviour:
   detectedCheck: {fileID: 1609871610756146010}
   groundCheck: {fileID: 1609871610446094159}
   meleeAttackCheck: {fileID: 1609871610000178029}
+  remoteAttackCheck: {fileID: 831352659597499426}
   entityData: {fileID: 11400000, guid: 3e8c1bc82cde1f24bac832a141b63e5c, type: 2}
+  spriteRenderer: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
-  stunKnockbackDirection: 0
   currentStunCount: 0
   currentHealth: 0
   isStuning: 0
   isHurting: 0
   isDead: 0
   deadData: {fileID: 11400000, guid: 72e9ac866cce15d4e8368651f336b393, type: 2}
-  findPlayerData: {fileID: 11400000, guid: af1c18ffd698cc24facd7215e7f9ee18, type: 2}
   idleData: {fileID: 11400000, guid: 6bb7bd85a7d3e3e43b21924d25f12077, type: 2}
-  meleeAttackData: {fileID: 11400000, guid: fe3f1260c187d3d4ebe1247a2ba2ac09, type: 2}
   moveData: {fileID: 11400000, guid: c1a287d50a3703549af3dabed4c9f5d0, type: 2}
   stunData: {fileID: 11400000, guid: 7840ca329e04c6b4387af81b6519b40c, type: 2}
+  dodgeData: {fileID: 11400000, guid: faaa452d04f19a84ebbf5ccdbbde8f81, type: 2}
+  detectedData: {fileID: 11400000, guid: 4df50b1f054c4544ca581b45827a8858, type: 2}
+  findPlayerData: {fileID: 11400000, guid: af1c18ffd698cc24facd7215e7f9ee18, type: 2}
+  meleeAttackData: {fileID: 11400000, guid: fe3f1260c187d3d4ebe1247a2ba2ac09, type: 2}
   remoteAttackData: {fileID: 11400000, guid: 03dc556400df3664486cbfcdee1f91f9, type: 2}
+  ability1Data: {fileID: 11400000, guid: 7185a21058d69bc4d8e41c6df2389468, type: 2}
 --- !u!1 &1609871610446094144
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609871610839976379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.8, y: -10.77, z: 0}
+  m_LocalPosition: {x: 5.86, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1609871611295038465}
@@ -192,6 +196,7 @@ Transform:
   - {fileID: 1609871610000178029}
   - {fileID: 1609871610446094159}
   - {fileID: 1609871610756146010}
+  - {fileID: 831352659597499426}
   m_Father: {fileID: 1609871610296887577}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -383,4 +388,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1609871610839976378}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3804631252630880165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831352659597499426}
+  m_Layer: 7
+  m_Name: remoteCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &831352659597499426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804631252630880165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.317, y: -0.052, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1609871610839976378}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -24,7 +24,7 @@ public class E_Move : E_State
     public override void FixUpdate()
     {
         base.FixUpdate();
-        entity.SetVelocity(moveData.moveSpeed);
+        entity.SetVelocityX(moveData.moveSpeed);
     }
 
     public override void Update()

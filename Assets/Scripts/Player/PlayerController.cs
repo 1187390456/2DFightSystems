@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 受到近战攻击回调
-    public void AcceptMeleeAttackDamage(AttackInfo attackInfo)
+    public void AcceptAttackDamage(AttackInfo attackInfo)
     {
         PlayerStates.Instance.DecreaseHealth(attackInfo.damage);
         Knockback(attackInfo.damageSourcePosX);

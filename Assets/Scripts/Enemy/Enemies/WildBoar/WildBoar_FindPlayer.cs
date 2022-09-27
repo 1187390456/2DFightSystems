@@ -35,7 +35,6 @@ public class WildBoar_FindPlayer : E_FindPlayer
             {
                 if (entity.IsProtect())
                 {
-                    // 这里改为目瞪玩家
                     stateMachine.ChangeState(wildBoar.move);
                 }
                 else

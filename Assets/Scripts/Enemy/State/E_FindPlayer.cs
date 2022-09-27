@@ -19,7 +19,7 @@ public class E_FindPlayer : E_State
         base.Enter();
         findPlayerTimeOver = false;
         turnCount = 3;
-        entity.SetVelocity(0.0f);
+        entity.SetVelocityX(0.0f);
     }
 
     public override void Exit()

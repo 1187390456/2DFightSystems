@@ -31,7 +31,6 @@ public class WildBoar_Idle : E_Idle
         base.Update();
         if (entity.CheckMinDetected())
         {
-            // 阻止转身
             SetTurn(false);
             stateMachine.ChangeState(wildBoar.detected);
         }

@@ -10,24 +10,24 @@ public class E_Entity : MonoBehaviour
     [Header("警备检测点")] public Transform detectedCheck;
     [Header("地面检测点")] public Transform groundCheck;
     [Header("近战攻击检测点")] public Transform meleeAttackCheck;
+    [Header("远程攻击检测点")] public Transform remoteAttackCheck;
     [Header("实体数据")] public D_E_Base entityData;
 
     public GameObject aliveGobj { get; private set; } // 存活游戏对象
+
     public Animator at { get; private set; } // 动画
     public Rigidbody2D rb { get; private set; } // 刚体
     public E_StateMachine stateMachine { get; private set; } // 状态机
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
+    public int stunKnockbackDirection { get; private set; } // 眩晕击退方向 1右
 
+    [HideInInspector] public SpriteRenderer spriteRenderer; // 渲染精灵图
     [HideInInspector] public Vector2 movement;// 刚体速度
-
     [HideInInspector] public int facingDirection = 1; // 面向方向 1右
-    [HideInInspector] public int stunKnockbackDirection; // 眩晕击退方向 1右
-
     [HideInInspector] public int currentStunCount;// 当前距离击晕次数
-    [HideInInspector] public float currentHealth;  // 当前生命值
-
-    [HideInInspector] public bool isStuning; //是否眩晕
-    [HideInInspector] public bool isHurting; //是否受伤
+    [HideInInspector] public float currentHealth; // 当前生命值
+    [HideInInspector] public bool isStuning;//是否眩晕
+    [HideInInspector] public bool isHurting;//是否受伤
     [HideInInspector] public bool isDead; // 是否死亡
 
     // 接收伤害回调
@@ -75,6 +75,7 @@ public class E_Entity : MonoBehaviour
         aliveGobj = transform.Find("Alive").gameObject;
         rb = aliveGobj.GetComponent<Rigidbody2D>();
         at = aliveGobj.GetComponent<Animator>();
+        spriteRenderer = aliveGobj.GetComponent<SpriteRenderer>();
         animationToScript = aliveGobj.GetComponent<AnimationToScript>();
 
         currentStunCount = entityData.stunCount;
@@ -104,7 +105,7 @@ public class E_Entity : MonoBehaviour
     }
 
     // 设置X轴刚体速度
-    public virtual void SetVelocity(float velocity)
+    public virtual void SetVelocityX(float velocity)
     {
         movement.Set(velocity * facingDirection, rb.velocity.y);
         rb.velocity = movement;

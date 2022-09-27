@@ -15,7 +15,6 @@ public class E_Attack : E_State
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocity(0.0f);
         isFinshAttack = false;
         entity.animationToScript.attackState = this;
     }

@@ -29,14 +29,10 @@ public class Archer_Idle : E_Idle
     public override void Update()
     {
         base.Update();
-        if (entity.IsReachCanMeleeAttack())
+        if (entity.CheckMaxDetected())
         {
-            stateMachine.ChangeState(archer.meleeAttack);
-        }
-        else if (entity.CheckMinDetected())
-        {
-            // 切换远程攻击
-            stateMachine.ChangeState(archer.move);
+            SetTurn(false);
+            stateMachine.ChangeState(archer.detected);
         }
         else if (isIdleTimeOver)
         {

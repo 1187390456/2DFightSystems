@@ -29,24 +29,35 @@ public class Archer_FindPlayer : E_FindPlayer
     public override void Update()
     {
         base.Update();
+        // 这里由于按最小警备 所以外层要最大警备判断
         if (findPlayerTimeOver)
         {
             if (isFindPlayer)
             {
                 if (entity.IsReachCanMeleeAttack())
                 {
-                    stateMachine.ChangeState(archer.meleeAttack);
+                    if (archer.CheckCanDodge())
+                    {
+                        stateMachine.ChangeState(archer.dodge);
+                    }
+                    else
+                    {
+                        stateMachine.ChangeState(archer.meleeAttack);
+                    }
                 }
                 else
                 {
-                    // 远程攻击
-                    stateMachine.ChangeState(archer.move);
+                    stateMachine.ChangeState(archer.ability1);
                 }
             }
             else
             {
                 stateMachine.ChangeState(archer.move);
             }
+        }
+        else if (entity.CheckMaxDetected())
+        {
+            stateMachine.ChangeState(archer.remoteAttack);
         }
     }
 }

@@ -14,6 +14,7 @@ public class E_MeleeAttack : E_Attack
     public override void Enter()
     {
         base.Enter();
+        entity.SetVelocityX(0.0f);
     }
 
     public override void Exit()
@@ -42,7 +43,7 @@ public class E_MeleeAttack : E_Attack
         var obj = Physics2D.OverlapCircle(entity.meleeAttackCheck.position, meleeAttackData.meleeAttackRadius, LayerMask.GetMask("Player"));
         if (obj != null)
         {
-            obj.transform.SendMessage("AcceptMeleeAttackDamage", attackInfo);
+            obj.transform.SendMessage("AcceptAttackDamage", attackInfo);
         }
     }
 

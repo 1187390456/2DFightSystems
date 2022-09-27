@@ -6,8 +6,8 @@ public class E_State
 {
     protected E_StateMachine stateMachine; // 状态机
     protected E_Entity entity; // 实体
-    protected float startTime; // 状态开始时间
     protected string anmName; // 动画名称
+    public float startTime { get; private set; }// 状态开始时间
 
     public E_State(E_StateMachine stateMachine, E_Entity entity, string anmName)
     {

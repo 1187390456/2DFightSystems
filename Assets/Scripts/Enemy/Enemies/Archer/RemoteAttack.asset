@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eed1e58b4d98cc489f7cda4e8ac2273, type: 3}
   m_Name: RemoteAttack
   m_EditorClassIdentifier: 
-  remoteAttackDamage: 10
+  damage: 10
+  speed: 20
+  distance: 10
+  gravityScale: 8

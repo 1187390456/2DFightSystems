@@ -34,6 +34,8 @@ public class E_RemoteAttack : E_Attack
     public override void StartAttack()
     {
         base.StartAttack();
+        var bulletScript = BulletBox.Instance.GetArcherBullet(attackPos);
+        bulletScript.AcceptParamas(remoteAttackData.speed, remoteAttackData.distance, remoteAttackData.gravityScale, remoteAttackData.damage);
     }
 
     public override void Update()

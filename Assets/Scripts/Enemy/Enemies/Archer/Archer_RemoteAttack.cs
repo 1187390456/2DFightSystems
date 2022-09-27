@@ -39,5 +39,23 @@ public class Archer_RemoteAttack : E_RemoteAttack
     public override void Update()
     {
         base.Update();
+        if (isFinshAttack)
+        {
+            if (entity.IsReachCanMeleeAttack())
+            {
+                if (archer.CheckCanDodge())
+                {
+                    stateMachine.ChangeState(archer.dodge);
+                }
+                else
+                {
+                    stateMachine.ChangeState(archer.meleeAttack);
+                }
+            }
+            else if (!entity.CheckMaxDetected())
+            {
+                stateMachine.ChangeState(archer.findPlayer);
+            }
+        }
     }
 }

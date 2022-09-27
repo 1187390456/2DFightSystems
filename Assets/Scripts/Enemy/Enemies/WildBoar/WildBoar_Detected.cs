@@ -24,23 +24,15 @@ public class WildBoar_Detected : E_Detected
     public override void FixUpdate()
     {
         base.FixUpdate();
-        if (entity.IsReachCanMeleeAttack())
+        if (isDetectedOver)
         {
-            stateMachine.ChangeState(wildBoar.meleeAttack);
-        }
-        else if (isDetectedOver)
-        {
-            if (entity.CheckMinDetected())
+            if (entity.IsReachCanMeleeAttack())
             {
-                if (entity.IsProtect())
-                {
-                    entity.Turn();
-                    stateMachine.ChangeState(wildBoar.move);
-                }
-                else
-                {
-                    stateMachine.ChangeState(wildBoar.charge);
-                }
+                stateMachine.ChangeState(wildBoar.meleeAttack);
+            }
+            else if (entity.CheckMinDetected())
+            {
+                stateMachine.ChangeState(wildBoar.charge);
             }
             else
             {

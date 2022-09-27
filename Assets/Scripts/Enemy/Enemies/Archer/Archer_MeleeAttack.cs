@@ -41,12 +41,11 @@ public class Archer_MeleeAttack : E_MeleeAttack
         base.Update();
         if (isFinshAttack)
         {
-            if (entity.CheckMinDetected())
+            if (!entity.IsReachCanMeleeAttack() && entity.CheckMaxDetected())
             {
-                // 远程攻击
-                stateMachine.ChangeState(archer.move);
+                stateMachine.ChangeState(archer.remoteAttack);
             }
-            else
+            else if (!entity.CheckMaxDetected())
             {
                 stateMachine.ChangeState(archer.findPlayer);
             }
