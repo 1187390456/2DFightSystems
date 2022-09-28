@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Spine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class E_Ability1 : E_State
 {
@@ -23,7 +25,16 @@ public class E_Ability1 : E_State
     public override void Exit()
     {
         base.Exit();
-        entity.spriteRenderer.color = new Color(1f, 1f, 1f, 1);
+        Color color = new Color(1f, 1f, 1f, 1);
+        if (abilityData.isSpine)
+        {
+            entity.mpb.SetColor("_Color", color);
+            entity.render.SetPropertyBlock(entity.mpb);
+        }
+        else
+        {
+            entity.render.material.color = color;
+        }
     }
 
     public override void FixUpdate()
@@ -36,7 +47,15 @@ public class E_Ability1 : E_State
         base.Update();
         currentTransparent -= abilityData.transparentSpace * Time.deltaTime;
         Color color = new Color(1f, 1f, 1f, currentTransparent);
-        entity.spriteRenderer.color = color;
+        if (abilityData.isSpine)
+        {
+            entity.mpb.SetColor("_Color", color);
+            entity.render.SetPropertyBlock(entity.mpb);
+        }
+        else
+        {
+            entity.render.material.color = color;
+        }
         if (currentTransparent <= 0)
         {
             var playerPos = PlayerController.Instance.transform.position;

@@ -6,4 +6,5 @@ using UnityEngine;
 public class D_E_Ability1 : ScriptableObject
 {
     [Header("透明帧间隔")] public float transparentSpace = 1.0f;
+    [Header("是否是骨骼动画")] public bool isSpine = true;
 }

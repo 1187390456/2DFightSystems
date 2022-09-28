@@ -20,7 +20,9 @@ public class E_Entity : MonoBehaviour
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
     public int stunKnockbackDirection { get; private set; } // 眩晕击退方向 1右
 
-    [HideInInspector] public SpriteRenderer spriteRenderer; // 渲染精灵图
+    [HideInInspector] public MaterialPropertyBlock mpb; // 渲染材质空值
+    [HideInInspector] public Renderer render;  // 渲染
+
     [HideInInspector] public Vector2 movement;// 刚体速度
     [HideInInspector] public int facingDirection = 1; // 面向方向 1右
     [HideInInspector] public int currentStunCount;// 当前距离击晕次数
@@ -74,7 +76,8 @@ public class E_Entity : MonoBehaviour
         aliveGobj = transform.Find("Alive").gameObject;
         rb = aliveGobj.GetComponent<Rigidbody2D>();
         at = aliveGobj.GetComponent<Animator>();
-        spriteRenderer = aliveGobj.GetComponent<SpriteRenderer>();
+        mpb = new MaterialPropertyBlock();
+        render = aliveGobj.GetComponent<Renderer>();
         animationToScript = aliveGobj.GetComponent<AnimationToScript>();
 
         currentStunCount = entityData.stunCount;
