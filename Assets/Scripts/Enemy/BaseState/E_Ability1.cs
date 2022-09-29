@@ -1,8 +1,10 @@
 ﻿using Spine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
+using Color = UnityEngine.Color;
 
 public class E_Ability1 : E_State
 {
@@ -25,16 +27,9 @@ public class E_Ability1 : E_State
     public override void Exit()
     {
         base.Exit();
+        currentTransparent = 1;
         Color color = new Color(1f, 1f, 1f, 1);
-        if (abilityData.isSpine)
-        {
-            entity.mpb.SetColor("_Color", color);
-            entity.render.SetPropertyBlock(entity.mpb);
-        }
-        else
-        {
-            entity.render.material.color = color;
-        }
+        JudgeIsSpineFixTransparent(color);
     }
 
     public override void FixUpdate()
@@ -47,15 +42,26 @@ public class E_Ability1 : E_State
         base.Update();
         currentTransparent -= abilityData.transparentSpace * Time.deltaTime;
         Color color = new Color(1f, 1f, 1f, currentTransparent);
+        JudgeIsSpineFixTransparent(color);
+        CheckIsDisappear();
+    }
+
+    // 判断是否是骨骼动画 修复透明度
+    protected void JudgeIsSpineFixTransparent(Color color)
+    {
         if (abilityData.isSpine)
         {
-            entity.mpb.SetColor("_Color", color);
-            entity.render.SetPropertyBlock(entity.mpb);
+            entity.SetSpineTransparent(currentTransparent);
         }
         else
         {
             entity.render.material.color = color;
         }
+    }
+
+    // 检测是否完全消失
+    protected void CheckIsDisappear()
+    {
         if (currentTransparent <= 0)
         {
             var playerPos = PlayerController.Instance.transform.position;

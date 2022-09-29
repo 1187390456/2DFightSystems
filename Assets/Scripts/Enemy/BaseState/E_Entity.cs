@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
+using Color = UnityEngine.Color;
 
 public class E_Entity : MonoBehaviour
 {
@@ -34,7 +36,14 @@ public class E_Entity : MonoBehaviour
     // 接收伤害回调
     public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
     {
+        if (isDead) return;
         currentHealth -= attackInfo.damage;
+
+        // 判断死亡
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+        }
         // 判断受击方向
         if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
         {
@@ -44,30 +53,34 @@ public class E_Entity : MonoBehaviour
         {
             stunKnockbackDirection = 1;
         }
-        // 生成特效
-        var rot = Quaternion.Euler(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
-        EffectBox.Instance.WildBoarHit(aliveGobj.transform.position, rot);
-        // 判断死亡
-        if (currentHealth <= 0)
+        // 能眩晕 一般怪物
+        if (entityData.canStun)
         {
-            isDead = true;
-        }
-        // 判断是否处于眩晕中
-        else if (!isStuning && entityData.canStun)
-        {
-            currentStunCount--;
-            if (currentStunCount > 0)
+            var rot = Quaternion.Euler(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+            EffectBox.Instance.CreateEffect(entityData.effectRes, aliveGobj.transform.position, rot);
+            // 判断是否处于眩晕中
+            if (!isStuning)
             {
-                isHurting = true;
+                currentStunCount--;
+                if (currentStunCount > 0)
+                {
+                    isHurting = true;
+                }
+                else
+                {
+                    isStuning = true;
+                }
             }
-            else
+            // 眩晕中接地
+            else if (CheckGround())
             {
-                isStuning = true;
+                SetVelocityY(entityData.stunKnockbackSpeedY);
             }
         }
-        else if (CheckGround() && entityData.canStun)
+        // 霸体怪物
+        else
         {
-            SetVelocityY(entityData.stunKnockbackSpeedY);
+            EffectBox.Instance.CreateEffect(entityData.effectRes, aliveGobj.transform.position, aliveGobj.transform.rotation);
         }
     }
 
@@ -175,5 +188,13 @@ public class E_Entity : MonoBehaviour
     public virtual bool IsReachCanMeleeAttack()
     {
         return Physics2D.Raycast(detectedCheck.position, aliveGobj.transform.right, entityData.canMeleeDistance, LayerMask.GetMask("Player"));
+    }
+
+    // 设置骨骼动画渲染透明度
+    public virtual void SetSpineTransparent(float transparent)
+    {
+        Color color = new Color(1f, 1f, 1f, transparent);
+        mpb.SetColor("_Color", color);
+        render.SetPropertyBlock(mpb);
     }
 }

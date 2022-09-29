@@ -8,7 +8,7 @@ using static UnityEditor.PlayerSettings;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] [Header("重生时间")] private float rebirthTime;
+    [SerializeField][Header("重生时间")] private float rebirthTime;
     public static GameManager Instance { get; private set; } // 单例
     private float startRebirthTime; //  开始重生时间
     private bool canRebirth; // 是否可以重生
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private CinemachineVirtualCamera playerCM; // 玩家虚拟摄像机
     private Vector2 size; // 初始重生点
     private BoxCollider2D randomRang; // 重生碰撞(确定重生范围)
-    private TilemapCollider2D tileMap2D; // 地图碰撞(修改复合碰撞)
+    public TilemapCollider2D tileMap2D; // 地图碰撞(修改复合碰撞)
 
     private void Awake()
     {
@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
     // 获取地图内的随机坐标
     public Vector2 GetRandPos()
     {
-        tileMap2D.usedByComposite = false;
         var startPos = Vector2Int.RoundToInt(new Vector2(UnityEngine.Random.Range(-size.x, size.x), UnityEngine.Random.Range(-size.y, size.y)));
-        return FindCanRebirth(startPos);
+        return FindCanAlivePos(startPos);
     }
 
     // 从指定位置开始 找到最近的可重生坐标
-    public Vector2 FindCanRebirth(Vector2 StartPos)
+    public Vector2 FindCanAlivePos(Vector2 StartPos)
     {
+        tileMap2D.usedByComposite = false;
         float width = 2f;
         float delet = 1f;
         bool loop = true;

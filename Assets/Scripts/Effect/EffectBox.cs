@@ -42,4 +42,10 @@ public class EffectBox : MonoBehaviour
     {
         Instantiate(fakePersonHitRes, pos, rot, transform);
     }
+
+    // 生成指定特效
+    public void CreateEffect(GameObject res, Vector2 pos, Quaternion rot)
+    {
+        Instantiate(res, pos, rot, transform);
+    }
 }
