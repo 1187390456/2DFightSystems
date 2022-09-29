@@ -53,7 +53,7 @@ public class E_Entity : MonoBehaviour
             isDead = true;
         }
         // 判断是否处于眩晕中
-        else if (!isStuning)
+        else if (!isStuning && entityData.canStun)
         {
             currentStunCount--;
             if (currentStunCount > 0)
@@ -65,7 +65,7 @@ public class E_Entity : MonoBehaviour
                 isStuning = true;
             }
         }
-        else if (CheckGround())
+        else if (CheckGround() && entityData.canStun)
         {
             SetVelocityY(entityData.stunKnockbackSpeedY);
         }

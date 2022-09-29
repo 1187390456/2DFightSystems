@@ -14,4 +14,5 @@ public class D_E_Base : ScriptableObject
     [Header("击晕次数")] public int stunCount = 5;
     [Header("眩晕中Y轴击退速度")] public float stunKnockbackSpeedY = 15.0f;
     [Header("最大生命值")] public float maxHealth = 100.0f;
+    [Header("是否可以被眩晕")] public bool canStun = false;
 }

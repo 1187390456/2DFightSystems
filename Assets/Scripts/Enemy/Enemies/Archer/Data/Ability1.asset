@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582f427e524ef1940a8b8164627ae922, type: 3}
   m_Name: Ability1
   m_EditorClassIdentifier: 
+  transparentSpace: 1
+  isSpine: 0
