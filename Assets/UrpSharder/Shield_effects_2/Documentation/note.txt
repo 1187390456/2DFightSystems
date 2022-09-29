@@ -1,0 +1,8 @@
+Shield Effect
+
+To use the effects, simply import the asset to your project.
+Drag and drop prefab in your scene.
+
+Important-  
+
+This only work in URP!
