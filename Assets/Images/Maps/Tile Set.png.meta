@@ -99,7 +99,7 @@ TextureImporter:
       213: -7939286994990546459
     second: Tile Set_31
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -116,10 +116,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -158,6 +160,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -209,6 +213,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -904,9 +920,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Tile Set_29: -1744333691908957594
+      Tile Set_22: 5886386325936423871
+      Tile Set_28: 7760232811376355313
+      Tile Set_17: -7520876576387851571
+      Tile Set_16: -594854023223159323
+      Tile Set_10: -5691303060676991829
+      Tile Set_31: -7939286994990546459
+      Tile Set_7: -6596922490365097136
+      Tile Set_19: 7828017421341732505
+      Tile Set_9: 5967795795837306674
+      Tile Set_20: 5641304389960186697
+      Tile Set_5: -2088846769777093343
+      Tile Set_13: 8804346995418868313
+      Tile Set_12: -9191143059727539874
+      Tile Set_2: 4147918004279806369
+      Tile Set_25: 2448625161412444324
+      Tile Set_18: 1296955713063707548
+      Tile Set_6: 8877368982792376436
+      Tile Set_24: -2773276035432408682
+      Tile Set_30: -5081600913789289104
+      Tile Set_23: -690582969297042733
+      Tile Set_26: -4274006568956793502
+      Tile Set_21: -1149633687490783162
+      Tile Set_3: -4480275557554697091
+      Tile Set_27: 7410775782791203494
+      Tile Set_0: 5554216122756231235
+      Tile Set_1: -698430232215783580
+      Tile Set_4: -5056221437634338576
+      Tile Set_15: 6350263998776587281
+      Tile Set_14: -3015341031074877397
+      Tile Set_8: 3334812204250238074
+      Tile Set_11: 6684933757121811547
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
