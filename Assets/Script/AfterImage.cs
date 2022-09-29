@@ -24,6 +24,7 @@ public class AfterImage : MonoBehaviour
     {
         transform.position = player.position;
         transform.rotation = player.rotation;
+        transform.localScale = player.localScale;
         afterSR.sprite = playerSR.sprite;
         startTime = Time.time;
         A = startA;

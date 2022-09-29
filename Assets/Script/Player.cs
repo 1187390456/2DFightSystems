@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     private bool isReachEdge;//是否到达偏移点
     private bool canClimb;//能否攀爬
     private bool isDash;//是否冲刺
+    private bool canAttack;//能否攻击
+    private bool isAttack;//是否攻击
 
     private float inputDirection;//输入方向
     private float groundCheckRadius = 0.23f;//地面检查圆形射线半径
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
         CheckJump();
         CheckSlideWall();
         CheckClimb();
+        CheckAttack();
     }
     private void FixedUpdate()
     {
@@ -104,6 +107,10 @@ public class Player : MonoBehaviour
             ObjectPool.Instance.AddPool(afterImage);
             nowAfterPosX = transform.position.x;
         }
+        if (Input.GetMouseButton(0))
+        {
+            Attack();
+        }
     }
     //检查动画
     private void CheckAnimation()
@@ -112,6 +119,7 @@ public class Player : MonoBehaviour
         anim.SetBool("isTouchGround", isTouchGround);
         anim.SetFloat("rbV", rb.velocity.y);
         anim.SetBool("isSlide", isSlide);
+        anim.SetBool("isAttack", isAttack);
     }
     //检查环境
     private void CheckEnvironment()
@@ -261,5 +269,31 @@ public class Player : MonoBehaviour
                 isDash = false;
             }
         }
+    }
+    //检查攻击
+    private void CheckAttack()
+    {
+        if (!canClimb || !isSlide)
+        {
+            canAttack = true;
+        }
+        else
+        {
+            canAttack = false;
+            isAttack = false;
+        }
+    }
+    //攻击
+    private void Attack()
+    {
+        if (canAttack)
+        {
+            isAttack = true;
+        }
+    }
+    //攻击动画完成
+    private void AttackAnimDone()
+    {
+        isAttack = false;
     }
 }
