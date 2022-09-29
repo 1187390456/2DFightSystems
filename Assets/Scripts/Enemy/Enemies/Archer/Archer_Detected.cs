@@ -50,7 +50,7 @@ public class Archer_Detected : E_Detected
             {
                 stateMachine.ChangeState(archer.remoteAttack);
             }
-            else if (!entity.CheckMaxDetected())
+            else
             {
                 stateMachine.ChangeState(archer.findPlayer);
             }

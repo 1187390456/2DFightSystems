@@ -68,6 +68,10 @@ public class Archer : E_Entity
         {
             stateMachine.ChangeState(stun);
         }
+        else if (CheckHurt())
+        {
+            stateMachine.ChangeState(detected);
+        }
     }
 
     // 更新动画
@@ -86,6 +90,12 @@ public class Archer : E_Entity
     private bool CheckStun()
     {
         return isStuning && stateMachine.currentState != stun;
+    }
+
+    // 检测受伤
+    private bool CheckHurt()
+    {
+        return isHurting && stateMachine.currentState != detected;
     }
 
     // 检测是否可以闪避

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074fe093994176547b296724c1e63927, type: 3}
   m_Name: Dead
   m_EditorClassIdentifier: 
-  canRebirth: 0
+  canRebirth: 1
   rebirthTime: 4
+  isMonster: 0
+  transparentSpace: 1

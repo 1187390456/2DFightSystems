@@ -47,7 +47,7 @@ public class Monster1_FindPlayer : E_FindPlayer
                 stateMachine.ChangeState(monster1.move);
             }
         }
-        else if (entity.CheckMaxDetected())
+        else if (!entity.CheckMinDetected() && entity.CheckMaxDetected())
         {
             stateMachine.ChangeState(monster1.ability1);
         }

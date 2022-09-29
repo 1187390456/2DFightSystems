@@ -19,6 +19,8 @@ MonoBehaviour:
   maxDetectedDistance: 9.5
   canMeleeDistance: 1.2
   stunCount: 5
+  knockbackSpeed: {x: 10, y: 15}
+  knockbackAngle: {x: 1, y: 1}
   stunKnockbackSpeedY: 15
   maxHealth: 999
   canStun: 1

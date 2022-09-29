@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRebirth: 1
   rebirthTime: 4
+  isMonster: 0
+  transparentSpace: 1

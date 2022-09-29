@@ -22,6 +22,8 @@ public class E_Detected : E_State
     public override void Exit()
     {
         base.Exit();
+        // 受伤即刻进入警报
+        entity.isHurting = false;
     }
 
     public override void FixUpdate()

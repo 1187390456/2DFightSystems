@@ -47,12 +47,22 @@ public class Monster1 : E_Entity
         return isDead && stateMachine.currentState != dead;
     }
 
+    // ¼ì²âÊÜÉË
+    private bool CheckHurt()
+    {
+        return isHurting && stateMachine.currentState != detected;
+    }
+
     public override void Update()
     {
         base.Update();
         if (CheckDead())
         {
             stateMachine.ChangeState(dead);
+        }
+        else if (CheckHurt())
+        {
+            stateMachine.ChangeState(detected);
         }
     }
 }

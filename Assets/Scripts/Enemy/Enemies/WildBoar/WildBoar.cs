@@ -55,17 +55,35 @@ public class WildBoar : E_Entity
     public override void Update()
     {
         base.Update();
-        if (isDead && stateMachine.currentState != dead)
+        if (CheckDead())
         {
             stateMachine.ChangeState(dead);
         }
-        else if (isStuning && stateMachine.currentState != stun)
+        else if (CheckStun())
         {
             stateMachine.ChangeState(stun);
         }
-        else if (isHurting && stateMachine.currentState != hurt)
+        else if (CheckHurt())
         {
             stateMachine.ChangeState(hurt);
         }
+    }
+
+    // 检测死亡
+    private bool CheckDead()
+    {
+        return isDead && stateMachine.currentState != dead;
+    }
+
+    // 检测眩晕
+    private bool CheckStun()
+    {
+        return isStuning && stateMachine.currentState != stun;
+    }
+
+    // 检测受伤
+    private bool CheckHurt()
+    {
+        return isHurting && stateMachine.currentState != hurt;
     }
 }

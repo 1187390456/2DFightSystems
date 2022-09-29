@@ -55,7 +55,7 @@ public class Archer_FindPlayer : E_FindPlayer
                 stateMachine.ChangeState(archer.move);
             }
         }
-        else if (entity.CheckMaxDetected())
+        else if (!entity.CheckMinDetected() && entity.CheckMaxDetected())
         {
             stateMachine.ChangeState(archer.remoteAttack);
         }

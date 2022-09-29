@@ -20,7 +20,7 @@ public class E_Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; } // 刚体
     public E_StateMachine stateMachine { get; private set; } // 状态机
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
-    public int stunKnockbackDirection { get; private set; } // 眩晕击退方向 1右
+    public int knockbackDirection { get; private set; } // 眩晕击退方向 1右
 
     [HideInInspector] public MaterialPropertyBlock mpb; // 渲染材质空值
     [HideInInspector] public Renderer render;  // 渲染
@@ -47,11 +47,11 @@ public class E_Entity : MonoBehaviour
         // 判断受击方向
         if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
         {
-            stunKnockbackDirection = -1;
+            knockbackDirection = -1;
         }
         else
         {
-            stunKnockbackDirection = 1;
+            knockbackDirection = 1;
         }
         // 能眩晕 一般怪物
         if (entityData.canStun)
@@ -65,6 +65,7 @@ public class E_Entity : MonoBehaviour
                 if (currentStunCount > 0)
                 {
                     isHurting = true;
+                    SetVelocity(entityData.knockbackSpeed, entityData.knockbackAngle, knockbackDirection);
                 }
                 else
                 {
@@ -80,6 +81,10 @@ public class E_Entity : MonoBehaviour
         // 霸体怪物
         else
         {
+            if (CheckGround())
+            {
+                SetVelocity(entityData.knockbackSpeed, entityData.knockbackAngle, knockbackDirection);
+            }
             EffectBox.Instance.CreateEffect(entityData.effectRes, aliveGobj.transform.position, aliveGobj.transform.rotation);
         }
     }
@@ -133,11 +138,19 @@ public class E_Entity : MonoBehaviour
         rb.velocity = movement;
     }
 
-    // 设置具体刚体速度
+    // 设置具体刚体速度 float
     public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
         movement.Set(angle.x * velocity * direction, angle.y * velocity);
+        rb.velocity = movement;
+    }
+
+    // 设置具体刚体速度 V2
+    public virtual void SetVelocity(Vector2 velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        movement.Set(angle.x * velocity.x * direction, angle.y * velocity.y);
         rb.velocity = movement;
     }
 

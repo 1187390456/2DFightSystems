@@ -16,7 +16,7 @@ public class E_Stun : E_State
     {
         base.Enter();
         isStunOver = false;
-        entity.SetVelocity(stunData.stunKnockBackVelocity, stunData.stunKnockBackAngle, entity.stunKnockbackDirection);
+        entity.SetVelocity(stunData.stunKnockBackVelocity, stunData.stunKnockBackAngle, entity.knockbackDirection);
     }
 
     public override void Exit()
