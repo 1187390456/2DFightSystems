@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dead
   m_EditorClassIdentifier: 
   canRebirth: 1
-  rebirthTime: 2
+  rebirthTime: 0
   isMonster: 1
   transparentSpace: 1
   effectListRes:
