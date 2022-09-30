@@ -15,7 +15,7 @@ public class E_Entity : MonoBehaviour
     [Header("实体数据")] public D_E_Base entityData;
 
     public GameObject aliveGobj { get; private set; } // 存活游戏对象
-
+    public BoxCollider2D collider2d { get; private set; } // 碰撞体
     public Animator at { get; private set; } // 动画
     public Rigidbody2D rb { get; private set; } // 刚体
     public E_StateMachine stateMachine { get; private set; } // 状态机
@@ -94,6 +94,7 @@ public class E_Entity : MonoBehaviour
         aliveGobj = transform.Find("Alive").gameObject;
         rb = aliveGobj.GetComponent<Rigidbody2D>();
         at = aliveGobj.GetComponent<Animator>();
+        collider2d = aliveGobj.GetComponent<BoxCollider2D>();
         mpb = new MaterialPropertyBlock();
         render = aliveGobj.GetComponent<Renderer>();
         animationToScript = aliveGobj.GetComponent<AnimationToScript>();

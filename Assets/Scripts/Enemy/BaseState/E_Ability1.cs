@@ -1,8 +1,12 @@
 ﻿using Spine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.EventSystems.EventTrigger;
 using Color = UnityEngine.Color;
 
@@ -72,12 +76,15 @@ public class E_Ability1 : E_State
             }
             if (dir == 1)
             {
-                entity.aliveGobj.transform.position = new Vector2(playerPos.x - 1.0f, playerPos.y);
+                var pos = new Vector2(playerPos.x - 1.0f, playerPos.y);
+                entity.aliveGobj.transform.position = pos;
             }
             else if (dir == -1)
             {
-                entity.aliveGobj.transform.position = new Vector2(playerPos.x + 1.0f, playerPos.y);
+                var pos = new Vector2(playerPos.x + 1.0f, playerPos.y);
+                entity.aliveGobj.transform.position = pos;
             }
+            Debug.Log("碰撞盒大小" + entity.collider2d.size);
             isAbility1Over = true;
         }
     }

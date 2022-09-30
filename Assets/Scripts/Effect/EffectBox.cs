@@ -7,16 +7,16 @@ public class EffectBox : MonoBehaviour
     public static EffectBox Instance { get; private set; } // 单例
     private GameObject chunkRes; // 块特效资源
     private GameObject bloodRes; // 血特效资源
-    private GameObject wildBoarHitRes; // 野猪被击打资源
+    private GameObject normalHitEffect; // 野猪被击打资源
     private GameObject fakePersonHitRes; // 野猪被击打资源
 
     private void Awake()
     {
         Instance = this;
-        fakePersonHitRes = Resources.Load<GameObject>("Perfabs/Effect/FakePersonHitEffect");
-        wildBoarHitRes = Resources.Load<GameObject>("Perfabs/Effect/WildBoarHitEffect");
-        chunkRes = Resources.Load<GameObject>("Perfabs/Effect/DiedChunkEffect");
-        bloodRes = Resources.Load<GameObject>("Perfabs/Effect/DiedBloodEffect");
+        fakePersonHitRes = Resources.Load<GameObject>("Perfabs/Effect/Old/FakePersonHitEffect");
+        normalHitEffect = Resources.Load<GameObject>("Perfabs/Effect/Old/NormalHitEffect");
+        chunkRes = Resources.Load<GameObject>("Perfabs/Effect/Old/DiedChunkEffect");
+        bloodRes = Resources.Load<GameObject>("Perfabs/Effect/Old/DiedBloodEffect");
     }
 
     // 血块特效
@@ -34,7 +34,7 @@ public class EffectBox : MonoBehaviour
     // 野猪击打特效
     public void WildBoarHit(Vector2 pos, Quaternion rot)
     {
-        Instantiate(wildBoarHitRes, pos, rot, transform);
+        Instantiate(normalHitEffect, pos, rot, transform);
     }
 
     // 假人击打特效

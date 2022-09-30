@@ -22,6 +22,6 @@ MonoBehaviour:
   knockbackSpeed: {x: 0, y: 15}
   knockbackAngle: {x: 1, y: 1}
   stunKnockbackSpeedY: 15
-  maxHealth: 20
+  maxHealth: 30
   canStun: 0
-  effectRes: {fileID: 6602655088507064939, guid: 5be4a64d5eefc8c4586e9e821ba24816, type: 3}
+  effectRes: {fileID: 137732, guid: b2a41848dc033f04295f551876431a40, type: 3}
