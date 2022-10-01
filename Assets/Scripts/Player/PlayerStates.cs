@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerStates : MonoBehaviour
 {
-    [SerializeField] [Header("最大生命值")] private float maxHealth = 999.0f;
+    [Header("最大生命值")] public float maxHealth = 999.0f;
     public static PlayerStates Instance { get; private set; } // 单例
-    private float currentHealth;
+    [HideInInspector] public float currentHealth;
 
     private void Awake()
     {

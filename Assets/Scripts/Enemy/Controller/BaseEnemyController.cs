@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class BaseEnemyController : MonoBehaviour
 {
@@ -24,34 +23,34 @@ public class BaseEnemyController : MonoBehaviour
 
     /* 射线检测 */
     #region
-    [SerializeField] [Header("检测层级")] public LayerMask checkLayer;
-    [SerializeField] [Header("地面检测点")] public Transform groundCheck;
-    [SerializeField] [Header("地面检测距离")] public float groundCheckDistance = 0.1f;
-    [SerializeField] [Header("墙壁检测点")] public Transform wallCheck;
-    [SerializeField] [Header("墙壁检测距离")] public float wallCheckDistance = 0.1f;
+    [SerializeField][Header("检测层级")] public LayerMask checkLayer;
+    [SerializeField][Header("地面检测点")] public Transform groundCheck;
+    [SerializeField][Header("地面检测距离")] public float groundCheckDistance = 0.1f;
+    [SerializeField][Header("墙壁检测点")] public Transform wallCheck;
+    [SerializeField][Header("墙壁检测距离")] public float wallCheckDistance = 0.1f;
     private bool wallDetected; // (墙壁保护)是否将要触墙
     private bool groundDetected; // (地面保护)是否将要下坠
     #endregion
 
     /* 移动 */
     #region
-    [SerializeField] [Header("移动速度")] private float moveSpeed = 3.0f;
+    [SerializeField][Header("移动速度")] private float moveSpeed = 3.0f;
     private int facingDirection = 1; // 面向方向 1右
     private Vector2 movement; // 敌人当前刚体速度
 
     /* 受击 */
-    [SerializeField] [Header("最大生命值")] private float maxHealth = 100.0f;
-    [SerializeField] [Header("受击持续时间")] private float knockbackDuration;
-    [SerializeField] [Header("受击冲击速度")] private Vector2 knockbackSpeed;
+    [SerializeField][Header("最大生命值")] private float maxHealth = 100.0f;
+    [SerializeField][Header("受击持续时间")] private float knockbackDuration;
+    [SerializeField][Header("受击冲击速度")] private Vector2 knockbackSpeed;
     private float currentHealth; // 当前生命值
     private float startKnockbackTime; // 开始受击时间
     private int damageDirection; // 伤害来源方向 1右
 
     /* 接触 */
-    [SerializeField] [Header("接触检测点")] private Transform touchCheck;
-    [SerializeField] [Header("接触检测盒子大小")] private Vector2 touchCheckBox;
-    [SerializeField] [Header("接触检测层级")] private LayerMask checkTouchLayer;
-    [SerializeField] [Header("接触伤害")] private float touchDamage = 10.0f;
+    [SerializeField][Header("接触检测点")] private Transform touchCheck;
+    [SerializeField][Header("接触检测盒子大小")] private Vector2 touchCheckBox;
+    [SerializeField][Header("接触检测层级")] private LayerMask checkTouchLayer;
+    [SerializeField][Header("接触伤害")] private float touchDamage = 10.0f;
     private float lastTouchTime; //上一次接触时间
     private float touchCoolDown = 0.2f; // 接触冷却
     private float[] touchInfo = new float[2]; // 接触传递信息

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Dead
   m_EditorClassIdentifier: 
   canRebirth: 1
-  rebirthTime: 4
+  rebirthTime: 5
   isMonster: 0
   transparentSpace: 1
   effectListRes:
   - {fileID: 6128151099032118777, guid: 42cef8cc9e32503468d3937b81443cad, type: 3}
   - {fileID: 8803634230854843384, guid: 2edbcdbefeb74174dbef90ece9c57950, type: 3}
+  effectOffset: {x: 0, y: 1}

@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using System;
 using UnityEngine.Tilemaps;
-using static UnityEditor.PlayerSettings;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +32,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckRebirthState();
+        RenderUI();
+    }
+
+    // UI渲染
+    private void RenderUI()
+    {
+        var text = GameObject.Find("Health").GetComponent<Text>();
+        text.text = $"当前生命值为 : {PlayerStates.Instance.currentHealth}";
     }
 
     // 检查重生状态
@@ -42,6 +50,7 @@ public class GameManager : MonoBehaviour
             canRebirth = false;
             var player = Instantiate(playerRes, GetRandPos(), Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
+            PlayerStates.Instance.currentHealth = 999.0f;
             playerCM.Follow = player.transform;
         }
     }

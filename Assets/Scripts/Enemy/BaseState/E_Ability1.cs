@@ -6,7 +6,6 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
-using static UnityEditor.PlayerSettings;
 using static UnityEngine.EventSystems.EventTrigger;
 using Color = UnityEngine.Color;
 
