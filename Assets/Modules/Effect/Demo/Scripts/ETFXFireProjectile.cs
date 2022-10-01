@@ -1,42 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEditor.UIElements;
 
 namespace EpicToonFX
 {
     public class ETFXFireProjectile : MonoBehaviour
     {
-        [SerializeField]
         public GameObject[] projectiles;
-        [Header("Missile spawns at attached game object")]
         public Transform spawnPosition;
-        [HideInInspector]
         public int currentProjectile = 0;
-        public float speed = 500;
+        public float speed = 1000;
 
-        //    MyGUI _GUI;
-        ETFXButtonScript selectedProjectileButton;
+        // private RaycastHit hit;
 
-        void Start()
-        {
-            selectedProjectileButton = GameObject.Find("Button").GetComponent<ETFXButtonScript>();
-        }
-
-        RaycastHit hit;
-
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 nextEffect();
             }
 
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 nextEffect();
             }
 
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 previousEffect();
             }
@@ -45,17 +35,22 @@ namespace EpicToonFX
                 previousEffect();
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0)) //On left mouse down-click
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject()) //On left mouse down-click
             {
-                if (!EventSystem.current.IsPointerOverGameObject()) //Checks if the mouse is not over a UI part
+                var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.parent.right);
+                if (hit) //Finds the point where you click with the mouse
                 {
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f)) //Finds the point where you click with the mouse
-                    {
-                        GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                        projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
-                    }
+                    GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                    projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+                    projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+                projectile.GetComponent<Rigidbody>().AddForce(spawnPosition.right * speed); //Set the speed of the projectile by applying force to the rigidbody
             }
             Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
         }
@@ -66,7 +61,6 @@ namespace EpicToonFX
                 currentProjectile++;
             else
                 currentProjectile = 0;
-			selectedProjectileButton.getProjectileNames();
         }
 
         public void previousEffect() //Changes selected projectile to the previous. Used by UI
@@ -75,7 +69,6 @@ namespace EpicToonFX
                 currentProjectile--;
             else
                 currentProjectile = projectiles.Length - 1;
-			selectedProjectileButton.getProjectileNames();
         }
 
         public void AdjustSpeed(float newSpeed) //Used by UI to set projectile speed

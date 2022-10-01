@@ -83,7 +83,6 @@ public class E_Ability1 : E_State
                 var pos = new Vector2(playerPos.x + 1.0f, playerPos.y);
                 entity.aliveGobj.transform.position = pos;
             }
-            Debug.Log("碰撞盒大小" + entity.collider2d.size);
             isAbility1Over = true;
         }
     }
