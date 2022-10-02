@@ -31,7 +31,7 @@ public class Archer : E_Entity
 
     private void Start()
     {
-        idle = new Archer_Idle(stateMachine, this, "Idle", idleData, this);
+        idle = new Archer_Idle(stateMachine, this, "idle", idleData, this);
         move = new Archer_Move(stateMachine, this, "move", moveData, this);
         dead = new Archer_Dead(stateMachine, this, "dead", deadData, this);
         stun = new Archer_Stun(stateMachine, this, "stun", stunData, this);

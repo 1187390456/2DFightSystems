@@ -62,7 +62,7 @@ Transform:
   m_Children:
   - {fileID: 1609871610839976378}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1609871610296887576
 MonoBehaviour:
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 700682651
-  m_SortingLayer: 4
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_Sprite: {fileID: -4394945544779488877, guid: 91c96a5f8714f4c4e808391ab4f4d190, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -288,7 +288,7 @@ Animator:
   m_GameObject: {fileID: 1609871610839976379}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61636b33869d66547b20d497cf3fd41c, type: 2}
+  m_Controller: {fileID: 22100000, guid: b1714caec5e46e34390a47fdb92c14d4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.018, y: -1.012, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 4
@@ -56,6 +57,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 2
@@ -86,6 +88,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.08, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 3
@@ -117,10 +120,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3239908097693320063}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4271344606083923670
 MonoBehaviour:
@@ -139,9 +143,8 @@ MonoBehaviour:
   detectedCheck: {fileID: 882645445}
   groundCheck: {fileID: 189237309}
   meleeAttackCheck: {fileID: 2945508813290630986}
-  remoteAttackCheck: {fileID: 0}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
-  spriteRenderer: {fileID: 0}
+  render: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
   currentStunCount: 0
@@ -184,6 +187,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 1
@@ -219,6 +223,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3239908098046878558}
   - {fileID: 3239908097537975597}
@@ -239,6 +244,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -266,7 +272,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 700682651
-  m_SortingLayer: 4
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: -450497991343149109, guid: e1cc79dbf2bb3ba4592637588c44f035, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -307,7 +313,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &3239908097693320060
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -315,11 +321,12 @@ Animator:
   m_GameObject: {fileID: 3239908097693320056}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 650ba3bfd31512a40a89963ac8d6dcc7, type: 2}
+  m_Controller: {fileID: 22100000, guid: c73fdf7c622a56f4081c7e9e6720219c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -383,6 +390,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 0
