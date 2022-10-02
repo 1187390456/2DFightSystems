@@ -13,6 +13,8 @@ public class ETFXProjectileScript : MonoBehaviour
     [Range(0f, 1f)] // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
     public float collideOffset = 0.15f;
 
+    private RaycastHit2D hit;
+
     private void Start()
     {
         projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
@@ -47,37 +49,40 @@ public class ETFXProjectileScript : MonoBehaviour
         float detectionDistance = transform.GetComponent<Rigidbody>().velocity.magnitude * Time.deltaTime; // Distance of collision detection for this frame
 
         // Physics.SphereCast(transform.position, radius, direction, out hit, detectionDistance)
-        var hit = Physics2D.CircleCast(transform.position, radius, transform.right, detectionDistance, LayerMask.GetMask("Ground", "CanBeAttack"));
-        if (hit && HitCondition(hit)) // Checks if collision will happen
+
+        if (gameObject.name == "PlayerCreate")
         {
-            if (hit.collider.gameObject.layer == 7)
+            hit = Physics2D.CircleCast(transform.position, radius, transform.right, detectionDistance, LayerMask.GetMask("Ground", "CanBeAttack"));
+            if (hit && HitConditionByPlayer()) // Checks if collision will happen
             {
-                PlayerAttackController.Instance.TransportAttackInfoToEnemy(hit, transform);
-            }
-            transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
-
-            GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
-
-            ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
-                                                                                 //Component at [0] is that of the parent i.e. this object (if there is any)
-            for (int i = 1; i < trails.Length; i++) // Loop to cycle through found particle systems
-            {
-                ParticleSystem trail = trails[i];
-
-                if (trail.gameObject.name.Contains("Trail"))
+                if (hit.collider.gameObject.layer == 7)
                 {
-                    trail.transform.SetParent(null); // Detaches the trail from the projectile
-                    Destroy(trail.gameObject, 2f); // Removes the trail after seconds
+                    PlayerAttackController.Instance.TransportAttackInfoToEnemy(hit, transform);
                 }
+                CreateEffect();
             }
-
-            Destroy(projectileParticle, 3f); // Removes particle effect after delay
-            Destroy(impactP, 3.5f); // Removes impact effect after delay
-            Destroy(gameObject); // Removes the projectile
+        }
+        else if (gameObject.name == "EnemyCreate")
+        {
+            hit = Physics2D.CircleCast(transform.position, radius, transform.right, detectionDistance, LayerMask.GetMask("Ground", "Player"));
+            if (hit && HitConditionByEnemy())
+            {
+                if (hit.collider.gameObject.layer == 8)
+                {
+                    AttackInfo attackInfo = new AttackInfo
+                    {
+                        damage = 10.0f,
+                        damageSourcePosX = transform.position.x,
+                    };
+                    hit.transform.SendMessage("AcceptAttackDamage", attackInfo);
+                }
+                CreateEffect();
+            }
         }
     }
 
-    private bool HitCondition(RaycastHit2D hit)
+    // 玩家发射 检测条件
+    private bool HitConditionByPlayer()
     {
         // 墙壁
         if (hit.collider.transform.parent.gameObject.GetComponent<Enemy>() == null)
@@ -88,8 +93,38 @@ public class ETFXProjectileScript : MonoBehaviour
         else
         {
             var enemy = hit.collider.transform.parent.gameObject.GetComponent<Enemy>();
-            Debug.Log(enemy.stateMachine.currentState);
             return enemy.stateMachine.currentState != enemy.dead;
         }
+    }
+
+    // 敌人发射 检测条件
+    private bool HitConditionByEnemy()
+    {
+        return !PlayerController.Instance.isDashing;
+    }
+
+    // 生成特效
+    private void CreateEffect()
+    {
+        transform.position = hit.point + (hit.normal * collideOffset); // Move projectile to point of collision
+
+        GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject; // Spawns impact effect
+
+        ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>(); // Gets a list of particle systems, as we need to detach the trails
+                                                                             //Component at [0] is that of the parent i.e. this object (if there is any)
+        for (int i = 1; i < trails.Length; i++) // Loop to cycle through found particle systems
+        {
+            ParticleSystem trail = trails[i];
+
+            if (trail.gameObject.name.Contains("Trail"))
+            {
+                trail.transform.SetParent(null); // Detaches the trail from the projectile
+                Destroy(trail.gameObject, 2f); // Removes the trail after seconds
+            }
+        }
+
+        Destroy(projectileParticle, 3f); // Removes particle effect after delay
+        Destroy(impactP, 3.5f); // Removes impact effect after delay
+        Destroy(gameObject); // Removes the projectile
     }
 }

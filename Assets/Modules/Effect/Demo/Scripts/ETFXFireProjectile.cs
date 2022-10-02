@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
-using UnityEditor.UIElements;
+using UnityEngine.InputSystem.HID;
 
 namespace EpicToonFX
 {
     public class ETFXFireProjectile : MonoBehaviour
     {
+        public static ETFXFireProjectile Instance { get; private set; }
         public GameObject[] projectiles;
         public Transform spawnPosition;
         public int currentProjectile = 0;
         public float speed = 1000;
 
         // private RaycastHit hit;
+
+        private GameObject projectile;
+        public int enemyEffectIndex = 0; // 特效索引
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Update()
         {
@@ -37,22 +45,46 @@ namespace EpicToonFX
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject()) //On left mouse down-click
             {
-                var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.parent.right);
-                if (hit) //Finds the point where you click with the mouse
-                {
-                    GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                    projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-                    projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
-                }
+                CreatePlayerProjectileWay1();
             }
             if (Input.GetKeyDown(KeyCode.H))
             {
-                GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-                projectile.GetComponent<Rigidbody>().AddForce(spawnPosition.right * speed); //Set the speed of the projectile by applying force to the rigidbody
+                CreatePlayerProjectileWay2();
             }
             Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
+        }
+
+        // 玩家生成子弹方法1
+        public void CreatePlayerProjectileWay1()
+        {
+            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.parent.right);
+            if (hit) //Finds the point where you click with the mouse
+            {
+                projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
+                projectile.name = "PlayerCreate";// 玩家生成标识
+                projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+                projectile.transform.LookAt(hit.point);
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
+            }
+        }
+
+        // 玩家生成子弹方法2
+        public void CreatePlayerProjectileWay2()
+        {
+            projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
+            projectile.name = "PlayerCreate";// 玩家生成标识
+            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+            projectile.GetComponent<Rigidbody>().AddForce(spawnPosition.right * speed);
+        }
+
+        // 敌人生成子弹方法
+        public void CreateEnemyProjectile(Transform trans)
+        {
+            projectile = Instantiate(projectiles[enemyEffectIndex], trans.position, Quaternion.identity) as GameObject;
+            projectile.name = "EnemyCreate";// 敌人生成标识
+            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+            projectile.transform.LookAt(PlayerController.Instance.transform.position);
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
         }
 
         public void nextEffect() //Changes the selected projectile to the next. Used by UI
@@ -74,6 +106,12 @@ namespace EpicToonFX
         public void AdjustSpeed(float newSpeed) //Used by UI to set projectile speed
         {
             speed = newSpeed;
+        }
+
+        // 敌人切换特效
+        public void SwitchEnemyAttackEffect()
+        {
+            enemyEffectIndex = Random.Range(0, projectiles.Length);
         }
     }
 }

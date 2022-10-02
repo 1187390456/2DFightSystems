@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EpicToonFX;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class Enemy : MonoBehaviour
     public int knockbackDirection { get; private set; } // 眩晕击退方向 1右
     public GameObject stunEffect { get; private set; } // 眩晕特效
 
+    private float attackEffectSpace = 5.0f;// 切换特效间隔
+    public float lastAttackEffectTime { get; private set; } // 上次切换特效时间
+
+    [HideInInspector] public bool isUseAbility2 = false; // 是否使用过技能2
+
     [HideInInspector] public MaterialPropertyBlock mpb; // 渲染材质空值
     [HideInInspector] public Renderer render;  // 渲染
 
@@ -54,6 +60,7 @@ public class Enemy : MonoBehaviour
     public E_S_MeleeAttack meleeAttack; // 近战攻击
     public E_S_RemoteAttack remoteAttack; // 远程攻击
     public E_S_Ability1 ability1; // 技能1
+    public E_S_Ability2 ability2;
     public E_S_Charge charge; // 追击
 
     [Header("死亡数据")] public D_E_Dead deadData;
@@ -67,6 +74,7 @@ public class Enemy : MonoBehaviour
     [Header("近战攻击数据")] public D_E_MeleeAttack meleeAttackData;
     [Header("远程攻击数据")] public D_E_RemoteAttack remoteAttackData;
     [Header("技能1数据")] public D_E_Ability1 ability1Data;
+    [Header("技能2数据")] public D_E_Ability2 ability2Data;
     [Header("追击数据")] public D_E_Charge chargeData;
 
     #endregion 状态
@@ -76,7 +84,7 @@ public class Enemy : MonoBehaviour
     // 接收伤害回调
     public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
     {
-        if (isDead) return;
+        if (isDead || stateMachine.currentState == ability2) return;
         currentHealth -= attackInfo.damage;
 
         // 判断死亡
@@ -122,6 +130,16 @@ public class Enemy : MonoBehaviour
         at.SetFloat("yVelocity", rb.velocity.y);
     }
 
+    // 更新攻击特效
+    private void UpdateAttackEffect()
+    {
+        if (Time.time >= lastAttackEffectTime + attackEffectSpace)
+        {
+            lastAttackEffectTime = Time.time;
+            ETFXFireProjectile.Instance.SwitchEnemyAttackEffect();
+        }
+    }
+
     #endregion 其他函数
 
     #region Unity生命周期
@@ -139,6 +157,7 @@ public class Enemy : MonoBehaviour
         meleeAttack = new E_S_MeleeAttack(stateMachine, this, "meleeAttack", meleeAttackCheck, meleeAttackData);
         remoteAttack = new E_S_RemoteAttack(stateMachine, this, "remoteAttack", remoteAttackCheck, remoteAttackData);
         ability1 = new E_S_Ability1(stateMachine, this, "ability1", ability1Data);
+        ability2 = new E_S_Ability2(stateMachine, this, "ability2", remoteAttackCheck, remoteAttackData, ability2Data);
         charge = new E_S_Charge(stateMachine, this, "charge", chargeData);
         stateMachine.Init(move);
     }
@@ -155,6 +174,7 @@ public class Enemy : MonoBehaviour
 
         currentStunCount = entityData.stunCount;
         currentHealth = entityData.maxHealth;
+        lastAttackEffectTime = Time.time;
 
         stateMachine = new E_StateMachine();
 
@@ -170,6 +190,7 @@ public class Enemy : MonoBehaviour
         stateMachine.currentState.Update();
         CheckSwitchState();
         UpdateAnimation();
+        UpdateAttackEffect();
     }
 
     public virtual void FixedUpdate()
@@ -236,9 +257,15 @@ public class Enemy : MonoBehaviour
     // 检测切换状态
     public void CheckSwitchState()
     {
+        if (stateMachine.currentState == ability2) return;
         if (CheckDead())
         {
             stateMachine.ChangeState(dead);
+        }
+        else if (CheckAblity2() && !isUseAbility2)
+        {
+            stateMachine.ChangeState(ability2);
+            isUseAbility2 = true;
         }
         else if (CheckStun())
         {
@@ -311,13 +338,19 @@ public class Enemy : MonoBehaviour
     // 检测眩晕
     private bool CheckStun()
     {
-        return isStuning && stateMachine.currentState != stun;
+        return isStuning && stateMachine.currentState != stun && stateMachine.currentState != ability2;
     }
 
     // 检测受伤
     private bool CheckHurt()
     {
         return isHurting && stateMachine.currentState != hurt && Time.time >= hurt.startTime + hurtData.hurtCoolDown;
+    }
+
+    // 检测技能2
+    private bool CheckAblity2()
+    {
+        return currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote && !entityData.canDodge;
     }
 
     #endregion 检测

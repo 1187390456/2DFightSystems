@@ -44,6 +44,7 @@ public class E_Dead : E_State
         base.Exit();
         currentTransparent = 1;
         entity.isDead = false;
+        entity.isUseAbility2 = false;
         entity.currentHealth = entity.entityData.maxHealth;
         // entity.aliveGobj.transform.position = GameManager.Instance.GetRandPos();
         entity.aliveGobj.transform.position = new Vector2(entity.aliveGobj.transform.position.x, entity.aliveGobj.transform.position.y + 1.0f);

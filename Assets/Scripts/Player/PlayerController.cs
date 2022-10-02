@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     private float dashTimeLeft; // 剩余冲刺时长
     private float lastDashPosX; // 上一次冲刺X坐标偏移
     private float lastDashTime; // 上一次冲刺时间
-    private bool isDashing; // 是否在冲刺
+    public bool isDashing; // 是否在冲刺
     #endregion
 
     /* 跳跃 */

@@ -51,7 +51,7 @@ MonoBehaviour:
   groundCheck: {fileID: 3028518178925022083}
   meleeAttackCheck: {fileID: 3028518177470925847}
   remoteAttackCheck: {fileID: 9118140224071863480}
-  entityData: {fileID: 11400000, guid: 1dbdfd4ae95347b4c8b9497644c723d0, type: 2}
+  entityData: {fileID: 11400000, guid: 3145b4d9a3e8a804f9dd9dc3e246bdd4, type: 2}
   render: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6632370370029415064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.6, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

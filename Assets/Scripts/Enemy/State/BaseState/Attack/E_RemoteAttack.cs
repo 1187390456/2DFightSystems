@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EpicToonFX;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +35,15 @@ public class E_RemoteAttack : E_Attack
     public override void StartAttack()
     {
         base.StartAttack();
-        var bulletScript = BulletBox.Instance.GetArcherBullet(attackPos);
-        bulletScript.AcceptParamas(remoteAttackData.speed, remoteAttackData.distance, remoteAttackData.gravityScale, remoteAttackData.damage);
+        if (!entity.deadData.isMonster)
+        {
+            var bulletScript = BulletBox.Instance.GetArcherBullet(attackPos);
+            bulletScript.AcceptParamas(remoteAttackData.speed, remoteAttackData.distance, remoteAttackData.gravityScale, remoteAttackData.damage);
+        }
+        else
+        {
+            ETFXFireProjectile.Instance.CreateEnemyProjectile(entity.remoteAttackCheck);
+        }
     }
 
     public override void Update()

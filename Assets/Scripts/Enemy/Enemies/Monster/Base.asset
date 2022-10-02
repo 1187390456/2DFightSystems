@@ -19,12 +19,9 @@ MonoBehaviour:
   maxDetectedDistance: 13
   canMeleeDistance: 2.7
   stunCount: 5
-  knockbackSpeed: {x: 0, y: 15}
-  knockbackAngle: {x: 1, y: 1}
   stunKnockbackSpeedY: 15
   maxHealth: 100
-  canStun: 0
-  effectRes: {fileID: 137732, guid: b2a41848dc033f04295f551876431a40, type: 3}
+  effectRes: {fileID: 108514, guid: 4a3acdc5cefd5f74ebcb02914ae9be64, type: 3}
   enemyType: 0
   canDodge: 0
   canAbility1: 1
