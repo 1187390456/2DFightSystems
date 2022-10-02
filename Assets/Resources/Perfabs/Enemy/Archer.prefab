@@ -62,7 +62,7 @@ Transform:
   m_Children:
   - {fileID: 1609871610839976378}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1609871610296887576
 MonoBehaviour:
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1609871610296887578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd189d540fd98b42a9005387c964f34, type: 3}
+  m_Script: {fileID: 11500000, guid: b9a5edd2765dd9248b9a4d8017a689d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallCheck: {fileID: 1609871611295038465}
@@ -81,6 +81,7 @@ MonoBehaviour:
   detectedCheck: {fileID: 1609871610756146010}
   groundCheck: {fileID: 1609871610446094159}
   meleeAttackCheck: {fileID: 1609871610000178029}
+  remoteAttackCheck: {fileID: 831352659597499426}
   entityData: {fileID: 11400000, guid: 3e8c1bc82cde1f24bac832a141b63e5c, type: 2}
   render: {fileID: 0}
   movement: {x: 0, y: 0}
@@ -90,17 +91,18 @@ MonoBehaviour:
   isStuning: 0
   isHurting: 0
   isDead: 0
-  remoteAttackCheck: {fileID: 831352659597499426}
   deadData: {fileID: 11400000, guid: 72e9ac866cce15d4e8368651f336b393, type: 2}
-  idleData: {fileID: 11400000, guid: 6bb7bd85a7d3e3e43b21924d25f12077, type: 2}
-  moveData: {fileID: 11400000, guid: c1a287d50a3703549af3dabed4c9f5d0, type: 2}
+  idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
+  moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
   stunData: {fileID: 11400000, guid: 7840ca329e04c6b4387af81b6519b40c, type: 2}
-  dodgeData: {fileID: 11400000, guid: faaa452d04f19a84ebbf5ccdbbde8f81, type: 2}
-  detectedData: {fileID: 11400000, guid: 4df50b1f054c4544ca581b45827a8858, type: 2}
-  findPlayerData: {fileID: 11400000, guid: af1c18ffd698cc24facd7215e7f9ee18, type: 2}
+  dodgeData: {fileID: 11400000, guid: 212442950ba583747afd0dd2d8d4e610, type: 2}
+  hurtData: {fileID: 11400000, guid: 986c87fbae07a2d45a45a14d4f1e7084, type: 2}
+  detectedData: {fileID: 11400000, guid: db629efa383a36745aa46f32c517b92b, type: 2}
+  findPlayerData: {fileID: 11400000, guid: 44036074fb74ebb4dbe226e7b532f084, type: 2}
   meleeAttackData: {fileID: 11400000, guid: fe3f1260c187d3d4ebe1247a2ba2ac09, type: 2}
-  remoteAttackData: {fileID: 11400000, guid: 03dc556400df3664486cbfcdee1f91f9, type: 2}
+  remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
   ability1Data: {fileID: 11400000, guid: 7185a21058d69bc4d8e41c6df2389468, type: 2}
+  chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1 &1609871610446094144
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

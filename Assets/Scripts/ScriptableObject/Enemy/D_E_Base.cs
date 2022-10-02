@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Enemy;
 
 [CreateAssetMenu(fileName = "Base", menuName = "Data/Enemy Data/State Data/Base Data")]
 public class D_E_Base : ScriptableObject
@@ -12,10 +13,10 @@ public class D_E_Base : ScriptableObject
     [Header("最大警备距离")] public float maxDetectedDistance = 9.5f;
     [Header("可近战攻击的距离")] public float canMeleeDistance = 2.0f;
     [Header("击晕次数")] public int stunCount = 5;
-    [Header("击退速度 (Monster) ")] public Vector2 knockbackSpeed = new Vector2(0.0f, 15.0f);
-    [Header("击退角度 (Monster) ")] public Vector2 knockbackAngle = new Vector2(1.0f, 1.0f);
     [Header("眩晕中Y轴击退速度")] public float stunKnockbackSpeedY = 15.0f;
     [Header("最大生命值")] public float maxHealth = 100.0f;
-    [Header("是否可以被眩晕 (Monster)")] public bool canStun = false;
     [Header("被击打特效")] public GameObject effectRes = null;
+    [Header("敌人类型")] public EnemyType enemyType;
+    [Header("能否使用闪避")] public bool canDodge = false;
+    [Header("能否使用技能1")] public bool canAbility1 = false;
 }

@@ -48,7 +48,7 @@ public class ETFXProjectileScript : MonoBehaviour
 
         // Physics.SphereCast(transform.position, radius, direction, out hit, detectionDistance)
         var hit = Physics2D.CircleCast(transform.position, radius, transform.right, detectionDistance, LayerMask.GetMask("Ground", "CanBeAttack"));
-        if (hit) // Checks if collision will happen
+        if (hit && HitCondition(hit)) // Checks if collision will happen
         {
             if (hit.collider.gameObject.layer == 7)
             {
@@ -74,6 +74,22 @@ public class ETFXProjectileScript : MonoBehaviour
             Destroy(projectileParticle, 3f); // Removes particle effect after delay
             Destroy(impactP, 3.5f); // Removes impact effect after delay
             Destroy(gameObject); // Removes the projectile
+        }
+    }
+
+    private bool HitCondition(RaycastHit2D hit)
+    {
+        // 墙壁
+        if (hit.collider.transform.parent.gameObject.GetComponent<Enemy>() == null)
+        {
+            return true;
+        }
+        // 敌人
+        else
+        {
+            var enemy = hit.collider.transform.parent.gameObject.GetComponent<Enemy>();
+            Debug.Log(enemy.stateMachine.currentState);
+            return enemy.stateMachine.currentState != enemy.dead;
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class SpineTransAction : MonoBehaviour
 {
     [Header("数据资源列表")] public List<SkeletonDataAsset> dataList = new List<SkeletonDataAsset>();
-    private Monster monster; // 当前脚本
+    private Enemy enemy; // 当前脚本
     private SkeletonMecanim spineScript; // 骨骼控制脚本
 
     private float lastChangeTime; // 上次变换时间
@@ -16,7 +16,7 @@ public class SpineTransAction : MonoBehaviour
     private void Awake()
     {
         spineScript = GetComponent<SkeletonMecanim>();
-        monster = transform.parent.GetComponent<Monster>();
+        enemy = transform.parent.GetComponent<Enemy>();
         spineScript.skeletonDataAsset = dataList[0]; // 默认第一个数据
         spineScript.initialSkinName = "V1"; // 初始皮肤
         spineScript.Initialize(true);
@@ -25,7 +25,7 @@ public class SpineTransAction : MonoBehaviour
 
     private void Update()
     {
-        if (monster.stateMachine.currentState != monster.dead && Time.time >= lastChangeTime + changeTimeSpace)
+        if (enemy.stateMachine.currentState != enemy.dead && Time.time >= lastChangeTime + changeTimeSpace)
         {
             ChangeShape();
             lastChangeTime = Time.time;

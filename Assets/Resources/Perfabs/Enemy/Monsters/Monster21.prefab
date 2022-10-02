@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2465948607849620113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6540401775211807594}
+  m_Layer: 7
+  m_Name: remoteCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6540401775211807594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465948607849620113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5389469773777798485}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5389469772429631301
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +196,7 @@ Transform:
   - {fileID: 5389469772578968762}
   - {fileID: 5389469773248224196}
   - {fileID: 5389469773902367596}
+  - {fileID: 6540401775211807594}
   m_Father: {fileID: 5389469773914383679}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -409,7 +441,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5389469773914383676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f58662dd2eb8ecd489957b93d36b5e4d, type: 3}
+  m_Script: {fileID: 11500000, guid: b9a5edd2765dd9248b9a4d8017a689d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallCheck: {fileID: 5389469772429631300}
@@ -417,6 +449,7 @@ MonoBehaviour:
   detectedCheck: {fileID: 5389469772578968762}
   groundCheck: {fileID: 5389469773902367596}
   meleeAttackCheck: {fileID: 5389469773248224196}
+  remoteAttackCheck: {fileID: 6540401775211807594}
   entityData: {fileID: 11400000, guid: 1dbdfd4ae95347b4c8b9497644c723d0, type: 2}
   render: {fileID: 0}
   movement: {x: 0, y: 0}
@@ -427,13 +460,17 @@ MonoBehaviour:
   isHurting: 0
   isDead: 0
   deadData: {fileID: 11400000, guid: c71c7ab696966304786dd74f45ce7c59, type: 2}
-  idleData: {fileID: 11400000, guid: 245f257ed6e61e44db0280668c90b4b7, type: 2}
-  moveData: {fileID: 11400000, guid: 2cd26a6804efcdf4295d4267616d3d4c, type: 2}
-  detectedData: {fileID: 11400000, guid: 86b89ee1c9512844d9a28efb83a5db7e, type: 2}
-  chargeData: {fileID: 11400000, guid: 0e0156f23f409ca469112cbb04286a1e, type: 2}
+  idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
+  moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
+  stunData: {fileID: 11400000, guid: 981912cbfc06aca469c95872740911d4, type: 2}
+  dodgeData: {fileID: 11400000, guid: 212442950ba583747afd0dd2d8d4e610, type: 2}
+  hurtData: {fileID: 11400000, guid: 986c87fbae07a2d45a45a14d4f1e7084, type: 2}
+  detectedData: {fileID: 11400000, guid: db629efa383a36745aa46f32c517b92b, type: 2}
+  findPlayerData: {fileID: 11400000, guid: 44036074fb74ebb4dbe226e7b532f084, type: 2}
   meleeAttackData: {fileID: 11400000, guid: 9be798d791c278b46bff753644df3582, type: 2}
-  findPlayerData: {fileID: 11400000, guid: 0e2da18e716140149a0e815f04619172, type: 2}
+  remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
   ability1Data: {fileID: 11400000, guid: 95628bc69dcb8d6448e25961bcbc1f9d, type: 2}
+  chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1001 &92367120975014426
 PrefabInstance:
   m_ObjectHideFlags: 0

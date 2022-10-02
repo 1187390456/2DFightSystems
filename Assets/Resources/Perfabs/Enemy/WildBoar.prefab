@@ -124,7 +124,7 @@ Transform:
   m_Children:
   - {fileID: 3239908097693320063}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4271344606083923670
 MonoBehaviour:
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3239908096561727585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a9d85a3b869fb34184511865c4f369c, type: 3}
+  m_Script: {fileID: 11500000, guid: b9a5edd2765dd9248b9a4d8017a689d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallCheck: {fileID: 3239908098046878558}
@@ -143,6 +143,7 @@ MonoBehaviour:
   detectedCheck: {fileID: 882645445}
   groundCheck: {fileID: 189237309}
   meleeAttackCheck: {fileID: 2945508813290630986}
+  remoteAttackCheck: {fileID: 6134856650964130073}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
   render: {fileID: 0}
   movement: {x: 0, y: 0}
@@ -152,15 +153,18 @@ MonoBehaviour:
   isStuning: 0
   isHurting: 0
   isDead: 0
-  idleData: {fileID: 11400000, guid: c17a6eb84b31a9a428bd4f536679ad5a, type: 2}
-  moveData: {fileID: 11400000, guid: de9ee08d6b40b1847baf1a75e954fed4, type: 2}
-  detectedData: {fileID: 11400000, guid: 0b57c0d7d2cbc1e44a82dee969f09e56, type: 2}
-  chargeData: {fileID: 11400000, guid: d5356bdd329c68e4b8d8caf4bff670eb, type: 2}
-  findPlayerData: {fileID: 11400000, guid: 0900f5d76cc64a0438387a2e6b9c6f56, type: 2}
-  meleeAttackData: {fileID: 11400000, guid: fbc26b09a5fb1d74ea7fcad7e79b9648, type: 2}
-  stunData: {fileID: 11400000, guid: 5b5533d702e256a42b3e37a33d9fabab, type: 2}
-  hurtData: {fileID: 11400000, guid: beb78f3a0e862ce429efe36f6243e61d, type: 2}
   deadData: {fileID: 11400000, guid: fffb3f7eba240924e9bc5f18d2d4d3d9, type: 2}
+  idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
+  moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
+  stunData: {fileID: 11400000, guid: 5b5533d702e256a42b3e37a33d9fabab, type: 2}
+  dodgeData: {fileID: 11400000, guid: 212442950ba583747afd0dd2d8d4e610, type: 2}
+  hurtData: {fileID: 11400000, guid: 986c87fbae07a2d45a45a14d4f1e7084, type: 2}
+  detectedData: {fileID: 11400000, guid: db629efa383a36745aa46f32c517b92b, type: 2}
+  findPlayerData: {fileID: 11400000, guid: 44036074fb74ebb4dbe226e7b532f084, type: 2}
+  meleeAttackData: {fileID: 11400000, guid: fbc26b09a5fb1d74ea7fcad7e79b9648, type: 2}
+  remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
+  ability1Data: {fileID: 11400000, guid: 514fa2bb6c365c1459c8fb81930eebf6, type: 2}
+  chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1 &3239908097537975598
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +234,7 @@ Transform:
   - {fileID: 882645445}
   - {fileID: 2945508813290630986}
   - {fileID: 189237309}
+  - {fileID: 6134856650964130073}
   m_Father: {fileID: 3239908096561727584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -394,4 +399,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3239908097693320063}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7883848317263668931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6134856650964130073}
+  m_Layer: 7
+  m_Name: remoteCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6134856650964130073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883848317263668931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3239908097693320063}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
