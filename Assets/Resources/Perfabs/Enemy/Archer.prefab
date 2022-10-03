@@ -83,6 +83,7 @@ MonoBehaviour:
   meleeAttackCheck: {fileID: 1609871610000178029}
   remoteAttackCheck: {fileID: 831352659597499426}
   entityData: {fileID: 11400000, guid: 3e8c1bc82cde1f24bac832a141b63e5c, type: 2}
+  isUseAbility2: 0
   render: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
@@ -102,6 +103,7 @@ MonoBehaviour:
   meleeAttackData: {fileID: 11400000, guid: fe3f1260c187d3d4ebe1247a2ba2ac09, type: 2}
   remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
   ability1Data: {fileID: 11400000, guid: 7185a21058d69bc4d8e41c6df2389468, type: 2}
+  ability2Data: {fileID: 11400000, guid: 4ca4a8f407f4812438a529d0364a6688, type: 2}
   chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1 &1609871610446094144
 GameObject:

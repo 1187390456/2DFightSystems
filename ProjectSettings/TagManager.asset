@@ -58,7 +58,7 @@ TagManager:
   - name: ForecScence
     uniqueID: 443368053
     locked: 0
-  - name: Effect
+  - name: EffectAhead
     uniqueID: 4236698471
     locked: 0
   - name: Default

@@ -30,6 +30,7 @@ public class ETFXProjectileScript : MonoBehaviour
     {
         if (GetComponent<Rigidbody>().velocity.magnitude != 0)
         {
+            if (GetComponent<Rigidbody>().velocity == Vector3.zero) return;
             transform.rotation = Quaternion.LookRotation(GetComponent<Rigidbody>().velocity); // Sets rotation to look at direction of movement
         }
 

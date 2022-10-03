@@ -37,7 +37,7 @@ public class E_RemoteAttack : E_Attack
         base.StartAttack();
         if (!entity.deadData.isMonster)
         {
-            var bulletScript = BulletBox.Instance.GetArcherBullet(attackPos);
+            var bulletScript = BulletBox.Instance.GetArcherBullet(remoteAttackData.bullet, attackPos);
             bulletScript.AcceptParamas(remoteAttackData.speed, remoteAttackData.distance, remoteAttackData.gravityScale, remoteAttackData.damage);
         }
         else

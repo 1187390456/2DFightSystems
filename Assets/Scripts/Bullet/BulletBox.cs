@@ -5,18 +5,16 @@ using UnityEngine;
 public class BulletBox : MonoBehaviour
 {
     public static BulletBox Instance { get; private set; }
-    private GameObject archerBulletRes;     // 弓箭手子弹资源
 
     private void Awake()
     {
         Instance = this;
-        archerBulletRes = Resources.Load<GameObject>("Perfabs/Bullet/ArcherBullet");
     }
 
     // 生成弓箭手子弹
-    public ArcherBullet GetArcherBullet(Transform targetPos)
+    public ArcherBullet GetArcherBullet(GameObject bullet, Transform targetPos)
     {
-        var item = Instantiate(archerBulletRes, targetPos.position, targetPos.rotation, transform);
+        var item = Instantiate(bullet, targetPos.position, targetPos.rotation, transform);
         return item.GetComponent<ArcherBullet>();
     }
 }

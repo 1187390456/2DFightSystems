@@ -15,8 +15,8 @@ MonoBehaviour:
   wallCheckDistance: 0.1
   edgeCheckDistance: 1
   groundCheckDistance: 0.1
-  minDetectedDistance: 6.5
-  maxDetectedDistance: 9.5
+  minDetectedDistance: 15
+  maxDetectedDistance: 20
   canMeleeDistance: 2
   stunCount: 5
   stunKnockbackSpeedY: 15

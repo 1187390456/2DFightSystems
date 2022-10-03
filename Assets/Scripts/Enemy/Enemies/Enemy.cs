@@ -47,6 +47,9 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public bool isHurting;//是否受伤
     [HideInInspector] public bool isDead; // 是否死亡
 
+    [HideInInspector] public GameObject ability2Effect1; // 技能2特效1
+    [HideInInspector] public GameObject ability2Effect2;// 技能2特效2
+
     #region 状态
 
     public E_S_Dead dead; // 死亡
@@ -140,6 +143,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // 判断是否有该游戏对象 赋值 然后禁用
+    private bool JudGeGameObjAlive(string name)
+    {
+        return aliveGobj.transform.Find(name) != null;
+    }
+
+    // 初始化某些特效游戏对象
+    private void InitEffect()
+    {
+        if (JudGeGameObjAlive("StunEffect"))
+        {
+            stunEffect = aliveGobj.transform.Find("StunEffect").gameObject;
+            stunEffect.SetActive(false);
+        }
+        if (JudGeGameObjAlive("Ability2Effect"))
+        {
+            ability2Effect1 = aliveGobj.transform.Find("Ability2Effect").gameObject;
+            ability2Effect1.SetActive(false);
+        }
+        if (JudGeGameObjAlive("Ability2BottomEffect"))
+        {
+            ability2Effect2 = aliveGobj.transform.Find("Ability2BottomEffect").gameObject;
+            ability2Effect2.SetActive(false);
+        }
+    }
+
     #endregion 其他函数
 
     #region Unity生命周期
@@ -178,11 +207,7 @@ public class Enemy : MonoBehaviour
 
         stateMachine = new E_StateMachine();
 
-        if (aliveGobj.transform.Find("StunnedCirclingStars") != null)
-        {
-            stunEffect = aliveGobj.transform.Find("StunnedCirclingStars")?.gameObject;
-            stunEffect.SetActive(false);
-        }
+        InitEffect();
     }
 
     public virtual void Update()
@@ -350,7 +375,7 @@ public class Enemy : MonoBehaviour
     // 检测技能2
     private bool CheckAblity2()
     {
-        return currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote && !entityData.canDodge;
+        return currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;
     }
 
     #endregion 检测

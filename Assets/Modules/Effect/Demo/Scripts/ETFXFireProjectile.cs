@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.HID;
 
@@ -52,6 +53,10 @@ namespace EpicToonFX
                 CreatePlayerProjectileWay2();
             }
             Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
+            if (projectile && projectile.name == "EnemyCreate")
+            {
+                TrackPlayer();
+            }
         }
 
         // 玩家生成子弹方法1
@@ -84,7 +89,18 @@ namespace EpicToonFX
             projectile.name = "EnemyCreate";// 敌人生成标识
             projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
             projectile.transform.LookAt(PlayerController.Instance.transform.position);
-            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
+            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 500);
+        }
+
+        // 敌人子弹追踪
+        public void TrackPlayer()
+        {
+            var direction = (PlayerController.Instance.transform.position - projectile.transform.position).normalized;
+            if (direction != transform.forward)
+            {
+                projectile.transform.forward = direction;
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 30);
+            }
         }
 
         public void nextEffect() //Changes the selected projectile to the next. Used by UI

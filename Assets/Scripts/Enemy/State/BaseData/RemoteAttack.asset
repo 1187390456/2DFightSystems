@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 20
   distance: 10
   gravityScale: 8
+  bullet: {fileID: 2848051627881328842, guid: a649b4d6b50343a4b86c954d0139411a, type: 3}

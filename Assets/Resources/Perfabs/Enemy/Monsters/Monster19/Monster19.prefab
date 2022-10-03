@@ -83,6 +83,7 @@ MonoBehaviour:
   meleeAttackCheck: {fileID: 4910755897606549602}
   remoteAttackCheck: {fileID: 3648163120603453260}
   entityData: {fileID: 11400000, guid: ce36a99e313c5134981c7a5d65a3d6b6, type: 2}
+  isUseAbility2: 0
   render: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
@@ -91,6 +92,8 @@ MonoBehaviour:
   isStuning: 0
   isHurting: 0
   isDead: 0
+  ability2Effect1: {fileID: 0}
+  ability2Effect2: {fileID: 0}
   deadData: {fileID: 11400000, guid: c71c7ab696966304786dd74f45ce7c59, type: 2}
   idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
   moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
@@ -102,6 +105,7 @@ MonoBehaviour:
   meleeAttackData: {fileID: 11400000, guid: 9be798d791c278b46bff753644df3582, type: 2}
   remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
   ability1Data: {fileID: 11400000, guid: 95628bc69dcb8d6448e25961bcbc1f9d, type: 2}
+  ability2Data: {fileID: 0}
   chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1 &4910755896602724599
 GameObject:
@@ -481,7 +485,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 109542, guid: 2ed06ab528b7c474eb9246421cd7c791, type: 3}
       propertyPath: m_Name
-      value: StunnedCirclingStars
+      value: StunEffect
       objectReference: {fileID: 0}
     - target: {fileID: 480980, guid: 2ed06ab528b7c474eb9246421cd7c791, type: 3}
       propertyPath: m_RootOrder

@@ -14,11 +14,21 @@ public class E_Ability2 : E_RemoteAttack
     {
         base.Enter();
         isAbility2Over = false;
+        if (entity.ability2Effect1)
+        {
+            entity.ability2Effect1.SetActive(true);
+            entity.ability2Effect2.SetActive(true);
+        }
     }
 
     public override void Exit()
     {
         base.Exit();
+        if (entity.ability2Effect1)
+        {
+            entity.ability2Effect1.SetActive(false);
+            entity.ability2Effect2.SetActive(false);
+        }
     }
 
     public override void FinishAttack()
