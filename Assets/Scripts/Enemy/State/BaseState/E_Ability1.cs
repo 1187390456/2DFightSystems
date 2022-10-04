@@ -57,7 +57,7 @@ public class E_Ability1 : E_State
     // 检测是否完全消失
     protected void CheckIsDisappear()
     {
-        if (currentTransparent <= 0)
+        if (currentTransparent <= 0 && PlayerController.Instance)
         {
             var playerPos = PlayerController.Instance.transform.position;
             var dir = PlayerController.Instance.facingDirection;

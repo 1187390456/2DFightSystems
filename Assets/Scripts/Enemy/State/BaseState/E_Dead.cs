@@ -9,8 +9,6 @@ public class E_Dead : E_State
     protected bool isdeadOver; // 死亡时间是否结束
 
     protected float currentTransparent; // 当前透明度
-    protected float disappearTime; // 消失时间
-    protected bool isDisappear; // 是否消失
 
     protected int count; // 播放第几个死亡特效
 
@@ -22,7 +20,6 @@ public class E_Dead : E_State
     public override void Enter()
     {
         base.Enter();
-        isDisappear = false;
         isdeadOver = false;
         currentTransparent = 1;
         if (!deadData.isMonster)
@@ -64,24 +61,17 @@ public class E_Dead : E_State
     {
         base.Update();
         // 死后逐渐消失
-        if (deadData.isMonster && !isDisappear && Time.time - startTime >= 1.833)
+        if (!isdeadOver && deadData.isMonster && Time.time - startTime >= 1.833f)
         {
             currentTransparent -= deadData.transparentSpace * Time.deltaTime;
             entity.SetSpineTransparent(currentTransparent);
             if (currentTransparent <= 0)
             {
                 entity.aliveGobj.SetActive(false);
-                disappearTime = Time.time;
-                isDisappear = true;
             }
         }
 
-        if (!deadData.isMonster && deadData.canRebirth && Time.time >= startTime + deadData.rebirthTime)
-        {
-            isdeadOver = true;
-        }
-
-        if (deadData.isMonster && isDisappear && Time.time >= disappearTime + deadData.rebirthTime)
+        if (!isdeadOver && deadData.canRebirth && Time.time >= startTime + deadData.rebirthTime + 1.833f)
         {
             isdeadOver = true;
         }

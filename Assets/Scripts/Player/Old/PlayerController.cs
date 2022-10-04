@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using EpicToonFX;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -151,8 +152,11 @@ public class PlayerController : MonoBehaviour
         at = GetComponent<Animator>();
     }
 
+    [Header("自动射击检测范围")] public Vector2 size;
+
     private void OnDrawGizmos()
     {
+        Gizmos.DrawWireCube(transform.position, size);
         Gizmos.DrawWireCube(groundCheck.position, groundCheckBoxSize);
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(edgeCheck.position, new Vector2(edgeCheck.position.x + edgeCheckDistance, edgeCheck.position.y));
@@ -167,7 +171,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        CheckUserInput();
+        CheckInputMobile();
+
+        // CheckUserInput();
         CheckJumpState();
         CheckPlayerDirection();
         CheckMoveState();
@@ -182,6 +188,12 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         CheckEnvironment();
+    }
+
+    // 移动端检测
+    private void CheckInputMobile()
+    {
+        horizontalDirection = InputManager.Instance.inputX;
     }
 
     // 检测爬角状态
@@ -257,24 +269,36 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.K))
         {
-            if (isSlidingWall && Input.GetKey(KeyCode.S))
-            {
-                JumpFormWall();
-            }
-            else if (isTouchWall)
-            {
-                JumpInTheWall();
-            }
-            else
-            {
-                NormalJump();
-            }
+            JumpButtonDown();
         }
 
         if (Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.K))
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * airForceMultiplier.y);
+            JumpButtonUp();
         }
+    }
+
+    // 跳跃逻辑 按下
+    public void JumpButtonDown()
+    {
+        if (isSlidingWall && Input.GetKey(KeyCode.S))
+        {
+            JumpFormWall();
+        }
+        else if (isTouchWall)
+        {
+            JumpInTheWall();
+        }
+        else
+        {
+            NormalJump();
+        }
+    }
+
+    // 跳跃逻辑 松开
+    public void JumpButtonUp()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * airForceMultiplier.y);
     }
 
     // 检测跳跃状态
@@ -396,7 +420,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 冲刺
-    private void Dash()
+    public void Dash()
     {
         isDashing = true;
         lastDashTime = Time.time;

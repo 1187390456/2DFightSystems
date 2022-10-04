@@ -7,11 +7,13 @@ public class PlayerStates : MonoBehaviour
     [Header("最大生命值")] public float maxHealth = 999.0f;
     public static PlayerStates Instance { get; private set; } // 单例
     [HideInInspector] public float currentHealth;
+    public GameObject canvas;
 
     private void Awake()
     {
         Instance = this;
         currentHealth = maxHealth;
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     // 减少生命
@@ -30,9 +32,18 @@ public class PlayerStates : MonoBehaviour
     // 死亡
     private void Died()
     {
+        SetBtn(false);
         EffectBox.Instance.Chunk(transform.position);
         EffectBox.Instance.Blood(transform.position);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
         GameManager.Instance.Rebirth();
+    }
+
+    // 隐藏所有按钮
+    public void SetBtn(bool value)
+    {
+        canvas.transform.Find("button").gameObject.SetActive(value);
+        canvas.transform.Find("Switch").gameObject.SetActive(value);
+        canvas.transform.Find("move").gameObject.SetActive(value);
     }
 }

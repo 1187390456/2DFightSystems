@@ -1,7 +1,5 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.HID;
 
 namespace EpicToonFX
 {
@@ -57,6 +55,10 @@ namespace EpicToonFX
             {
                 TrackPlayer();
             }
+            if (projectile && projectile.name == "PlayerCreate")
+            {
+                TrackEnemy();
+            }
         }
 
         // 玩家生成子弹方法1
@@ -69,7 +71,7 @@ namespace EpicToonFX
                 projectile.name = "PlayerCreate";// 玩家生成标识
                 projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
                 projectile.transform.LookAt(hit.point);
-                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
+                // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
             }
         }
 
@@ -79,7 +81,16 @@ namespace EpicToonFX
             projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
             projectile.name = "PlayerCreate";// 玩家生成标识
             projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-            projectile.GetComponent<Rigidbody>().AddForce(spawnPosition.right * speed);
+        }
+
+        // 玩家生成子弹方法3
+        public void CreatePlayerProjectileWay3()
+        {
+            projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
+            projectile.name = "PlayerCreate";// 玩家生成标识
+            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+            projectile.transform.forward = PlayerController.Instance.transform.right;
+            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
         }
 
         // 敌人生成子弹方法
@@ -96,10 +107,41 @@ namespace EpicToonFX
         public void TrackPlayer()
         {
             var direction = (PlayerController.Instance.transform.position - projectile.transform.position).normalized;
-            if (direction != transform.forward)
+            if (direction != projectile.transform.forward)
             {
                 projectile.transform.forward = direction;
-                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 30);
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 500);
+            }
+        }
+
+        // 玩家子弹追踪最近的敌人
+        public void TrackEnemy()
+        {
+            var enemy = Physics2D.BoxCast(PlayerController.Instance.transform.position, PlayerController.Instance.size, 0.0f,
+                 transform.right, 0.0f, LayerMask.GetMask("CanBeAttack"));
+            if (enemy)
+            {
+                var enemyScript = enemy.collider.transform.parent.GetComponent<Enemy>();
+                if (enemyScript && enemyScript.stateMachine.currentState != enemyScript.dead)
+                {
+                    var enemyOffset = new Vector3(enemy.collider.transform.position.x, enemy.collider.transform.position.y + 0.5f, 0);
+                    var direction = (enemyOffset - projectile.transform.position).normalized;
+                    if (direction != projectile.transform.forward)
+                    {
+                        projectile.transform.forward = direction;
+                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
+                    }
+                }
+                else
+                {
+                    projectile.transform.forward = PlayerController.Instance.transform.right;
+                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
+                }
+            }
+            else
+            {
+                projectile.transform.forward = PlayerController.Instance.transform.right;
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
             }
         }
 

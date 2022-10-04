@@ -139,7 +139,10 @@ public class Enemy : MonoBehaviour
         if (Time.time >= lastAttackEffectTime + attackEffectSpace)
         {
             lastAttackEffectTime = Time.time;
-            ETFXFireProjectile.Instance.SwitchEnemyAttackEffect();
+            if (ETFXFireProjectile.Instance)
+            {
+                ETFXFireProjectile.Instance.SwitchEnemyAttackEffect();
+            }
         }
     }
 
@@ -282,11 +285,12 @@ public class Enemy : MonoBehaviour
     // 检测切换状态
     public void CheckSwitchState()
     {
-        if (stateMachine.currentState == ability2) return;
+        if (stateMachine.currentState == dead) return;
         if (CheckDead())
         {
             stateMachine.ChangeState(dead);
         }
+        if (stateMachine.currentState == ability2) return;
         else if (CheckAblity2() && !isUseAbility2)
         {
             stateMachine.ChangeState(ability2);
@@ -363,7 +367,7 @@ public class Enemy : MonoBehaviour
     // 检测眩晕
     private bool CheckStun()
     {
-        return isStuning && stateMachine.currentState != stun && stateMachine.currentState != ability2;
+        return isStuning && stateMachine.currentState != stun && stateMachine.currentState != ability2 && stateMachine.currentState != dead;
     }
 
     // 检测受伤

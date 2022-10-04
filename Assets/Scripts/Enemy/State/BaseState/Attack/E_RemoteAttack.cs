@@ -42,7 +42,10 @@ public class E_RemoteAttack : E_Attack
         }
         else
         {
-            ETFXFireProjectile.Instance.CreateEnemyProjectile(entity.remoteAttackCheck);
+            if (ETFXFireProjectile.Instance)
+            {
+                ETFXFireProjectile.Instance.CreateEnemyProjectile(entity.remoteAttackCheck);
+            }
         }
     }
 

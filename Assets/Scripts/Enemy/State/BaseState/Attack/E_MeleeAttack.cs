@@ -14,7 +14,7 @@ public class E_MeleeAttack : E_Attack
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocityX(0.0f);
+        entity.SetVelocityX(10.0f);
     }
 
     public override void Exit()
