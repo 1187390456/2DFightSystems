@@ -9,70 +9,129 @@ using UnityEngine.InputSystem.Interactions;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
-    public Vector2 movementInput { get; private set; }
-    public int inputX { get; private set; }
-    public int inputY { get; private set; }
+    public Gamepad gamepad { get => Gamepad.current; }
+    public Keyboard keyboard { get => Keyboard.current; }
 
-    public bool isJump { get; private set; }
+    public Mouse mouse { get => Mouse.current; }
+    public Pointer pointer { get => Pointer.current; }
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void OnMoveInput(InputAction.CallbackContext context)
+    private void Update()
     {
-        movementInput = context.ReadValue<Vector2>();
+        if (gamepad != null)
+        {
+            CheckFire();
+            CheckMove();
+            CheckJump();
+            CheckAttack();
+            CheckDodge();
+            CheckSwitchLeft();
+            CheckSwitchRight();
+        }
+    }
+
+    #region …‰ª˜
+
+    private float lastFireTime;
+    private float fireSpace = 0.2f;
+    private bool isFireOn = false;
+
+    // ºÏ≤‚…‰ª˜
+    private void CheckFire()
+    {
+        if (gamepad.buttonWest.wasPressedThisFrame)
+        {
+            isFireOn = !isFireOn;
+        }
+
+        if (isFireOn && !PlayerStates.Instance.isDead)
+        {
+            if (Time.time >= lastFireTime + fireSpace)
+            {
+                ETFXFireProjectile.Instance.CreatePlayerProjectileWay2();
+                lastFireTime = Time.time;
+            }
+        }
+    }
+
+    #endregion …‰ª˜
+
+    #region “∆∂Ø
+
+    public Vector2 movementInput { get; private set; }
+    public int inputX { get; private set; }
+    public int inputY { get; private set; }
+
+    private void CheckMove()
+    {
+        movementInput = gamepad.leftStick.ReadValue();
         inputX = (int)(movementInput * Vector2.right).normalized.x;
         inputY = (int)(movementInput * Vector2.up).normalized.y;
     }
 
-    public void OnJumpInput(InputAction.CallbackContext context)
+    #endregion “∆∂Ø
+
+    #region Ã¯‘æ
+
+    public void CheckJump()
     {
-        if (context.started)
+        if (gamepad.buttonSouth.wasPressedThisFrame)
         {
             PlayerController.Instance.JumpButtonDown();
         }
-        if (context.canceled)
+        if (gamepad.buttonSouth.wasReleasedThisFrame)
         {
             PlayerController.Instance.JumpButtonUp();
         }
     }
 
-    public void OnFireInput(InputAction.CallbackContext context)
-    {
-        // MoveToGameManager ETFXFireProjectile.Instance.CreatePlayerProjectileWay2();
-    }
+    #endregion Ã¯‘æ
 
-    public void OnAttackInput(InputAction.CallbackContext context)
+    #region ∆’Õ®π•ª˜
+
+    public void CheckAttack()
     {
-        if (context.started)
+        if (gamepad.buttonEast.wasPressedThisFrame)
         {
             PlayerAttackController.Instance.StartAttack();
         }
     }
 
-    public void OnDodgeInput(InputAction.CallbackContext context)
+    #endregion ∆’Õ®π•ª˜
+
+    #region …¡±‹
+
+    public void CheckDodge()
     {
-        if (context.started)
+        if (gamepad.buttonNorth.wasPressedThisFrame)
         {
             PlayerController.Instance.Dash();
         }
     }
 
-    public void OnSwitchLeftInput(InputAction.CallbackContext context)
+    #endregion …¡±‹
+
+    #region ◊Û”“Ãÿ–ß«–ªª
+
+    public void CheckSwitchLeft()
     {
-        if (context.started)
+        if (gamepad.dpad.left.wasPressedThisFrame)
         {
             ETFXFireProjectile.Instance.previousEffect();
         }
     }
 
-    public void OnSwitchRightInput(InputAction.CallbackContext context)
+    public void CheckSwitchRight()
     {
-        if (context.started)
+        if (gamepad.dpad.right.wasPressedThisFrame)
         {
             ETFXFireProjectile.Instance.nextEffect();
         }
     }
+
+    #endregion ◊Û”“Ãÿ–ß«–ªª
 }

@@ -7,6 +7,7 @@ public class PlayerStates : MonoBehaviour
     [Header("最大生命值")] public float maxHealth = 999.0f;
     public static PlayerStates Instance { get; private set; } // 单例
     [HideInInspector] public float currentHealth;
+    [HideInInspector] public bool isDead = false;
     public GameObject canvas;
 
     private void Awake()
@@ -32,6 +33,7 @@ public class PlayerStates : MonoBehaviour
     // 死亡
     private void Died()
     {
+        isDead = true;
         SetBtn(false);
         EffectBox.Instance.Chunk(transform.position);
         EffectBox.Instance.Blood(transform.position);

@@ -9881,7 +9881,6 @@ GameObject:
   - component: {fileID: 7004185883455774043}
   - component: {fileID: 2495275273636308634}
   - component: {fileID: 8235956244590112902}
-  - component: {fileID: 1692619528}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -9897,7 +9896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8114512626083976517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.04, y: -17.66, z: 0}
+  m_LocalPosition: {x: -18.4, y: -17.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10068,6 +10067,7 @@ MonoBehaviour:
   slidingSpeed: 1
   knockbackSpeed: {x: 8, y: 4}
   knockbackTime: 0.2
+  size: {x: 33.7, y: 17}
 --- !u!114 &7004185883455774043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10101,8 +10101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e70a772ed26754ab0f33719a1ff7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 999
   currentHealth: 0
+  isDead: 0
   canvas: {fileID: 0}
 --- !u!114 &8235956244590112902
 MonoBehaviour:
@@ -10116,152 +10117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7221249eca676244bd48e4fc52a5b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1692619528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8114512626083976517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: db5c001266074aa48abb60012a0945de, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnMoveInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a394c0f1-c579-4622-a269-dc6b0c641efc
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnJumpInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 17d3451c-e12c-459e-81cf-35bb85426b3f
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnFireInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 46cf12c3-5dc0-4ca4-9156-6008e32094e9
-    m_ActionName: Player/Fire
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnAttackInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f576956c-d13b-4919-ae11-dbbb0042d6ea
-    m_ActionName: Player/Attack
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnDodgeInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 321ea051-7b74-4dd7-b8de-998a2179123e
-    m_ActionName: Player/Dodge
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnSwitchLeftInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: cf0774db-4c96-4ce9-ac8a-643886609eb1
-    m_ActionName: Player/SwitchLeft
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8235956244590112902}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnSwitchRightInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f7d3982e-fe0f-4963-84a5-6e14b8301535
-    m_ActionName: Player/SwitchRight
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 656bf128-e997-4947-a0e1-34a73d896f34
-    m_ActionName: Test/New action
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &8265041320079568135
 GameObject:
   m_ObjectHideFlags: 0

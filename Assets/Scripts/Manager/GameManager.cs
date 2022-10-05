@@ -29,39 +29,12 @@ public class GameManager : MonoBehaviour
         randomRang = GameObject.Find("RebirthRang").GetComponent<BoxCollider2D>();
         tileMap2D = GameObject.Find("Map").GetComponent<TilemapCollider2D>();
         size = randomRang.bounds.extents;
-
-        lastFireTime = Time.time;
     }
 
     private void Update()
     {
         CheckRebirthState();
         RenderUI();
-        CheckMobile();
-    }
-
-    private float lastFireTime;
-    private float fireSpace = 0.2f;
-    private bool isFireOn = false;
-
-    // 检测移动端输入
-    private void CheckMobile()
-    {
-        if (Gamepad.current == null) return;
-        // Gamepad.current.buttonWest.isPressed
-        if (Gamepad.current.buttonWest.wasPressedThisFrame)
-        {
-            isFireOn = !isFireOn;
-        }
-        if (isFireOn)
-        {
-            if (Time.time >= lastFireTime + fireSpace)
-            {
-                InputManager.Instance.movementInput.Normalize();
-                ETFXFireProjectile.Instance.CreatePlayerProjectileWay2();
-                lastFireTime = Time.time;
-            }
-        }
     }
 
     // UI渲染
@@ -83,6 +56,7 @@ public class GameManager : MonoBehaviour
             var player = Instantiate(playerRes, GetRandPos(), Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
             PlayerStates.Instance.currentHealth = 999.0f;
+            PlayerStates.Instance.isDead = false;
             playerCM.Follow = player.transform.Find("Player");
             PlayerStates.Instance.SetBtn(true);
         }
