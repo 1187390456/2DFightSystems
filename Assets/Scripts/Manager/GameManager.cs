@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             if (Time.time >= lastFireTime + fireSpace)
             {
                 InputManager.Instance.movementInput.Normalize();
-                ETFXFireProjectile.Instance.CreatePlayerProjectileWay3();
+                ETFXFireProjectile.Instance.CreatePlayerProjectileWay2();
                 lastFireTime = Time.time;
             }
         }

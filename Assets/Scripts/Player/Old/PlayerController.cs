@@ -172,8 +172,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CheckInputMobile();
-
-        // CheckUserInput();
+        CheckUserInput();
         CheckJumpState();
         CheckPlayerDirection();
         CheckMoveState();
@@ -375,7 +374,11 @@ public class PlayerController : MonoBehaviour
     // 检测用户输入
     private void CheckUserInput()
     {
-        horizontalDirection = Input.GetAxisRaw("Horizontal");
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            horizontalDirection = Input.GetAxisRaw("Horizontal");
+        }
+
         // 开启奔跑状态
         if (Input.GetKeyDown(KeyCode.H))
         {

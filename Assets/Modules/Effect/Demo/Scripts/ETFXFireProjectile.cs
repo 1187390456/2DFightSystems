@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace EpicToonFX
@@ -15,6 +16,7 @@ namespace EpicToonFX
 
         private GameObject projectile;
         public int enemyEffectIndex = 0; // 特效索引
+        private bool isMouseCreate = false;
 
         private void Awake()
         {
@@ -46,7 +48,7 @@ namespace EpicToonFX
             {
                 CreatePlayerProjectileWay1();
             }
-            if (Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 CreatePlayerProjectileWay2();
             }
@@ -61,17 +63,17 @@ namespace EpicToonFX
             }
         }
 
-        // 玩家生成子弹方法1
+        // 玩家生成子弹方法1 鼠标点击
         public void CreatePlayerProjectileWay1()
         {
             var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.parent.right);
-            if (hit) //Finds the point where you click with the mouse
+            if (hit)
             {
                 projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
                 projectile.name = "PlayerCreate";// 玩家生成标识
+                isMouseCreate = true;
                 projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
                 projectile.transform.LookAt(hit.point);
-                // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
             }
         }
 
@@ -80,17 +82,8 @@ namespace EpicToonFX
         {
             projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
             projectile.name = "PlayerCreate";// 玩家生成标识
+            isMouseCreate = false;
             projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-        }
-
-        // 玩家生成子弹方法3
-        public void CreatePlayerProjectileWay3()
-        {
-            projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
-            projectile.name = "PlayerCreate";// 玩家生成标识
-            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-            projectile.transform.forward = PlayerController.Instance.transform.right;
-            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
         }
 
         // 敌人生成子弹方法
@@ -99,49 +92,47 @@ namespace EpicToonFX
             projectile = Instantiate(projectiles[enemyEffectIndex], trans.position, Quaternion.identity) as GameObject;
             projectile.name = "EnemyCreate";// 敌人生成标识
             projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-            projectile.transform.LookAt(PlayerController.Instance.transform.position);
-            // projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 500);
         }
 
         // 敌人子弹追踪
         public void TrackPlayer()
         {
-            var direction = (PlayerController.Instance.transform.position - projectile.transform.position).normalized;
-            if (direction != projectile.transform.forward)
-            {
-                projectile.transform.forward = direction;
-                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 500);
-            }
+            projectile.transform.LookAt(PlayerController.Instance.transform.position);
+            JudgePlatformForRb();
         }
 
-        // 玩家子弹追踪最近的敌人
+        // 玩家子弹追踪最近的敌人 移动端500 pc端50
         public void TrackEnemy()
         {
             var enemy = Physics2D.BoxCast(PlayerController.Instance.transform.position, PlayerController.Instance.size, 0.0f,
                  transform.right, 0.0f, LayerMask.GetMask("CanBeAttack"));
-            if (enemy)
+            if (enemy && enemy.collider.transform.parent.GetComponent<Enemy>().stateMachine.currentState != enemy.collider.transform.parent.GetComponent<Enemy>().dead)
             {
-                var enemyScript = enemy.collider.transform.parent.GetComponent<Enemy>();
-                if (enemyScript && enemyScript.stateMachine.currentState != enemyScript.dead)
-                {
-                    var enemyOffset = new Vector3(enemy.collider.transform.position.x, enemy.collider.transform.position.y + 0.5f, 0);
-                    var direction = (enemyOffset - projectile.transform.position).normalized;
-                    if (direction != projectile.transform.forward)
-                    {
-                        projectile.transform.forward = direction;
-                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
-                    }
-                }
-                else
-                {
-                    projectile.transform.forward = PlayerController.Instance.transform.right;
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
-                }
+                var enemyPosOffset = new Vector2(enemy.collider.transform.position.x, enemy.collider.transform.position.y + enemy.collider.bounds.size.y / 2);
+                projectile.transform.LookAt(enemyPosOffset);
+                JudgePlatformForRb();
+            }
+            else if (!isMouseCreate)
+            {
+                projectile.transform.forward = Vector2.up;
+                JudgePlatformForRb();
             }
             else
             {
-                projectile.transform.forward = PlayerController.Instance.transform.right;
-                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 300);
+                JudgePlatformForRb();
+            }
+        }
+
+        // 根据平台施加
+        private void JudgePlatformForRb()
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 500);
+            }
+            else
+            {
+                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 50);
             }
         }
 

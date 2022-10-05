@@ -70,7 +70,7 @@ public class PlayerAttackController : MonoBehaviour
     // 检测输入
     private void CheckInput()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             StartAttack();
         }
