@@ -1,4 +1,4 @@
-using EpicToonFX;
+ï»¿using EpicToonFX;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -32,15 +32,16 @@ public class InputManager : MonoBehaviour
             CheckSwitchLeft();
             CheckSwitchRight();
         }
+        JumpFix();
     }
 
-    #region Éä»÷
+    #region å°„å‡»
 
     private float lastFireTime;
     private float fireSpace = 0.2f;
     private bool isFireOn = false;
 
-    // ¼ì²âÉä»÷
+    // æ£€æµ‹å°„å‡»
     private void CheckFire()
     {
         if (gamepad.buttonWest.wasPressedThisFrame)
@@ -58,40 +59,62 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    #endregion Éä»÷
+    #endregion å°„å‡»
 
-    #region ÒÆ¶¯
+    #region ç§»åŠ¨
 
     public Vector2 movementInput { get; private set; }
-    public int inputX { get; private set; }
-    public int inputY { get; private set; }
+    public int xInput { get; private set; }
+    public int yInput { get; private set; }
 
     private void CheckMove()
     {
-        movementInput = gamepad.leftStick.ReadValue();
-        inputX = (int)(movementInput * Vector2.right).normalized.x;
-        inputY = (int)(movementInput * Vector2.up).normalized.y;
+        if (gamepad.leftStick != null)
+        {
+            movementInput = gamepad.leftStick.ReadValue();
+            xInput = (int)(movementInput * Vector2.right).normalized.x;
+            yInput = (int)(movementInput * Vector2.up).normalized.y;
+        }
+        if (keyboard.aKey.isPressed && !keyboard.dKey.isPressed)
+        {
+            xInput = -(int)keyboard.aKey.ReadValue();
+        }
+        if (!keyboard.aKey.isPressed && keyboard.dKey.isPressed)
+        {
+            xInput = (int)keyboard.dKey.ReadValue();
+        }
     }
 
-    #endregion ÒÆ¶¯
+    #endregion ç§»åŠ¨
 
-    #region ÌøÔ¾
+    #region è·³è·ƒ
+
+    public bool jumpInput;
+    private float jumpHoldTime = 0.2f;
+    private float jumpTime;
 
     public void CheckJump()
     {
-        if (gamepad.buttonSouth.wasPressedThisFrame)
+        if (gamepad.buttonSouth.wasPressedThisFrame || keyboard.kKey.wasPressedThisFrame || keyboard.spaceKey.wasPressedThisFrame)
         {
-            PlayerController.Instance.JumpButtonDown();
-        }
-        if (gamepad.buttonSouth.wasReleasedThisFrame)
-        {
-            PlayerController.Instance.JumpButtonUp();
+            jumpInput = true;
+            jumpTime = Time.time;
         }
     }
 
-    #endregion ÌøÔ¾
+    private void JumpFix()
+    {
+        if (Time.time >= jumpTime + jumpHoldTime)
+        {
+            jumpInput = false;
+        }
+    }
 
-    #region ÆÕÍ¨¹¥»÷
+    public void UseJumpInput() => jumpInput = false;
+
+    #endregion è·³è·ƒ
+
+    #region æ™®é€šæ”»å‡»
 
     public void CheckAttack()
     {
@@ -101,9 +124,9 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    #endregion ÆÕÍ¨¹¥»÷
+    #endregion æ™®é€šæ”»å‡»
 
-    #region ÉÁ±Ü
+    #region é—ªé¿
 
     public void CheckDodge()
     {
@@ -113,9 +136,9 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    #endregion ÉÁ±Ü
+    #endregion é—ªé¿
 
-    #region ×óÓÒÌØĞ§ÇĞ»»
+    #region å·¦å³ç‰¹æ•ˆåˆ‡æ¢
 
     public void CheckSwitchLeft()
     {
@@ -133,5 +156,5 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    #endregion ×óÓÒÌØĞ§ÇĞ»»
+    #endregion å·¦å³ç‰¹æ•ˆåˆ‡æ¢
 }

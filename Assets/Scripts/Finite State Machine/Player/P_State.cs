@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,7 @@ public class P_State
     protected string anmName;
     protected D_P_Base playerData;
     protected float startTime;
+    protected bool isAnimationDone;
 
     public P_State(P_StateMachine stateMachine, Player player, string anmName, D_P_Base playerData)
     {
@@ -21,6 +22,7 @@ public class P_State
     public virtual void Enter()
     {
         startTime = Time.time;
+        isAnimationDone = false;
         player.at.SetBool(anmName, true);
     }
 
@@ -36,4 +38,10 @@ public class P_State
     public virtual void FixedUpdate()
     {
     }
+
+    public virtual void StartAnimation()
+    {
+    }
+
+    public virtual void FinishAnimation() => isAnimationDone = true;
 }

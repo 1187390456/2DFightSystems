@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
     // 移动端检测
     private void CheckInputMobile()
     {
-        horizontalDirection = InputManager.Instance.inputX;
+        horizontalDirection = InputManager.Instance.xInput;
     }
 
     // 检测爬角状态

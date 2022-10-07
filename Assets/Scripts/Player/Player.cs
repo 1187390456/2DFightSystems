@@ -1,10 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
+    [Header("åœ°é¢æ£€æµ‹ç‚¹")] public Transform groundCheck;
+
+    [Header("ç©å®¶æ•°æ®")] public D_P_Base playerData;
+
     public P_StateMachine stateMachine = new P_StateMachine();
     public Rigidbody2D rb { get; private set; }
     public Animator at { get; private set; }
@@ -12,14 +16,17 @@ public class Player : MonoBehaviour
 
     public int facingDireciton { get; private set; }
 
-    #region ×´Ì¬ Óë Êı¾İ
+    #region çŠ¶æ€
 
-    public P_E_Idle idle { get; private set; }
-    public P_E_Move move { get; private set; }
+    public P_Idle idle { get; private set; }
+    public P_Move move { get; private set; }
+    public P_Jump jump { get; private set; }
+    public P_InAir inAir { get; private set; }
+    public P_Land land { get; private set; }
 
-    public D_P_Base playerData;
+    #endregion çŠ¶æ€
 
-    #endregion ×´Ì¬ Óë Êı¾İ
+    #region Unityå›è°ƒ
 
     private void Awake()
     {
@@ -27,8 +34,11 @@ public class Player : MonoBehaviour
         at = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
 
-        idle = new P_E_Idle(stateMachine, this, "idle", playerData);
-        move = new P_E_Move(stateMachine, this, "move", playerData);
+        idle = new P_Idle(stateMachine, this, "idle", playerData);
+        move = new P_Move(stateMachine, this, "move", playerData);
+        jump = new P_Jump(stateMachine, this, "inAir", playerData);
+        inAir = new P_InAir(stateMachine, this, "inAir", playerData);
+        land = new P_Land(stateMachine, this, "land", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -39,39 +49,69 @@ public class Player : MonoBehaviour
         stateMachine.currentState.Update();
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(groundCheck.position, playerData.groundCheckSize);
+    }
+
     private void FixedUpdate()
     {
         stateMachine.currentState.FixedUpdate();
     }
 
-    #region ÉèÖÃ
+    #endregion Unityå›è°ƒ
 
-    public void SetVelocity(float velocity)
-    {
-        rb.velocity = new Vector2(velocity, rb.velocity.y);
-    }
+    #region InputManager
 
-    public void Turn()
+    public int GetXInput() => InputManager.Instance.xInput;
+
+    public int GetYInput() => InputManager.Instance.yInput;
+
+    public bool GetJumpInput() => InputManager.Instance.jumpInput;
+
+    public void UseJumpInput() => InputManager.Instance.UseJumpInput();
+
+    #endregion InputManager
+
+    #region å›è°ƒå‡½æ•°
+
+    private void StartAnimation() => stateMachine.currentState.StartAnimation();
+
+    private void FinishAnimation() => stateMachine.currentState.FinishAnimation();
+
+    #endregion å›è°ƒå‡½æ•°
+
+    #region è®¾ç½®
+
+    public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity, rb.velocity.y);
+
+    public void SetVelocitY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
+
+    public void SetTurn()
     {
         facingDireciton *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
-    #endregion ÉèÖÃ
+    #endregion è®¾ç½®
 
-    #region ¼ì²â×´Ì¬
+    #region æ£€æµ‹çŠ¶æ€
 
     public void CheckTurn()
     {
-        if (facingDireciton == 1 && inputManager.inputX < 0)
+        if (facingDireciton == 1 && inputManager.xInput < 0)
         {
-            Turn();
+            SetTurn();
         }
-        else if (facingDireciton == -1 && inputManager.inputX > 0)
+        else if (facingDireciton == -1 && inputManager.xInput > 0)
         {
-            Turn();
+            SetTurn();
         }
     }
 
-    #endregion ¼ì²â×´Ì¬
+    public bool CheckGround() => Physics2D.BoxCast(groundCheck.position, playerData.groundCheckSize, 0.0f, transform.right, 0.0f, LayerMask.GetMask("Ground"));
+
+    public bool GroundDetected() => rb.velocity.y <= 0.01f && CheckGround();
+
+    #endregion æ£€æµ‹çŠ¶æ€
 }
