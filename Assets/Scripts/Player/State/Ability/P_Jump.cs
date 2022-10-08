@@ -15,8 +15,8 @@ public class P_Jump : P_Ability
     {
         base.Enter();
         player.SetVelocitY(playerData.jumpForce);
-        isAbilityDone = true;
         currentJumpCount--;
+        isAbilityDone = true;
     }
 
     public void ResetJumpCount() => currentJumpCount = playerData.jumpCount;

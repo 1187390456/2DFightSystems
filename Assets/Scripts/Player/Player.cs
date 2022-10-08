@@ -67,8 +67,6 @@ public class Player : MonoBehaviour
 
     public int GetYInput() => InputManager.Instance.yInput;
 
-    public bool GetJumpInput() => InputManager.Instance.jumpInput;
-
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
 
     #endregion InputManager
@@ -111,7 +109,9 @@ public class Player : MonoBehaviour
 
     public bool CheckGround() => Physics2D.BoxCast(groundCheck.position, playerData.groundCheckSize, 0.0f, transform.right, 0.0f, LayerMask.GetMask("Ground"));
 
-    public bool GroundDetected() => rb.velocity.y <= 0.01f && CheckGround();
+    public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
+
+    public bool JumpCondition() => InputManager.Instance.jumpInput && jump.ChechCanJump();
 
     #endregion 检测状态
 }

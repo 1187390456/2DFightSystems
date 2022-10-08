@@ -27,14 +27,15 @@ public class P_Ground : P_State
     public override void Update()
     {
         base.Update();
-        if (!player.GroundDetected())
-        {
-            stateMachine.ChangeState(player.inAir);
-        }
-        else if (player.GetJumpInput() && player.jump.ChechCanJump())
+
+        if (player.JumpCondition())
         {
             player.UseJumpInput();
             stateMachine.ChangeState(player.jump);
+        }
+        else if (!player.GroundCondition())
+        {
+            stateMachine.ChangeState(player.inAir);
         }
     }
 }

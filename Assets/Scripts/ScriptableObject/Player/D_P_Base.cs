@@ -10,4 +10,5 @@ public class D_P_Base : ScriptableObject
     [Header("移动速度")] public float moveSpeed = 10.0f;
     [Header("跳跃力度")] public float jumpForce = 16.0f;
     [Header("跳跃次数")] public int jumpCount = 3;
+    [Header("土狼时间")] public float graceTime = 0.5f;
 }

@@ -31,7 +31,7 @@ public class P_Ability : P_State
         base.Update();
         if (isAbilityDone)
         {
-            if (player.GroundDetected())
+            if (player.GroundCondition())
             {
                 stateMachine.ChangeState(player.idle);
             }
