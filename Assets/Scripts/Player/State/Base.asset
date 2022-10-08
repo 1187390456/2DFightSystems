@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckSize: {x: 0.55, y: 0.02}
   moveSpeed: 10
-  jumpForce: 20
-  jumpCount: 1
+  jumpForce: 24
+  jumpCount: 2
   graceTime: 0.5

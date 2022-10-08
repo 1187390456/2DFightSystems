@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class P_Jump : P_Ability
 {
-    public int currentJumpCount;
+    protected int currentJumpCount;
 
     public P_Jump(P_StateMachine stateMachine, Player player, string anmName, D_P_Base playerData) : base(stateMachine, player, anmName, playerData)
     {
@@ -15,11 +15,13 @@ public class P_Jump : P_Ability
     {
         base.Enter();
         player.SetVelocitY(playerData.jumpForce);
-        currentJumpCount--;
+        DecreaseJumpCount();
         isAbilityDone = true;
     }
 
     public void ResetJumpCount() => currentJumpCount = playerData.jumpCount;
 
     public bool ChechCanJump() => currentJumpCount > 0;
+
+    public void DecreaseJumpCount() => currentJumpCount--;
 }

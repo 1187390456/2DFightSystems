@@ -67,7 +67,11 @@ public class Player : MonoBehaviour
 
     public int GetYInput() => InputManager.Instance.yInput;
 
+    public bool GetJumpInputStop() => InputManager.Instance.jumpInputStop;
+
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
+
+    public void UseJumpInputStop() => InputManager.Instance.UseJumpInputStop();
 
     #endregion InputManager
 

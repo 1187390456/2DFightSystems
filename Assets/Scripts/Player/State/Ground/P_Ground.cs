@@ -35,6 +35,7 @@ public class P_Ground : P_State
         }
         else if (!player.GroundCondition())
         {
+            player.inAir.StartGraceTime();
             stateMachine.ChangeState(player.inAir);
         }
     }

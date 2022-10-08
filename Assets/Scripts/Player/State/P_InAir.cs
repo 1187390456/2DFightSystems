@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class P_InAir : P_State
 {
-    public bool isGraceTimeing; // 是否是土狼时间
+    protected bool isGraceTimeing; // 是否是土狼时间
 
     public P_InAir(P_StateMachine stateMachine, Player player, string anmName, D_P_Base playerData) : base(stateMachine, player, anmName, playerData)
     {
@@ -13,7 +13,6 @@ public class P_InAir : P_State
     public override void Enter()
     {
         base.Enter();
-        isGraceTimeing = true;
     }
 
     public override void Exit()
@@ -29,11 +28,9 @@ public class P_InAir : P_State
     public override void Update()
     {
         base.Update();
-        if (Time.time >= startTime + playerData.graceTime)
-        {
-            player.jump.currentJumpCount--;
-            isGraceTimeing = false;
-        }
+
+        CheckGraceTime();
+        CheckJumpInputStop();
 
         if (player.GroundCondition())
         {
@@ -52,4 +49,24 @@ public class P_InAir : P_State
             player.at.SetFloat("yVelocity", player.rb.velocity.y);
         }
     }
+
+    private void CheckGraceTime()
+    {
+        if (isGraceTimeing && Time.time >= startTime + playerData.graceTime)
+        {
+            player.jump.DecreaseJumpCount();
+            isGraceTimeing = false;
+        }
+    }
+
+    public void CheckJumpInputStop()
+    {
+        if (player.GetJumpInputStop())
+        {
+            player.UseJumpInputStop();
+            player.SetVelocitY(player.rb.velocity.y * playerData.jumpAirMultiplier);
+        }
+    }
+
+    public void StartGraceTime() => isGraceTimeing = true;
 }

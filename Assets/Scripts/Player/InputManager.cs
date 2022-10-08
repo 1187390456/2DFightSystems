@@ -90,6 +90,7 @@ public class InputManager : MonoBehaviour
     #region 跳跃
 
     public bool jumpInput;
+    public bool jumpInputStop;
     private float jumpHoldTime = 0.2f;
     private float jumpTime;
 
@@ -100,6 +101,10 @@ public class InputManager : MonoBehaviour
             jumpInput = true;
             jumpTime = Time.time;
         }
+        if (gamepad.buttonSouth.wasReleasedThisFrame || keyboard.kKey.wasReleasedThisFrame || keyboard.spaceKey.wasReleasedThisFrame)
+        {
+            jumpInputStop = true;
+        }
     }
 
     private void JumpFix()
@@ -109,6 +114,8 @@ public class InputManager : MonoBehaviour
             jumpInput = false;
         }
     }
+
+    public void UseJumpInputStop() => jumpInputStop = false;
 
     public void UseJumpInput() => jumpInput = false;
 
