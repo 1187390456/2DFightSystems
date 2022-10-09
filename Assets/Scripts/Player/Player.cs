@@ -6,6 +6,7 @@ using UnityEngine.Windows;
 public class Player : MonoBehaviour
 {
     [Header("地面检测点")] public Transform groundCheck;
+    [Header("墙壁检测点")] public Transform wallCheck;
 
     [Header("玩家数据")] public D_P_Base playerData;
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     public P_Jump jump { get; private set; }
     public P_InAir inAir { get; private set; }
     public P_Land land { get; private set; }
+    public P_Silde slide { get; private set; }
 
     #endregion 状态
 
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
         jump = new P_Jump(stateMachine, this, "inAir", playerData);
         inAir = new P_InAir(stateMachine, this, "inAir", playerData);
         land = new P_Land(stateMachine, this, "land", playerData);
+        slide = new P_Silde(stateMachine, this, "silde", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(groundCheck.position, playerData.groundCheckSize);
+        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + playerData.wallCheckDistance, wallCheck.position.y));
     }
 
     private void FixedUpdate()
@@ -112,6 +116,8 @@ public class Player : MonoBehaviour
     }
 
     public bool CheckGround() => Physics2D.BoxCast(groundCheck.position, playerData.groundCheckSize, 0.0f, transform.right, 0.0f, LayerMask.GetMask("Ground"));
+
+    public bool ChechWall() => Physics2D.Raycast(wallCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
 
     public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
 

@@ -41,6 +41,10 @@ public class P_InAir : P_State
             player.UseJumpInput();
             stateMachine.ChangeState(player.jump);
         }
+        else if (player.ChechWall() && player.GetXInput() == player.facingDireciton && player.rb.velocity.y < 0)
+        {
+            stateMachine.ChangeState(player.slide);
+        }
         else
         {
             player.SetVelocityX(playerData.moveSpeed * InputManager.Instance.xInput);

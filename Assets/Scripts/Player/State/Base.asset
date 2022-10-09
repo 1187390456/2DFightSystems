@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Base
   m_EditorClassIdentifier: 
   groundCheckSize: {x: 0.55, y: 0.02}
+  wallCheckDistance: 0.1
   moveSpeed: 10
   jumpForce: 24
   jumpCount: 2
   graceTime: 0.5
+  jumpAirMultiplier: 0.5
+  sildeSpeed: 3
