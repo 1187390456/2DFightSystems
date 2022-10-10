@@ -91,8 +91,23 @@ public class InputManager : MonoBehaviour
         if (gamepad.leftStick != null)
         {
             movementInput = gamepad.leftStick.ReadValue();
-            xInput = (int)(movementInput * Vector2.right).normalized.x;
-            yInput = (int)(movementInput * Vector2.up).normalized.y;
+            // 修复摇杆敏感度
+            if (Mathf.Abs(movementInput.x) > 0.5)
+            {
+                xInput = (int)(movementInput * Vector2.right).normalized.x;
+            }
+            else
+            {
+                xInput = 0;
+            }
+            if (Mathf.Abs(movementInput.y) > 0.5)
+            {
+                yInput = (int)(movementInput * Vector2.up).normalized.y;
+            }
+            else
+            {
+                yInput = 0;
+            }
         }
         if (keyboard.aKey.isPressed && !keyboard.dKey.isPressed)
         {
