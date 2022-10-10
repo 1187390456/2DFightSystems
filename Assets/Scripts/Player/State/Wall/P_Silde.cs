@@ -11,10 +11,13 @@ public class P_Silde : P_Wall
     public override void Update()
     {
         base.Update();
-        player.SetVelocitY(-playerData.sildeSpeed);
-        if (player.GetCatchInput())
+        if (player.GetCatchInput() && player.GetYInput() >= 0)
         {
             stateMachine.ChangeState(player.catchWall);
+        }
+        else
+        {
+            player.SetVelocitY(-playerData.sildeSpeed);
         }
     }
 }
