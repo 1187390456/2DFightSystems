@@ -16,4 +16,5 @@ public class D_P_Base : ScriptableObject
     [Header("跳跃空气动力乘数")] public float jumpAirMultiplier = 0.5f;
 
     [Header("滑墙速度")] public float sildeSpeed = 5.0f;
+    [Header("墙上爬行速度")] public float climbSpeed = 8.0f;
 }

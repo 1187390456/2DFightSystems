@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public P_InAir inAir { get; private set; }
     public P_Land land { get; private set; }
     public P_Silde slide { get; private set; }
+    public P_Catch catchWall { get; private set; }
+    public P_Climb climb { get; private set; }
 
     #endregion 状态
 
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
         inAir = new P_InAir(stateMachine, this, "inAir", playerData);
         land = new P_Land(stateMachine, this, "land", playerData);
         slide = new P_Silde(stateMachine, this, "silde", playerData);
+        catchWall = new P_Catch(stateMachine, this, "catch", playerData);
+        climb = new P_Climb(stateMachine, this, "climb", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -72,6 +76,8 @@ public class Player : MonoBehaviour
     public int GetYInput() => InputManager.Instance.yInput;
 
     public bool GetJumpInputStop() => InputManager.Instance.jumpInputStop;
+
+    public bool GetCatchInput() => InputManager.Instance.catchInput;
 
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
 

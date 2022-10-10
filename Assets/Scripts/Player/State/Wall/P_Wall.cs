@@ -36,7 +36,7 @@ public class P_Wall : P_State
     public override void Update()
     {
         base.Update();
-        if (player.GroundCondition())
+        if (player.GroundCondition() && !player.GetCatchInput())
         {
             if (player.GetXInput() != 0)
             {
@@ -47,7 +47,7 @@ public class P_Wall : P_State
                 stateMachine.ChangeState(player.idle);
             }
         }
-        else if (!player.ChechWall() || player.GetXInput() != player.facingDireciton)
+        else if (!player.ChechWall() || (player.GetXInput() != player.facingDireciton && !player.GetCatchInput()))
         {
             stateMachine.ChangeState(player.inAir);
         }

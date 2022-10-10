@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (gamepad != null)
+        if (gamepad != null || keyboard != null)
         {
             CheckFire();
             CheckMove();
@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
             CheckDodge();
             CheckSwitchLeft();
             CheckSwitchRight();
+            CheckCatch();
         }
         JumpFix();
     }
@@ -61,6 +62,24 @@ public class InputManager : MonoBehaviour
 
     #endregion 射击
 
+    #region 抓取
+
+    public bool catchInput;
+
+    private void CheckCatch()
+    {
+        if (keyboard.yKey.wasPressedThisFrame)
+        {
+            catchInput = true;
+        }
+        if (keyboard.yKey.wasReleasedThisFrame)
+        {
+            catchInput = false;
+        }
+    }
+
+    #endregion 抓取
+
     #region 移动
 
     public Vector2 movementInput { get; private set; }
@@ -82,6 +101,14 @@ public class InputManager : MonoBehaviour
         if (!keyboard.aKey.isPressed && keyboard.dKey.isPressed)
         {
             xInput = (int)keyboard.dKey.ReadValue();
+        }
+        if (keyboard.wKey.isPressed && !keyboard.sKey.isPressed)
+        {
+            yInput = (int)keyboard.wKey.ReadValue();
+        }
+        if (!keyboard.wKey.isPressed && keyboard.sKey.isPressed)
+        {
+            yInput = -(int)keyboard.sKey.ReadValue();
         }
     }
 

@@ -12,5 +12,9 @@ public class P_Silde : P_Wall
     {
         base.Update();
         player.SetVelocitY(-playerData.sildeSpeed);
+        if (player.GetCatchInput())
+        {
+            stateMachine.ChangeState(player.catchWall);
+        }
     }
 }

@@ -38,5 +38,9 @@ public class P_Ground : P_State
             player.inAir.StartGraceTime();
             stateMachine.ChangeState(player.inAir);
         }
+        else if (player.ChechWall() && player.GetCatchInput())
+        {
+            stateMachine.ChangeState(player.catchWall);
+        }
     }
 }
