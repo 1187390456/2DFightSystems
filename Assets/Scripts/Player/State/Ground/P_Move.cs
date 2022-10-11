@@ -26,12 +26,15 @@ public class P_Move : P_Ground
     public override void Update()
     {
         base.Update();
-        player.SetVelocityX(playerData.moveSpeed * player.GetXInput());
-        player.CheckTurn();
 
-        if (player.GetXInput() == 0)
+        if (!isExit)
         {
-            stateMachine.ChangeState(player.idle);
+            player.SetVelocityX(playerData.moveSpeed * player.GetXInput());
+            player.CheckTurn();
+            if (player.GetXInput() == 0)
+            {
+                stateMachine.ChangeState(player.idle);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ public class P_Wall : P_State
     public override void Enter()
     {
         base.Enter();
+        player.jump.ResetJumpCount();
     }
 
     public override void Exit()
@@ -36,7 +37,11 @@ public class P_Wall : P_State
     public override void Update()
     {
         base.Update();
-        if (player.GroundCondition() && !player.GetCatchInput())
+        if (player.JumpCondition())
+        {
+            stateMachine.ChangeState(player.wallJump);
+        }
+        else if (player.GroundCondition() && !player.GetCatchInput())
         {
             if (player.GetXInput() != 0)
             {

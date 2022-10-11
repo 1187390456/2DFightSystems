@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class P_InAir : P_State
 {
-    protected bool isGraceTimeing; // 是否是土狼时间
+    protected bool isGraceTiming;
+
+    protected bool isWallJumpGraceTiming;
+
+    protected float startWallJumpGraceTime;
 
     public P_InAir(P_StateMachine stateMachine, Player player, string anmName, D_P_Base playerData) : base(stateMachine, player, anmName, playerData)
     {
@@ -30,15 +35,20 @@ public class P_InAir : P_State
         base.Update();
 
         CheckGraceTime();
+        CheckWallJumpGraceTime();
         CheckJumpInputStop();
 
         if (player.GroundCondition())
         {
             stateMachine.ChangeState(player.land);
         }
+        else if ((player.ChechWall() || player.CheckBackWall() || isWallJumpGraceTiming) && player.JumpCondition())
+        {
+            UseWallJumpGraceTime();
+            stateMachine.ChangeState(player.wallJump);
+        }
         else if (player.JumpCondition())
         {
-            player.UseJumpInput();
             stateMachine.ChangeState(player.jump);
         }
         else if (player.ChechWall() && player.GetCatchInput())
@@ -53,19 +63,35 @@ public class P_InAir : P_State
         {
             player.SetVelocityX(playerData.moveSpeed * InputManager.Instance.xInput);
             player.CheckTurn();
-            player.at.SetFloat("xInput", Mathf.Abs(player.GetXInput()));
-            player.at.SetFloat("yVelocity", player.rb.velocity.y);
         }
     }
 
+    public void StartGraceTime() => isGraceTiming = true;
+
     private void CheckGraceTime()
     {
-        if (isGraceTimeing && Time.time >= startTime + playerData.graceTime)
+        if (isGraceTiming && Time.time >= startTime + playerData.graceTime)
         {
             player.jump.DecreaseJumpCount();
-            isGraceTimeing = false;
+            isGraceTiming = false;
         }
     }
+
+    public void StartWallJumpGraceTime()
+    {
+        isWallJumpGraceTiming = true;
+        startWallJumpGraceTime = Time.time;
+    }
+
+    private void CheckWallJumpGraceTime()
+    {
+        if (isWallJumpGraceTiming && Time.time >= startWallJumpGraceTime + playerData.wallJumpGraceTime)
+        {
+            isWallJumpGraceTiming = false;
+        }
+    }
+
+    private void UseWallJumpGraceTime() => isWallJumpGraceTiming = false;
 
     public void CheckJumpInputStop()
     {
@@ -75,6 +101,4 @@ public class P_InAir : P_State
             player.SetVelocitY(player.rb.velocity.y * playerData.jumpAirMultiplier);
         }
     }
-
-    public void StartGraceTime() => isGraceTimeing = true;
 }

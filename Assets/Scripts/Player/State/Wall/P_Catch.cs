@@ -19,16 +19,25 @@ public class P_Catch : P_Wall
     public override void Update()
     {
         base.Update();
+
+        if (!isExit)
+        {
+            HoldPos();
+            if (player.GetYInput() > 0)
+            {
+                stateMachine.ChangeState(player.climb);
+            }
+            else if (player.GetYInput() < 0 || !player.GetCatchInput())
+            {
+                stateMachine.ChangeState(player.slide);
+            }
+        }
+    }
+
+    private void HoldPos()
+    {
         player.transform.position = startPos;
         player.SetVelocityX(0.0f);
         player.SetVelocitY(0.0f);
-        if (player.GetYInput() > 0)
-        {
-            stateMachine.ChangeState(player.climb);
-        }
-        else if (player.GetYInput() < 0 || !player.GetCatchInput())
-        {
-            stateMachine.ChangeState(player.slide);
-        }
     }
 }

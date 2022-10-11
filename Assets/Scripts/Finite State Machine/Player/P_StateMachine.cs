@@ -1,4 +1,4 @@
-public class P_StateMachine
+﻿public class P_StateMachine
 {
     public P_State currentState;
     public P_State lastState;

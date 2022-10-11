@@ -27,8 +27,19 @@ public class Player : MonoBehaviour
     public P_Silde slide { get; private set; }
     public P_Catch catchWall { get; private set; }
     public P_Climb climb { get; private set; }
+    public P_WallJump wallJump { get; private set; }
 
     #endregion 状态
+
+    #region 其他
+
+    private void UpdateAnimation()
+    {
+        at.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+        at.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    #endregion 其他
 
     #region Unity回调
 
@@ -46,6 +57,7 @@ public class Player : MonoBehaviour
         slide = new P_Silde(stateMachine, this, "silde", playerData);
         catchWall = new P_Catch(stateMachine, this, "catch", playerData);
         climb = new P_Climb(stateMachine, this, "climb", playerData);
+        wallJump = new P_WallJump(stateMachine, this, "inAir", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -54,12 +66,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.Update();
+        UpdateAnimation();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(groundCheck.position, playerData.groundCheckSize);
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + playerData.wallCheckDistance, wallCheck.position.y));
+        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x - playerData.wallCheckDistance, wallCheck.position.y));
     }
 
     private void FixedUpdate()
@@ -99,6 +113,12 @@ public class Player : MonoBehaviour
 
     public void SetVelocitY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
 
+    public void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
+    }
+
     public void SetTurn()
     {
         facingDireciton *= -1;
@@ -124,6 +144,8 @@ public class Player : MonoBehaviour
     public bool CheckGround() => Physics2D.BoxCast(groundCheck.position, playerData.groundCheckSize, 0.0f, transform.right, 0.0f, LayerMask.GetMask("Ground"));
 
     public bool ChechWall() => Physics2D.Raycast(wallCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
+
+    public bool CheckBackWall() => Physics2D.Raycast(wallCheck.position, -transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
 
     public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
 

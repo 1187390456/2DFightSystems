@@ -11,17 +11,20 @@ public class P_Climb : P_Wall
     public override void Update()
     {
         base.Update();
-        if (player.GetYInput() > 0)
+        if (!isExit)
         {
-            player.SetVelocitY(playerData.climbSpeed);
-        }
-        else if (player.GetYInput() == 0)
-        {
-            stateMachine.ChangeState(player.catchWall);
-        }
-        else
-        {
-            stateMachine.ChangeState(player.slide);
+            if (player.GetYInput() > 0)
+            {
+                player.SetVelocitY(playerData.climbSpeed);
+            }
+            else if (player.GetYInput() == 0)
+            {
+                stateMachine.ChangeState(player.catchWall);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.slide);
+            }
         }
     }
 }

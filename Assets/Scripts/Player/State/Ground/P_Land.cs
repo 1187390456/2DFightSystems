@@ -27,13 +27,16 @@ public class P_Land : P_Ground
     {
         base.Update();
 
-        if (isAnimationDone)
+        if (!isExit)
         {
-            stateMachine.ChangeState(player.idle);
-        }
-        else if (player.GetXInput() != 0)
-        {
-            stateMachine.ChangeState(player.move);
+            if (isAnimationDone)
+            {
+                stateMachine.ChangeState(player.idle);
+            }
+            else if (player.GetXInput() != 0)
+            {
+                stateMachine.ChangeState(player.move);
+            }
         }
     }
 }

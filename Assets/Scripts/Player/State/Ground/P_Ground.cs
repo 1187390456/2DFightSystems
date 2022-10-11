@@ -17,6 +17,7 @@ public class P_Ground : P_State
     public override void Exit()
     {
         base.Exit();
+        player.inAir.StartGraceTime();
     }
 
     public override void FixedUpdate()
@@ -30,12 +31,10 @@ public class P_Ground : P_State
 
         if (player.JumpCondition())
         {
-            player.UseJumpInput();
             stateMachine.ChangeState(player.jump);
         }
         else if (!player.GroundCondition())
         {
-            player.inAir.StartGraceTime();
             stateMachine.ChangeState(player.inAir);
         }
         else if (player.ChechWall() && player.GetCatchInput())

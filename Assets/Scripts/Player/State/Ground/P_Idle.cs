@@ -26,7 +26,7 @@ public class P_Idle : P_Ground
     public override void Update()
     {
         base.Update();
-        if (player.GetXInput() != 0)
+        if (player.GetXInput() != 0 && !isExit)
         {
             stateMachine.ChangeState(player.move);
         }
