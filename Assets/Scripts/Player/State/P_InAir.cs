@@ -72,11 +72,11 @@ public class P_InAir : P_State
     {
         if (isGraceTiming && Time.time >= startTime + playerData.graceTime)
         {
-            player.jump.DecreaseJumpCount();
             isGraceTiming = false;
         }
         if (player.ChechWall())
         {
+            player.jump.ResetJumpCount();
             StartWallJumpGraceTime();
         }
     }

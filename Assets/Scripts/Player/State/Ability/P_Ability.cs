@@ -29,6 +29,7 @@ public class P_Ability : P_State
     public override void Update()
     {
         base.Update();
+
         if (isAbilityDone)
         {
             if (player.GroundCondition())

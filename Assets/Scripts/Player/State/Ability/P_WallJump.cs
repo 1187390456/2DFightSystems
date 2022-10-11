@@ -15,7 +15,6 @@ public class P_WallJump : P_Ability
         base.Enter();
         JudgeJumpDirection(player.ChechWall());
         player.UseJumpInput();
-        player.jump.ResetJumpCount();
         player.jump.DecreaseJumpCount();
         player.SetVelocity(playerData.wallJumpForce, playerData.wallJumpAngle, wallJumpDirection);
     }
