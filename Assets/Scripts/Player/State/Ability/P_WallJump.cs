@@ -23,7 +23,6 @@ public class P_WallJump : P_Ability
     public override void Exit()
     {
         base.Exit();
-        player.inAir.StartWallJumpGraceTime();
     }
 
     public void JudgeJumpDirection(bool isTouchWall)
