@@ -138,12 +138,12 @@ public class InputManager : MonoBehaviour
 
     public void CheckJump()
     {
-        if (gamepad.buttonSouth.wasPressedThisFrame || keyboard.kKey.wasPressedThisFrame || keyboard.spaceKey.wasPressedThisFrame)
+        if (keyboard.kKey.wasPressedThisFrame || keyboard.spaceKey.wasPressedThisFrame)
         {
             jumpInput = true;
             jumpTime = Time.time;
         }
-        if (gamepad.buttonSouth.wasReleasedThisFrame || keyboard.kKey.wasReleasedThisFrame || keyboard.spaceKey.wasReleasedThisFrame)
+        if (keyboard.kKey.wasReleasedThisFrame || keyboard.spaceKey.wasReleasedThisFrame)
         {
             jumpInputStop = true;
         }
