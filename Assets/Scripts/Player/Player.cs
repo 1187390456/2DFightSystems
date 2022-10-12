@@ -182,5 +182,7 @@ public class Player : MonoBehaviour
 
     public bool JumpCondition() => InputManager.Instance.jumpInput && jump.ChechCanJump();
 
+    public bool LedgeCondition() => !CheckLedge() && ChechWall() && !CheckGround();
+
     #endregion 检测状态
 }

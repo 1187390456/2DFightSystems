@@ -11,6 +11,7 @@ public class P_Land : P_Ground
     public override void Enter()
     {
         base.Enter();
+        player.SetVelocityZero();
     }
 
     public override void Exit()

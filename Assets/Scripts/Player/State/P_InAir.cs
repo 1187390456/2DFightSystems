@@ -38,7 +38,7 @@ public class P_InAir : P_State
         CheckWallJumpGraceTime();
         CheckJumpInputStop();
 
-        if (!player.CheckLedge() && player.ChechWall())
+        if (player.LedgeCondition())
         {
             stateMachine.ChangeState(player.ledge);
         }

@@ -37,7 +37,7 @@ public class P_Ground : P_State
         {
             stateMachine.ChangeState(player.inAir);
         }
-        else if (player.ChechWall() && player.GetCatchInput())
+        else if (player.ChechWall() && player.GetCatchInput() && player.CheckLedge()) //  头部检测到才能抓
         {
             stateMachine.ChangeState(player.catchWall);
         }

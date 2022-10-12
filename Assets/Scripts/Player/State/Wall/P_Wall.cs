@@ -37,7 +37,7 @@ public class P_Wall : P_State
     public override void Update()
     {
         base.Update();
-        if (!player.CheckLedge() && player.ChechWall())
+        if (player.LedgeCondition())
         {
             stateMachine.ChangeState(player.ledge);
         }
