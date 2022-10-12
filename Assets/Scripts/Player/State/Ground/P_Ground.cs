@@ -33,13 +33,13 @@ public class P_Ground : P_State
         {
             stateMachine.ChangeState(player.jump);
         }
+        else if (player.CatchWallConditon())
+        {
+            stateMachine.ChangeState(player.catchWall);
+        }
         else if (!player.GroundCondition())
         {
             stateMachine.ChangeState(player.inAir);
-        }
-        else if (player.ChechWall() && player.GetCatchInput() && player.CheckLedge()) //  头部检测到才能抓
-        {
-            stateMachine.ChangeState(player.catchWall);
         }
     }
 }

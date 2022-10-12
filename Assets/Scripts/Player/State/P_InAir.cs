@@ -46,7 +46,7 @@ public class P_InAir : P_State
         {
             stateMachine.ChangeState(player.land);
         }
-        else if ((player.ChechWall() || player.CheckBackWall() || isWallJumpGraceTiming) && player.JumpCondition())
+        else if (WallJumpCondition())
         {
             UseWallJumpGraceTime();
             stateMachine.ChangeState(player.wallJump);
@@ -55,11 +55,11 @@ public class P_InAir : P_State
         {
             stateMachine.ChangeState(player.jump);
         }
-        else if (player.ChechWall() && player.GetCatchInput())
+        else if (player.CatchWallConditon())
         {
             stateMachine.ChangeState(player.catchWall);
         }
-        else if (player.ChechWall() && player.GetXInput() == player.facingDireciton && player.rb.velocity.y < 0)
+        else if (SildeCondition())
         {
             stateMachine.ChangeState(player.slide);
         }
@@ -69,6 +69,10 @@ public class P_InAir : P_State
             player.CheckTurn();
         }
     }
+
+    private bool SildeCondition() => player.ChechWall() && player.GetXInput() == player.facingDireciton && player.rb.velocity.y < 0;
+
+    private bool WallJumpCondition() => (player.ChechWall() || player.CheckBackWall() || isWallJumpGraceTiming) && player.JumpCondition();
 
     public void StartGraceTime() => isGraceTiming = true;
 

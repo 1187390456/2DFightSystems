@@ -184,5 +184,7 @@ public class Player : MonoBehaviour
 
     public bool LedgeCondition() => !CheckLedge() && ChechWall() && !CheckGround();
 
+    public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge(); //  头部检测到才能抓
+
     #endregion 检测状态
 }

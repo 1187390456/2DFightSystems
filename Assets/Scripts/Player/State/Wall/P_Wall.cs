@@ -56,9 +56,11 @@ public class P_Wall : P_State
                 stateMachine.ChangeState(player.idle);
             }
         }
-        else if (!player.ChechWall() || (player.GetXInput() != player.facingDireciton && !player.GetCatchInput()))
+        else if (InAirCondition())
         {
             stateMachine.ChangeState(player.inAir);
         }
     }
+
+    private bool InAirCondition() => !player.ChechWall() || (player.GetXInput() != player.facingDireciton && !player.GetCatchInput());
 }
