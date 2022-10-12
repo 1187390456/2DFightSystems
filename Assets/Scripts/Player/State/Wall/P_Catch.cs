@@ -22,7 +22,7 @@ public class P_Catch : P_Wall
 
         if (!isExit)
         {
-            HoldPos();
+            player.SetHoldStatic(startPos);
             if (player.GetYInput() > 0)
             {
                 stateMachine.ChangeState(player.climb);
@@ -32,12 +32,5 @@ public class P_Catch : P_Wall
                 stateMachine.ChangeState(player.slide);
             }
         }
-    }
-
-    private void HoldPos()
-    {
-        player.transform.position = startPos;
-        player.SetVelocityX(0.0f);
-        player.SetVelocitY(0.0f);
     }
 }

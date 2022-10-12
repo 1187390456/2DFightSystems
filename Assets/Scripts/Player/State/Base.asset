@@ -25,3 +25,5 @@ MonoBehaviour:
   wallJumpAngle: {x: 1, y: 1.6}
   wallJumpTime: 0.4
   wallJumpGraceTime: 0.6
+  startOffset: {x: 0.4, y: 0.9}
+  endOffset: {x: 0, y: 0}
