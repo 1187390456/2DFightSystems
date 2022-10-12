@@ -62,6 +62,10 @@ public class P_Ledge : P_State
             {
                 stateMachine.ChangeState(player.inAir);
             }
+            else if (player.JumpCondition())
+            {
+                stateMachine.ChangeState(player.wallJump);
+            }
         }
     }
 }
