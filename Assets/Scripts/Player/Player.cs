@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
-using UnityEditorInternal;
-using UnityEngine;
-using UnityEngine.Windows;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
