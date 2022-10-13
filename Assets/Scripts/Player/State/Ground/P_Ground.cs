@@ -29,7 +29,11 @@ public class P_Ground : P_State
     {
         base.Update();
 
-        if (player.JumpCondition())
+        if (player.DashCondition())
+        {
+            stateMachine.ChangeState(player.dash);
+        }
+        else if (player.JumpCondition())
         {
             stateMachine.ChangeState(player.jump);
         }

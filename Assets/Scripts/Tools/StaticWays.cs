@@ -56,4 +56,38 @@ public static class StaticWays
                 break;
         }
     }
+
+    /// <summary>
+    /// 传入一个角度判断是在那个象限
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <returns></returns>
+    public static int JudgeQuadrant(float angle)
+    {
+        if (angle >= 0.0f && angle <= 90.0f) return 1;
+        else if (angle >= 90.0f && angle <= 180.0f) return 2;
+        else if (angle >= -90.0f && angle <= 0.0f) return 4;
+        else if (angle >= 180.0f && angle <= 270.0f) return 3;
+        else if (angle >= -180.0f && angle <= -90.0f) return 3;
+        else if (angle >= 270.0f && angle <= 360.0f) return 4;
+        return -1;
+    }
+
+    /// <summary>
+    /// 传入一个角度判断是在哪个方向
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <returns></returns>
+    public static Vector2 JudgeDirection(float angle)
+    {
+        if (angle == 0.0f || angle == 360.0f) return new Vector2(1.0f, 0.0f);
+        else if (angle == 45.0f) return new Vector2(1.0f, 1.0f);
+        else if (angle == 90.0f) return new Vector2(0.0f, 1.0f);
+        else if (angle == 135.0f) return new Vector2(-1.0f, 1.0f);
+        else if (angle == 180.0f) return new Vector2(-1.0f, 0.0f);
+        else if (angle == 225.0f) return new Vector2(-1.0f, -1.0f);
+        else if (angle == 270.0f) return new Vector2(0.0f, -1.0f);
+        else if (angle == 315.0f) return new Vector2(1.0f, -1.0f);
+        return Vector2.zero;
+    }
 }

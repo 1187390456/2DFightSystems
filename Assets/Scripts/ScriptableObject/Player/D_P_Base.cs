@@ -22,4 +22,13 @@ public class D_P_Base : ScriptableObject
     [Header("跳墙角度")] public Vector2 wallJumpAngle = new Vector2(1.0f, 1.6f);
     [Header("跳墙时间")] public float wallJumpTime = 0.4f;
     [Header("跳墙土狼时间")] public float wallJumpGraceTime = 0.6f;
+
+    [Header("冲刺冷却时间")] public float dashCoolDown = 1.0f;
+    [Header("冲刺动力感质量")] public float dashDrag = 10.0f;
+    [Header("冲刺速度")] public float dashSpeed = 30.0f;
+    [Header("冲刺时间")] public float dashTime = 0.2f;
+    [Header("冲刺动力乘数")] public float dashMultiplier = 0.2f;
+    [Header("最大按住时间")] public float maxHoldTime = 2.0f;
+    [Header("冲刺时间刻度")] public float dashTimeScale = 0.25f;
+    [Header("冲刺残影生成间距")] public float afterImageSpace = 0.5f;
 }

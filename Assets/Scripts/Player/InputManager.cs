@@ -28,12 +28,13 @@ public class InputManager : MonoBehaviour
             CheckMove();
             CheckJump();
             CheckAttack();
-            CheckDodge();
+            CheckDash();
             CheckSwitchLeft();
             CheckSwitchRight();
             CheckCatch();
         }
         JumpFix();
+        DashFix();
     }
 
     #region 射击
@@ -151,7 +152,7 @@ public class InputManager : MonoBehaviour
 
     private void JumpFix()
     {
-        if (Time.time >= jumpTime + jumpHoldTime)
+        if (jumpInput && Time.time >= jumpTime + jumpHoldTime)
         {
             jumpInput = false;
         }
@@ -177,11 +178,32 @@ public class InputManager : MonoBehaviour
 
     #region 闪避
 
-    public void CheckDodge()
+    public bool dashInput;
+    public float dashStartTime;
+    public float dashHoldTime = 0.2f;
+    public bool dashInputStop;
+
+    public void CheckDash()
     {
-        if (gamepad.buttonNorth.wasPressedThisFrame)
+        if (keyboard.lKey.wasPressedThisFrame)
         {
-            PlayerController.Instance.Dash();
+            dashStartTime = Time.time;
+            dashInput = true;
+            dashInputStop = false;
+        }
+        if (keyboard.lKey.wasReleasedThisFrame)
+        {
+            dashInputStop = true;
+        }
+    }
+
+    public void UseDashInput() => dashInput = false;
+
+    public void DashFix()
+    {
+        if (dashInput && Time.time >= dashStartTime + dashHoldTime)
+        {
+            dashInput = false;
         }
     }
 

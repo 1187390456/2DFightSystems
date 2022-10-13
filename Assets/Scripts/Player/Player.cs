@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -9,7 +10,6 @@ public class Player : MonoBehaviour
     [Header("地面检测点")] public Transform groundCheck;
     [Header("墙壁检测点")] public Transform wallCheck;
     [Header("边缘检测点")] public Transform ledgeCheck;
-
     [Header("玩家数据")] public D_P_Base playerData;
 
     public P_StateMachine stateMachine = new P_StateMachine();
@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public InputManager inputManager { get; private set; }
 
     public int facingDireciton { get; private set; }
+
+    public GameObject dashIndicator { get; private set; }
     [HideInInspector] public Vector2 workSpace;
 
     #region 状态
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
     public P_WallJump wallJump { get; private set; }
 
     public P_Ledge ledge { get; private set; }
+    public P_Dash dash { get; private set; }
 
     #endregion 状态
 
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
         at = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
         inputManager = GetComponent<InputManager>();
+        dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
 
         idle = new P_Idle(stateMachine, this, "idle", playerData);
         move = new P_Move(stateMachine, this, "move", playerData);
@@ -78,9 +82,15 @@ public class Player : MonoBehaviour
         climb = new P_Climb(stateMachine, this, "climb", playerData);
         wallJump = new P_WallJump(stateMachine, this, "inAir", playerData);
         ledge = new P_Ledge(stateMachine, this, "ledgeState", playerData);
+        dash = new P_Dash(stateMachine, this, "inAir", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
+    }
+
+    private void Start()
+    {
+        dashIndicator.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -114,6 +124,14 @@ public class Player : MonoBehaviour
 
     public bool GetCatchInput() => InputManager.Instance.catchInput;
 
+    public bool GetDashInput() => InputManager.Instance.dashInput;
+
+    public bool GetDashInputStop() => InputManager.Instance.dashInputStop;
+
+    public Vector2 GetDashDirtion() => InputManager.Instance.movementInput;
+
+    public void UseDashInput() => InputManager.Instance.UseDashInput();
+
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
 
     public void UseJumpInputStop() => InputManager.Instance.UseJumpInputStop();
@@ -139,6 +157,8 @@ public class Player : MonoBehaviour
         angle.Normalize();
         rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
     }
+
+    public void SetVelocity(float velocity, Vector2 direction) => rb.velocity = direction * velocity;
 
     public void SetVelocityZero() => rb.velocity = Vector2.zero;
 
@@ -179,6 +199,8 @@ public class Player : MonoBehaviour
     public bool CheckLedge() => Physics2D.Raycast(ledgeCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
 
     public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
+
+    public bool DashCondition() => dash.CheckCanDash() && GetDashInput();
 
     public bool JumpCondition() => InputManager.Instance.jumpInput && jump.ChechCanJump();
 

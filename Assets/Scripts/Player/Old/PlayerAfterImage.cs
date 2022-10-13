@@ -6,9 +6,9 @@ public class PlayerAfterImage : MonoBehaviour
     private SpriteRenderer playerSR; // 玩家精灵渲染
     private Transform player; // 玩家
     private float alpha; // 透明度
-    private float startAlpha = 0.8f; // 初始透明度
-    private float alphaDecay = 2.0f; // 透明度固定帧率
-    private float existTime = 0.99f; // 残影存在时间
+    private float startAlpha = 0.6f; // 初始透明度
+    private float alphaDecay = 5.0f; // 透明度固定帧率
+    private float existTime = 0.2f; // 残影存在时间
     private float activeTime; // 残影激活时间
     private Color color; // 残影颜色声明
 
