@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2845b6d6a1c6ec74aa23a47d572c5089, type: 3}
   m_Name: Base
   m_EditorClassIdentifier: 
-  groundCheckSize: {x: 0.55, y: 0.02}
+  groundCheckSize: {x: 0.55, y: 0.04}
   wallCheckDistance: 0.4
+  topCheckRadius: 0.54
   moveSpeed: 10
   jumpForce: 30
   jumpCount: 2
@@ -33,3 +34,4 @@ MonoBehaviour:
   maxHoldTime: 4
   dashTimeScale: 0.1
   afterImageSpace: 0.5
+  crouchMoveSpeed: 4

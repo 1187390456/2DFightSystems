@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     [Header("地面检测点")] public Transform groundCheck;
     [Header("墙壁检测点")] public Transform wallCheck;
     [Header("边缘检测点")] public Transform ledgeCheck;
+    [Header("顶部检测点")] public Transform topCheck;
     [Header("玩家数据")] public D_P_Base playerData;
 
     public P_StateMachine stateMachine = new P_StateMachine();
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
     public int facingDireciton { get; private set; }
 
     public GameObject dashIndicator { get; private set; }
+
+    public Vector2 normalColliderSize { get; private set; }
+    public Vector2 normalColliderOffset { get; private set; }
+
     [HideInInspector] public Vector2 workSpace;
 
     #region 状态
@@ -32,6 +37,8 @@ public class Player : MonoBehaviour
 
     public P_Ledge ledge { get; private set; }
     public P_Dash dash { get; private set; }
+    public P_CrouchIdle crouchIdle { get; private set; }
+    public P_CrouchMove crouchMove { get; private set; }
 
     #endregion 状态
 
@@ -65,6 +72,9 @@ public class Player : MonoBehaviour
         at = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
         inputManager = GetComponent<InputManager>();
+        normalColliderSize = collider2d.size;
+        normalColliderOffset = collider2d.offset;
+
         dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
 
         idle = new P_Idle(stateMachine, this, "idle", playerData);
@@ -78,6 +88,8 @@ public class Player : MonoBehaviour
         wallJump = new P_WallJump(stateMachine, this, "inAir", playerData);
         ledge = new P_Ledge(stateMachine, this, "ledgeState", playerData);
         dash = new P_Dash(stateMachine, this, "inAir", playerData);
+        crouchIdle = new P_CrouchIdle(stateMachine, this, "crouchIdle", playerData);
+        crouchMove = new P_CrouchMove(stateMachine, this, "crouchMove", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -100,6 +112,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + playerData.wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x - playerData.wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(ledgeCheck.position, new Vector2(ledgeCheck.position.x + playerData.wallCheckDistance, ledgeCheck.position.y));
+        Gizmos.DrawWireSphere(topCheck.position, playerData.topCheckRadius);
     }
 
     private void FixedUpdate()
@@ -157,6 +170,8 @@ public class Player : MonoBehaviour
 
     public void SetVelocityZero() => rb.velocity = Vector2.zero;
 
+    public void SetPlayerMove(float velocity) => SetVelocityX(velocity * GetXInput());
+
     public void SetTurn()
     {
         facingDireciton *= -1;
@@ -167,6 +182,23 @@ public class Player : MonoBehaviour
     {
         transform.position = holdPos;
         SetVelocityZero();
+    }
+
+    public void SetHalfCollider()
+    {
+        var offset = collider2d.offset;
+        var size = collider2d.size;
+        workSpace.Set(size.x, size.y / 2);
+
+        offset.y += (size.y / 2 - size.y) / 2;
+        collider2d.size = workSpace;
+        collider2d.offset = offset;
+    }
+
+    public void SetResumeCollider()
+    {
+        collider2d.size = normalColliderSize;
+        collider2d.offset = normalColliderOffset;
     }
 
     #endregion 设置
@@ -193,9 +225,11 @@ public class Player : MonoBehaviour
 
     public bool CheckLedge() => Physics2D.Raycast(ledgeCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
 
+    public bool CheckTop() => Physics2D.OverlapCircle(topCheck.position, playerData.topCheckRadius, LayerMask.GetMask("Ground"));
+
     public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
 
-    public bool DashCondition() => dash.CheckCanDash() && GetDashInput();
+    public bool DashCondition() => dash.CheckCanDash() && GetDashInput() && stateMachine.currentState != crouchIdle && stateMachine.currentState != crouchMove;
 
     public bool JumpCondition() => InputManager.Instance.jumpInput && jump.ChechCanJump();
 

@@ -7,6 +7,7 @@ public class D_P_Base : ScriptableObject
 {
     [Header("地面检测盒大小")] public Vector2 groundCheckSize = new Vector2(0.55f, 0.02f);
     [Header("墙壁检测长度")] public float wallCheckDistance = 0.4f;
+    [Header("头部检测半径")] public float topCheckRadius = 0.54f;
 
     [Header("移动速度")] public float moveSpeed = 10.0f;
 
@@ -31,4 +32,6 @@ public class D_P_Base : ScriptableObject
     [Header("最大按住时间")] public float maxHoldTime = 2.0f;
     [Header("冲刺时间刻度")] public float dashTimeScale = 0.25f;
     [Header("冲刺残影生成间距")] public float afterImageSpace = 0.5f;
+
+    [Header("蹲伏移动速度")] public float crouchMoveSpeed = 4.0f;
 }

@@ -26,9 +26,16 @@ public class P_Idle : P_Ground
     public override void Update()
     {
         base.Update();
-        if (player.GetXInput() != 0 && !isExit)
+        if (!isExit)
         {
-            stateMachine.ChangeState(player.move);
+            if (player.GetXInput() != 0)
+            {
+                stateMachine.ChangeState(player.move);
+            }
+            else if (player.GetYInput() == -1)
+            {
+                stateMachine.ChangeState(player.crouchIdle);
+            }
         }
     }
 }

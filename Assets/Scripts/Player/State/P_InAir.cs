@@ -66,7 +66,7 @@ public class P_InAir : P_State
         }
         else
         {
-            player.SetVelocityX(playerData.moveSpeed * InputManager.Instance.xInput);
+            player.SetPlayerMove(playerData.moveSpeed);
             player.CheckTurn();
         }
     }

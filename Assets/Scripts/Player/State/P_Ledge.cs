@@ -7,6 +7,10 @@ public class P_Ledge : P_State
     protected bool isCatch;
     protected bool isClimb;
     protected bool isLedgeDone;
+    protected bool isHeadTouch;
+    protected float offset = 0.015f;
+    protected float fixOffset = 0.2215f; // 修复结束位置的高度 防止过度到空中
+    protected Vector2 cornerPos;
     protected Vector2 startPos;
     protected Vector2 endPos;
     protected Vector2 workSpace;
@@ -18,10 +22,9 @@ public class P_Ledge : P_State
     public override void Enter()
     {
         base.Enter();
-        // 原理 利用角位置减去或加上 角色碰撞边界的一半 就是起始位置与结束位置
-        var cornerPos = player.ComputedCornerPos();
-        var boundSize = player.collider2d.bounds.size;
-        workSpace.Set(boundSize.x / 2 * player.facingDireciton, boundSize.y / 2);
+        cornerPos = player.ComputedCornerPos();
+        CheckWillTouchHead();
+        workSpace.Set(player.normalColliderSize.x / 2 * player.facingDireciton, player.normalColliderSize.y / 2 + fixOffset);
         startPos = cornerPos - workSpace;
         endPos = cornerPos + workSpace;
         isLedgeDone = false;
@@ -47,9 +50,17 @@ public class P_Ledge : P_State
         {
             isClimb = false;
             isCatch = false;
-            player.at.SetBool("ledgeClimb", false);
             player.transform.position = endPos;
-            stateMachine.ChangeState(player.idle);
+            player.at.SetBool("ledgeClimb", false);
+
+            if (isHeadTouch)
+            {
+                stateMachine.ChangeState(player.crouchIdle);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.idle);
+            }
         }
         else if (isCatch && !isClimb)
         {
@@ -67,5 +78,11 @@ public class P_Ledge : P_State
                 stateMachine.ChangeState(player.wallJump);
             }
         }
+    }
+
+    private void CheckWillTouchHead()
+    {
+        isHeadTouch = Physics2D.Raycast(cornerPos + Vector2.up * offset + Vector2.right * player.facingDireciton * offset, Vector2.up, player.normalColliderSize.y, LayerMask.GetMask("Ground"));
+        player.at.SetBool("isHeadTouch", isHeadTouch);
     }
 }
