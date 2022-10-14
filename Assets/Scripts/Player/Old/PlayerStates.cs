@@ -14,7 +14,6 @@ public class PlayerStates : MonoBehaviour
     {
         Instance = this;
         currentHealth = maxHealth;
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     // 减少生命

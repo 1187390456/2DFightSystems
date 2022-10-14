@@ -10,7 +10,7 @@ using EpicToonFX;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField][Header("重生时间")] private float rebirthTime;
+    [SerializeField] [Header("重生时间")] private float rebirthTime;
     public static GameManager Instance { get; private set; } // 单例
     private float startRebirthTime; //  开始重生时间
     private bool canRebirth; // 是否可以重生
@@ -34,17 +34,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckRebirthState();
-        RenderUI();
-    }
-
-    // UI渲染
-    private void RenderUI()
-    {
-        if (PlayerStates.Instance)
-        {
-            var text = GameObject.Find("Health").GetComponent<Text>();
-            text.text = $"当前生命值为 : {PlayerStates.Instance.currentHealth}";
-        }
     }
 
     // 检查重生状态
@@ -55,10 +44,13 @@ public class GameManager : MonoBehaviour
             canRebirth = false;
             var player = Instantiate(playerRes, GetRandPos(), Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
-            PlayerStates.Instance.currentHealth = 999.0f;
-            PlayerStates.Instance.isDead = false;
-            playerCM.Follow = player.transform.Find("Player");
-            PlayerStates.Instance.SetBtn(true);
+            var playerScript = player.GetComponent<Player>();
+            playerScript.currentHealth = playerScript.playerData.maxHealth;
+            if (Application.platform != RuntimePlatform.Android)
+            {
+                playerScript.SetCanvasBtnState(true);
+            }
+            playerCM.Follow = player.transform;
         }
     }
 

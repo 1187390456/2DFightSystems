@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     [Header("地面检测点")] public Transform groundCheck;
     [Header("墙壁检测点")] public Transform wallCheck;
     [Header("边缘检测点")] public Transform ledgeCheck;
@@ -12,6 +14,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public BoxCollider2D collider2d { get; private set; }
     public Animator at { get; private set; }
+    public GameObject canvas { get; private set; }
+    public Text health { get; private set; }
     public InputManager inputManager { get; private set; }
 
     public int facingDireciton { get; private set; }
@@ -20,7 +24,9 @@ public class Player : MonoBehaviour
 
     public Vector2 normalColliderSize { get; private set; }
     public Vector2 normalColliderOffset { get; private set; }
+    public int knockBackDirection { get; private set; }
 
+    [HideInInspector] public float currentHealth;
     [HideInInspector] public Vector2 workSpace;
 
     #region 状态
@@ -39,10 +45,28 @@ public class Player : MonoBehaviour
     public P_Dash dash { get; private set; }
     public P_CrouchIdle crouchIdle { get; private set; }
     public P_CrouchMove crouchMove { get; private set; }
+    public P_KnockBack knockBack { get; private set; }
+    public P_Dead dead { get; private set; }
 
     #endregion 状态
 
     #region 其他
+
+    public void AcceptAttackDamage(AttackInfo attackInfo)
+    {
+        currentHealth -= attackInfo.damage;
+        health.text = $"当前生命值为 : {currentHealth}";
+
+        if (currentHealth <= 0)
+        {
+            stateMachine.ChangeState(dead);
+        }
+        else
+        {
+            knockBackDirection = CheckKnockBackDirection(attackInfo.damageSourcePosX);
+            stateMachine.ChangeState(knockBack);
+        }
+    }
 
     private void UpdateAnimation()
     {
@@ -50,7 +74,6 @@ public class Player : MonoBehaviour
         at.SetFloat("yVelocity", rb.velocity.y);
     }
 
-    // 计算边缘角位置
     public Vector2 ComputedCornerPos()
     {
         var xhit = Physics2D.Raycast(wallCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
@@ -68,10 +91,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         at = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
         inputManager = GetComponent<InputManager>();
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        health = canvas.transform.Find("Health").GetComponent<Text>();
         normalColliderSize = collider2d.size;
         normalColliderOffset = collider2d.offset;
 
@@ -90,6 +116,8 @@ public class Player : MonoBehaviour
         dash = new P_Dash(stateMachine, this, "inAir", playerData);
         crouchIdle = new P_CrouchIdle(stateMachine, this, "crouchIdle", playerData);
         crouchMove = new P_CrouchMove(stateMachine, this, "crouchMove", playerData);
+        knockBack = new P_KnockBack(stateMachine, this, "kncokBack", playerData);
+        dead = new P_Dead(stateMachine, this, "dead", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -98,6 +126,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         dashIndicator.gameObject.SetActive(false);
+        currentHealth = playerData.maxHealth;
+        health.text = $"当前生命值为 : {currentHealth}";
     }
 
     private void Update()
@@ -201,6 +231,13 @@ public class Player : MonoBehaviour
         collider2d.offset = normalColliderOffset;
     }
 
+    public void SetCanvasBtnState(bool value)
+    {
+        canvas.transform.Find("button").gameObject.SetActive(value);
+        canvas.transform.Find("Switch").gameObject.SetActive(value);
+        canvas.transform.Find("move").gameObject.SetActive(value);
+    }
+
     #endregion 设置
 
     #region 检测状态
@@ -236,6 +273,8 @@ public class Player : MonoBehaviour
     public bool LedgeCondition() => !CheckLedge() && ChechWall() && !CheckGround();
 
     public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge(); //  头部检测到才能抓
+
+    public int CheckKnockBackDirection(float direction) => direction < transform.position.x ? 1 : -1;
 
     #endregion 检测状态
 }

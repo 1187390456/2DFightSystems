@@ -35,3 +35,7 @@ MonoBehaviour:
   dashTimeScale: 0.1
   afterImageSpace: 0.5
   crouchMoveSpeed: 4
+  knockbackTime: 0.2
+  knockbackSpeed: 20
+  knockbackAngle: {x: 1, y: 1}
+  maxHealth: 10

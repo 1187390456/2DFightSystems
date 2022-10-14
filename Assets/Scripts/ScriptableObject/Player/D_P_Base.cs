@@ -34,4 +34,10 @@ public class D_P_Base : ScriptableObject
     [Header("冲刺残影生成间距")] public float afterImageSpace = 0.5f;
 
     [Header("蹲伏移动速度")] public float crouchMoveSpeed = 4.0f;
+
+    [Header("击退时间")] public float knockbackTime = 0.2f;
+    [Header("击退速度")] public float knockbackSpeed = 20.0f;
+    [Header("击退角度")] public Vector2 knockbackAngle = new Vector2(1.0f, 1.0f);
+
+    [Header("最大生命值")] public float maxHealth = 10;
 }
