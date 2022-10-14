@@ -11,11 +11,12 @@ public class P_Dead : P_State
     public override void Enter()
     {
         base.Enter();
-        if (Application.platform != RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android)
         {
             player.SetCanvasBtnState(false);
         }
-        player.gameObject.SetActive(false);
+        player.SetDeadTimer(true);
+        player.SetDestory();
         EffectBox.Instance.Chunk(player.transform.position);
         EffectBox.Instance.Blood(player.transform.position);
         GameManager.Instance.Rebirth();

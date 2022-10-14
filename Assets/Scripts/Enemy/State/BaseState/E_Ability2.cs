@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class E_Ability2 : E_RemoteAttack
 {
@@ -49,11 +49,11 @@ public class E_Ability2 : E_RemoteAttack
     public override void Update()
     {
         base.Update();
-        if (PlayerController.Instance.transform.position.x < entity.aliveGobj.transform.position.x && entity.facingDirection == 1)
+        if (Player.Instance.transform.position.x < entity.aliveGobj.transform.position.x && entity.facingDirection == 1)
         {
             entity.Turn();
         }
-        else if (PlayerController.Instance.transform.position.x > entity.aliveGobj.transform.position.x && entity.facingDirection == -1)
+        else if (Player.Instance.transform.position.x > entity.aliveGobj.transform.position.x && entity.facingDirection == -1)
         {
             entity.Turn();
         }

@@ -38,4 +38,5 @@ MonoBehaviour:
   knockbackTime: 0.2
   knockbackSpeed: 20
   knockbackAngle: {x: 1, y: 1}
-  maxHealth: 10
+  maxHealth: 999
+  fireSize: {x: 33.7, y: 17}

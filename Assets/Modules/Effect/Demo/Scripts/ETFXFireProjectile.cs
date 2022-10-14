@@ -12,11 +12,8 @@ namespace EpicToonFX
         public int currentProjectile = 0;
         public float speed = 1000;
 
-        // private RaycastHit hit;
-
         private GameObject projectile;
-        public int enemyEffectIndex = 0; // 特效索引
-        private bool isMouseCreate = false;
+        public int enemyEffectIndex = 0;
 
         private void Awake()
         {
@@ -25,34 +22,6 @@ namespace EpicToonFX
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                nextEffect();
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                nextEffect();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                previousEffect();
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                previousEffect();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject()) //On left mouse down-click
-            {
-                CreatePlayerProjectileWay1();
-            }
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                CreatePlayerProjectileWay2();
-            }
-            Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
             if (projectile && projectile.name == "EnemyCreate")
             {
                 TrackPlayer();
@@ -63,64 +32,44 @@ namespace EpicToonFX
             }
         }
 
-        // 玩家生成子弹方法1 鼠标点击
-        public void CreatePlayerProjectileWay1()
+        // 玩家生成子弹方法
+        public void CreatePlayerProjectileWay()
         {
-            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.parent.right);
-            if (hit)
-            {
-                projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
-                projectile.name = "PlayerCreate";// 玩家生成标识
-                isMouseCreate = true;
-                projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
-                projectile.transform.LookAt(hit.point);
-            }
-        }
-
-        // 玩家生成子弹方法2
-        public void CreatePlayerProjectileWay2()
-        {
-            projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
-            projectile.name = "PlayerCreate";// 玩家生成标识
-            isMouseCreate = false;
-            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+            projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity);
+            projectile.name = "PlayerCreate";
+            projectile.GetComponent<Rigidbody>().useGravity = false;
         }
 
         // 敌人生成子弹方法
         public void CreateEnemyProjectile(Transform trans)
         {
-            projectile = Instantiate(projectiles[enemyEffectIndex], trans.position, Quaternion.identity) as GameObject;
-            projectile.name = "EnemyCreate";// 敌人生成标识
-            projectile.GetComponent<Rigidbody>().useGravity = false; // 去除重力
+            projectile = Instantiate(projectiles[enemyEffectIndex], trans.position, Quaternion.identity);
+            projectile.name = "EnemyCreate";
+            projectile.GetComponent<Rigidbody>().useGravity = false;
         }
 
         // 敌人子弹追踪
         public void TrackPlayer()
         {
-            projectile.transform.LookAt(PlayerController.Instance.transform.position);
+            projectile.transform.LookAt(Player.Instance.transform.position);
             JudgePlatformForRb();
         }
 
         // 玩家子弹追踪最近的敌人 移动端500 pc端50
         public void TrackEnemy()
         {
-            var enemy = Physics2D.BoxCast(PlayerController.Instance.transform.position, PlayerController.Instance.size, 0.0f,
+            var enemy = Physics2D.BoxCast(Player.Instance.transform.position, Player.Instance.playerData.fireSize, 0.0f,
                  transform.right, 0.0f, LayerMask.GetMask("CanBeAttack"));
             if (enemy && enemy.collider.transform.parent.GetComponent<Enemy>().stateMachine.currentState != enemy.collider.transform.parent.GetComponent<Enemy>().dead)
             {
                 var enemyPosOffset = new Vector2(enemy.collider.transform.position.x, enemy.collider.transform.position.y + enemy.collider.bounds.size.y / 2);
                 projectile.transform.LookAt(enemyPosOffset);
-                JudgePlatformForRb();
-            }
-            else if (!isMouseCreate)
-            {
-                projectile.transform.forward = Vector2.up;
-                JudgePlatformForRb();
             }
             else
             {
-                JudgePlatformForRb();
+                projectile.transform.LookAt(Vector2.up);
             }
+            JudgePlatformForRb();
         }
 
         // 根据平台施加

@@ -58,7 +58,7 @@ public class ETFXProjectileScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 7)
                 {
-                    PlayerAttackController.Instance.TransportAttackInfoToEnemy(hit, transform);
+                    Player.Instance.TransportAttackInfoToEnemy(hit, transform);
                 }
                 CreateEffect();
             }
@@ -101,7 +101,7 @@ public class ETFXProjectileScript : MonoBehaviour
     // 敌人发射 检测条件
     private bool HitConditionByEnemy()
     {
-        return !PlayerController.Instance.isDashing;
+        return Player.Instance.stateMachine.currentState != Player.Instance.dash;
     }
 
     // 生成特效

@@ -26,11 +26,11 @@ public class D_P_Base : ScriptableObject
 
     [Header("冲刺冷却时间")] public float dashCoolDown = 1.0f;
     [Header("冲刺动力感质量")] public float dashDrag = 10.0f;
-    [Header("冲刺速度")] public float dashSpeed = 30.0f;
+    [Header("冲刺速度")] public float dashSpeed = 50.0f;
     [Header("冲刺时间")] public float dashTime = 0.2f;
     [Header("冲刺动力乘数")] public float dashMultiplier = 0.2f;
-    [Header("最大按住时间")] public float maxHoldTime = 2.0f;
-    [Header("冲刺时间刻度")] public float dashTimeScale = 0.25f;
+    [Header("最大按住时间")] public float maxHoldTime = 4.0f;
+    [Header("冲刺时间刻度")] public float dashTimeScale = 0.1f;
     [Header("冲刺残影生成间距")] public float afterImageSpace = 0.5f;
 
     [Header("蹲伏移动速度")] public float crouchMoveSpeed = 4.0f;
@@ -39,5 +39,7 @@ public class D_P_Base : ScriptableObject
     [Header("击退速度")] public float knockbackSpeed = 20.0f;
     [Header("击退角度")] public Vector2 knockbackAngle = new Vector2(1.0f, 1.0f);
 
-    [Header("最大生命值")] public float maxHealth = 10;
+    [Header("最大生命值")] public float maxHealth = 999;
+
+    [Header("自动射击检测范围")] public Vector2 fireSize = new Vector2(33.7f, 17.0f);
 }

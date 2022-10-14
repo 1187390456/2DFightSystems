@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     private CinemachineVirtualCamera playerCM; // 玩家虚拟摄像机
     private Vector2 size; // 初始重生点
     private BoxCollider2D randomRang; // 重生碰撞(确定重生范围)
-    public TilemapCollider2D tileMap2D; // 地图碰撞(修改复合碰撞)
+    private GameObject rebirthPos;
+    [HideInInspector] public TilemapCollider2D tileMap2D; // 地图碰撞(修改复合碰撞)
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
         randomRang = GameObject.Find("RebirthRang").GetComponent<BoxCollider2D>();
         tileMap2D = GameObject.Find("Map").GetComponent<TilemapCollider2D>();
         size = randomRang.bounds.extents;
+
+        rebirthPos = transform.Find("RebirthPos").gameObject;
     }
 
     private void Update()
@@ -42,11 +45,12 @@ public class GameManager : MonoBehaviour
         if (canRebirth && Time.time >= startRebirthTime + rebirthTime)
         {
             canRebirth = false;
-            var player = Instantiate(playerRes, GetRandPos(), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+            var player = Instantiate(playerRes, rebirthPos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
             var playerScript = player.GetComponent<Player>();
             playerScript.currentHealth = playerScript.playerData.maxHealth;
-            if (Application.platform != RuntimePlatform.Android)
+            playerScript.SetDeadTimer(false);
+            if (Application.platform == RuntimePlatform.Android)
             {
                 playerScript.SetCanvasBtnState(true);
             }

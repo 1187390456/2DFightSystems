@@ -43,19 +43,18 @@ public class InputManager : MonoBehaviour
     private float fireSpace = 0.2f;
     private bool isFireOn = false;
 
-    // 检测射击
     private void CheckFire()
     {
-        if (gamepad.buttonWest.wasPressedThisFrame)
+        if (keyboard.jKey.wasPressedThisFrame)
         {
             isFireOn = !isFireOn;
         }
 
-        if (isFireOn && !PlayerStates.Instance.isDead)
+        if (isFireOn && Player.Instance.stateMachine.currentState != Player.Instance.dead)
         {
             if (Time.time >= lastFireTime + fireSpace)
             {
-                ETFXFireProjectile.Instance.CreatePlayerProjectileWay2();
+                ETFXFireProjectile.Instance.CreatePlayerProjectileWay();
                 lastFireTime = Time.time;
             }
         }
@@ -213,7 +212,7 @@ public class InputManager : MonoBehaviour
 
     public void CheckSwitchLeft()
     {
-        if (gamepad.dpad.left.wasPressedThisFrame)
+        if (keyboard.qKey.wasPressedThisFrame)
         {
             ETFXFireProjectile.Instance.previousEffect();
         }
@@ -221,7 +220,7 @@ public class InputManager : MonoBehaviour
 
     public void CheckSwitchRight()
     {
-        if (gamepad.dpad.right.wasPressedThisFrame)
+        if (keyboard.eKey.wasPressedThisFrame)
         {
             ETFXFireProjectile.Instance.nextEffect();
         }

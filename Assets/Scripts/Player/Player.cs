@@ -14,8 +14,15 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public BoxCollider2D collider2d { get; private set; }
     public Animator at { get; private set; }
+
+    #region UI
+
     public GameObject canvas { get; private set; }
     public Text health { get; private set; }
+    public GameObject deadTimer { get; private set; }
+
+    #endregion UI
+
     public InputManager inputManager { get; private set; }
 
     public int facingDireciton { get; private set; }
@@ -51,6 +58,16 @@ public class Player : MonoBehaviour
     #endregion 状态
 
     #region 其他
+
+    public void TransportAttackInfoToEnemy(RaycastHit2D objs, Transform trans)
+    {
+        AttackInfo attackInfo = new AttackInfo()
+        {
+            damage = 10.0f,
+            damageSourcePosX = trans.position.x
+        };
+        objs.transform.parent.SendMessage("AcceptPlayerDamage", attackInfo);
+    }
 
     public void AcceptAttackDamage(AttackInfo attackInfo)
     {
@@ -98,6 +115,7 @@ public class Player : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         health = canvas.transform.Find("Health").GetComponent<Text>();
+        deadTimer = canvas.transform.Find("DeadTimer").gameObject;
         normalColliderSize = collider2d.size;
         normalColliderOffset = collider2d.offset;
 
@@ -126,8 +144,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         dashIndicator.gameObject.SetActive(false);
+        SetDeadTimer(false);
         currentHealth = playerData.maxHealth;
         health.text = $"当前生命值为 : {currentHealth}";
+        CheckEnvironment();
     }
 
     private void Update()
@@ -186,6 +206,8 @@ public class Player : MonoBehaviour
 
     #region 设置
 
+    public void SetDestory() => Destroy(gameObject);
+
     public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity, rb.velocity.y);
 
     public void SetVelocitY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
@@ -238,6 +260,8 @@ public class Player : MonoBehaviour
         canvas.transform.Find("move").gameObject.SetActive(value);
     }
 
+    public void SetDeadTimer(bool value) => deadTimer.gameObject.SetActive(value);
+
     #endregion 设置
 
     #region 检测状态
@@ -275,6 +299,18 @@ public class Player : MonoBehaviour
     public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge(); //  头部检测到才能抓
 
     public int CheckKnockBackDirection(float direction) => direction < transform.position.x ? 1 : -1;
+
+    public void CheckEnvironment()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            SetCanvasBtnState(true);
+        }
+        else
+        {
+            SetCanvasBtnState(false);
+        }
+    }
 
     #endregion 检测状态
 }
