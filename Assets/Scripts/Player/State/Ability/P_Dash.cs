@@ -5,19 +5,17 @@ using UnityEngine;
 public class P_Dash : P_Ability
 {
     protected bool canDash = true;
-    protected float lastDashTime;
     protected bool isHolding;
+    protected float lastDashTime;
+    protected float angle;
     protected Vector2 dashDirection;
     protected Vector2 lastAfterImagePos;
 
     #region 移动端
 
-    protected float angle;
-
     private void AndriodDash()
     {
         dashDirection = Vector2Int.RoundToInt(player.GetDashDirtion().normalized);
-        Debug.Log(dashDirection);
         if (dashDirection != Vector2.zero)
         {
             dashDirection.Normalize();
@@ -33,7 +31,6 @@ public class P_Dash : P_Ability
     protected float lastRotTime;
     protected float rotSpace = 0.2f;
     protected float rotCount = 1;
-    protected float pcAngle;
 
     private void PcDash()
     {
@@ -41,10 +38,10 @@ public class P_Dash : P_Ability
         {
             if (rotCount == 8) rotCount = 0;
             lastRotTime = Time.unscaledTime;
-            pcAngle = 45 * rotCount;
-            var dir = Quaternion.AngleAxis(pcAngle, Vector3.forward);
+            var dir = Quaternion.AngleAxis(45 * rotCount, Vector3.forward);
             player.dashIndicator.transform.rotation = dir;
-            dashDirection = StaticWays.JudgeDirection(pcAngle + 45.0f).normalized;
+            angle = 45.0f * rotCount + 45.0f;
+            dashDirection = StaticWays.JudgeDirection(angle).normalized;
             rotCount++;
         }
     }
@@ -109,7 +106,7 @@ public class P_Dash : P_Ability
                 CheckShouldCreateAfterImage();
                 if (Time.time >= startTime + playerData.dashTime)
                 {
-                    CheckEnvironment();
+                    player.rb.drag = 0.0f;
                     isAbilityDone = true;
                 }
             }
@@ -123,27 +120,17 @@ public class P_Dash : P_Ability
         startTime = Time.time;
         player.rb.drag = playerData.dashDrag;
         player.SetVelocity(playerData.dashSpeed, dashDirection);
+        CheckTurn();
         CheckShouldCreateAfterImage();
     }
 
-    private void CheckEnvironment()
+    private void CheckTurn()
     {
-        int quadrant;
-
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            quadrant = StaticWays.JudgeQuadrant(angle);
-        }
-        else
-        {
-            quadrant = StaticWays.JudgeQuadrant(pcAngle + 45.0f);
-        }
-        if (TurnCondition(quadrant))
+        player.dashIndicator.SetActive(false);
+        if (TurnCondition(StaticWays.JudgeQuadrant(angle)))
         {
             player.SetTurn();
         }
-        player.rb.drag = 0.0f;
-        player.dashIndicator.SetActive(false);
     }
 
     private bool TurnCondition(int quadrant) => (player.facingDireciton == 1 && (quadrant == 2 || quadrant == 3)) || (player.facingDireciton == -1 && (quadrant == 1 || quadrant == 4));

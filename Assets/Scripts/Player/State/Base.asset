@@ -30,6 +30,6 @@ MonoBehaviour:
   dashSpeed: 50
   dashTime: 0.2
   dashMultiplier: 0.2
-  maxHoldTime: 2
-  dashTimeScale: 0.25
+  maxHoldTime: 4
+  dashTimeScale: 0.1
   afterImageSpace: 0.5
