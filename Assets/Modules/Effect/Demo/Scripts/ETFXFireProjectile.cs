@@ -67,7 +67,7 @@ namespace EpicToonFX
             }
             else
             {
-                projectile.transform.LookAt(Vector2.up);
+                projectile.transform.LookAt(Player.Instance.transform.right);
             }
             JudgePlatformForRb();
         }

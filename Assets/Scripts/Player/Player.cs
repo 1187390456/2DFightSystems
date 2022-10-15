@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
         dash = new P_Dash(stateMachine, this, "inAir", playerData);
         crouchIdle = new P_CrouchIdle(stateMachine, this, "crouchIdle", playerData);
         crouchMove = new P_CrouchMove(stateMachine, this, "crouchMove", playerData);
-        knockBack = new P_KnockBack(stateMachine, this, "kncokBack", playerData);
+        knockBack = new P_KnockBack(stateMachine, this, "knockBack", playerData);
         dead = new P_Dead(stateMachine, this, "dead", playerData);
         stateMachine.Init(idle);
 
