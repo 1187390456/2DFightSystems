@@ -15,6 +15,9 @@ public class ETFXProjectileScript : MonoBehaviour
 
     private RaycastHit2D hit;
 
+    private float startTime;
+    private float maxAliveTime = 10.0f;
+
     private void Start()
     {
         projectileParticle = Instantiate(projectileParticle, transform.position, transform.rotation) as GameObject;
@@ -23,6 +26,14 @@ public class ETFXProjectileScript : MonoBehaviour
         {
             muzzleParticle = Instantiate(muzzleParticle, transform.position, transform.rotation) as GameObject;
             Destroy(muzzleParticle, 1.5f); // 2nd parameter is lifetime of effect in seconds
+        }
+        startTime = Time.time;
+    }
+    private void Update()
+    {
+        if (Time.time >= startTime + maxAliveTime)
+        {
+            Destroy(gameObject);
         }
     }
 
