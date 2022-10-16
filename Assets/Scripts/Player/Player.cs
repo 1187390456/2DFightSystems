@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public BoxCollider2D collider2d { get; private set; }
     public Animator at { get; private set; }
+    public WeaponInventory weaponInventory { get; private set; }
 
     #region UI
 
@@ -119,6 +120,7 @@ public class Player : MonoBehaviour
         at = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
         inputManager = GetComponent<InputManager>();
+        weaponInventory = GetComponent<WeaponInventory>();
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         health = canvas.transform.Find("Health").GetComponent<Text>();
         deadTimer = canvas.transform.Find("DeadTimer").gameObject;
@@ -151,6 +153,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        firstAttack.SetWeapon(weaponInventory.weapons[(int)AttackInput.first]);
         dashIndicator.gameObject.SetActive(false);
         SetDeadTimer(false);
         currentHealth = playerData.maxHealth;
