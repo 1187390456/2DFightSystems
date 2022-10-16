@@ -81,7 +81,10 @@ public class Player : MonoBehaviour
         else
         {
             knockBackDirection = CheckKnockBackDirection(attackInfo.damageSourcePosX);
-            stateMachine.ChangeState(knockBack);
+            if (stateMachine.currentState != knockBack)
+            {
+                stateMachine.ChangeState(knockBack);
+            }
         }
     }
 

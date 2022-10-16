@@ -21,14 +21,4 @@ public class P_Dead : P_State
         EffectBox.Instance.Blood(player.transform.position);
         GameManager.Instance.Rebirth();
     }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    public override void Update()
-    {
-        base.Update();
-    }
 }

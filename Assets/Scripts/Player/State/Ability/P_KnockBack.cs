@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_KnockBack : P_State
+public class P_KnockBack : P_Ability
 {
     protected float startKnockbackTime;
 
@@ -23,7 +23,7 @@ public class P_KnockBack : P_State
         if (Time.time >= startKnockbackTime + playerData.knockbackTime)
         {
             player.SetVelocityX(0.0f);
-            stateMachine.ChangeState(player.inAir);
+            isAbilityDone = true;
         }
     }
 }
