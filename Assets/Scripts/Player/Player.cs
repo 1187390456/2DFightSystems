@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        firstAttack.SetWeapon(weaponInventory.weapons[(int)AttackInput.first]);
+        firstAttack.SetWeapon(weaponInventory.weapons[0]);
         dashIndicator.gameObject.SetActive(false);
         SetDeadTimer(false);
         currentHealth = playerData.maxHealth;

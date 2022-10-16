@@ -9,4 +9,12 @@ public class WeaponAnimationTools : MonoBehaviour
     private void Awake() => weapon = GetComponentInParent<Weapon>();
 
     public void AnimationDone() => weapon.AnimationDone();
+
+    public void MoveStart() => weapon.MoveStart();
+
+    public void MoveStop() => weapon.MoveStop();
+
+    public void TurnOff() => weapon.TurnOff();
+
+    public void TurnOn() => weapon.TurnOn();
 }
