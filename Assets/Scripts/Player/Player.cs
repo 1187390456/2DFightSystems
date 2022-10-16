@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
     public P_KnockBack knockBack { get; private set; }
     public P_Dead dead { get; private set; }
 
+    public P_Attack firstAttack { get; private set; }
+    public P_Attack secondAttack { get; private set; }
+
     #endregion 状态
 
     #region 其他
@@ -139,6 +142,8 @@ public class Player : MonoBehaviour
         crouchMove = new P_CrouchMove(stateMachine, this, "crouchMove", playerData);
         knockBack = new P_KnockBack(stateMachine, this, "knockBack", playerData);
         dead = new P_Dead(stateMachine, this, "dead", playerData);
+        firstAttack = new P_Attack(stateMachine, this, "attack", playerData);
+        secondAttack = new P_Attack(stateMachine, this, "attack", playerData);
         stateMachine.Init(idle);
 
         facingDireciton = 1;
@@ -299,7 +304,11 @@ public class Player : MonoBehaviour
 
     public bool LedgeCondition() => !CheckLedge() && ChechWall() && !CheckGround();
 
-    public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge(); //  头部检测到才能抓
+    public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge();
+
+    public bool FirstAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.first] && !CheckTop();
+
+    public bool SecondAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.second] && !CheckTop();
 
     public int CheckKnockBackDirection(float direction) => direction < transform.position.x ? 1 : -1;
 

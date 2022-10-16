@@ -28,8 +28,15 @@ public class P_Ground : P_State
     public override void Update()
     {
         base.Update();
-
-        if (player.DashCondition())
+        if (player.FirstAttackCondition())
+        {
+            stateMachine.ChangeState(player.firstAttack);
+        }
+        else if (player.SecondAttackCondition())
+        {
+            stateMachine.ChangeState(player.secondAttack);
+        }
+        else if (player.DashCondition())
         {
             stateMachine.ChangeState(player.dash);
         }

@@ -35,7 +35,15 @@ public class P_InAir : P_State
         CheckWallJumpGraceTime();
         CheckJumpInputStop();
 
-        if (player.DashCondition())
+        if (player.FirstAttackCondition())
+        {
+            stateMachine.ChangeState(player.firstAttack);
+        }
+        else if (player.SecondAttackCondition())
+        {
+            stateMachine.ChangeState(player.secondAttack);
+        }
+        else if (player.DashCondition())
         {
             stateMachine.ChangeState(player.dash);
         }

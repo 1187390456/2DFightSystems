@@ -1,6 +1,8 @@
 ﻿using EpicToonFX;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,7 +47,7 @@ public class InputManager : MonoBehaviour
 
     private void CheckFire()
     {
-        if (keyboard.jKey.wasPressedThisFrame)
+        if (keyboard.nKey.wasPressedThisFrame)
         {
             isFireOn = !isFireOn;
         }
@@ -91,23 +93,8 @@ public class InputManager : MonoBehaviour
         if (gamepad.leftStick != null)
         {
             movementInput = gamepad.leftStick.ReadValue();
-            // 修复摇杆敏感度
-            if (Mathf.Abs(movementInput.x) > 0.5)
-            {
-                xInput = (int)(movementInput * Vector2.right).normalized.x;
-            }
-            else
-            {
-                xInput = 0;
-            }
-            if (Mathf.Abs(movementInput.y) > 0.5)
-            {
-                yInput = (int)(movementInput * Vector2.up).normalized.y;
-            }
-            else
-            {
-                yInput = 0;
-            }
+            xInput = Mathf.RoundToInt(movementInput.x);
+            yInput = Mathf.RoundToInt(movementInput.y);
         }
         if (keyboard.aKey.isPressed && !keyboard.dKey.isPressed)
         {
@@ -165,11 +152,25 @@ public class InputManager : MonoBehaviour
 
     #region 普通攻击
 
+    public bool[] attackInput = new bool[Enum.GetValues(typeof(AttackInput)).Length];
+
     public void CheckAttack()
     {
-        if (gamepad.buttonEast.wasPressedThisFrame)
+        if (keyboard.jKey.wasPressedThisFrame)
         {
-            PlayerAttackController.Instance.StartAttack();
+            attackInput[(int)AttackInput.first] = true;
+        }
+        if (keyboard.jKey.wasReleasedThisFrame)
+        {
+            attackInput[(int)AttackInput.first] = false;
+        }
+        if (keyboard.uKey.wasPressedThisFrame)
+        {
+            attackInput[(int)AttackInput.first] = true;
+        }
+        if (keyboard.uKey.wasReleasedThisFrame)
+        {
+            attackInput[(int)AttackInput.first] = false;
         }
     }
 
@@ -227,4 +228,10 @@ public class InputManager : MonoBehaviour
     }
 
     #endregion 左右特效切换
+}
+
+public enum AttackInput
+{
+    first,
+    second
 }
