@@ -15,7 +15,7 @@ public class P_Dash : P_Ability
 
     private void AndriodDash()
     {
-        dashDirection = Vector2Int.RoundToInt(player.GetDashDirtion().normalized);
+        dashDirection = Vector2Int.RoundToInt(action.GetDashDirtion().normalized);
         if (dashDirection != Vector2.zero)
         {
             dashDirection.Normalize();
@@ -62,7 +62,7 @@ public class P_Dash : P_Ability
 
         if (player.rb.velocity.y > 0)
         {
-            player.SetVelocitY(player.rb.velocity.y * playerData.dashMultiplier);
+            movement.SetVelocitY(player.rb.velocity.y * playerData.dashMultiplier);
         }
 
         player.jump.ResetJumpCount();
@@ -73,7 +73,7 @@ public class P_Dash : P_Ability
         base.Enter();
         canDash = false;
         isHolding = true;
-        player.UseDashInput();
+        action.UseDashInput();
         Time.timeScale = playerData.dashTimeScale;
         startTime = Time.unscaledTime;
         player.dashIndicator.SetActive(true);
@@ -95,14 +95,14 @@ public class P_Dash : P_Ability
                     PcDash();
                 }
 
-                if (player.GetDashInputStop() || Time.unscaledTime >= startTime + playerData.maxHoldTime)
+                if (action.GetDashInputStop() || Time.unscaledTime >= startTime + playerData.maxHoldTime)
                 {
                     StartDash();
                 }
             }
             else
             {
-                player.SetVelocity(playerData.dashSpeed, dashDirection);
+                movement.SetVelocity(playerData.dashSpeed, dashDirection);
                 CheckShouldCreateAfterImage();
                 if (Time.time >= startTime + playerData.dashTime)
                 {
@@ -119,7 +119,7 @@ public class P_Dash : P_Ability
         Time.timeScale = 1.0f;
         startTime = Time.time;
         player.rb.drag = playerData.dashDrag;
-        player.SetVelocity(playerData.dashSpeed, dashDirection);
+        movement.SetVelocity(playerData.dashSpeed, dashDirection);
         CheckTurn();
         CheckShouldCreateAfterImage();
     }
@@ -129,11 +129,11 @@ public class P_Dash : P_Ability
         player.dashIndicator.SetActive(false);
         if (TurnCondition(StaticWays.JudgeQuadrant(angle)))
         {
-            player.SetTurn();
+            movement.SetTurn();
         }
     }
 
-    private bool TurnCondition(int quadrant) => (player.facingDireciton == 1 && (quadrant == 2 || quadrant == 3)) || (player.facingDireciton == -1 && (quadrant == 1 || quadrant == 4));
+    private bool TurnCondition(int quadrant) => (player.movement.facingDireciton == 1 && (quadrant == 2 || quadrant == 3)) || (player.movement.facingDireciton == -1 && (quadrant == 1 || quadrant == 4));
 
     private void CheckShouldCreateAfterImage()
     {

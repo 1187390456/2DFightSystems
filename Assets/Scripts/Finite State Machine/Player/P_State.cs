@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class P_State
 {
+    protected Movement movement;
+    protected CollisionSenses sense;
+    protected InputAction action;
+
     protected P_StateMachine stateMachine;
     protected Player player;
     protected string anmName;
@@ -19,6 +23,10 @@ public class P_State
         this.player = player;
         this.anmName = anmName;
         this.playerData = playerData;
+
+        movement = player.movement;
+        sense = player.sense;
+        action = player.action;
     }
 
     public virtual void Enter()

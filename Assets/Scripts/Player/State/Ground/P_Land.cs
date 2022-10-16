@@ -11,7 +11,7 @@ public class P_Land : P_Ground
     public override void Enter()
     {
         base.Enter();
-        player.SetVelocityZero();
+        movement.SetVelocityZero();
     }
 
     public override void Exit()
@@ -34,7 +34,7 @@ public class P_Land : P_Ground
             {
                 stateMachine.ChangeState(player.idle);
             }
-            else if (player.GetXInput() != 0)
+            else if (action.GetXInput() != 0)
             {
                 stateMachine.ChangeState(player.move);
             }

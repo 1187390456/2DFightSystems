@@ -14,7 +14,7 @@ public class P_KnockBack : P_Ability
     {
         base.Enter();
         startKnockbackTime = Time.time;
-        player.SetVelocity(playerData.knockbackSpeed, playerData.knockbackAngle, player.knockBackDirection);
+        movement.SetVelocity(playerData.knockbackSpeed, playerData.knockbackAngle, player.knockBackDirection);
     }
 
     public override void Update()
@@ -22,7 +22,7 @@ public class P_KnockBack : P_Ability
         base.Update();
         if (Time.time >= startKnockbackTime + playerData.knockbackTime)
         {
-            player.SetVelocityX(0.0f);
+            movement.SetVelocityX(0.0f);
             isAbilityDone = true;
         }
     }

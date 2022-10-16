@@ -60,7 +60,7 @@ public class E_Ability1 : E_State
         if (currentTransparent <= 0 && Player.Instance)
         {
             var playerPos = Player.Instance.transform.position;
-            var dir = Player.Instance.facingDireciton;
+            var dir = Player.Instance.movement.facingDireciton;
             if (dir != entity.facingDirection)
             {
                 entity.Turn();

@@ -74,14 +74,14 @@ public class P_InAir : P_State
         }
         else
         {
-            player.SetPlayerMove(playerData.moveSpeed);
-            player.CheckTurn();
+            movement.SetPlayerMove(playerData.moveSpeed);
+            movement.CheckTurn();
         }
     }
 
-    private bool SildeCondition() => player.ChechWall() && player.GetXInput() == player.facingDireciton && player.rb.velocity.y < 0;
+    private bool SildeCondition() => sense.Wall() && action.GetXInput() == player.movement.facingDireciton && player.rb.velocity.y < 0;
 
-    private bool WallJumpCondition() => (player.ChechWall() || player.CheckBackWall() || isWallJumpGraceTiming) && player.JumpCondition();
+    private bool WallJumpCondition() => (sense.Wall() || sense.BackWall() || isWallJumpGraceTiming) && player.JumpCondition();
 
     public void StartGraceTime() => isGraceTiming = true;
 
@@ -91,7 +91,7 @@ public class P_InAir : P_State
         {
             isGraceTiming = false;
         }
-        if (player.ChechWall())
+        if (sense.Wall())
         {
             player.jump.ResetJumpCount();
             StartWallJumpGraceTime();
@@ -116,10 +116,10 @@ public class P_InAir : P_State
 
     public void CheckJumpInputStop()
     {
-        if (player.GetJumpInputStop())
+        if (action.GetJumpInputStop())
         {
-            player.UseJumpInputStop();
-            player.SetVelocitY(player.rb.velocity.y * playerData.jumpAirMultiplier);
+            action.UseJumpInputStop();
+            movement.SetVelocitY(player.rb.velocity.y * playerData.jumpAirMultiplier);
         }
     }
 }

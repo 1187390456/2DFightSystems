@@ -3,12 +3,17 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance { get; private set; }
-    [Header("地面检测点")] public Transform groundCheck;
-    [Header("墙壁检测点")] public Transform wallCheck;
-    [Header("边缘检测点")] public Transform ledgeCheck;
-    [Header("顶部检测点")] public Transform topCheck;
+    #region 核心
+
+    public Core core { get; private set; }
+    public Movement movement => core.movement;
+    public CollisionSenses sense => core.collisionSenses;
+    public InputAction action => core.inputAction;
+
+    #endregion 核心
+
     [Header("玩家数据")] public D_P_Base playerData;
+    public static Player Instance { get; private set; }
 
     public P_StateMachine stateMachine = new P_StateMachine();
     public Rigidbody2D rb { get; private set; }
@@ -23,10 +28,6 @@ public class Player : MonoBehaviour
     public GameObject deadTimer { get; private set; }
 
     #endregion UI
-
-    public InputManager inputManager { get; private set; }
-
-    public int facingDireciton { get; private set; }
 
     public GameObject dashIndicator { get; private set; }
 
@@ -48,14 +49,12 @@ public class Player : MonoBehaviour
     public P_Catch catchWall { get; private set; }
     public P_Climb climb { get; private set; }
     public P_WallJump wallJump { get; private set; }
-
     public P_Ledge ledge { get; private set; }
     public P_Dash dash { get; private set; }
     public P_CrouchIdle crouchIdle { get; private set; }
     public P_CrouchMove crouchMove { get; private set; }
     public P_KnockBack knockBack { get; private set; }
     public P_Dead dead { get; private set; }
-
     public P_Attack firstAttack { get; private set; }
     public P_Attack secondAttack { get; private set; }
 
@@ -98,17 +97,6 @@ public class Player : MonoBehaviour
         at.SetFloat("yVelocity", rb.velocity.y);
     }
 
-    public Vector2 ComputedCornerPos()
-    {
-        var xhit = Physics2D.Raycast(wallCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
-        var xDis = xhit.distance;
-        workSpace.Set(playerData.wallCheckDistance * facingDireciton, 0);
-        var yhit = Physics2D.Raycast(ledgeCheck.position + (Vector3)workSpace, Vector2.down, ledgeCheck.position.y - wallCheck.position.y, LayerMask.GetMask("Ground"));
-        var yDis = yhit.distance;
-        workSpace.Set(wallCheck.position.x + xDis * facingDireciton, ledgeCheck.position.y - yDis);
-        return workSpace;
-    }
-
     #endregion 其他
 
     #region Unity回调
@@ -119,8 +107,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         at = GetComponent<Animator>();
         collider2d = GetComponent<BoxCollider2D>();
-        inputManager = GetComponent<InputManager>();
         weaponInventory = GetComponent<WeaponInventory>();
+        core = transform.Find("Core").GetComponent<Core>();
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         health = canvas.transform.Find("Health").GetComponent<Text>();
         deadTimer = canvas.transform.Find("DeadTimer").gameObject;
@@ -147,8 +135,6 @@ public class Player : MonoBehaviour
         firstAttack = new P_Attack(stateMachine, this, "attack", playerData);
         secondAttack = new P_Attack(stateMachine, this, "attack", playerData);
         stateMachine.Init(idle);
-
-        facingDireciton = 1;
     }
 
     private void Start()
@@ -167,45 +153,12 @@ public class Player : MonoBehaviour
         UpdateAnimation();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(groundCheck.position, playerData.groundCheckSize);
-        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + playerData.wallCheckDistance, wallCheck.position.y));
-        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x - playerData.wallCheckDistance, wallCheck.position.y));
-        Gizmos.DrawLine(ledgeCheck.position, new Vector2(ledgeCheck.position.x + playerData.wallCheckDistance, ledgeCheck.position.y));
-        Gizmos.DrawWireSphere(topCheck.position, playerData.topCheckRadius);
-    }
-
     private void FixedUpdate()
     {
         stateMachine.currentState.FixedUpdate();
     }
 
     #endregion Unity回调
-
-    #region InputManager
-
-    public int GetXInput() => InputManager.Instance.xInput;
-
-    public int GetYInput() => InputManager.Instance.yInput;
-
-    public bool GetJumpInputStop() => InputManager.Instance.jumpInputStop;
-
-    public bool GetCatchInput() => InputManager.Instance.catchInput;
-
-    public bool GetDashInput() => InputManager.Instance.dashInput;
-
-    public bool GetDashInputStop() => InputManager.Instance.dashInputStop;
-
-    public Vector2 GetDashDirtion() => InputManager.Instance.movementInput;
-
-    public void UseDashInput() => InputManager.Instance.UseDashInput();
-
-    public void UseJumpInput() => InputManager.Instance.UseJumpInput();
-
-    public void UseJumpInputStop() => InputManager.Instance.UseJumpInputStop();
-
-    #endregion InputManager
 
     #region 回调函数
 
@@ -219,32 +172,10 @@ public class Player : MonoBehaviour
 
     public void SetDestory() => Destroy(gameObject);
 
-    public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity, rb.velocity.y);
-
-    public void SetVelocitY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
-
-    public void SetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        angle.Normalize();
-        rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
-    }
-
-    public void SetVelocity(float velocity, Vector2 direction) => rb.velocity = direction * velocity;
-
-    public void SetVelocityZero() => rb.velocity = Vector2.zero;
-
-    public void SetPlayerMove(float velocity) => SetVelocityX(velocity * GetXInput());
-
-    public void SetTurn()
-    {
-        facingDireciton *= -1;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-    }
-
     public void SetHoldStatic(Vector2 holdPos)
     {
         transform.position = holdPos;
-        SetVelocityZero();
+        movement.SetVelocityZero();
     }
 
     public void SetHalfCollider()
@@ -277,41 +208,19 @@ public class Player : MonoBehaviour
 
     #region 检测状态
 
-    public void CheckTurn()
-    {
-        if (facingDireciton == 1 && inputManager.xInput < 0)
-        {
-            SetTurn();
-        }
-        else if (facingDireciton == -1 && inputManager.xInput > 0)
-        {
-            SetTurn();
-        }
-    }
+    public bool GroundCondition() => rb.velocity.y <= 0.01f && sense.Ground();
 
-    public bool CheckGround() => Physics2D.BoxCast(groundCheck.position, playerData.groundCheckSize, 0.0f, transform.right, 0.0f, LayerMask.GetMask("Ground"));
-
-    public bool ChechWall() => Physics2D.Raycast(wallCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
-
-    public bool CheckBackWall() => Physics2D.Raycast(wallCheck.position, -transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
-
-    public bool CheckLedge() => Physics2D.Raycast(ledgeCheck.position, transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
-
-    public bool CheckTop() => Physics2D.OverlapCircle(topCheck.position, playerData.topCheckRadius, LayerMask.GetMask("Ground"));
-
-    public bool GroundCondition() => rb.velocity.y <= 0.01f && CheckGround();
-
-    public bool DashCondition() => dash.CheckCanDash() && GetDashInput() && stateMachine.currentState != crouchIdle && stateMachine.currentState != crouchMove;
+    public bool DashCondition() => dash.CheckCanDash() && action.GetDashInput() && stateMachine.currentState != crouchIdle && stateMachine.currentState != crouchMove;
 
     public bool JumpCondition() => InputManager.Instance.jumpInput && jump.ChechCanJump();
 
-    public bool LedgeCondition() => !CheckLedge() && ChechWall() && !CheckGround();
+    public bool LedgeCondition() => !sense.Ledge() && sense.Wall() && !sense.Ground();
 
-    public bool CatchWallConditon() => ChechWall() && GetCatchInput() && CheckLedge();
+    public bool CatchWallConditon() => sense.Wall() && action.GetCatchInput() && sense.Ledge();
 
-    public bool FirstAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.first] && !CheckTop();
+    public bool FirstAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.first] && !sense.Top();
 
-    public bool SecondAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.second] && !CheckTop();
+    public bool SecondAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.second] && !sense.Top();
 
     public int CheckKnockBackDirection(float direction) => direction < transform.position.x ? 1 : -1;
 

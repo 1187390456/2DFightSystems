@@ -13,11 +13,11 @@ public class P_Climb : P_Wall
         base.Update();
         if (!isExit)
         {
-            if (player.GetYInput() > 0)
+            if (action.GetYInput() > 0)
             {
-                player.SetVelocitY(playerData.climbSpeed);
+                movement.SetVelocitY(playerData.climbSpeed);
             }
-            else if (player.GetYInput() == 0)
+            else if (action.GetYInput() == 0)
             {
                 stateMachine.ChangeState(player.catchWall);
             }

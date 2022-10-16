@@ -28,11 +28,11 @@ public class P_Idle : P_Ground
         base.Update();
         if (!isExit)
         {
-            if (player.GetXInput() != 0)
+            if (action.GetXInput() != 0)
             {
                 stateMachine.ChangeState(player.move);
             }
-            else if (player.GetYInput() == -1)
+            else if (action.GetYInput() == -1)
             {
                 stateMachine.ChangeState(player.crouchIdle);
             }

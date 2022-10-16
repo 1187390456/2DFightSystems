@@ -40,14 +40,14 @@ public class P_Attack : P_Ability
 
     public void MoveStart(float velocity)
     {
-        player.SetVelocityX(velocity * player.facingDireciton);
+        movement.SetVelocityX(velocity * movement.facingDireciton);
         velocitySet = velocity;
         isMoving = true;
     }
 
     public void MoveStop(float velocity)
     {
-        player.SetVelocityX(velocity * player.facingDireciton);
+        movement.SetVelocityX(velocity * movement.facingDireciton);
         isMoving = false;
     }
 
@@ -66,12 +66,12 @@ public class P_Attack : P_Ability
         base.Update();
         if (canTurn)
         {
-            player.CheckTurn();
+            movement.CheckTurn();
         }
 
         if (isMoving)
         {
-            player.SetVelocityX(velocitySet * player.facingDireciton);
+            movement.SetVelocityX(velocitySet * player.movement.facingDireciton);
         }
     }
 }

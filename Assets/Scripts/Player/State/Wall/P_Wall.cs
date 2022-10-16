@@ -45,9 +45,9 @@ public class P_Wall : P_State
         {
             stateMachine.ChangeState(player.wallJump);
         }
-        else if (player.GroundCondition() && !player.GetCatchInput())
+        else if (player.GroundCondition() && !action.GetCatchInput())
         {
-            if (player.GetXInput() != 0)
+            if (action.GetXInput() != 0)
             {
                 stateMachine.ChangeState(player.move);
             }
@@ -62,5 +62,5 @@ public class P_Wall : P_State
         }
     }
 
-    private bool InAirCondition() => !player.ChechWall() || (player.GetXInput() != player.facingDireciton && !player.GetCatchInput());
+    private bool InAirCondition() => !sense.Wall() || (action.GetXInput() != movement.facingDireciton && !action.GetCatchInput());
 }

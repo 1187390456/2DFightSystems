@@ -23,11 +23,11 @@ public class P_Catch : P_Wall
         if (!isExit)
         {
             player.SetHoldStatic(startPos);
-            if (player.GetYInput() > 0)
+            if (action.GetYInput() > 0)
             {
                 stateMachine.ChangeState(player.climb);
             }
-            else if (player.GetYInput() < 0 || !player.GetCatchInput())
+            else if (action.GetYInput() < 0 || !action.GetCatchInput())
             {
                 stateMachine.ChangeState(player.slide);
             }

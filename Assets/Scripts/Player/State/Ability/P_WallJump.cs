@@ -13,10 +13,10 @@ public class P_WallJump : P_Ability
     public override void Enter()
     {
         base.Enter();
-        JudgeJumpDirection(player.ChechWall());
-        player.UseJumpInput();
+        JudgeJumpDirection(sense.Wall());
+        action.UseJumpInput();
         player.jump.DecreaseJumpCount();
-        player.SetVelocity(playerData.wallJumpForce, playerData.wallJumpAngle, wallJumpDirection);
+        movement.SetVelocity(playerData.wallJumpForce, playerData.wallJumpAngle, wallJumpDirection);
     }
 
     public override void Exit()
@@ -29,12 +29,12 @@ public class P_WallJump : P_Ability
         // 判断是否触墙 触墙则相反方向
         if (isTouchWall)
         {
-            wallJumpDirection = -player.facingDireciton;
-            player.SetTurn();
+            wallJumpDirection = -player.movement.facingDireciton;
+            movement.SetTurn();
         }
         else
         {
-            wallJumpDirection = player.facingDireciton;
+            wallJumpDirection = player.movement.facingDireciton;
         }
     }
 

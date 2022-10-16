@@ -14,9 +14,9 @@ public class P_Jump : P_Ability
     public override void Enter()
     {
         base.Enter();
-        player.UseJumpInput();
+        action.UseJumpInput();
         DecreaseJumpCount();
-        player.SetVelocitY(playerData.jumpForce);
+        movement.SetVelocitY(playerData.jumpForce);
         isAbilityDone = true;
     }
 

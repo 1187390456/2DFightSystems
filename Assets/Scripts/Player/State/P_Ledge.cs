@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class P_Ledge : P_State
@@ -22,9 +23,9 @@ public class P_Ledge : P_State
     public override void Enter()
     {
         base.Enter();
-        cornerPos = player.ComputedCornerPos();
+        cornerPos = ComputedCornerPos();
         CheckWillTouchHead();
-        workSpace.Set(player.normalColliderSize.x / 2 * player.facingDireciton, player.normalColliderSize.y / 2 + fixOffset);
+        workSpace.Set(player.normalColliderSize.x / 2 * movement.facingDireciton, player.normalColliderSize.y / 2 + fixOffset);
         startPos = cornerPos - workSpace;
         endPos = cornerPos + workSpace;
         isLedgeDone = false;
@@ -64,12 +65,12 @@ public class P_Ledge : P_State
         }
         else if (isCatch && !isClimb)
         {
-            if (player.GetXInput() == player.facingDireciton)
+            if (action.GetXInput() == movement.facingDireciton)
             {
                 isClimb = true;
                 player.at.SetBool("ledgeClimb", true);
             }
-            else if (player.GetYInput() == -1)
+            else if (action.GetYInput() == -1)
             {
                 stateMachine.ChangeState(player.inAir);
             }
@@ -82,7 +83,18 @@ public class P_Ledge : P_State
 
     private void CheckWillTouchHead()
     {
-        isHeadTouch = Physics2D.Raycast(cornerPos + Vector2.up * offset + Vector2.right * player.facingDireciton * offset, Vector2.up, player.normalColliderSize.y, LayerMask.GetMask("Ground"));
+        isHeadTouch = Physics2D.Raycast(cornerPos + Vector2.up * offset + Vector2.right * movement.facingDireciton * offset, Vector2.up, player.normalColliderSize.y, LayerMask.GetMask("Ground"));
         player.at.SetBool("isHeadTouch", isHeadTouch);
+    }
+
+    private Vector2 ComputedCornerPos()
+    {
+        var xhit = Physics2D.Raycast(sense.wallCheck.position, player.transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
+        var xDis = xhit.distance;
+        workSpace.Set(playerData.wallCheckDistance * movement.facingDireciton, 0);
+        var yhit = Physics2D.Raycast(sense.ledgeCheck.position + (Vector3)workSpace, Vector2.down, sense.ledgeCheck.position.y - sense.wallCheck.position.y, LayerMask.GetMask("Ground"));
+        var yDis = yhit.distance;
+        workSpace.Set(sense.wallCheck.position.x + xDis * movement.facingDireciton, sense.ledgeCheck.position.y - yDis);
+        return workSpace;
     }
 }

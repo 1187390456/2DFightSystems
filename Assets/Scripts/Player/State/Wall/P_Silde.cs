@@ -13,13 +13,13 @@ public class P_Silde : P_Wall
         base.Update();
         if (!isExit)
         {
-            if (player.GetCatchInput() && player.GetYInput() >= 0)
+            if (action.GetCatchInput() && action.GetYInput() >= 0)
             {
                 stateMachine.ChangeState(player.catchWall);
             }
             else
             {
-                player.SetVelocitY(-playerData.sildeSpeed);
+                movement.SetVelocitY(-playerData.sildeSpeed);
             }
         }
     }

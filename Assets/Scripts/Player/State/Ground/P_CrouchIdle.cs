@@ -11,7 +11,7 @@ public class P_CrouchIdle : P_Ground
     public override void Enter()
     {
         base.Enter();
-        player.SetVelocityZero();
+        movement.SetVelocityZero();
     }
 
     public override void Exit()
@@ -24,11 +24,11 @@ public class P_CrouchIdle : P_Ground
         base.Update();
         if (!isExit)
         {
-            if (player.GetYInput() != -1 && !player.CheckTop())
+            if (action.GetYInput() != -1 && !sense.Top())
             {
                 stateMachine.ChangeState(player.idle);
             }
-            else if (player.GetXInput() != 0)
+            else if (action.GetXInput() != 0)
             {
                 stateMachine.ChangeState(player.crouchMove);
             }
