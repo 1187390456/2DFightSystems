@@ -89,9 +89,9 @@ public class P_Ledge : P_State
 
     private Vector2 ComputedCornerPos()
     {
-        var xhit = Physics2D.Raycast(sense.wallCheck.position, player.transform.right, data.wallCheckDistance, LayerMask.GetMask("Ground"));
+        var xhit = Physics2D.Raycast(sense.wallCheck.position, Vector3.right * movement.facingDireciton, sense.wallCheckDistance, LayerMask.GetMask("Ground"));
         var xDis = xhit.distance;
-        workSpace.Set(data.wallCheckDistance * movement.facingDireciton, 0);
+        workSpace.Set(sense.wallCheckDistance * movement.facingDireciton, 0);
         var yhit = Physics2D.Raycast(sense.ledgeCheck.position + (Vector3)workSpace, Vector2.down, sense.ledgeCheck.position.y - sense.wallCheck.position.y, LayerMask.GetMask("Ground"));
         var yDis = yhit.distance;
         workSpace.Set(sense.wallCheck.position.x + xDis * movement.facingDireciton, sense.ledgeCheck.position.y - yDis);

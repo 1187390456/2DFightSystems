@@ -26,16 +26,35 @@ public class P_Attack : P_Ability
         weapon.Exit();
     }
 
-    public override void FinishAnimation()
+    public override void Update()
     {
-        base.FinishAnimation();
-        isAbilityDone = true;
+        base.Update();
+        if (canTurn)
+        {
+            movement.CheckTurn();
+        }
+
+        if (isMoving)
+        {
+            movement.SetVelocityX(velocitySet * movement.facingDireciton);
+        }
     }
 
     public void SetWeapon(Weapon weapon)
     {
         this.weapon = weapon;
         this.weapon.InitState(this);
+    }
+
+    public override void StartAnimation()
+    {
+        base.StartAnimation();
+    }
+
+    public override void FinishAnimation()
+    {
+        base.FinishAnimation();
+        isAbilityDone = true;
     }
 
     public void MoveStart(float velocity)
@@ -59,19 +78,5 @@ public class P_Attack : P_Ability
     public void SetTurnOn()
     {
         canTurn = true;
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        if (canTurn)
-        {
-            movement.CheckTurn();
-        }
-
-        if (isMoving)
-        {
-            movement.SetVelocityX(velocitySet * movement.facingDireciton);
-        }
     }
 }

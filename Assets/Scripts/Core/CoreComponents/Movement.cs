@@ -23,7 +23,7 @@ public class Movement : CoreComponent
 
     public void SetHoldStatic(Vector2 holdPos)
     {
-        transform.position = holdPos;
+        rb.transform.position = holdPos;
         SetVelocityZero();
     }
 

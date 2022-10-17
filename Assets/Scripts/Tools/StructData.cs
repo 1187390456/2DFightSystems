@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 攻击数据结构
 public struct AttackInfo
 {
-    public float damage; // 伤害
-    public float damageSourcePosX; // 伤害来源X坐标
+    public float damage;
+    public float damageSourcePosX;
+}
+
+[System.Serializable]
+public struct WeaponAttackInfo
+{
+    public string attackName;
+    public float moveSpeed;
+    public float damageAmount;
 }

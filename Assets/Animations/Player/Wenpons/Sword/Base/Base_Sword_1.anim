@@ -21,19 +21,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -7280701414209180219, guid: 349abeca82d7d4a44b8916e2ad2e1685, type: 3}
-    - time: 0.06666667
+    - time: 0.083333336
       value: {fileID: -5481718935810633270, guid: 349abeca82d7d4a44b8916e2ad2e1685, type: 3}
-    - time: 0.13333334
+    - time: 0.125
       value: {fileID: -1118783196307097764, guid: 349abeca82d7d4a44b8916e2ad2e1685, type: 3}
-    - time: 0.2
+    - time: 0.20833333
       value: {fileID: -7800207035231104833, guid: 349abeca82d7d4a44b8916e2ad2e1685, type: 3}
-    - time: 0.26666668
+    - time: 0.25
       value: {fileID: 3175349621197394165, guid: 349abeca82d7d4a44b8916e2ad2e1685, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 15
+  m_SampleRate: 24
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -59,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.29166666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,35 +79,42 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.06666667
+  - time: 0.083333336
     functionName: MoveStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.06666667
+  - time: 0.083333336
     functionName: TurnOff
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.083333336
+    functionName: AnimationStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.20833333
     functionName: MoveStop
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.26666668
+  - time: 0.25
     functionName: TurnOn
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.29166666
     functionName: AnimationDone
     data: 
     objectReferenceParameter: {fileID: 0}

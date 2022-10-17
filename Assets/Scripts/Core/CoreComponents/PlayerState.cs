@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState : CoreComponent
@@ -29,6 +30,23 @@ public class PlayerState : CoreComponent
     {
         base.Awake();
         player = target.GetComponent<Player>();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        stateMachine.currentState.FixedUpdate();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        stateMachine.currentState.Update();
+    }
+
+    public override void Start()
+    {
+        base.Start();
         idle = new P_Idle(stateMachine, player, "idle", playerData);
         move = new P_Move(stateMachine, player, "move", playerData);
         jump = new P_Jump(stateMachine, player, "inAir", playerData);
@@ -47,23 +65,9 @@ public class PlayerState : CoreComponent
         firstAttack = new P_Attack(stateMachine, player, "attack", playerData);
         secondAttack = new P_Attack(stateMachine, player, "attack", playerData);
         stateMachine.Init(idle);
-    }
 
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        stateMachine.currentState.FixedUpdate();
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        stateMachine.currentState.Update();
-    }
-
-    public override void Start()
-    {
-        base.Start();
         firstAttack.SetWeapon(player.weaponInventory.weapons[0]);
+
+        // Debug.Log(player.weaponInventory.weapons[0]);
     }
 }

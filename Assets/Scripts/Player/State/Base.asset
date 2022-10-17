@@ -33,7 +33,7 @@ MonoBehaviour:
   dashMultiplier: 0.2
   maxHoldTime: 4
   dashTimeScale: 0.1
-  afterImageSpace: 0.5
+  afterImageSpace: 0.2
   crouchMoveSpeed: 4
   knockbackTime: 0.2
   knockbackSpeed: 20

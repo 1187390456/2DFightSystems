@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8725f6b45b94f6346aedab221d56d44e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71ba48fd2222a40916bf77f62751a9, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  moveSpeed:
-  - 3
-  - 4
-  - 2
+  attackInfos:
+  - attackName: AttackStep1
+    moveSpeed: 3
+    damageAmount: 10
+  - attackName: AttackStep2
+    moveSpeed: 4
+    damageAmount: 10
+  - attackName: AttackStep3
+    moveSpeed: 2
+    damageAmount: 10
