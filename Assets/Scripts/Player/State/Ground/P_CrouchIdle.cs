@@ -26,11 +26,11 @@ public class P_CrouchIdle : P_Ground
         {
             if (action.GetYInput() != -1 && !sense.Top())
             {
-                stateMachine.ChangeState(player.idle);
+                stateMachine.ChangeState(state.idle);
             }
             else if (action.GetXInput() != 0)
             {
-                stateMachine.ChangeState(player.crouchMove);
+                stateMachine.ChangeState(state.crouchMove);
             }
         }
     }

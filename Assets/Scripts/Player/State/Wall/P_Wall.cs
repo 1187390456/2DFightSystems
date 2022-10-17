@@ -11,7 +11,7 @@ public class P_Wall : P_State
     public override void Enter()
     {
         base.Enter();
-        player.jump.ResetJumpCount();
+        state.jump.ResetJumpCount();
     }
 
     public override void Exit()
@@ -39,26 +39,26 @@ public class P_Wall : P_State
         base.Update();
         if (player.LedgeCondition())
         {
-            stateMachine.ChangeState(player.ledge);
+            stateMachine.ChangeState(state.ledge);
         }
         else if (player.JumpCondition())
         {
-            stateMachine.ChangeState(player.wallJump);
+            stateMachine.ChangeState(state.wallJump);
         }
         else if (player.GroundCondition() && !action.GetCatchInput())
         {
             if (action.GetXInput() != 0)
             {
-                stateMachine.ChangeState(player.move);
+                stateMachine.ChangeState(state.move);
             }
             else
             {
-                stateMachine.ChangeState(player.idle);
+                stateMachine.ChangeState(state.idle);
             }
         }
         else if (InAirCondition())
         {
-            stateMachine.ChangeState(player.inAir);
+            stateMachine.ChangeState(state.inAir);
         }
     }
 

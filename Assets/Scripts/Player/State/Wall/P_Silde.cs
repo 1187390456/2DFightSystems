@@ -15,11 +15,11 @@ public class P_Silde : P_Wall
         {
             if (action.GetCatchInput() && action.GetYInput() >= 0)
             {
-                stateMachine.ChangeState(player.catchWall);
+                stateMachine.ChangeState(state.catchWall);
             }
             else
             {
-                movement.SetVelocitY(-playerData.sildeSpeed);
+                movement.SetVelocitY(-data.sildeSpeed);
             }
         }
     }

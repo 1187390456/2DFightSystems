@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
             isFireOn = !isFireOn;
         }
 
-        if (isFireOn && Player.Instance.stateMachine.currentState != Player.Instance.dead)
+        if (isFireOn && Player.Instance.state.stateMachine.currentState != Player.Instance.state.dead)
         {
             if (Time.time >= lastFireTime + fireSpace)
             {

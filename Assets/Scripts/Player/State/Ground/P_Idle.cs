@@ -30,11 +30,11 @@ public class P_Idle : P_Ground
         {
             if (action.GetXInput() != 0)
             {
-                stateMachine.ChangeState(player.move);
+                stateMachine.ChangeState(state.move);
             }
             else if (action.GetYInput() == -1)
             {
-                stateMachine.ChangeState(player.crouchIdle);
+                stateMachine.ChangeState(state.crouchIdle);
             }
         }
     }

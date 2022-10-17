@@ -25,7 +25,7 @@ public class P_Ledge : P_State
         base.Enter();
         cornerPos = ComputedCornerPos();
         CheckWillTouchHead();
-        workSpace.Set(player.normalColliderSize.x / 2 * movement.facingDireciton, player.normalColliderSize.y / 2 + fixOffset);
+        workSpace.Set(sense.normalColliderSize.x / 2 * movement.facingDireciton, sense.normalColliderSize.y / 2 + fixOffset);
         startPos = cornerPos - workSpace;
         endPos = cornerPos + workSpace;
         isLedgeDone = false;
@@ -46,7 +46,7 @@ public class P_Ledge : P_State
     public override void Update()
     {
         base.Update();
-        player.SetHoldStatic(startPos);
+        movement.SetHoldStatic(startPos);
         if (isLedgeDone)
         {
             isClimb = false;
@@ -56,11 +56,11 @@ public class P_Ledge : P_State
 
             if (isHeadTouch)
             {
-                stateMachine.ChangeState(player.crouchIdle);
+                stateMachine.ChangeState(state.crouchIdle);
             }
             else
             {
-                stateMachine.ChangeState(player.idle);
+                stateMachine.ChangeState(state.idle);
             }
         }
         else if (isCatch && !isClimb)
@@ -72,26 +72,26 @@ public class P_Ledge : P_State
             }
             else if (action.GetYInput() == -1)
             {
-                stateMachine.ChangeState(player.inAir);
+                stateMachine.ChangeState(state.inAir);
             }
             else if (player.JumpCondition())
             {
-                stateMachine.ChangeState(player.wallJump);
+                stateMachine.ChangeState(state.wallJump);
             }
         }
     }
 
     private void CheckWillTouchHead()
     {
-        isHeadTouch = Physics2D.Raycast(cornerPos + Vector2.up * offset + Vector2.right * movement.facingDireciton * offset, Vector2.up, player.normalColliderSize.y, LayerMask.GetMask("Ground"));
+        isHeadTouch = Physics2D.Raycast(cornerPos + Vector2.up * offset + Vector2.right * movement.facingDireciton * offset, Vector2.up, sense.normalColliderSize.y, LayerMask.GetMask("Ground"));
         player.at.SetBool("isHeadTouch", isHeadTouch);
     }
 
     private Vector2 ComputedCornerPos()
     {
-        var xhit = Physics2D.Raycast(sense.wallCheck.position, player.transform.right, playerData.wallCheckDistance, LayerMask.GetMask("Ground"));
+        var xhit = Physics2D.Raycast(sense.wallCheck.position, player.transform.right, data.wallCheckDistance, LayerMask.GetMask("Ground"));
         var xDis = xhit.distance;
-        workSpace.Set(playerData.wallCheckDistance * movement.facingDireciton, 0);
+        workSpace.Set(data.wallCheckDistance * movement.facingDireciton, 0);
         var yhit = Physics2D.Raycast(sense.ledgeCheck.position + (Vector3)workSpace, Vector2.down, sense.ledgeCheck.position.y - sense.wallCheck.position.y, LayerMask.GetMask("Ground"));
         var yDis = yhit.distance;
         workSpace.Set(sense.wallCheck.position.x + xDis * movement.facingDireciton, sense.ledgeCheck.position.y - yDis);

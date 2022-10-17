@@ -22,14 +22,14 @@ public class P_Catch : P_Wall
 
         if (!isExit)
         {
-            player.SetHoldStatic(startPos);
+            movement.SetHoldStatic(startPos);
             if (action.GetYInput() > 0)
             {
-                stateMachine.ChangeState(player.climb);
+                stateMachine.ChangeState(state.climb);
             }
             else if (action.GetYInput() < 0 || !action.GetCatchInput())
             {
-                stateMachine.ChangeState(player.slide);
+                stateMachine.ChangeState(state.slide);
             }
         }
     }

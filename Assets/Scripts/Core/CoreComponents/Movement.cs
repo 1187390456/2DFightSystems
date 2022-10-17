@@ -6,7 +6,10 @@ using UnityEngine;
 public class Movement : CoreComponent
 {
     public int facingDireciton { get; private set; }
+    public Vector3 transRight { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public float rbX => rb.velocity.x;
+    public float rbY => rb.velocity.y;
 
     public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity, rb.velocity.y);
 
@@ -17,6 +20,12 @@ public class Movement : CoreComponent
     public void SetVelocityZero() => rb.velocity = Vector2.zero;
 
     public void SetPlayerMove(float velocity) => SetVelocityX(velocity * InputManager.Instance.xInput);
+
+    public void SetHoldStatic(Vector2 holdPos)
+    {
+        transform.position = holdPos;
+        SetVelocityZero();
+    }
 
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
@@ -47,5 +56,6 @@ public class Movement : CoreComponent
         base.Awake();
         facingDireciton = 1;
         rb = GetComponentInParent<Rigidbody2D>();
+        transRight = rb.transform.right;
     }
 }

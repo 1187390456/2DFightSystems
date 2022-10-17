@@ -15,8 +15,8 @@ public class P_WallJump : P_Ability
         base.Enter();
         JudgeJumpDirection(sense.Wall());
         action.UseJumpInput();
-        player.jump.DecreaseJumpCount();
-        movement.SetVelocity(playerData.wallJumpForce, playerData.wallJumpAngle, wallJumpDirection);
+        state.jump.DecreaseJumpCount();
+        movement.SetVelocity(data.wallJumpForce, data.wallJumpAngle, wallJumpDirection);
     }
 
     public override void Exit()
@@ -42,7 +42,7 @@ public class P_WallJump : P_Ability
     {
         base.Update();
 
-        if (Time.time >= startTime + playerData.wallJumpTime)
+        if (Time.time >= startTime + data.wallJumpTime)
         {
             isAbilityDone = true;
         }

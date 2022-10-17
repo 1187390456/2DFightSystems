@@ -11,13 +11,13 @@ public class P_Ground : P_State
     public override void Enter()
     {
         base.Enter();
-        player.jump.ResetJumpCount();
+        state.jump.ResetJumpCount();
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.inAir.StartGraceTime();
+        state.inAir.StartGraceTime();
     }
 
     public override void FixedUpdate()
@@ -30,27 +30,27 @@ public class P_Ground : P_State
         base.Update();
         if (player.FirstAttackCondition())
         {
-            stateMachine.ChangeState(player.firstAttack);
+            stateMachine.ChangeState(state.firstAttack);
         }
         else if (player.SecondAttackCondition())
         {
-            stateMachine.ChangeState(player.secondAttack);
+            stateMachine.ChangeState(state.secondAttack);
         }
         else if (player.DashCondition())
         {
-            stateMachine.ChangeState(player.dash);
+            stateMachine.ChangeState(state.dash);
         }
         else if (player.JumpCondition())
         {
-            stateMachine.ChangeState(player.jump);
+            stateMachine.ChangeState(state.jump);
         }
         else if (player.CatchWallConditon())
         {
-            stateMachine.ChangeState(player.catchWall);
+            stateMachine.ChangeState(state.catchWall);
         }
         else if (!player.GroundCondition())
         {
-            stateMachine.ChangeState(player.inAir);
+            stateMachine.ChangeState(state.inAir);
         }
     }
 }

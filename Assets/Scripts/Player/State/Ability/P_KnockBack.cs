@@ -14,13 +14,13 @@ public class P_KnockBack : P_Ability
     {
         base.Enter();
         startKnockbackTime = Time.time;
-        movement.SetVelocity(playerData.knockbackSpeed, playerData.knockbackAngle, player.knockBackDirection);
+        movement.SetVelocity(data.knockbackSpeed, data.knockbackAngle, player.knockBackDirection);
     }
 
     public override void Update()
     {
         base.Update();
-        if (Time.time >= startKnockbackTime + playerData.knockbackTime)
+        if (Time.time >= startKnockbackTime + data.knockbackTime)
         {
             movement.SetVelocityX(0.0f);
             isAbilityDone = true;

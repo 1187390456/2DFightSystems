@@ -8,11 +8,12 @@ public class P_State
     protected Movement movement;
     protected CollisionSenses sense;
     protected InputAction action;
+    protected PlayerState state;
 
     protected P_StateMachine stateMachine;
     protected Player player;
     protected string anmName;
-    protected D_P_Base playerData;
+    protected D_P_Base data;
     protected float startTime;
     protected bool isAnimationDone;
     protected bool isExit;
@@ -22,11 +23,12 @@ public class P_State
         this.stateMachine = stateMachine;
         this.player = player;
         this.anmName = anmName;
-        this.playerData = playerData;
+        data = playerData;
 
         movement = player.movement;
         sense = player.sense;
         action = player.action;
+        state = player.state;
     }
 
     public virtual void Enter()

@@ -37,49 +37,49 @@ public class P_InAir : P_State
 
         if (player.FirstAttackCondition())
         {
-            stateMachine.ChangeState(player.firstAttack);
+            stateMachine.ChangeState(state.firstAttack);
         }
         else if (player.SecondAttackCondition())
         {
-            stateMachine.ChangeState(player.secondAttack);
+            stateMachine.ChangeState(state.secondAttack);
         }
         else if (player.DashCondition())
         {
-            stateMachine.ChangeState(player.dash);
+            stateMachine.ChangeState(state.dash);
         }
         else if (player.LedgeCondition())
         {
-            stateMachine.ChangeState(player.ledge);
+            stateMachine.ChangeState(state.ledge);
         }
         else if (player.GroundCondition())
         {
-            stateMachine.ChangeState(player.land);
+            stateMachine.ChangeState(state.land);
         }
         else if (WallJumpCondition())
         {
             UseWallJumpGraceTime();
-            stateMachine.ChangeState(player.wallJump);
+            stateMachine.ChangeState(state.wallJump);
         }
         else if (player.JumpCondition())
         {
-            stateMachine.ChangeState(player.jump);
+            stateMachine.ChangeState(state.jump);
         }
         else if (player.CatchWallConditon())
         {
-            stateMachine.ChangeState(player.catchWall);
+            stateMachine.ChangeState(state.catchWall);
         }
         else if (SildeCondition())
         {
-            stateMachine.ChangeState(player.slide);
+            stateMachine.ChangeState(state.slide);
         }
         else
         {
-            movement.SetPlayerMove(playerData.moveSpeed);
+            movement.SetPlayerMove(data.moveSpeed);
             movement.CheckTurn();
         }
     }
 
-    private bool SildeCondition() => sense.Wall() && action.GetXInput() == player.movement.facingDireciton && player.rb.velocity.y < 0;
+    private bool SildeCondition() => sense.Wall() && action.GetXInput() == movement.facingDireciton && movement.rbY < 0;
 
     private bool WallJumpCondition() => (sense.Wall() || sense.BackWall() || isWallJumpGraceTiming) && player.JumpCondition();
 
@@ -87,13 +87,13 @@ public class P_InAir : P_State
 
     private void CheckGraceTime()
     {
-        if (isGraceTiming && Time.time >= startTime + playerData.graceTime)
+        if (isGraceTiming && Time.time >= startTime + data.graceTime)
         {
             isGraceTiming = false;
         }
         if (sense.Wall())
         {
-            player.jump.ResetJumpCount();
+            state.jump.ResetJumpCount();
             StartWallJumpGraceTime();
         }
     }
@@ -106,7 +106,7 @@ public class P_InAir : P_State
 
     private void CheckWallJumpGraceTime()
     {
-        if (isWallJumpGraceTiming && Time.time >= startWallJumpGraceTime + playerData.wallJumpGraceTime)
+        if (isWallJumpGraceTiming && Time.time >= startWallJumpGraceTime + data.wallJumpGraceTime)
         {
             isWallJumpGraceTiming = false;
         }
@@ -119,7 +119,7 @@ public class P_InAir : P_State
         if (action.GetJumpInputStop())
         {
             action.UseJumpInputStop();
-            movement.SetVelocitY(player.rb.velocity.y * playerData.jumpAirMultiplier);
+            movement.SetVelocitY(movement.rbY * data.jumpAirMultiplier);
         }
     }
 }

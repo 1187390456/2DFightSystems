@@ -29,15 +29,15 @@ public class P_Move : P_Ground
 
         if (!isExit)
         {
-            movement.SetPlayerMove(playerData.moveSpeed);
+            movement.SetPlayerMove(data.moveSpeed);
             movement.CheckTurn();
             if (action.GetXInput() == 0)
             {
-                stateMachine.ChangeState(player.idle);
+                stateMachine.ChangeState(state.idle);
             }
             else if (action.GetYInput() == -1)
             {
-                stateMachine.ChangeState(player.crouchMove);
+                stateMachine.ChangeState(state.crouchMove);
             }
         }
     }

@@ -23,15 +23,15 @@ public class P_CrouchMove : P_Ground
         base.Update();
         if (!isExit)
         {
-            movement.SetPlayerMove(playerData.crouchMoveSpeed);
+            movement.SetPlayerMove(data.crouchMoveSpeed);
             movement.CheckTurn();
             if (action.GetYInput() != -1 && !sense.Top())
             {
-                stateMachine.ChangeState(player.move);
+                stateMachine.ChangeState(state.move);
             }
             else if (action.GetXInput() == 0)
             {
-                stateMachine.ChangeState(player.crouchIdle);
+                stateMachine.ChangeState(state.crouchIdle);
             }
         }
     }

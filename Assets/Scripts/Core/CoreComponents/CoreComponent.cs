@@ -5,10 +5,16 @@ using UnityEngine;
 public class CoreComponent : MonoBehaviour
 {
     protected Core core;
+    protected Transform target;
 
     public virtual void Awake()
     {
-        core = transform.parent.GetComponent<Core>();
+        core = transform.GetComponentInParent<Core>();
+        target = transform.parent.parent;
+    }
+
+    public virtual void Start()
+    {
     }
 
     public virtual void Update()
@@ -16,6 +22,10 @@ public class CoreComponent : MonoBehaviour
     }
 
     public virtual void OnDrawGizmos()
+    {
+    }
+
+    public virtual void FixedUpdate()
     {
     }
 }

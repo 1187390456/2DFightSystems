@@ -71,7 +71,7 @@ public class P_Attack : P_Ability
 
         if (isMoving)
         {
-            movement.SetVelocityX(velocitySet * player.movement.facingDireciton);
+            movement.SetVelocityX(velocitySet * movement.facingDireciton);
         }
     }
 }

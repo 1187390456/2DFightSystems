@@ -15,15 +15,15 @@ public class P_Climb : P_Wall
         {
             if (action.GetYInput() > 0)
             {
-                movement.SetVelocitY(playerData.climbSpeed);
+                movement.SetVelocitY(data.climbSpeed);
             }
             else if (action.GetYInput() == 0)
             {
-                stateMachine.ChangeState(player.catchWall);
+                stateMachine.ChangeState(state.catchWall);
             }
             else
             {
-                stateMachine.ChangeState(player.slide);
+                stateMachine.ChangeState(state.slide);
             }
         }
     }

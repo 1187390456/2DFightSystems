@@ -29,6 +29,7 @@ public class ETFXProjectileScript : MonoBehaviour
         }
         startTime = Time.time;
     }
+
     private void Update()
     {
         if (Time.time >= startTime + maxAliveTime)
@@ -112,7 +113,7 @@ public class ETFXProjectileScript : MonoBehaviour
     // 敌人发射 检测条件
     private bool HitConditionByEnemy()
     {
-        return Player.Instance.stateMachine.currentState != Player.Instance.dash;
+        return Player.Instance.state.stateMachine.currentState != Player.Instance.state.dash;
     }
 
     // 生成特效

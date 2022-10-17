@@ -34,11 +34,11 @@ public class P_Ability : P_State
         {
             if (player.GroundCondition())
             {
-                stateMachine.ChangeState(player.idle);
+                stateMachine.ChangeState(state.idle);
             }
             else
             {
-                stateMachine.ChangeState(player.inAir);
+                stateMachine.ChangeState(state.inAir);
             }
         }
     }

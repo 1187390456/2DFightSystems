@@ -58,7 +58,7 @@ namespace EpicToonFX
         // 玩家子弹追踪最近的敌人 移动端500 pc端50
         public void TrackEnemy()
         {
-            var enemy = Physics2D.BoxCast(Player.Instance.transform.position, Player.Instance.playerData.fireSize, 0.0f,
+            var enemy = Physics2D.BoxCast(Player.Instance.transform.position, Player.Instance.state.playerData.fireSize, 0.0f,
                  transform.right, 0.0f, LayerMask.GetMask("CanBeAttack"));
             if (enemy && enemy.collider.transform.parent.GetComponent<Enemy>().stateMachine.currentState != enemy.collider.transform.parent.GetComponent<Enemy>().dead)
             {

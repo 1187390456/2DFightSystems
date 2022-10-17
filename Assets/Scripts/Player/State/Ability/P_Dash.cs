@@ -52,7 +52,7 @@ public class P_Dash : P_Ability
     {
     }
 
-    public bool CheckCanDash() => canDash && Time.time >= playerData.dashCoolDown + lastDashTime;
+    public bool CheckCanDash() => canDash && Time.time >= data.dashCoolDown + lastDashTime;
 
     public override void Exit()
     {
@@ -60,12 +60,12 @@ public class P_Dash : P_Ability
         lastDashTime = Time.time;
         canDash = true;
 
-        if (player.rb.velocity.y > 0)
+        if (movement.rbY > 0)
         {
-            movement.SetVelocitY(player.rb.velocity.y * playerData.dashMultiplier);
+            movement.SetVelocitY(movement.rbY * data.dashMultiplier);
         }
 
-        player.jump.ResetJumpCount();
+        state.jump.ResetJumpCount();
     }
 
     public override void Enter()
@@ -74,7 +74,7 @@ public class P_Dash : P_Ability
         canDash = false;
         isHolding = true;
         action.UseDashInput();
-        Time.timeScale = playerData.dashTimeScale;
+        Time.timeScale = data.dashTimeScale;
         startTime = Time.unscaledTime;
         player.dashIndicator.SetActive(true);
     }
@@ -95,18 +95,18 @@ public class P_Dash : P_Ability
                     PcDash();
                 }
 
-                if (action.GetDashInputStop() || Time.unscaledTime >= startTime + playerData.maxHoldTime)
+                if (action.GetDashInputStop() || Time.unscaledTime >= startTime + data.maxHoldTime)
                 {
                     StartDash();
                 }
             }
             else
             {
-                movement.SetVelocity(playerData.dashSpeed, dashDirection);
+                movement.SetVelocity(data.dashSpeed, dashDirection);
                 CheckShouldCreateAfterImage();
-                if (Time.time >= startTime + playerData.dashTime)
+                if (Time.time >= startTime + data.dashTime)
                 {
-                    player.rb.drag = 0.0f;
+                    movement.rb.drag = 0.0f;
                     isAbilityDone = true;
                 }
             }
@@ -118,8 +118,8 @@ public class P_Dash : P_Ability
         isHolding = false;
         Time.timeScale = 1.0f;
         startTime = Time.time;
-        player.rb.drag = playerData.dashDrag;
-        movement.SetVelocity(playerData.dashSpeed, dashDirection);
+        movement.rb.drag = data.dashDrag;
+        movement.SetVelocity(data.dashSpeed, dashDirection);
         CheckTurn();
         CheckShouldCreateAfterImage();
     }
@@ -137,7 +137,7 @@ public class P_Dash : P_Ability
 
     private void CheckShouldCreateAfterImage()
     {
-        if (Vector2.Distance(player.transform.position, lastAfterImagePos) >= playerData.afterImageSpace)
+        if (Vector2.Distance(player.transform.position, lastAfterImagePos) >= data.afterImageSpace)
         {
             CreateAfterImage();
         }

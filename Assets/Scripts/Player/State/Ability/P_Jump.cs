@@ -16,11 +16,11 @@ public class P_Jump : P_Ability
         base.Enter();
         action.UseJumpInput();
         DecreaseJumpCount();
-        movement.SetVelocitY(playerData.jumpForce);
+        movement.SetVelocitY(data.jumpForce);
         isAbilityDone = true;
     }
 
-    public void ResetJumpCount() => currentJumpCount = playerData.jumpCount;
+    public void ResetJumpCount() => currentJumpCount = data.jumpCount;
 
     public bool ChechCanJump() => currentJumpCount > 0;
 
