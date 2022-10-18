@@ -8,31 +8,6 @@ public class E_S_MeleeAttack : E_MeleeAttack
     {
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    public override void FinishAttack()
-    {
-        base.FinishAttack();
-    }
-
-    public override void FixUpdate()
-    {
-        base.FixUpdate();
-    }
-
-    public override void StartAttack()
-    {
-        base.StartAttack();
-    }
-
     public override void Update()
     {
         base.Update();

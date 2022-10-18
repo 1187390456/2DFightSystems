@@ -8,21 +8,6 @@ public class E_S_Hurt : E_Hurt
     {
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    public override void FixUpdate()
-    {
-        base.FixUpdate();
-    }
-
     public override void Update()
     {
         base.Update();
