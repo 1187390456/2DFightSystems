@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +38,7 @@ public class E_S_RemoteAttack : E_RemoteAttack
         base.Update();
         if (isFinshAttack)
         {
-            if (entity.IsReachCanMeleeAttack())
+            if (sense.MeleeAttack())
             {
                 if (entity.CheckCanDodge() && entity.entityData.canDodge)
                 {
@@ -49,11 +49,11 @@ public class E_S_RemoteAttack : E_RemoteAttack
                     stateMachine.ChangeState(entity.meleeAttack);
                 }
             }
-            else if (entity.CheckMinDetected())
+            else if (sense.MinDetected())
             {
                 return;
             }
-            else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+            else if (sense.MaxDetected() && entity.entityData.canAbility1)
             {
                 stateMachine.ChangeState(entity.ability1);
             }

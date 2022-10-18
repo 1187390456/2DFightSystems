@@ -9,8 +9,13 @@ using Color = UnityEngine.Color;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    #region 核心
+
     public Core core { get; private set; }
     public Movement movement => core.movement;
+    public EnemyCollisionSenses sense => core.enemyCollisionSenses;
+
+    #endregion 核心
 
     public enum EnemyType
     {
@@ -18,15 +23,8 @@ public class Enemy : MonoBehaviour, IDamageable
         Remote
     }
 
-    [Header("墙壁检测点")] public Transform wallCheck;
-    [Header("边缘检测点")] public Transform edgeCheck;
-    [Header("警备检测点")] public Transform detectedCheck;
-    [Header("地面检测点")] public Transform groundCheck;
-    [Header("近战攻击检测点")] public Transform meleeAttackCheck;
-    [Header("远程攻击检测点")] public Transform remoteAttackCheck;
     [Header("实体数据")] public D_E_Base entityData;
 
-    public BoxCollider2D collider2d { get; private set; } // 碰撞体
     public Animator at { get; private set; } // 动画
     public E_StateMachine stateMachine { get; private set; } // 状态机
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
@@ -121,7 +119,7 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
         // 眩晕中接地
-        else if (CheckGround())
+        else if (sense.Ground())
         {
             movement.SetVelocityY(entityData.stunKnockbackSpeedY);
         }
@@ -186,10 +184,10 @@ public class Enemy : MonoBehaviour, IDamageable
         dodge = new E_S_Dodge(stateMachine, this, "dodge", dodgeData);
         detected = new E_S_Detected(stateMachine, this, "detected", detectedData);
         findPlayer = new E_S_FindPlayer(stateMachine, this, "findPlayer", findPlayerData);
-        meleeAttack = new E_S_MeleeAttack(stateMachine, this, "meleeAttack", meleeAttackCheck, meleeAttackData);
-        remoteAttack = new E_S_RemoteAttack(stateMachine, this, "remoteAttack", remoteAttackCheck, remoteAttackData);
+        meleeAttack = new E_S_MeleeAttack(stateMachine, this, "meleeAttack", sense.meleeAttackCheck, meleeAttackData);
+        remoteAttack = new E_S_RemoteAttack(stateMachine, this, "remoteAttack", sense.remoteAttackCheck, remoteAttackData);
         ability1 = new E_S_Ability1(stateMachine, this, "ability1", ability1Data);
-        ability2 = new E_S_Ability2(stateMachine, this, "ability2", remoteAttackCheck, remoteAttackData, ability2Data);
+        ability2 = new E_S_Ability2(stateMachine, this, "ability2", sense.remoteAttackCheck, remoteAttackData, ability2Data);
         charge = new E_S_Charge(stateMachine, this, "charge", chargeData);
         stateMachine.Init(move);
     }
@@ -199,7 +197,6 @@ public class Enemy : MonoBehaviour, IDamageable
         core = GetComponentInChildren<Core>();
 
         at = GetComponent<Animator>();
-        collider2d = GetComponent<BoxCollider2D>();
         mpb = new MaterialPropertyBlock();
         render = GetComponent<Renderer>();
         animationToScript = GetComponent<AnimationToScript>();
@@ -230,13 +227,6 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (core != null)
         {
-            Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + entityData.wallCheckDistance, wallCheck.position.y));
-            Gizmos.DrawLine(edgeCheck.position, new Vector2(edgeCheck.position.x, edgeCheck.position.y - entityData.edgeCheckDistance));
-            Gizmos.DrawLine(detectedCheck.position, new Vector2(detectedCheck.position.x + entityData.canMeleeDistance, detectedCheck.position.y));
-            Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - entityData.groundCheckDistance));
-            Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.minDetectedDistance * movement.facingDireciton, detectedCheck.position.y), 0.5f);
-            Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.maxDetectedDistance * movement.facingDireciton, detectedCheck.position.y), 0.5f);
-            Gizmos.DrawWireSphere(meleeAttackCheck.transform.position, meleeAttackData.meleeAttackRadius);
         }
     }
 
@@ -280,46 +270,10 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    // 墙壁检测
-    public virtual bool CheckWall()
-    {
-        return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, LayerMask.GetMask("Ground"));
-    }
-
-    // 地面检测
-    public virtual bool CheckGround()
-    {
-        return Physics2D.Raycast(groundCheck.position, Vector2.down, entityData.groundCheckDistance, LayerMask.GetMask("Ground"));
-    }
-
-    // 边缘检测
-    public virtual bool CheckEdge()
-    {
-        return Physics2D.Raycast(edgeCheck.position, Vector2.down, entityData.edgeCheckDistance, LayerMask.GetMask("Ground"));
-    }
-
-    // 最大警备点检测
-    public virtual bool CheckMaxDetected()
-    {
-        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.maxDetectedDistance, LayerMask.GetMask("Player"));
-    }
-
-    // 最小警备点检测
-    public virtual bool CheckMinDetected()
-    {
-        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.minDetectedDistance, LayerMask.GetMask("Player"));
-    }
-
     // 保护条件
     public virtual bool IsProtect()
     {
-        return !CheckEdge() || CheckWall();
-    }
-
-    // 近战攻击检测
-    public virtual bool IsReachCanMeleeAttack()
-    {
-        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.canMeleeDistance, LayerMask.GetMask("Player"));
+        return !sense.Edge() || sense.Wall();
     }
 
     // 检测是否可以闪避

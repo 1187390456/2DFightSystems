@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class E_S_Charge : E_Charge
     public override void Update()
     {
         base.Update();
-        if (entity.IsReachCanMeleeAttack())
+        if (sense.MeleeAttack())
         {
             stateMachine.ChangeState(entity.meleeAttack);
         }

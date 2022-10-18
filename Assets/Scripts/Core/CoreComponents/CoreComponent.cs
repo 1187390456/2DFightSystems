@@ -6,6 +6,7 @@ public class CoreComponent : MonoBehaviour
 {
     protected Core core;
     protected Transform target;
+    protected Movement movement => core.movement;
 
     public virtual void Awake()
     {

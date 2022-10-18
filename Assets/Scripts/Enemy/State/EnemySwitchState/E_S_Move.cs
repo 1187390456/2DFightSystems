@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ public class E_S_Move : E_Move
         switch (entity.entityData.enemyType)
         {
             case Enemy.EnemyType.Melee:
-                if (entity.CheckMinDetected())
+                if (sense.MinDetected())
                 {
                     stateMachine.ChangeState(entity.detected);
                 }
@@ -40,7 +40,7 @@ public class E_S_Move : E_Move
                 break;
 
             case Enemy.EnemyType.Remote:
-                if (entity.CheckMaxDetected())
+                if (sense.MaxDetected())
                 {
                     stateMachine.ChangeState(entity.detected);
                 }

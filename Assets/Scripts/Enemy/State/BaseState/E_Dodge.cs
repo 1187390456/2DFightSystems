@@ -34,7 +34,7 @@ public class E_Dodge : E_State
     public override void Update()
     {
         base.Update();
-        if (Time.time >= startTime + dodgeData.dodgeTime && entity.CheckGround())
+        if (Time.time >= startTime + dodgeData.dodgeTime && sense.Ground())
         {
             isDodgeOver = true;
             movement.SetVelocityX(0.0f);

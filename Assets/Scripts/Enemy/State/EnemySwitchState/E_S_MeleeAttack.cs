@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,15 +41,15 @@ public class E_S_MeleeAttack : E_MeleeAttack
             case Enemy.EnemyType.Melee:
                 if (isFinshAttack)
                 {
-                    if (entity.IsReachCanMeleeAttack())
+                    if (sense.MeleeAttack())
                     {
                         return;
                     }
-                    else if (entity.CheckMinDetected())
+                    else if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.charge);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }
@@ -67,15 +67,15 @@ public class E_S_MeleeAttack : E_MeleeAttack
                     {
                         stateMachine.ChangeState(entity.dodge);
                     }
-                    else if (entity.IsReachCanMeleeAttack())
+                    else if (sense.MeleeAttack())
                     {
                         return;
                     }
-                    else if (entity.CheckMinDetected())
+                    else if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.remoteAttack);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }

@@ -55,7 +55,7 @@ public class E_FindPlayer : E_State
         movement.SetTurn();
         turnCount--;
         lastTurnTime = Time.time;
-        if (entity.CheckMinDetected())
+        if (sense.MinDetected())
         {
             isFindPlayer = true;
             findPlayerTimeOver = true;

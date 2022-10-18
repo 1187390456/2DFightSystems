@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +47,7 @@ public class E_S_FindPlayer : E_FindPlayer
                         stateMachine.ChangeState(entity.move);
                     }
                 }
-                else if (!entity.CheckMinDetected() && entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                else if (!sense.MinDetected() && sense.MaxDetected() && entity.entityData.canAbility1)
                 {
                     stateMachine.ChangeState(entity.ability1);
                 }
@@ -58,7 +58,7 @@ public class E_S_FindPlayer : E_FindPlayer
                 {
                     if (isFindPlayer)
                     {
-                        if (entity.IsReachCanMeleeAttack())
+                        if (sense.MeleeAttack())
                         {
                             if (entity.CheckCanDodge() && entity.entityData.canDodge)
                             {
@@ -79,7 +79,7 @@ public class E_S_FindPlayer : E_FindPlayer
                         stateMachine.ChangeState(entity.move);
                     }
                 }
-                else if (!entity.CheckMinDetected() && entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                else if (!sense.MinDetected() && sense.MaxDetected() && entity.entityData.canAbility1)
                 {
                     stateMachine.ChangeState(entity.ability1);
                 }

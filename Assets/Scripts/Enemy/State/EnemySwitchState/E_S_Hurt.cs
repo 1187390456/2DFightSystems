@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,17 +29,17 @@ public class E_S_Hurt : E_Hurt
         switch (entity.entityData.enemyType)
         {
             case Enemy.EnemyType.Melee:
-                if (entity.IsReachCanMeleeAttack())
+                if (sense.MeleeAttack())
                 {
                     stateMachine.ChangeState(entity.meleeAttack);
                 }
                 else if (isHurtOver)
                 {
-                    if (entity.CheckMinDetected())
+                    if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.charge);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }
@@ -51,7 +51,7 @@ public class E_S_Hurt : E_Hurt
                 break;
 
             case Enemy.EnemyType.Remote:
-                if (entity.IsReachCanMeleeAttack())
+                if (sense.MeleeAttack())
                 {
                     if (entity.CheckCanDodge() && entity.entityData.canDodge)
                     {
@@ -64,11 +64,11 @@ public class E_S_Hurt : E_Hurt
                 }
                 else if (isHurtOver)
                 {
-                    if (entity.CheckMinDetected())
+                    if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.remoteAttack);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }

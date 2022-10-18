@@ -40,7 +40,7 @@ public class E_MeleeAttack : E_Attack
             damage = meleeAttackData.meleeAttackDamage,
             damageSourcePosX = entity.transform.position.x,
         };
-        var obj = Physics2D.OverlapCircle(entity.meleeAttackCheck.position, meleeAttackData.meleeAttackRadius, LayerMask.GetMask("Player"));
+        var obj = Physics2D.OverlapCircle(sense.meleeAttackCheck.position, meleeAttackData.meleeAttackRadius, LayerMask.GetMask("Player"));
         if (obj != null)
         {
             obj.transform.SendMessage("AcceptAttackDamage", attackInfo);

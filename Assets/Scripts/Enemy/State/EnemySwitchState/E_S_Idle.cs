@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class E_S_Idle : E_Idle
     public override void Update()
     {
         base.Update();
-        if (entity.CheckMinDetected())
+        if (sense.MinDetected())
         {
             SetTurn(false);
             stateMachine.ChangeState(entity.detected);

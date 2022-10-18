@@ -44,7 +44,7 @@ public class E_RemoteAttack : E_Attack
         {
             if (ETFXFireProjectile.Instance)
             {
-                ETFXFireProjectile.Instance.CreateEnemyProjectile(entity.remoteAttackCheck);
+                ETFXFireProjectile.Instance.CreateEnemyProjectile(sense.remoteAttackCheck);
             }
         }
     }

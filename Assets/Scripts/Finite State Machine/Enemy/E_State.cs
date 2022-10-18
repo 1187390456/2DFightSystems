@@ -5,6 +5,7 @@ using UnityEngine;
 public class E_State
 {
     protected Movement movement;
+    protected EnemyCollisionSenses sense;
 
     protected E_StateMachine stateMachine; // 状态机
     protected Enemy entity; // 实体
@@ -18,6 +19,7 @@ public class E_State
         this.anmName = anmName;
 
         movement = entity.movement;
+        sense = entity.sense;
     }
 
     // 进入状态

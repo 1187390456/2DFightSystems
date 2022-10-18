@@ -6,6 +6,7 @@ public class Core : MonoBehaviour
 {
     public Movement movement { get; private set; }
     public PlayerCollisionSenses playerCollisionSenses { get; private set; }
+    public EnemyCollisionSenses enemyCollisionSenses { get; private set; }
     public InputAction inputAction { get; private set; }
     public PlayerState playerState { get; private set; }
 
@@ -13,6 +14,7 @@ public class Core : MonoBehaviour
     {
         movement = GetComponentInChildren<Movement>();
         playerCollisionSenses = GetComponentInChildren<PlayerCollisionSenses>();
+        enemyCollisionSenses = GetComponentInChildren<EnemyCollisionSenses>();
         inputAction = GetComponentInChildren<InputAction>();
         playerState = GetComponentInChildren<PlayerState>();
     }

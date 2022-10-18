@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,15 +31,15 @@ public class E_S_Stun : E_Stun
             case Enemy.EnemyType.Melee:
                 if (isStunOver)
                 {
-                    if (entity.IsReachCanMeleeAttack())
+                    if (sense.MeleeAttack())
                     {
                         stateMachine.ChangeState(entity.meleeAttack);
                     }
-                    else if (entity.CheckMinDetected())
+                    else if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.charge);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }
@@ -53,7 +53,7 @@ public class E_S_Stun : E_Stun
             case Enemy.EnemyType.Remote:
                 if (isStunOver)
                 {
-                    if (entity.IsReachCanMeleeAttack())
+                    if (sense.MeleeAttack())
                     {
                         if (entity.CheckCanDodge() && entity.entityData.canDodge)
                         {
@@ -64,11 +64,11 @@ public class E_S_Stun : E_Stun
                             stateMachine.ChangeState(entity.meleeAttack);
                         }
                     }
-                    else if (entity.CheckMinDetected())
+                    else if (sense.MinDetected())
                     {
                         stateMachine.ChangeState(entity.remoteAttack);
                     }
-                    else if (entity.CheckMaxDetected() && entity.entityData.canAbility1)
+                    else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
                         stateMachine.ChangeState(entity.ability1);
                     }
