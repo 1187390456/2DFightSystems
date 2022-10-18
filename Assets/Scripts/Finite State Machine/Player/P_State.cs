@@ -6,7 +6,7 @@ using UnityEngine;
 public class P_State
 {
     protected Movement movement;
-    protected CollisionSenses sense;
+    protected PlayerCollisionSenses sense;
     protected InputAction action;
     protected PlayerState state;
 

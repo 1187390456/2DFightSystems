@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     public Core core { get; private set; }
     public Movement movement => core.movement;
-    public CollisionSenses sense => core.collisionSenses;
+    public PlayerCollisionSenses sense => core.playerCollisionSenses;
     public InputAction action => core.inputAction;
 
     public PlayerState state => core.playerState;

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185933091}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913451927}
   - component: {fileID: 1434024717}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0a615addc875945a2f26d68261cb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: c33a4d4aa9f76794098eb6293be4a829, type: 2}
+  weaponData: {fileID: 11400000, guid: 4da7beac899f5b1499ad26f867769ea2, type: 2}
 --- !u!1 &1345142065
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1387242095}
-  - component: {fileID: 1387242096}
+  - component: {fileID: 176831894300730150}
   m_Layer: 8
   m_Name: CollisionSenses
   m_TagString: Untagged
@@ -204,7 +204,7 @@ Transform:
   m_Father: {fileID: 1989969940}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1387242096
+--- !u!114 &176831894300730150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,16 +213,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387242094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7622d0a47cf97984cb369482992b7350, type: 3}
+  m_Script: {fileID: 11500000, guid: 66a49a5bdc8278f41a7dfbe8406c0738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 9122226455447742078}
-  wallCheck: {fileID: 9122226456552487913}
-  ledgeCheck: {fileID: 9122226456708030380}
-  topCheck: {fileID: 9122226455765121474}
-  groundCheckSize: {x: 0.55, y: 0.04}
+  wallCheck: {fileID: 0}
   wallCheckDistance: 0.4
+  groundCheck: {fileID: 0}
+  ledgeCheck: {fileID: 0}
+  topCheck: {fileID: 0}
   topCheckRadius: 0.54
+  groundCheckSize: {x: 0.55, y: 0.04}
 --- !u!1 &1633694879
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 1633694881}
   - component: {fileID: 1992026447}
   - component: {fileID: 1992026448}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 1908974765}
   - component: {fileID: 1908974764}
   - component: {fileID: 1908974766}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 0}
+  - {fileID: 1434024717}
 --- !u!1 &9122226456552487926
 GameObject:
   m_ObjectHideFlags: 0

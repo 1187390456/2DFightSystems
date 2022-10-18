@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FakePersonController : MonoBehaviour
+public class FakePersonController : MonoBehaviour, IDamageable
 {
     [SerializeField] [Header("最大生命值")] private float maxHealth = 9999;
     [SerializeField] [Header("是否启用受击状态")] private bool canKnockback;

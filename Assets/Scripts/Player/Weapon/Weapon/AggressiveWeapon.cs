@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AggressiveWeapon : Weapon
@@ -16,7 +17,7 @@ public class AggressiveWeapon : Weapon
     private void StartMeleeAttack()
     {
         WeaponAttackInfo weaponAttackInfo = aggressionWeaponData.attackInfos[attackIndex];
-        foreach (var item in damageList)
+        foreach (var item in damageList.ToList())
         {
             var attckInfo = new AttackInfo
             {

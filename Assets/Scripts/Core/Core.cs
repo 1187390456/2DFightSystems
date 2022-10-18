@@ -5,14 +5,14 @@ using UnityEngine;
 public class Core : MonoBehaviour
 {
     public Movement movement { get; private set; }
-    public CollisionSenses collisionSenses { get; private set; }
+    public PlayerCollisionSenses playerCollisionSenses { get; private set; }
     public InputAction inputAction { get; private set; }
     public PlayerState playerState { get; private set; }
 
     private void Awake()
     {
         movement = GetComponentInChildren<Movement>();
-        collisionSenses = GetComponentInChildren<CollisionSenses>();
+        playerCollisionSenses = GetComponentInChildren<PlayerCollisionSenses>();
         inputAction = GetComponentInChildren<InputAction>();
         playerState = GetComponentInChildren<PlayerState>();
     }
