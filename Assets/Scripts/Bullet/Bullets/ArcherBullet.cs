@@ -8,7 +8,6 @@ public class ArcherBullet : MonoBehaviour
     [Header("接触半径")] public float touchradius = 0.17f;
     [Header("最大存在时间")] public float maxAliveTime = 3.0f;
 
-    private AttackInfo attackInfo; // 攻击信息
     private Rigidbody2D rb; // 刚体
 
     private float xStartPos; // 起始位置
@@ -100,9 +99,7 @@ public class ArcherBullet : MonoBehaviour
         Collider2D hitPlayer = Physics2D.OverlapCircle(touchPos.position, touchradius, LayerMask.GetMask("Player"));
         if (hitPlayer)
         {
-            attackInfo.damage = damage;
-            attackInfo.damageSourcePosX = transform.position.x;
-            hitPlayer.transform.SendMessage("AcceptAttackDamage", attackInfo);
+            //玩家
             Destroy(gameObject);
         }
     }

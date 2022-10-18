@@ -128,23 +128,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 受到伤害回调
-    public void AcceptTouchDamage(float[] damageInfo)
-    {
-        if (!isDashing)
-        {
-            PlayerStates.Instance.DecreaseHealth(damageInfo[0]);
-            Knockback(damageInfo[1]);
-        }
-    }
-
-    // 受到近战攻击回调
-    public void AcceptAttackDamage(AttackInfo attackInfo)
-    {
-        PlayerStates.Instance.DecreaseHealth(attackInfo.damage);
-        Knockback(attackInfo.damageSourcePosX);
-    }
-
     private void Awake()
     {
         Instance = this;

@@ -26,7 +26,6 @@ public class P_Move : P_Ground
     public override void Update()
     {
         base.Update();
-
         if (!isExit)
         {
             movement.SetPlayerMove(data.moveSpeed);

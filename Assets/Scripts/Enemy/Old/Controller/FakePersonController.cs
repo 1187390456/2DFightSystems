@@ -62,31 +62,31 @@ public class FakePersonController : MonoBehaviour, IDamageable
     }
 
     // 受到伤害回调
-    public void AcceptPlayerDamage(AttackInfo attackInfo)
-    {
-        currentHealth -= attackInfo.damage;
-        at.SetTrigger("damage");
-        if (attackInfo.damageSourcePosX > transform.position.x)
-        {
-            isHitFromLeft = false;
-        }
-        else
-        {
-            isHitFromLeft = true;
-        }
-        at.SetBool("isHitFromLeft", isHitFromLeft);
-        var pos = at.transform.position;
-        var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
-        EffectBox.Instance.FakePersonHit(pos, rot);
-        if (canKnockback && currentHealth > 0.0f)
-        {
-            Knockback();
-        }
-        if (currentHealth <= 0.0f)
-        {
-            Died();
-        }
-    }
+    //public void AcceptPlayerDamage(AttackInfo attackInfo)
+    //{
+    //    currentHealth -= attackInfo.damage;
+    //    at.SetTrigger("damage");
+    //    if (attackInfo.damageSourcePosX > transform.position.x)
+    //    {
+    //        isHitFromLeft = false;
+    //    }
+    //    else
+    //    {
+    //        isHitFromLeft = true;
+    //    }
+    //    at.SetBool("isHitFromLeft", isHitFromLeft);
+    //    var pos = at.transform.position;
+    //    var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
+    //    EffectBox.Instance.FakePersonHit(pos, rot);
+    //    if (canKnockback && currentHealth > 0.0f)
+    //    {
+    //        Knockback();
+    //    }
+    //    if (currentHealth <= 0.0f)
+    //    {
+    //        Died();
+    //    }
+    //}
 
     // 检测受击状态
     private void CheckKnockbackStatu()
@@ -122,5 +122,9 @@ public class FakePersonController : MonoBehaviour, IDamageable
         topRg.velocity = new Vector2(dieTopBeKnockSpeed.x * knockBackDirection, dieTopBeKnockSpeed.y);
         // 施加旋转力 左手定则 正值左边 负值右边
         topRg.AddTorque(dieTopTorque * -knockBackDirection, ForceMode2D.Impulse);
+    }
+
+    public void Damage(float amount)
+    {
     }
 }

@@ -24,7 +24,6 @@ public class PlayerState : CoreComponent
     public P_Dash dash { get; private set; }
     public P_CrouchIdle crouchIdle { get; private set; }
     public P_CrouchMove crouchMove { get; private set; }
-    public P_KnockBack knockBack { get; private set; }
     public P_Dead dead { get; private set; }
     public P_Attack firstAttack { get; private set; }
     public P_Attack secondAttack { get; private set; }
@@ -63,7 +62,6 @@ public class PlayerState : CoreComponent
         dash = new P_Dash(stateMachine, player, "inAir", playerData);
         crouchIdle = new P_CrouchIdle(stateMachine, player, "crouchIdle", playerData);
         crouchMove = new P_CrouchMove(stateMachine, player, "crouchMove", playerData);
-        knockBack = new P_KnockBack(stateMachine, player, "knockBack", playerData);
         dead = new P_Dead(stateMachine, player, "dead", playerData);
         firstAttack = new P_Attack(stateMachine, player, "attack", playerData);
         secondAttack = new P_Attack(stateMachine, player, "attack", playerData);

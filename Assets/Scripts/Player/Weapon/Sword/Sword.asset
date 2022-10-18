@@ -16,9 +16,15 @@ MonoBehaviour:
   - attackName: AttackStep1
     moveSpeed: 3
     damageAmount: 10
+    knockbackSpeed: 10
+    knockbackAngle: {x: 1, y: 1}
   - attackName: AttackStep2
     moveSpeed: 4
     damageAmount: 10
+    knockbackSpeed: 15
+    knockbackAngle: {x: 1, y: 1}
   - attackName: AttackStep3
     moveSpeed: 2
     damageAmount: 10
+    knockbackSpeed: 20
+    knockbackAngle: {x: 1, y: 2}

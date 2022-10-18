@@ -11,7 +11,6 @@ public class P_CrouchIdle : P_Ground
     public override void Enter()
     {
         base.Enter();
-        movement.SetVelocityZero();
     }
 
     public override void Exit()
@@ -19,11 +18,17 @@ public class P_CrouchIdle : P_Ground
         base.Exit();
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     public override void Update()
     {
         base.Update();
         if (!isExit)
         {
+            movement.SetVelocityZero();
             if (action.GetYInput() != -1 && !sense.Top())
             {
                 stateMachine.ChangeState(state.idle);

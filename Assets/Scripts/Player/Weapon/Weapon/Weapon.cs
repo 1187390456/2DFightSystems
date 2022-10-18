@@ -8,9 +8,14 @@ public class Weapon : MonoBehaviour
     protected Animator baseAt;
     protected Animator weaponAt;
     protected P_Attack state;
+    protected Movement movement;
     protected int attackIndex = 0;
 
-    public virtual void InitState(P_Attack state) => this.state = state;
+    public virtual void InitState(P_Attack state, Movement movement)
+    {
+        this.state = state;
+        this.movement = movement;
+    }
 
     protected virtual void Awake()
     {

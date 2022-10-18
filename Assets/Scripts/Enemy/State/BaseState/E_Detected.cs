@@ -16,7 +16,6 @@ public class E_Detected : E_State
     {
         base.Enter();
         isDetectedOver = false;
-        movement.SetVelocityX(0.0f);
     }
 
     public override void Exit()
@@ -28,6 +27,7 @@ public class E_Detected : E_State
     public override void FixUpdate()
     {
         base.FixUpdate();
+        movement.SetVelocityX(0.0f);
     }
 
     public override void Update()

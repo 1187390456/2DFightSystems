@@ -8,22 +8,30 @@ public class Movement : CoreComponent
     public int facingDireciton { get; private set; }
     public Vector3 transRight { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public bool canSetVelocity { get; set; }
     public float rbX => rb.velocity.x;
     public float rbY => rb.velocity.y;
 
-    public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity * facingDireciton, rb.velocity.y);
+    public void SetVelocityX(float velocity)
+    { if (canSetVelocity) rb.velocity = new Vector2(velocity * facingDireciton, rb.velocity.y); }
 
-    public void SetVelocityY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
+    public void SetVelocityY(float velocity)
+    { if (canSetVelocity) rb.velocity = new Vector2(rb.velocity.x, velocity); }
 
-    public void SetVelocity(float velocity, Vector2 direction) => rb.velocity = direction * velocity;
+    public void SetVelocity(float velocity, Vector2 direction)
+    { if (canSetVelocity) rb.velocity = direction * velocity; }
 
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
-        angle.Normalize();
-        rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
+        if (canSetVelocity)
+        {
+            angle.Normalize();
+            rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
+        }
     }
 
-    public void SetVelocityZero() => rb.velocity = Vector2.zero;
+    public void SetVelocityZero()
+    { if (canSetVelocity) rb.velocity = Vector2.zero; }
 
     public void SetPlayerMove(float velocity) => SetVelocityX(velocity * Mathf.Abs(InputManager.Instance.xInput));
 
@@ -55,6 +63,7 @@ public class Movement : CoreComponent
     {
         base.Awake();
         facingDireciton = 1;
+        canSetVelocity = true;
         rb = GetComponentInParent<Rigidbody2D>();
         transRight = target.right;
     }

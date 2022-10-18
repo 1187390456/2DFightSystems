@@ -15,6 +15,7 @@ public class Core : MonoBehaviour
     public PlayerState playerState { get; private set; }
 
     public EnemyState enemyState { get; private set; }
+    public Combat combat { get; private set; }
 
     private void Awake()
     {
@@ -24,5 +25,6 @@ public class Core : MonoBehaviour
         inputAction = GetComponentInChildren<InputAction>();
         playerState = GetComponentInChildren<PlayerState>();
         enemyState = GetComponentInChildren<EnemyState>();
+        combat = GetComponentInChildren<Combat>();
     }
 }

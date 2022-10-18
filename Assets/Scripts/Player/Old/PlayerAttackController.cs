@@ -10,11 +10,11 @@ public class PlayerAttackController : MonoBehaviour
     private Animator at; // 自身动画
     private Rigidbody2D rb; // 自身刚体
 
-    [SerializeField][Header("有效攻击输入时间")] private float inputTime = 0.2f;
-    [SerializeField][Header("攻击1造成的伤害")] private float attack1Damage = 10;
-    [SerializeField][Header("攻击检测点")] private Transform attackCheck;
-    [SerializeField][Header("攻击检测半径")] private float attackCheckRadius;
-    [SerializeField][Header("可被攻击层级")] private LayerMask CanBeAttack;
+    [SerializeField] [Header("有效攻击输入时间")] private float inputTime = 0.2f;
+    [SerializeField] [Header("攻击1造成的伤害")] private float attack1Damage = 10;
+    [SerializeField] [Header("攻击检测点")] private Transform attackCheck;
+    [SerializeField] [Header("攻击检测半径")] private float attackCheckRadius;
+    [SerializeField] [Header("可被攻击层级")] private LayerMask CanBeAttack;
 
     private bool canAttack = true; // 是否能够攻击
     private bool attack1Switch = true; // 攻击1切换
@@ -48,13 +48,6 @@ public class PlayerAttackController : MonoBehaviour
         isAttacking = false;
         at.SetBool("isAttacking", isAttacking);
         at.SetBool("attack1", false);
-    }
-
-    // 攻击1 碰撞检测回调
-    public void AnimationAttack1Hit()
-    {
-        Collider2D[] objs = Physics2D.OverlapCircleAll(attackCheck.position, attackCheckRadius, CanBeAttack);
-        TransportAttackInfoToEnemy(objs, transform, attack1Damage);
     }
 
     // 开始攻击
@@ -95,30 +88,5 @@ public class PlayerAttackController : MonoBehaviour
         {
             isAttackInputing = false;
         }
-    }
-
-    // 传输攻击信息给敌人
-    public void TransportAttackInfoToEnemy(Collider2D[] objs, Transform trans, float damage)
-    {
-        AttackInfo attackInfo = new AttackInfo()
-        {
-            damage = damage,
-            damageSourcePosX = trans.position.x
-        };
-        foreach (var item in objs)
-        {
-            item.transform.parent.SendMessage("AcceptPlayerDamage", attackInfo);
-        }
-    }
-
-    // 传输攻击信息给敌人
-    public void TransportAttackInfoToEnemy(RaycastHit2D objs, Transform trans)
-    {
-        AttackInfo attackInfo = new AttackInfo()
-        {
-            damage = fireAttackDamage,
-            damageSourcePosX = trans.position.x
-        };
-        objs.transform.parent.SendMessage("AcceptPlayerDamage", attackInfo);
     }
 }

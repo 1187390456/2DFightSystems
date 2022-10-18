@@ -19,7 +19,6 @@ public class E_FindPlayer : E_State
         base.Enter();
         findPlayerTimeOver = false;
         turnCount = 3;
-        movement.SetVelocityX(0.0f);
     }
 
     public override void Exit()
@@ -35,6 +34,7 @@ public class E_FindPlayer : E_State
     public override void Update()
     {
         base.Update();
+        movement.SetVelocityX(0.0f);
         if (startTime + Time.deltaTime >= startTime + 0.8f)
         {
             Turn();

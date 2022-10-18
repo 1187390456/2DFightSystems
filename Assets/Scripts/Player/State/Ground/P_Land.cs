@@ -11,7 +11,6 @@ public class P_Land : P_Ground
     public override void Enter()
     {
         base.Enter();
-        movement.SetVelocityZero();
     }
 
     public override void Exit()
@@ -27,9 +26,9 @@ public class P_Land : P_Ground
     public override void Update()
     {
         base.Update();
-
         if (!isExit)
         {
+            movement.SetVelocityZero();
             if (isAnimationDone)
             {
                 stateMachine.ChangeState(state.idle);

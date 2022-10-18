@@ -16,8 +16,13 @@ public class P_Jump : P_Ability
         base.Enter();
         action.UseJumpInput();
         DecreaseJumpCount();
-        movement.SetVelocityY(data.jumpForce);
         isAbilityDone = true;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        movement.SetVelocityY(data.jumpForce);
     }
 
     public void ResetJumpCount() => currentJumpCount = data.jumpCount;

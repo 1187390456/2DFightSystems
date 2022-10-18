@@ -8,6 +8,7 @@ public class CoreComponent : MonoBehaviour
     protected Transform target;
     protected Movement movement => core.movement;
     protected EnemyCollisionSenses enemySense => core.enemyCollisionSenses;
+    protected PlayerCollisionSenses playerSense => core.playerCollisionSenses;
 
     public virtual void Awake()
     {

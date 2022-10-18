@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class E_Attack : E_State
 {
-    protected Transform attackPos; // 攻击位置
-    protected bool isFinshAttack; //  攻击是否结束
+    protected Transform attackPos;
+    protected bool isFinshAttack;
 
     public E_Attack(E_StateMachine stateMachine, Enemy entity, string anmName, Transform attackPos) : base(stateMachine, entity, anmName)
     {
@@ -27,6 +27,7 @@ public class E_Attack : E_State
     public override void FixUpdate()
     {
         base.FixUpdate();
+        movement.SetVelocityX(0.0f);
     }
 
     public override void Update()

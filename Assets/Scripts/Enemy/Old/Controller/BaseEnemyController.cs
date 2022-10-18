@@ -97,34 +97,6 @@ public class BaseEnemyController : MonoBehaviour
         Gizmos.DrawWireCube(touchCheck.position, touchCheckBox);
     }
 
-    // 受到伤害回调
-    public void AcceptPlayerDamage(AttackInfo attackInfo)
-    {
-        currentHealth -= attackInfo.damage;
-        var pos = transform.position;
-        var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
-        EffectBox.Instance.WildBoarHit(pos, rot);
-        // 判断伤害方向
-        if (transform.position.x < attackInfo.damageSourcePosX)
-        {
-            // 伤害来源来右边
-            damageDirection = 1;
-        }
-        else
-        {
-            damageDirection = -1;
-        }
-
-        if (currentHealth > 0.0f)
-        {
-            SwitchState(State.Knockback);
-        }
-        else if (currentHealth < 0.0f)
-        {
-            SwitchState(State.Dead);
-        }
-    }
-
     // 检测接触
     private void CheckTouch()
     {

@@ -43,7 +43,7 @@ public class P_Attack : P_Ability
     public void SetWeapon(Weapon weapon)
     {
         this.weapon = weapon;
-        this.weapon.InitState(this);
+        this.weapon.InitState(this, movement);
     }
 
     public override void StartAnimation()

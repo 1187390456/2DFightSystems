@@ -7,6 +7,7 @@ public class AggressiveWeapon : Weapon
 {
     protected SO_AggressionWeaponData aggressionWeaponData;
     private List<IDamageable> damageList = new List<IDamageable>();
+    private List<IKnockbackable> knockbackList = new List<IKnockbackable>();
 
     public override void AnimationStart()
     {
@@ -19,30 +20,39 @@ public class AggressiveWeapon : Weapon
         WeaponAttackInfo weaponAttackInfo = aggressionWeaponData.attackInfos[attackIndex];
         foreach (var item in damageList.ToList())
         {
-            var attckInfo = new AttackInfo
-            {
-                damage = weaponAttackInfo.damageAmount,
-                damageSourcePosX = GetComponentInParent<Player>().transform.position.x,
-            };
-            item.AcceptPlayerDamage(attckInfo);
+            item.Damage(weaponAttackInfo.damageAmount);
+        }
+        foreach (var item in knockbackList.ToList())
+        {
+            item.Knckback(weaponAttackInfo.knockbackSpeed, weaponAttackInfo.knockbackAngle, movement.facingDireciton);
         }
     }
 
     public void AddList(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponentInParent<IDamageable>();
+        IDamageable damageable = collision.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageList.Add(damageable);
+        }
+        IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
+        if (knockbackable != null)
+        {
+            knockbackList.Add(knockbackable);
         }
     }
 
     public void RemoveList(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponentInParent<IDamageable>();
+        IDamageable damageable = collision.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageList.Remove(damageable);
+        }
+        IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
+        if (knockbackable != null)
+        {
+            knockbackList.Remove(knockbackable);
         }
     }
 

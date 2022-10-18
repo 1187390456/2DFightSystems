@@ -70,7 +70,7 @@ public class ETFXProjectileScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 7)
                 {
-                    Player.Instance.TransportAttackInfoToEnemy(hit, transform);
+                    // 玩家
                 }
                 CreateEffect();
             }
@@ -82,12 +82,7 @@ public class ETFXProjectileScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 8)
                 {
-                    AttackInfo attackInfo = new AttackInfo
-                    {
-                        damage = 10.0f,
-                        damageSourcePosX = transform.position.x,
-                    };
-                    hit.transform.SendMessage("AcceptAttackDamage", attackInfo);
+                    // 敌人
                 }
                 CreateEffect();
             }

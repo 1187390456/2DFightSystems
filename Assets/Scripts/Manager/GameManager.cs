@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
             player.transform.SetSiblingIndex(4);
             var playerScript = player.GetComponent<Player>();
             playerScript.currentHealth = playerScript.state.playerData.maxHealth;
-            playerScript.SetDeadTimer(false);
+            CanvasHandle.Instance.SetDeadTimer(false);
             if (Application.platform == RuntimePlatform.Android)
             {
-                playerScript.SetCanvasBtnState(true);
+                CanvasHandle.Instance.SetCanvasBtnState(true);
             }
             playerCM.Follow = player.transform;
         }

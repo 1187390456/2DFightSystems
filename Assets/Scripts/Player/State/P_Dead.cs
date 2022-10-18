@@ -13,9 +13,9 @@ public class P_Dead : P_State
         base.Enter();
         if (Application.platform == RuntimePlatform.Android)
         {
-            player.SetCanvasBtnState(false);
+            CanvasHandle.Instance.SetCanvasBtnState(false);
         }
-        player.SetDeadTimer(true);
+        CanvasHandle.Instance.SetDeadTimer(true);
         player.SetDestory();
         EffectBox.Instance.Chunk(player.transform.position);
         EffectBox.Instance.Blood(player.transform.position);

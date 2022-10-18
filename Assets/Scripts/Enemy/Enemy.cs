@@ -1,13 +1,7 @@
 ﻿using EpicToonFX;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using static UnityEngine.EventSystems.EventTrigger;
-using Color = UnityEngine.Color;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour
 {
     #region 核心
 
@@ -15,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public Movement movement => core.movement;
     public EnemyCollisionSenses sense => core.enemyCollisionSenses;
     public EnemyState state => core.enemyState;
+    public Combat combat => core.combat;
 
     #endregion 核心
 
@@ -53,47 +48,47 @@ public class Enemy : MonoBehaviour, IDamageable
     #region 其他函数
 
     // 接收伤害回调
-    public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
-    {
-        if (isDead || stateMachine.currentState == state.ability2) return;
-        currentHealth -= attackInfo.damage;
+    //public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
+    //{
+    //    if (isDead || stateMachine.currentState == state.ability2) return;
+    //    currentHealth -= attackInfo.damage;
 
-        // 判断死亡
-        if (currentHealth <= 0)
-        {
-            isDead = true;
-        }
-        // 判断受击方向
-        if (transform.position.x < attackInfo.damageSourcePosX)
-        {
-            knockbackDirection = -1;
-        }
-        else
-        {
-            knockbackDirection = 1;
-        }
-        // 攻击特效
-        EffectBox.Instance.CreateEffect(entityData.effectRes, transform.position, transform.rotation);
+    //    // 判断死亡
+    //    if (currentHealth <= 0)
+    //    {
+    //        isDead = true;
+    //    }
+    //    // 判断受击方向
+    //    if (transform.position.x < attackInfo.damageSourcePosX)
+    //    {
+    //        knockbackDirection = -1;
+    //    }
+    //    else
+    //    {
+    //        knockbackDirection = 1;
+    //    }
+    //    // 攻击特效
+    //    EffectBox.Instance.CreateEffect(entityData.effectRes, transform.position, transform.rotation);
 
-        // 判断是否处于眩晕中
-        if (!isStuning)
-        {
-            currentStunCount--;
-            if (currentStunCount > 0)
-            {
-                isHurting = true;
-            }
-            else
-            {
-                isStuning = true;
-            }
-        }
-        // 眩晕中接地
-        else if (sense.Ground())
-        {
-            movement.SetVelocityY(entityData.stunKnockbackSpeedY);
-        }
-    }
+    //    // 判断是否处于眩晕中
+    //    if (!isStuning)
+    //    {
+    //        currentStunCount--;
+    //        if (currentStunCount > 0)
+    //        {
+    //            isHurting = true;
+    //        }
+    //        else
+    //        {
+    //            isStuning = true;
+    //        }
+    //    }
+    //    // 眩晕中接地
+    //    else if (sense.Ground())
+    //    {
+    //        movement.SetVelocityY(entityData.stunKnockbackSpeedY);
+    //    }
+    //}
 
     // 更新动画
     private void UpdateAnimation()
