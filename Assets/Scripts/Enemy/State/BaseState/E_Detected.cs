@@ -21,7 +21,6 @@ public class E_Detected : E_State
     public override void Exit()
     {
         base.Exit();
-        entity.isHurting = false;
     }
 
     public override void FixUpdate()

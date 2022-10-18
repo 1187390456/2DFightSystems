@@ -23,7 +23,6 @@ public class E_Hurt : E_State
     public override void Exit()
     {
         base.Exit();
-        entity.isHurting = false;
     }
 
     public override void FixUpdate()

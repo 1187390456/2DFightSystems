@@ -40,7 +40,6 @@ public class E_Dead : E_State
     {
         base.Exit();
         currentTransparent = 1;
-        entity.isDead = false;
         entity.isUseAbility2 = false;
         entity.stats.currentHealth = entity.entityData.maxHealth;
         // entity.transform.position = GameManager.Instance.GetRandPos();

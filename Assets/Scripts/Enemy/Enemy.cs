@@ -37,11 +37,6 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public MaterialPropertyBlock mpb; // 渲染材质空值
     [HideInInspector] public Renderer render;  // 渲染
 
-    [HideInInspector] public int currentStunCount;// 当前距离击晕次数
-    [HideInInspector] public bool isStuning;//是否眩晕
-    [HideInInspector] public bool isHurting;//是否受伤
-    [HideInInspector] public bool isDead; // 是否死亡
-
     [HideInInspector] public GameObject ability2Effect1; // 技能2特效1
     [HideInInspector] public GameObject ability2Effect2;// 技能2特效2
 
@@ -110,13 +105,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        currentStunCount = entityData.stunCount;
         lastAttackEffectTime = Time.time;
     }
 
     public virtual void Update()
     {
-        CheckSwitchState();
         UpdateAnimation();
         UpdateAttackEffect();
     }
@@ -137,44 +130,11 @@ public class Enemy : MonoBehaviour
 
     #region 检测
 
-    // 检测切换状态
-    public void CheckSwitchState()
-    {
-        if (stateMachine.currentState == state.dead) return;
-        if (CheckDead())
-        {
-            stateMachine.ChangeState(state.dead);
-        }
-        if (stateMachine.currentState == state.ability2) return;
-        //else if (CheckAblity2() && !isUseAbility2)
-        //{
-        //    stateMachine.ChangeState(state.ability2);
-        //    isUseAbility2 = true;
-        //}
-        else if (CheckStun())
-        {
-            stateMachine.ChangeState(state.stun);
-        }
-        else if (CheckHurt())
-        {
-            stateMachine.ChangeState(state.hurt);
-        }
-    }
-
     // 保护条件
     public virtual bool IsProtect() => !sense.Edge() || sense.Wall();
 
     // 检测是否可以闪避
     public bool CheckCanDodge() => Time.time >= state.dodge.endDodgeTime + state.dodge.dodgeData.cooldown;
-
-    // 检测死亡
-    private bool CheckDead() => isDead && stateMachine.currentState != state.dead;
-
-    // 检测眩晕
-    private bool CheckStun() => isStuning && stateMachine.currentState != state.stun && stateMachine.currentState != state.ability2 && stateMachine.currentState != state.dead;
-
-    // 检测受伤
-    private bool CheckHurt() => isHurting && stateMachine.currentState != state.hurt && Time.time >= state.hurt.startTime + state.hurtData.hurtCoolDown;
 
     // 检测技能2
     // private bool CheckAblity2() => stats.currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;

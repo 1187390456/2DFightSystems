@@ -26,7 +26,6 @@ public class E_Stun : E_State
     public override void Exit()
     {
         base.Exit();
-        entity.isStuning = false;
         if (stunData.isNeedEffect)
         {
             entity.stunEffect.SetActive(false);
@@ -44,7 +43,6 @@ public class E_Stun : E_State
         if (Time.time >= startTime + stunData.stunTime)
         {
             isStunOver = true;
-            entity.currentStunCount = entity.entityData.stunCount;
         }
     }
 }
