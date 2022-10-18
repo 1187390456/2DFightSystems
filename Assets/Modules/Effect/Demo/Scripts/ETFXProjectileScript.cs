@@ -98,14 +98,14 @@ public class ETFXProjectileScript : MonoBehaviour
     private bool HitConditionByPlayer()
     {
         // 墙壁
-        if (hit.collider.transform.parent.gameObject.GetComponent<Enemy>() == null)
+        if (hit.collider.GetComponent<Enemy>() == null)
         {
             return true;
         }
         // 敌人
         else
         {
-            var enemy = hit.collider.transform.parent.gameObject.GetComponent<Enemy>();
+            var enemy = hit.collider.GetComponent<Enemy>();
             return enemy.stateMachine.currentState != enemy.dead;
         }
     }

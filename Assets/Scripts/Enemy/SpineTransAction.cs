@@ -16,7 +16,7 @@ public class SpineTransAction : MonoBehaviour
     private void Awake()
     {
         spineScript = GetComponent<SkeletonMecanim>();
-        enemy = transform.parent.GetComponent<Enemy>();
+        enemy = GetComponent<Enemy>();
         spineScript.skeletonDataAsset = dataList[0]; // 默认第一个数据
         spineScript.initialSkinName = "V1"; // 初始皮肤
         spineScript.Initialize(true);

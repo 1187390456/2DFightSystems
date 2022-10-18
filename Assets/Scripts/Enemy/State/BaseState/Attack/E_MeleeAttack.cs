@@ -14,7 +14,7 @@ public class E_MeleeAttack : E_Attack
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocityX(3.0f);
+        movement.SetVelocityX(3.0f);
     }
 
     public override void Exit()
@@ -38,7 +38,7 @@ public class E_MeleeAttack : E_Attack
         AttackInfo attackInfo = new AttackInfo()
         {
             damage = meleeAttackData.meleeAttackDamage,
-            damageSourcePosX = entity.aliveGobj.transform.position.x,
+            damageSourcePosX = entity.transform.position.x,
         };
         var obj = Physics2D.OverlapCircle(entity.meleeAttackCheck.position, meleeAttackData.meleeAttackRadius, LayerMask.GetMask("Player"));
         if (obj != null)

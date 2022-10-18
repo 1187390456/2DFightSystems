@@ -36,7 +36,7 @@ public class P_Attack : P_Ability
 
         if (isMoving)
         {
-            movement.SetVelocityX(velocitySet * movement.facingDireciton);
+            movement.SetVelocityX(velocitySet);
         }
     }
 
@@ -59,14 +59,14 @@ public class P_Attack : P_Ability
 
     public void MoveStart(float velocity)
     {
-        movement.SetVelocityX(velocity * movement.facingDireciton);
+        movement.SetVelocityX(velocity);
         velocitySet = velocity;
         isMoving = true;
     }
 
     public void MoveStop(float velocity)
     {
-        movement.SetVelocityX(velocity * movement.facingDireciton);
+        movement.SetVelocityX(velocity);
         isMoving = false;
     }
 

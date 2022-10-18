@@ -60,7 +60,7 @@ namespace EpicToonFX
         {
             var enemy = Physics2D.BoxCast(Player.Instance.transform.position, Player.Instance.state.playerData.fireSize, 0.0f,
                  transform.right, 0.0f, LayerMask.GetMask("CanBeAttack"));
-            if (enemy && enemy.collider.transform.parent.GetComponent<Enemy>().stateMachine.currentState != enemy.collider.transform.parent.GetComponent<Enemy>().dead)
+            if (enemy && enemy.collider.GetComponent<Enemy>().stateMachine.currentState != enemy.collider.GetComponent<Enemy>().dead)
             {
                 var enemyPosOffset = new Vector2(enemy.collider.transform.position.x, enemy.collider.transform.position.y + enemy.collider.bounds.size.y / 2);
                 projectile.transform.LookAt(enemyPosOffset);

@@ -119,7 +119,7 @@ public class P_InAir : P_State
         if (action.GetJumpInputStop())
         {
             action.UseJumpInputStop();
-            movement.SetVelocitY(movement.rbY * data.jumpAirMultiplier);
+            movement.SetVelocityY(movement.rbY * data.jumpAirMultiplier);
         }
     }
 }

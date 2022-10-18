@@ -62,7 +62,7 @@ public class P_Dash : P_Ability
 
         if (movement.rbY > 0)
         {
-            movement.SetVelocitY(movement.rbY * data.dashMultiplier);
+            movement.SetVelocityY(movement.rbY * data.dashMultiplier);
         }
 
         state.jump.ResetJumpCount();

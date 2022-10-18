@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.EventSystems.EventTrigger;
 using Color = UnityEngine.Color;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    public Core core { get; private set; }
+    public Movement movement => core.movement;
+
     public enum EnemyType
     {
         Melee,
@@ -22,10 +26,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("远程攻击检测点")] public Transform remoteAttackCheck;
     [Header("实体数据")] public D_E_Base entityData;
 
-    public GameObject aliveGobj { get; private set; } // 存活游戏对象
     public BoxCollider2D collider2d { get; private set; } // 碰撞体
     public Animator at { get; private set; } // 动画
-    public Rigidbody2D rb { get; private set; } // 刚体
     public E_StateMachine stateMachine { get; private set; } // 状态机
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
     public int knockbackDirection { get; private set; } // 眩晕击退方向 1右
@@ -39,8 +41,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public MaterialPropertyBlock mpb; // 渲染材质空值
     [HideInInspector] public Renderer render;  // 渲染
 
-    [HideInInspector] public Vector2 movement;// 刚体速度
-    [HideInInspector] public int facingDirection = 1; // 面向方向 1右
     [HideInInspector] public int currentStunCount;// 当前距离击晕次数
     [HideInInspector] public float currentHealth; // 当前生命值
     [HideInInspector] public bool isStuning;//是否眩晕
@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour, IDamageable
             isDead = true;
         }
         // 判断受击方向
-        if (aliveGobj.transform.position.x < attackInfo.damageSourcePosX)
+        if (transform.position.x < attackInfo.damageSourcePosX)
         {
             knockbackDirection = -1;
         }
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour, IDamageable
             knockbackDirection = 1;
         }
         // 攻击特效
-        EffectBox.Instance.CreateEffect(entityData.effectRes, aliveGobj.transform.position, aliveGobj.transform.rotation);
+        EffectBox.Instance.CreateEffect(entityData.effectRes, transform.position, transform.rotation);
 
         // 判断是否处于眩晕中
         if (!isStuning)
@@ -123,14 +123,14 @@ public class Enemy : MonoBehaviour, IDamageable
         // 眩晕中接地
         else if (CheckGround())
         {
-            SetVelocityY(entityData.stunKnockbackSpeedY);
+            movement.SetVelocityY(entityData.stunKnockbackSpeedY);
         }
     }
 
     // 更新动画
     private void UpdateAnimation()
     {
-        at.SetFloat("yVelocity", rb.velocity.y);
+        at.SetFloat("yVelocity", movement.rbY);
     }
 
     // 更新攻击特效
@@ -149,7 +149,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // 判断是否有该游戏对象 赋值 然后禁用
     private bool JudGeGameObjAlive(string name)
     {
-        return aliveGobj.transform.Find(name) != null;
+        return transform.Find(name) != null;
     }
 
     // 初始化某些特效游戏对象
@@ -157,17 +157,17 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (JudGeGameObjAlive("StunEffect"))
         {
-            stunEffect = aliveGobj.transform.Find("StunEffect").gameObject;
+            stunEffect = transform.Find("StunEffect").gameObject;
             stunEffect.SetActive(false);
         }
         if (JudGeGameObjAlive("Ability2Effect"))
         {
-            ability2Effect1 = aliveGobj.transform.Find("Ability2Effect").gameObject;
+            ability2Effect1 = transform.Find("Ability2Effect").gameObject;
             ability2Effect1.SetActive(false);
         }
         if (JudGeGameObjAlive("Ability2BottomEffect"))
         {
-            ability2Effect2 = aliveGobj.transform.Find("Ability2BottomEffect").gameObject;
+            ability2Effect2 = transform.Find("Ability2BottomEffect").gameObject;
             ability2Effect2.SetActive(false);
         }
     }
@@ -196,13 +196,13 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Awake()
     {
-        aliveGobj = transform.Find("Alive").gameObject;
-        rb = aliveGobj.GetComponent<Rigidbody2D>();
-        at = aliveGobj.GetComponent<Animator>();
-        collider2d = aliveGobj.GetComponent<BoxCollider2D>();
+        core = GetComponentInChildren<Core>();
+
+        at = GetComponent<Animator>();
+        collider2d = GetComponent<BoxCollider2D>();
         mpb = new MaterialPropertyBlock();
-        render = aliveGobj.GetComponent<Renderer>();
-        animationToScript = aliveGobj.GetComponent<AnimationToScript>();
+        render = GetComponent<Renderer>();
+        animationToScript = GetComponent<AnimationToScript>();
 
         currentStunCount = entityData.stunCount;
         currentHealth = entityData.maxHealth;
@@ -228,47 +228,21 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void OnDrawGizmos()
     {
-        Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + entityData.wallCheckDistance, wallCheck.position.y));
-        Gizmos.DrawLine(edgeCheck.position, new Vector2(edgeCheck.position.x, edgeCheck.position.y - entityData.edgeCheckDistance));
-        Gizmos.DrawLine(detectedCheck.position, new Vector2(detectedCheck.position.x + entityData.canMeleeDistance, detectedCheck.position.y));
-        Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - entityData.groundCheckDistance));
-        Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.minDetectedDistance * facingDirection, detectedCheck.position.y), 0.5f);
-        Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.maxDetectedDistance * facingDirection, detectedCheck.position.y), 0.5f);
-        Gizmos.DrawWireSphere(meleeAttackCheck.transform.position, meleeAttackData.meleeAttackRadius);
+        if (core != null)
+        {
+            Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + entityData.wallCheckDistance, wallCheck.position.y));
+            Gizmos.DrawLine(edgeCheck.position, new Vector2(edgeCheck.position.x, edgeCheck.position.y - entityData.edgeCheckDistance));
+            Gizmos.DrawLine(detectedCheck.position, new Vector2(detectedCheck.position.x + entityData.canMeleeDistance, detectedCheck.position.y));
+            Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - entityData.groundCheckDistance));
+            Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.minDetectedDistance * movement.facingDireciton, detectedCheck.position.y), 0.5f);
+            Gizmos.DrawWireSphere(new Vector2(detectedCheck.position.x + entityData.maxDetectedDistance * movement.facingDireciton, detectedCheck.position.y), 0.5f);
+            Gizmos.DrawWireSphere(meleeAttackCheck.transform.position, meleeAttackData.meleeAttackRadius);
+        }
     }
 
     #endregion Unity生命周期
 
     #region 设置
-
-    // 设置X轴刚体速度
-    public virtual void SetVelocityX(float velocity)
-    {
-        movement.Set(velocity * facingDirection, rb.velocity.y);
-        rb.velocity = movement;
-    }
-
-    // 设置Y轴刚体速度
-    public virtual void SetVelocityY(float velocity)
-    {
-        movement.Set(rb.velocity.x, velocity);
-        rb.velocity = movement;
-    }
-
-    // 设置具体刚体速度 float
-    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        angle.Normalize();
-        movement.Set(angle.x * velocity * direction, angle.y * velocity);
-        rb.velocity = movement;
-    }
-
-    // 设置转身
-    public virtual void Turn()
-    {
-        facingDirection *= -1;
-        aliveGobj.transform.Rotate(0.0f, 180.0f, 0.0f);
-    }
 
     // 设置骨骼动画渲染透明度
     public virtual void SetSpineTransparent(float transparent)
@@ -309,7 +283,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // 墙壁检测
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, aliveGobj.transform.right, entityData.wallCheckDistance, LayerMask.GetMask("Ground"));
+        return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, LayerMask.GetMask("Ground"));
     }
 
     // 地面检测
@@ -327,13 +301,13 @@ public class Enemy : MonoBehaviour, IDamageable
     // 最大警备点检测
     public virtual bool CheckMaxDetected()
     {
-        return Physics2D.Raycast(detectedCheck.position, aliveGobj.transform.right, entityData.maxDetectedDistance, LayerMask.GetMask("Player"));
+        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.maxDetectedDistance, LayerMask.GetMask("Player"));
     }
 
     // 最小警备点检测
     public virtual bool CheckMinDetected()
     {
-        return Physics2D.Raycast(detectedCheck.position, aliveGobj.transform.right, entityData.minDetectedDistance, LayerMask.GetMask("Player"));
+        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.minDetectedDistance, LayerMask.GetMask("Player"));
     }
 
     // 保护条件
@@ -345,7 +319,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // 近战攻击检测
     public virtual bool IsReachCanMeleeAttack()
     {
-        return Physics2D.Raycast(detectedCheck.position, aliveGobj.transform.right, entityData.canMeleeDistance, LayerMask.GetMask("Player"));
+        return Physics2D.Raycast(detectedCheck.position, transform.right, entityData.canMeleeDistance, LayerMask.GetMask("Player"));
     }
 
     // 检测是否可以闪避

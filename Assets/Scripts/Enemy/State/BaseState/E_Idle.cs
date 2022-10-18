@@ -18,7 +18,7 @@ public class E_Idle : E_State
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocityX(0.0f);
+        movement.SetVelocityX(0.0f);
         SetRandomIdleTime();
         isIdleTimeOver = false;
         canTurn = true;
@@ -29,7 +29,7 @@ public class E_Idle : E_State
         base.Exit();
         if (canTurn)
         {
-            entity.Turn();
+            movement.SetTurn();
         }
     }
 

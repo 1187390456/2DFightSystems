@@ -16,7 +16,7 @@ public class P_Jump : P_Ability
         base.Enter();
         action.UseJumpInput();
         DecreaseJumpCount();
-        movement.SetVelocitY(data.jumpForce);
+        movement.SetVelocityY(data.jumpForce);
         isAbilityDone = true;
     }
 

@@ -15,7 +15,7 @@ public class P_Climb : P_Wall
         {
             if (action.GetYInput() > 0)
             {
-                movement.SetVelocitY(data.climbSpeed);
+                movement.SetVelocityY(data.climbSpeed);
             }
             else if (action.GetYInput() == 0)
             {

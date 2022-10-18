@@ -11,21 +11,11 @@ public class Movement : CoreComponent
     public float rbX => rb.velocity.x;
     public float rbY => rb.velocity.y;
 
-    public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity, rb.velocity.y);
+    public void SetVelocityX(float velocity) => rb.velocity = new Vector2(velocity * facingDireciton, rb.velocity.y);
 
-    public void SetVelocitY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
+    public void SetVelocityY(float velocity) => rb.velocity = new Vector2(rb.velocity.x, velocity);
 
     public void SetVelocity(float velocity, Vector2 direction) => rb.velocity = direction * velocity;
-
-    public void SetVelocityZero() => rb.velocity = Vector2.zero;
-
-    public void SetPlayerMove(float velocity) => SetVelocityX(velocity * InputManager.Instance.xInput);
-
-    public void SetHoldStatic(Vector2 holdPos)
-    {
-        rb.transform.position = holdPos;
-        SetVelocityZero();
-    }
 
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
@@ -33,10 +23,20 @@ public class Movement : CoreComponent
         rb.velocity = new Vector2(velocity * angle.x * direction, velocity * angle.y);
     }
 
+    public void SetVelocityZero() => rb.velocity = Vector2.zero;
+
+    public void SetPlayerMove(float velocity) => SetVelocityX(velocity * Mathf.Abs(InputManager.Instance.xInput));
+
+    public void SetHoldStatic(Vector2 holdPos)
+    {
+        target.position = holdPos;
+        SetVelocityZero();
+    }
+
     public void SetTurn()
     {
         facingDireciton *= -1;
-        rb.transform.Rotate(0.0f, 180.0f, 0.0f);
+        target.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     public void CheckTurn()
@@ -56,6 +56,6 @@ public class Movement : CoreComponent
         base.Awake();
         facingDireciton = 1;
         rb = GetComponentInParent<Rigidbody2D>();
-        transRight = rb.transform.right;
+        transRight = target.right;
     }
 }

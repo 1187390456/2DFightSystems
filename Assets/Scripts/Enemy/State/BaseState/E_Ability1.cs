@@ -61,19 +61,19 @@ public class E_Ability1 : E_State
         {
             var playerPos = Player.Instance.transform.position;
             var dir = Player.Instance.movement.facingDireciton;
-            if (dir != entity.facingDirection)
+            if (dir != movement.facingDireciton)
             {
-                entity.Turn();
+                movement.SetTurn();
             }
             if (dir == 1)
             {
                 var pos = new Vector2(playerPos.x - 1.0f, playerPos.y);
-                entity.aliveGobj.transform.position = pos;
+                entity.transform.position = pos;
             }
             else if (dir == -1)
             {
                 var pos = new Vector2(playerPos.x + 1.0f, playerPos.y);
-                entity.aliveGobj.transform.position = pos;
+                entity.transform.position = pos;
             }
             isAbility1Over = true;
         }

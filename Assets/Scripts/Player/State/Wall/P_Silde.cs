@@ -19,7 +19,7 @@ public class P_Silde : P_Wall
             }
             else
             {
-                movement.SetVelocitY(-data.sildeSpeed);
+                movement.SetVelocityY(-data.sildeSpeed);
             }
         }
     }

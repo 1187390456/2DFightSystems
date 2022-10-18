@@ -133,7 +133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3239908096561727585}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a5edd2765dd9248b9a4d8017a689d0, type: 3}
   m_Name: 
@@ -145,6 +145,7 @@ MonoBehaviour:
   meleeAttackCheck: {fileID: 2945508813290630986}
   remoteAttackCheck: {fileID: 6134856650964130073}
   entityData: {fileID: 11400000, guid: c2a003a3ac35e0e4b8a3f24cd6905348, type: 2}
+  isUseAbility2: 0
   render: {fileID: 0}
   movement: {x: 0, y: 0}
   facingDirection: 1
@@ -153,6 +154,8 @@ MonoBehaviour:
   isStuning: 0
   isHurting: 0
   isDead: 0
+  ability2Effect1: {fileID: 0}
+  ability2Effect2: {fileID: 0}
   deadData: {fileID: 11400000, guid: fffb3f7eba240924e9bc5f18d2d4d3d9, type: 2}
   idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
   moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
@@ -164,6 +167,7 @@ MonoBehaviour:
   meleeAttackData: {fileID: 11400000, guid: fbc26b09a5fb1d74ea7fcad7e79b9648, type: 2}
   remoteAttackData: {fileID: 11400000, guid: 6607880e85fe9834785fed62a148da7a, type: 2}
   ability1Data: {fileID: 11400000, guid: 514fa2bb6c365c1459c8fb81930eebf6, type: 2}
+  ability2Data: {fileID: 0}
   chargeData: {fileID: 11400000, guid: 1f811f37ed828de4db9502bfa69a73d3, type: 2}
 --- !u!1 &3239908097537975598
 GameObject:

@@ -17,7 +17,7 @@ public class E_Hurt : E_State
     {
         base.Enter();
         isHurtOver = false;
-        entity.SetVelocity(hurtData.knockbackSpeed, hurtData.knockbackAngle, entity.knockbackDirection);
+        movement.SetVelocity(hurtData.knockbackSpeed, hurtData.knockbackAngle, entity.knockbackDirection);
     }
 
     public override void Exit()

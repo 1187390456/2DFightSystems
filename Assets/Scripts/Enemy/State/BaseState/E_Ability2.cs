@@ -49,13 +49,13 @@ public class E_Ability2 : E_RemoteAttack
     public override void Update()
     {
         base.Update();
-        if (Player.Instance.transform.position.x < entity.aliveGobj.transform.position.x && entity.facingDirection == 1)
+        if (Player.Instance.transform.position.x < entity.transform.position.x && movement.facingDireciton == 1)
         {
-            entity.Turn();
+            movement.SetTurn();
         }
-        else if (Player.Instance.transform.position.x > entity.aliveGobj.transform.position.x && entity.facingDirection == -1)
+        else if (Player.Instance.transform.position.x > entity.transform.position.x && movement.facingDireciton == -1)
         {
-            entity.Turn();
+            movement.SetTurn();
         }
 
         if (Time.time >= startTime + ability2Data.ability2Time)

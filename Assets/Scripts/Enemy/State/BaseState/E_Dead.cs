@@ -24,10 +24,10 @@ public class E_Dead : E_State
         currentTransparent = 1;
         if (!deadData.isMonster)
         {
-            entity.aliveGobj.SetActive(false);
+            entity.gameObject.SetActive(false);
             for (int i = 0; i < deadData.effectListRes.Count; i++)
             {
-                EffectBox.Instance.CreateEffect(deadData.effectListRes[i], entity.aliveGobj.transform.position, entity.aliveGobj.transform.rotation);
+                EffectBox.Instance.CreateEffect(deadData.effectListRes[i], entity.transform.position, entity.transform.rotation);
             }
         }
         else
@@ -43,9 +43,9 @@ public class E_Dead : E_State
         entity.isDead = false;
         entity.isUseAbility2 = false;
         entity.currentHealth = entity.entityData.maxHealth;
-        // entity.aliveGobj.transform.position = GameManager.Instance.GetRandPos();
-        entity.aliveGobj.transform.position = new Vector2(entity.aliveGobj.transform.position.x, entity.aliveGobj.transform.position.y + 1.0f);
-        entity.aliveGobj.SetActive(true);
+        // entity.transform.position = GameManager.Instance.GetRandPos();
+        entity.transform.position = new Vector2(entity.transform.position.x, entity.transform.position.y + 1.0f);
+        entity.gameObject.SetActive(true);
         if (deadData.isMonster)
         {
             entity.SetSpineTransparent(currentTransparent);
@@ -67,10 +67,9 @@ public class E_Dead : E_State
             entity.SetSpineTransparent(currentTransparent);
             if (currentTransparent <= 0)
             {
-                entity.aliveGobj.SetActive(false);
+                entity.gameObject.SetActive(false);
             }
         }
-
         if (!isdeadOver && deadData.canRebirth && Time.time >= startTime + deadData.rebirthTime + 1.833f)
         {
             isdeadOver = true;
@@ -81,7 +80,7 @@ public class E_Dead : E_State
     private void GetRandomEffect()
     {
         var index = Random.Range(0, deadData.effectListRes.Count);
-        var pos = new Vector2(entity.aliveGobj.transform.position.x + deadData.effectOffset.x, entity.aliveGobj.transform.position.y + deadData.effectOffset.y);
-        EffectBox.Instance.CreateEffect(deadData.effectListRes[index], pos, entity.aliveGobj.transform.rotation);
+        var pos = new Vector2(entity.transform.position.x + deadData.effectOffset.x, entity.transform.position.y + deadData.effectOffset.y);
+        EffectBox.Instance.CreateEffect(deadData.effectListRes[index], pos, entity.transform.rotation);
     }
 }

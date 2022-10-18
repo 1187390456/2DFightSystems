@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             damage = 10.0f,
             damageSourcePosX = trans.position.x
         };
-        objs.transform.parent.SendMessage("AcceptPlayerDamage", attackInfo);
+        objs.transform.SendMessage("AcceptPlayerDamage", attackInfo);
     }
 
     public void AcceptAttackDamage(AttackInfo attackInfo)

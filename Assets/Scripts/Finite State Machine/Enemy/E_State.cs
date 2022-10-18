@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class E_State
 {
+    protected Movement movement;
+
     protected E_StateMachine stateMachine; // 状态机
     protected Enemy entity; // 实体
     protected string anmName; // 动画名称
@@ -14,6 +16,8 @@ public class E_State
         this.stateMachine = stateMachine;
         this.entity = entity;
         this.anmName = anmName;
+
+        movement = entity.movement;
     }
 
     // 进入状态

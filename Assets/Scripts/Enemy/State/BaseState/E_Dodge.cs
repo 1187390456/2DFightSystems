@@ -17,7 +17,7 @@ public class E_Dodge : E_State
     {
         base.Enter();
         isDodgeOver = false;
-        entity.SetVelocity(dodgeData.speed, dodgeData.angle, -entity.facingDirection);
+        movement.SetVelocity(dodgeData.speed, dodgeData.angle, -movement.facingDireciton);
     }
 
     public override void Exit()
@@ -37,7 +37,7 @@ public class E_Dodge : E_State
         if (Time.time >= startTime + dodgeData.dodgeTime && entity.CheckGround())
         {
             isDodgeOver = true;
-            entity.SetVelocityX(0.0f);
+            movement.SetVelocityX(0.0f);
         }
     }
 }

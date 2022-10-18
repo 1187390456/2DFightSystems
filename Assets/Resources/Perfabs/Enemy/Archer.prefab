@@ -71,7 +71,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609871610296887578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a5edd2765dd9248b9a4d8017a689d0, type: 3}
   m_Name: 
@@ -92,6 +92,8 @@ MonoBehaviour:
   isStuning: 0
   isHurting: 0
   isDead: 0
+  ability2Effect1: {fileID: 0}
+  ability2Effect2: {fileID: 0}
   deadData: {fileID: 11400000, guid: 72e9ac866cce15d4e8368651f336b393, type: 2}
   idleData: {fileID: 11400000, guid: 5edf5277a86c4434db25ddf87f145455, type: 2}
   moveData: {fileID: 11400000, guid: 39d237a5d9c4a6d4c9782f96c15eaba0, type: 2}
