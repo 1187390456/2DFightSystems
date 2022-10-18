@@ -31,22 +31,22 @@ public class E_S_Move : E_Move
             case Enemy.EnemyType.Melee:
                 if (sense.MinDetected())
                 {
-                    stateMachine.ChangeState(entity.detected);
+                    stateMachine.ChangeState(state.detected);
                 }
                 else if (entity.IsProtect())
                 {
-                    stateMachine.ChangeState(entity.idle);
+                    stateMachine.ChangeState(state.idle);
                 }
                 break;
 
             case Enemy.EnemyType.Remote:
                 if (sense.MaxDetected())
                 {
-                    stateMachine.ChangeState(entity.detected);
+                    stateMachine.ChangeState(state.detected);
                 }
                 else if (entity.IsProtect())
                 {
-                    stateMachine.ChangeState(entity.idle);
+                    stateMachine.ChangeState(state.idle);
                 }
                 break;
 

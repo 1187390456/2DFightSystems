@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +38,7 @@ public class E_S_Ability2 : E_Ability2
         base.Update();
         if (isAbility2Over)
         {
-            stateMachine.ChangeState(entity.move);
+            stateMachine.ChangeState(state.move);
         }
     }
 }

@@ -14,8 +14,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public Core core { get; private set; }
     public Movement movement => core.movement;
     public EnemyCollisionSenses sense => core.enemyCollisionSenses;
+    public EnemyState state => core.enemyState;
 
     #endregion 核心
+
+    public D_E_Base entityData => state.entityData;
+    public E_StateMachine stateMachine => state.stateMachine;
 
     public enum EnemyType
     {
@@ -23,10 +27,8 @@ public class Enemy : MonoBehaviour, IDamageable
         Remote
     }
 
-    [Header("实体数据")] public D_E_Base entityData;
-
     public Animator at { get; private set; } // 动画
-    public E_StateMachine stateMachine { get; private set; } // 状态机
+
     public AnimationToScript animationToScript { get; private set; } // 动画事件引用脚本
     public int knockbackDirection { get; private set; } // 眩晕击退方向 1右
     public GameObject stunEffect { get; private set; } // 眩晕特效
@@ -48,44 +50,12 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public GameObject ability2Effect1; // 技能2特效1
     [HideInInspector] public GameObject ability2Effect2;// 技能2特效2
 
-    #region 状态
-
-    public E_S_Dead dead; // 死亡
-    public E_S_Idle idle; // 空闲
-    public E_S_Move move; // 移动
-    public E_S_Stun stun; // 眩晕
-    public E_S_Hurt hurt; // 受伤
-    public E_S_Dodge dodge; // 闪避
-    public E_S_Detected detected; // 警备
-    public E_S_FindPlayer findPlayer; // 寻找玩家
-    public E_S_MeleeAttack meleeAttack; // 近战攻击
-    public E_S_RemoteAttack remoteAttack; // 远程攻击
-    public E_S_Ability1 ability1; // 技能1
-    public E_S_Ability2 ability2;
-    public E_S_Charge charge; // 追击
-
-    [Header("死亡数据")] public D_E_Dead deadData;
-    [Header("空闲数据")] public D_E_Idle idleData;
-    [Header("移动数据")] public D_E_Move moveData;
-    [Header("眩晕数据")] public D_E_Stun stunData;
-    [Header("闪避数据")] public D_E_Dodge dodgeData;
-    [Header("受伤数据")] public D_E_Hurt hurtData;
-    [Header("警备数据")] public D_E_Detected detectedData;
-    [Header("寻找玩家数据")] public D_E_FindPlayer findPlayerData;
-    [Header("近战攻击数据")] public D_E_MeleeAttack meleeAttackData;
-    [Header("远程攻击数据")] public D_E_RemoteAttack remoteAttackData;
-    [Header("技能1数据")] public D_E_Ability1 ability1Data;
-    [Header("技能2数据")] public D_E_Ability2 ability2Data;
-    [Header("追击数据")] public D_E_Charge chargeData;
-
-    #endregion 状态
-
     #region 其他函数
 
     // 接收伤害回调
     public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
     {
-        if (isDead || stateMachine.currentState == ability2) return;
+        if (isDead || stateMachine.currentState == state.ability2) return;
         currentHealth -= attackInfo.damage;
 
         // 判断死亡
@@ -174,24 +144,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     #region Unity生命周期
 
-    public virtual void Start()
-    {
-        dead = new E_S_Dead(stateMachine, this, "dead", deadData);
-        idle = new E_S_Idle(stateMachine, this, "idle", idleData);
-        move = new E_S_Move(stateMachine, this, "move", moveData);
-        stun = new E_S_Stun(stateMachine, this, "stun", stunData);
-        hurt = new E_S_Hurt(stateMachine, this, "hurt", hurtData);
-        dodge = new E_S_Dodge(stateMachine, this, "dodge", dodgeData);
-        detected = new E_S_Detected(stateMachine, this, "detected", detectedData);
-        findPlayer = new E_S_FindPlayer(stateMachine, this, "findPlayer", findPlayerData);
-        meleeAttack = new E_S_MeleeAttack(stateMachine, this, "meleeAttack", sense.meleeAttackCheck, meleeAttackData);
-        remoteAttack = new E_S_RemoteAttack(stateMachine, this, "remoteAttack", sense.remoteAttackCheck, remoteAttackData);
-        ability1 = new E_S_Ability1(stateMachine, this, "ability1", ability1Data);
-        ability2 = new E_S_Ability2(stateMachine, this, "ability2", sense.remoteAttackCheck, remoteAttackData, ability2Data);
-        charge = new E_S_Charge(stateMachine, this, "charge", chargeData);
-        stateMachine.Init(move);
-    }
-
     public virtual void Awake()
     {
         core = GetComponentInChildren<Core>();
@@ -201,33 +153,18 @@ public class Enemy : MonoBehaviour, IDamageable
         render = GetComponent<Renderer>();
         animationToScript = GetComponent<AnimationToScript>();
 
-        currentStunCount = entityData.stunCount;
+        currentStunCount = state.entityData.stunCount;
         currentHealth = entityData.maxHealth;
         lastAttackEffectTime = Time.time;
-
-        stateMachine = new E_StateMachine();
 
         InitEffect();
     }
 
     public virtual void Update()
     {
-        stateMachine.currentState.Update();
         CheckSwitchState();
         UpdateAnimation();
         UpdateAttackEffect();
-    }
-
-    public virtual void FixedUpdate()
-    {
-        stateMachine.currentState.FixUpdate();
-    }
-
-    public virtual void OnDrawGizmos()
-    {
-        if (core != null)
-        {
-        }
     }
 
     #endregion Unity生命周期
@@ -249,66 +186,44 @@ public class Enemy : MonoBehaviour, IDamageable
     // 检测切换状态
     public void CheckSwitchState()
     {
-        if (stateMachine.currentState == dead) return;
+        if (stateMachine.currentState == state.dead) return;
         if (CheckDead())
         {
-            stateMachine.ChangeState(dead);
+            stateMachine.ChangeState(state.dead);
         }
-        if (stateMachine.currentState == ability2) return;
+        if (stateMachine.currentState == state.ability2) return;
         else if (CheckAblity2() && !isUseAbility2)
         {
-            stateMachine.ChangeState(ability2);
+            stateMachine.ChangeState(state.ability2);
             isUseAbility2 = true;
         }
         else if (CheckStun())
         {
-            stateMachine.ChangeState(stun);
+            stateMachine.ChangeState(state.stun);
         }
         else if (CheckHurt())
         {
-            stateMachine.ChangeState(hurt);
+            stateMachine.ChangeState(state.hurt);
         }
     }
 
     // 保护条件
-    public virtual bool IsProtect()
-    {
-        return !sense.Edge() || sense.Wall();
-    }
+    public virtual bool IsProtect() => !sense.Edge() || sense.Wall();
 
     // 检测是否可以闪避
-    public bool CheckCanDodge()
-    {
-        if (Time.time >= dodge.endDodgeTime + dodge.dodgeData.cooldown)
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool CheckCanDodge() => Time.time >= state.dodge.endDodgeTime + state.dodge.dodgeData.cooldown;
 
     // 检测死亡
-    private bool CheckDead()
-    {
-        return isDead && stateMachine.currentState != dead;
-    }
+    private bool CheckDead() => isDead && stateMachine.currentState != state.dead;
 
     // 检测眩晕
-    private bool CheckStun()
-    {
-        return isStuning && stateMachine.currentState != stun && stateMachine.currentState != ability2 && stateMachine.currentState != dead;
-    }
+    private bool CheckStun() => isStuning && stateMachine.currentState != state.stun && stateMachine.currentState != state.ability2 && stateMachine.currentState != state.dead;
 
     // 检测受伤
-    private bool CheckHurt()
-    {
-        return isHurting && stateMachine.currentState != hurt && Time.time >= hurt.startTime + hurtData.hurtCoolDown;
-    }
+    private bool CheckHurt() => isHurting && stateMachine.currentState != state.hurt && Time.time >= state.hurt.startTime + state.hurtData.hurtCoolDown;
 
     // 检测技能2
-    private bool CheckAblity2()
-    {
-        return currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;
-    }
+    private bool CheckAblity2() => currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;
 
     #endregion 检测
 }

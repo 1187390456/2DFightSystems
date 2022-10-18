@@ -35,21 +35,21 @@ public class E_S_FindPlayer : E_FindPlayer
                     {
                         if (entity.IsProtect())
                         {
-                            stateMachine.ChangeState(entity.idle);
+                            stateMachine.ChangeState(state.idle);
                         }
                         else
                         {
-                            stateMachine.ChangeState(entity.charge);
+                            stateMachine.ChangeState(state.charge);
                         }
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.move);
+                        stateMachine.ChangeState(state.move);
                     }
                 }
                 else if (!sense.MinDetected() && sense.MaxDetected() && entity.entityData.canAbility1)
                 {
-                    stateMachine.ChangeState(entity.ability1);
+                    stateMachine.ChangeState(state.ability1);
                 }
                 break;
 
@@ -62,26 +62,26 @@ public class E_S_FindPlayer : E_FindPlayer
                         {
                             if (entity.CheckCanDodge() && entity.entityData.canDodge)
                             {
-                                stateMachine.ChangeState(entity.dodge);
+                                stateMachine.ChangeState(state.dodge);
                             }
                             else
                             {
-                                stateMachine.ChangeState(entity.meleeAttack);
+                                stateMachine.ChangeState(state.meleeAttack);
                             }
                         }
                         else
                         {
-                            stateMachine.ChangeState(entity.remoteAttack);
+                            stateMachine.ChangeState(state.remoteAttack);
                         }
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.move);
+                        stateMachine.ChangeState(state.move);
                     }
                 }
                 else if (!sense.MinDetected() && sense.MaxDetected() && entity.entityData.canAbility1)
                 {
-                    stateMachine.ChangeState(entity.ability1);
+                    stateMachine.ChangeState(state.ability1);
                 }
                 break;
 

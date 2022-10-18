@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ public class E_S_Ability1 : E_Ability1
         base.Update();
         if (isAbility1Over)
         {
-            stateMachine.ChangeState(entity.meleeAttack);
+            stateMachine.ChangeState(state.meleeAttack);
         }
     }
 }

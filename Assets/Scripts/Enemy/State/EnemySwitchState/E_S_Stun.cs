@@ -33,19 +33,19 @@ public class E_S_Stun : E_Stun
                 {
                     if (sense.MeleeAttack())
                     {
-                        stateMachine.ChangeState(entity.meleeAttack);
+                        stateMachine.ChangeState(state.meleeAttack);
                     }
                     else if (sense.MinDetected())
                     {
-                        stateMachine.ChangeState(entity.charge);
+                        stateMachine.ChangeState(state.charge);
                     }
                     else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
-                        stateMachine.ChangeState(entity.ability1);
+                        stateMachine.ChangeState(state.ability1);
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.findPlayer);
+                        stateMachine.ChangeState(state.findPlayer);
                     }
                 }
                 break;
@@ -57,24 +57,24 @@ public class E_S_Stun : E_Stun
                     {
                         if (entity.CheckCanDodge() && entity.entityData.canDodge)
                         {
-                            stateMachine.ChangeState(entity.dodge);
+                            stateMachine.ChangeState(state.dodge);
                         }
                         else
                         {
-                            stateMachine.ChangeState(entity.meleeAttack);
+                            stateMachine.ChangeState(state.meleeAttack);
                         }
                     }
                     else if (sense.MinDetected())
                     {
-                        stateMachine.ChangeState(entity.remoteAttack);
+                        stateMachine.ChangeState(state.remoteAttack);
                     }
                     else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
-                        stateMachine.ChangeState(entity.ability1);
+                        stateMachine.ChangeState(state.ability1);
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.findPlayer);
+                        stateMachine.ChangeState(state.findPlayer);
                     }
                 }
                 break;

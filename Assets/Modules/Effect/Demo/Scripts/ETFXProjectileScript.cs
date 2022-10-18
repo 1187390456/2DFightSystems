@@ -106,7 +106,7 @@ public class ETFXProjectileScript : MonoBehaviour
         else
         {
             var enemy = hit.collider.GetComponent<Enemy>();
-            return enemy.stateMachine.currentState != enemy.dead;
+            return enemy.stateMachine.currentState != enemy.state.dead;
         }
     }
 

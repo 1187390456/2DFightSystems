@@ -42,11 +42,11 @@ public class E_S_RemoteAttack : E_RemoteAttack
             {
                 if (entity.CheckCanDodge() && entity.entityData.canDodge)
                 {
-                    stateMachine.ChangeState(entity.dodge);
+                    stateMachine.ChangeState(state.dodge);
                 }
                 else
                 {
-                    stateMachine.ChangeState(entity.meleeAttack);
+                    stateMachine.ChangeState(state.meleeAttack);
                 }
             }
             else if (sense.MinDetected())
@@ -55,11 +55,11 @@ public class E_S_RemoteAttack : E_RemoteAttack
             }
             else if (sense.MaxDetected() && entity.entityData.canAbility1)
             {
-                stateMachine.ChangeState(entity.ability1);
+                stateMachine.ChangeState(state.ability1);
             }
             else
             {
-                stateMachine.ChangeState(entity.findPlayer);
+                stateMachine.ChangeState(state.findPlayer);
             }
         }
     }

@@ -29,11 +29,11 @@ public class E_S_Idle : E_Idle
         if (sense.MinDetected())
         {
             SetTurn(false);
-            stateMachine.ChangeState(entity.detected);
+            stateMachine.ChangeState(state.detected);
         }
         else if (isIdleTimeOver)
         {
-            stateMachine.ChangeState(entity.move);
+            stateMachine.ChangeState(state.move);
         }
     }
 }

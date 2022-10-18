@@ -47,15 +47,15 @@ public class E_S_MeleeAttack : E_MeleeAttack
                     }
                     else if (sense.MinDetected())
                     {
-                        stateMachine.ChangeState(entity.charge);
+                        stateMachine.ChangeState(state.charge);
                     }
                     else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
-                        stateMachine.ChangeState(entity.ability1);
+                        stateMachine.ChangeState(state.ability1);
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.findPlayer);
+                        stateMachine.ChangeState(state.findPlayer);
                     }
                 }
                 break;
@@ -65,7 +65,7 @@ public class E_S_MeleeAttack : E_MeleeAttack
                 {
                     if (entity.CheckCanDodge() && entity.entityData.canDodge)
                     {
-                        stateMachine.ChangeState(entity.dodge);
+                        stateMachine.ChangeState(state.dodge);
                     }
                     else if (sense.MeleeAttack())
                     {
@@ -73,15 +73,15 @@ public class E_S_MeleeAttack : E_MeleeAttack
                     }
                     else if (sense.MinDetected())
                     {
-                        stateMachine.ChangeState(entity.remoteAttack);
+                        stateMachine.ChangeState(state.remoteAttack);
                     }
                     else if (sense.MaxDetected() && entity.entityData.canAbility1)
                     {
-                        stateMachine.ChangeState(entity.ability1);
+                        stateMachine.ChangeState(state.ability1);
                     }
                     else
                     {
-                        stateMachine.ChangeState(entity.findPlayer);
+                        stateMachine.ChangeState(state.findPlayer);
                     }
                 }
                 break;

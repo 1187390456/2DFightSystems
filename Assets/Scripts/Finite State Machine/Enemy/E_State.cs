@@ -6,6 +6,7 @@ public class E_State
 {
     protected Movement movement;
     protected EnemyCollisionSenses sense;
+    protected EnemyState state;
 
     protected E_StateMachine stateMachine; // 状态机
     protected Enemy entity; // 实体
@@ -20,6 +21,7 @@ public class E_State
 
         movement = entity.movement;
         sense = entity.sense;
+        state = entity.state;
     }
 
     // 进入状态

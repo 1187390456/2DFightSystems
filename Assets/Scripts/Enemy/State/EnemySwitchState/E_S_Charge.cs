@@ -28,15 +28,15 @@ public class E_S_Charge : E_Charge
         base.Update();
         if (sense.MeleeAttack())
         {
-            stateMachine.ChangeState(entity.meleeAttack);
+            stateMachine.ChangeState(state.meleeAttack);
         }
         else if (entity.IsProtect())
         {
-            stateMachine.ChangeState(entity.findPlayer);
+            stateMachine.ChangeState(state.findPlayer);
         }
         else if (isChargeOver)
         {
-            stateMachine.ChangeState(entity.detected);
+            stateMachine.ChangeState(state.detected);
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ public class E_S_Dead : E_Dead
         base.Update();
         if (isdeadOver)
         {
-            stateMachine.ChangeState(entity.move);
+            stateMachine.ChangeState(state.move);
         }
     }
 }

@@ -35,7 +35,8 @@ public class E_RemoteAttack : E_Attack
     public override void StartAttack()
     {
         base.StartAttack();
-        if (!entity.deadData.isMonster)
+
+        if (!state.deadData.isMonster)
         {
             var bulletScript = BulletBox.Instance.GetArcherBullet(remoteAttackData.bullet, attackPos);
             bulletScript.AcceptParamas(remoteAttackData.speed, remoteAttackData.distance, remoteAttackData.gravityScale, remoteAttackData.damage);

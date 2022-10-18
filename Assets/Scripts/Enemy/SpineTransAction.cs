@@ -25,7 +25,7 @@ public class SpineTransAction : MonoBehaviour
 
     private void Update()
     {
-        if (enemy.stateMachine.currentState != enemy.dead && Time.time >= lastChangeTime + changeTimeSpace)
+        if (enemy.stateMachine.currentState != enemy.state.dead && Time.time >= lastChangeTime + changeTimeSpace)
         {
             ChangeShape();
             lastChangeTime = Time.time;
