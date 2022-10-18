@@ -153,11 +153,14 @@ public class Enemy : MonoBehaviour, IDamageable
         render = GetComponent<Renderer>();
         animationToScript = GetComponent<AnimationToScript>();
 
-        currentStunCount = state.entityData.stunCount;
+        InitEffect();
+    }
+
+    private void Start()
+    {
+        currentStunCount = entityData.stunCount;
         currentHealth = entityData.maxHealth;
         lastAttackEffectTime = Time.time;
-
-        InitEffect();
     }
 
     public virtual void Update()

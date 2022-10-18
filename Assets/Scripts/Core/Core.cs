@@ -5,10 +5,15 @@ using UnityEngine;
 public class Core : MonoBehaviour
 {
     public Movement movement { get; private set; }
+
     public PlayerCollisionSenses playerCollisionSenses { get; private set; }
+
     public EnemyCollisionSenses enemyCollisionSenses { get; private set; }
+
     public InputAction inputAction { get; private set; }
+
     public PlayerState playerState { get; private set; }
+
     public EnemyState enemyState { get; private set; }
 
     private void Awake()
