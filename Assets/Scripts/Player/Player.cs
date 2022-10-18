@@ -11,55 +11,39 @@ public class Player : MonoBehaviour
     public PlayerCollisionSenses sense => core.playerCollisionSenses;
     public InputAction action => core.inputAction;
     public PlayerState state => core.playerState;
-    public Combat combat => core.combat;
+    public PlayerStats stats => core.playerStats;
 
     #endregion 核心
 
     #region 基本组件与属性
 
+    public P_StateMachine stateMachine => state.stateMachine;
     public static Player Instance { get; private set; }
     public Animator at { get; private set; }
     public WeaponInventory weaponInventory { get; private set; }
     public GameObject dashIndicator { get; private set; }
 
-    public int knockBackDirection { get; private set; }
-
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public Vector2 workSpace;
-
     #endregion 基本组件与属性
 
-    private void UpdateAnimation()
+    private void Awake()
+    {
+        Instance = this;
+        core = transform.Find("Core").GetComponent<Core>();
+        at = GetComponent<Animator>();
+        weaponInventory = GetComponent<WeaponInventory>();
+        dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
+        dashIndicator.gameObject.SetActive(false);
+    }
+
+    private void Update()
     {
         at.SetFloat("xVelocity", Mathf.Abs(movement.rbX));
         at.SetFloat("yVelocity", movement.rbY);
     }
 
-    private void Awake()
-    {
-        Instance = this;
-        at = GetComponent<Animator>();
+    private void StartAnimation() => stateMachine.currentState.StartAnimation();
 
-        core = transform.Find("Core").GetComponent<Core>();
-        weaponInventory = GetComponent<WeaponInventory>();
-        dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
-    }
-
-    private void Start()
-    {
-        dashIndicator.gameObject.SetActive(false);
-
-        currentHealth = state.playerData.maxHealth;
-    }
-
-    private void Update()
-    {
-        UpdateAnimation();
-    }
-
-    private void StartAnimation() => state.stateMachine.currentState.StartAnimation();
-
-    private void FinishAnimation() => state.stateMachine.currentState.FinishAnimation();
+    private void FinishAnimation() => stateMachine.currentState.FinishAnimation();
 
     public void SetDestory() => Destroy(gameObject);
 
@@ -76,6 +60,4 @@ public class Player : MonoBehaviour
     public bool FirstAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.first] && !sense.Top();
 
     public bool SecondAttackCondition() => InputManager.Instance.attackInput[(int)AttackInput.second] && !sense.Top();
-
-    public int CheckKnockBackDirection(float direction) => direction < transform.position.x ? 1 : -1;
 }

@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     public Movement movement => core.movement;
     public EnemyCollisionSenses sense => core.enemyCollisionSenses;
     public EnemyState state => core.enemyState;
-    public Combat combat => core.combat;
+
+    public EnemyStats stats => core.enemyStats;
 
     #endregion 核心
 
@@ -37,7 +38,6 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Renderer render;  // 渲染
 
     [HideInInspector] public int currentStunCount;// 当前距离击晕次数
-    [HideInInspector] public float currentHealth; // 当前生命值
     [HideInInspector] public bool isStuning;//是否眩晕
     [HideInInspector] public bool isHurting;//是否受伤
     [HideInInspector] public bool isDead; // 是否死亡
@@ -46,49 +46,6 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public GameObject ability2Effect2;// 技能2特效2
 
     #region 其他函数
-
-    // 接收伤害回调
-    //public virtual void AcceptPlayerDamage(AttackInfo attackInfo)
-    //{
-    //    if (isDead || stateMachine.currentState == state.ability2) return;
-    //    currentHealth -= attackInfo.damage;
-
-    //    // 判断死亡
-    //    if (currentHealth <= 0)
-    //    {
-    //        isDead = true;
-    //    }
-    //    // 判断受击方向
-    //    if (transform.position.x < attackInfo.damageSourcePosX)
-    //    {
-    //        knockbackDirection = -1;
-    //    }
-    //    else
-    //    {
-    //        knockbackDirection = 1;
-    //    }
-    //    // 攻击特效
-    //    EffectBox.Instance.CreateEffect(entityData.effectRes, transform.position, transform.rotation);
-
-    //    // 判断是否处于眩晕中
-    //    if (!isStuning)
-    //    {
-    //        currentStunCount--;
-    //        if (currentStunCount > 0)
-    //        {
-    //            isHurting = true;
-    //        }
-    //        else
-    //        {
-    //            isStuning = true;
-    //        }
-    //    }
-    //    // 眩晕中接地
-    //    else if (sense.Ground())
-    //    {
-    //        movement.SetVelocityY(entityData.stunKnockbackSpeedY);
-    //    }
-    //}
 
     // 更新动画
     private void UpdateAnimation()
@@ -154,7 +111,6 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentStunCount = entityData.stunCount;
-        currentHealth = entityData.maxHealth;
         lastAttackEffectTime = Time.time;
     }
 
@@ -190,11 +146,11 @@ public class Enemy : MonoBehaviour
             stateMachine.ChangeState(state.dead);
         }
         if (stateMachine.currentState == state.ability2) return;
-        else if (CheckAblity2() && !isUseAbility2)
-        {
-            stateMachine.ChangeState(state.ability2);
-            isUseAbility2 = true;
-        }
+        //else if (CheckAblity2() && !isUseAbility2)
+        //{
+        //    stateMachine.ChangeState(state.ability2);
+        //    isUseAbility2 = true;
+        //}
         else if (CheckStun())
         {
             stateMachine.ChangeState(state.stun);
@@ -221,7 +177,7 @@ public class Enemy : MonoBehaviour
     private bool CheckHurt() => isHurting && stateMachine.currentState != state.hurt && Time.time >= state.hurt.startTime + state.hurtData.hurtCoolDown;
 
     // 检测技能2
-    private bool CheckAblity2() => currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;
+    // private bool CheckAblity2() => stats.currentHealth <= 50.0f && entityData.enemyType == EnemyType.Remote;
 
     #endregion 检测
 }

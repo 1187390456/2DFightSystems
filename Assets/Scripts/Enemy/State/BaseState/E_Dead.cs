@@ -42,7 +42,7 @@ public class E_Dead : E_State
         currentTransparent = 1;
         entity.isDead = false;
         entity.isUseAbility2 = false;
-        entity.currentHealth = entity.entityData.maxHealth;
+        entity.stats.currentHealth = entity.entityData.maxHealth;
         // entity.transform.position = GameManager.Instance.GetRandPos();
         entity.transform.position = new Vector2(entity.transform.position.x, entity.transform.position.y + 1.0f);
         entity.gameObject.SetActive(true);

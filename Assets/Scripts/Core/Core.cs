@@ -17,6 +17,9 @@ public class Core : MonoBehaviour
     public EnemyState enemyState { get; private set; }
     public Combat combat { get; private set; }
 
+    public PlayerStats playerStats { get; private set; }
+    public EnemyStats enemyStats { get; private set; }
+
     private void Awake()
     {
         movement = GetComponentInChildren<Movement>();
@@ -26,5 +29,7 @@ public class Core : MonoBehaviour
         playerState = GetComponentInChildren<PlayerState>();
         enemyState = GetComponentInChildren<EnemyState>();
         combat = GetComponentInChildren<Combat>();
+        playerStats = GetComponentInChildren<PlayerStats>();
+        enemyStats = GetComponentInChildren<EnemyStats>();
     }
 }

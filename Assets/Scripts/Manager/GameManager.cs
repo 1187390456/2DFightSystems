@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             var player = Instantiate(playerRes, rebirthPos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
             player.transform.SetSiblingIndex(4);
             var playerScript = player.GetComponent<Player>();
-            playerScript.currentHealth = playerScript.state.playerData.maxHealth;
+            playerScript.stats.currentHealth = playerScript.stats.maxHealth;
             CanvasHandle.Instance.SetDeadTimer(false);
             if (Application.platform == RuntimePlatform.Android)
             {
