@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
+    public InputAction inputAction { get; private set; }
     public Movement movement { get; private set; }
+    public EnemyCombat enemyCombat { get; private set; }
+    public PlayerCombat playerCombat { get; private set; }
 
     public PlayerCollisionSenses playerCollisionSenses { get; private set; }
 
     public EnemyCollisionSenses enemyCollisionSenses { get; private set; }
 
-    public InputAction inputAction { get; private set; }
-
     public PlayerState playerState { get; private set; }
 
     public EnemyState enemyState { get; private set; }
-    public Combat combat { get; private set; }
 
     public PlayerStats playerStats { get; private set; }
     public EnemyStats enemyStats { get; private set; }
@@ -23,13 +23,16 @@ public class Core : MonoBehaviour
     private void Awake()
     {
         movement = GetComponentInChildren<Movement>();
-        playerCollisionSenses = GetComponentInChildren<PlayerCollisionSenses>();
-        enemyCollisionSenses = GetComponentInChildren<EnemyCollisionSenses>();
         inputAction = GetComponentInChildren<InputAction>();
+
+        playerCollisionSenses = GetComponentInChildren<PlayerCollisionSenses>();
         playerState = GetComponentInChildren<PlayerState>();
-        enemyState = GetComponentInChildren<EnemyState>();
-        combat = GetComponentInChildren<Combat>();
+        playerCombat = GetComponentInChildren<PlayerCombat>();
         playerStats = GetComponentInChildren<PlayerStats>();
+
+        enemyCollisionSenses = GetComponentInChildren<EnemyCollisionSenses>();
         enemyStats = GetComponentInChildren<EnemyStats>();
+        enemyState = GetComponentInChildren<EnemyState>();
+        enemyCombat = GetComponentInChildren<EnemyCombat>();
     }
 }

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e29341078e80e4ebc979f53e98e51f, type: 3}
+  m_Name: Blood
+  m_EditorClassIdentifier: 
+  bloodGreen2D:
+  - {fileID: 143734, guid: acb0d31becb6bb044b26b81accdf03ff, type: 3}
+  - {fileID: 181780, guid: 9dbd6578ad45ab34da731a133a3bd5f7, type: 3}
+  - {fileID: 198304, guid: 3717f8c88ddc95c429e75c8101f0a9b7, type: 3}
+  - {fileID: 144926, guid: fcb242a204cb73e46bb764583d0bf1fa, type: 3}
+  - {fileID: 178192, guid: 5384d3f8b0176d243993a8f09a3978bf, type: 3}
+  blood2D:
+  - {fileID: 127866, guid: 70b26805973318349bb2c60f8b37c8c3, type: 3}
+  - {fileID: 149344, guid: 617378de28fbaa64c96485d5b0d9169b, type: 3}
+  - {fileID: 134142, guid: 83c18340a7ab40841ab1bd9102120990, type: 3}
+  - {fileID: 171432, guid: 0ebcd60dd020022408e53f535d12f313, type: 3}
+  - {fileID: 125648, guid: 9fc1afc1190c21b459bff8bed1d9ec02, type: 3}
+  bloodYellow2D:
+  - {fileID: 199832, guid: fd5e9e4e7ff2fbe4490ead1f235e2a20, type: 3}
+  - {fileID: 117548, guid: bb93d92b8225308479b1c60103e5a456, type: 3}
+  - {fileID: 144864, guid: 880df82233044db42b79f928ad6df99b, type: 3}
+  - {fileID: 149926, guid: ad487a21ffb7f334b914ec85242b5c7e, type: 3}
+  - {fileID: 115962, guid: 1db5b810a6652c74784c28cfaba8cab0, type: 3}
+  bloodGreen:
+  - {fileID: 156376, guid: 0d7b7026c8027f74d90cb7460d16f00d, type: 3}
+  - {fileID: 160684, guid: de85f8f81ea29ea479250adb36debd92, type: 3}
+  - {fileID: 135106, guid: f563a43ef6da8ce43b59040b834b597d, type: 3}
+  - {fileID: 137732, guid: b2a41848dc033f04295f551876431a40, type: 3}
+  - {fileID: 104842, guid: 4a8cbfb38b882fd4b8d20aebcd1cb9b4, type: 3}
+  - {fileID: 168956, guid: ae17d4a182a7e02448b4e420f9da16ea, type: 3}
+  - {fileID: 195864, guid: 760c52d3ecd5c27449429eab2a5a8c7f, type: 3}
+  - {fileID: 119212, guid: 685804666097ffc4a92177383378ddc8, type: 3}
+  - {fileID: 131632, guid: c80bcda92d7405f409f1c017ad680972, type: 3}
+  - {fileID: 128904, guid: 0588baf7ce32f9e42bb9d8777136e52c, type: 3}
+  - {fileID: 121962, guid: 22e35da3d2c81274bb1c8fd73cca399e, type: 3}
+  - {fileID: 124754, guid: b564ed87ab8796240a8f5e7bf5f65246, type: 3}
+  blood:
+  - {fileID: 153674, guid: 98e35bc5094f25441a4c3b405abf1870, type: 3}
+  - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
+  - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  - {fileID: 195360, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+  - {fileID: 128724, guid: ece958bbba812cd4ca52c389ccc91c24, type: 3}
+  - {fileID: 192166, guid: c6de9c3e430816d40aedcaaf84000975, type: 3}
+  - {fileID: 132626, guid: 1e8e6d05067c77b479668df7a46b5f0f, type: 3}
+  - {fileID: 119212, guid: 67a02ea392505844bab240611d904cc0, type: 3}
+  - {fileID: 131632, guid: c1ed798bfb0514c4185b9ea81a814309, type: 3}
+  - {fileID: 142478, guid: 120d855bc18f7fa4f8c46575d5629105, type: 3}
+  - {fileID: 121962, guid: 8b859f6ed5d97694fb9e41bab73b55ff, type: 3}
+  - {fileID: 168136, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
+  bloodYellow:
+  - {fileID: 177426, guid: bb6812b8fb94ff9488d64b0b2b192ff3, type: 3}
+  - {fileID: 157066, guid: d75bea4d6c9e81d419a11ed44c3c4718, type: 3}
+  - {fileID: 113062, guid: ce90a5909cc1f7f49865904e3c751f81, type: 3}
+  - {fileID: 177842, guid: 57611c2489302734bbd6fa8a1ed9eae5, type: 3}
+  - {fileID: 187720, guid: daa38997aa539a64298930238e524582, type: 3}
+  - {fileID: 125980, guid: d0b26f2ad6bee9b4cb19678c4f62f11c, type: 3}
+  - {fileID: 122042, guid: fecff66a723b17a48a0731efd8dfd34d, type: 3}
+  - {fileID: 119212, guid: ca086bfe9ada4c84d84064d3c4f57e0f, type: 3}
+  - {fileID: 131632, guid: 9f4c3badf6350684daf4343c3990d09d, type: 3}
+  - {fileID: 156856, guid: ab8f5d2583de6d04c9d68dccbb64c8d3, type: 3}
+  - {fileID: 121962, guid: 9f12ed38ceb59ae43b4089bd255ab180, type: 3}
+  - {fileID: 112210, guid: a05d5fde67a72c646a84c9b6318405c3, type: 3}

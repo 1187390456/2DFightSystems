@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc332ae73fa32d44d8b0ac54b4c913f5, type: 3}
+  m_Name: Brawling
+  m_EditorClassIdentifier: 
+  cartoony:
+  - {fileID: 195466, guid: 56c3274d2f9ec214ab584a80b5ce2d6d, type: 3}
+  - {fileID: 108514, guid: 4a3acdc5cefd5f74ebcb02914ae9be64, type: 3}
+  - {fileID: 135726, guid: fa0f45d143def4e4188900695d955614, type: 3}
+  - {fileID: 111486, guid: f6ac01c8c44430d46815af0e77bdcfdd, type: 3}
+  - {fileID: 183892, guid: 77aff4f1c9d07704bafd856e02a46ac9, type: 3}
+  - {fileID: 150944, guid: 3b9161edba9968c48bd058067ad18c84, type: 3}
+  - {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
+  round:
+  - {fileID: 127072, guid: 7f45705f5f30d8a45af0fc2eb8c8998a, type: 3}
+  - {fileID: 145150, guid: 16d4b504584fb1d4784bc23462900274, type: 3}
+  - {fileID: 107336, guid: 3547e5e490f502041ae6e8a59042e4bd, type: 3}
+  - {fileID: 102696, guid: 185035e4680c4b344b62bf5ace4674b8, type: 3}
+  soft:
+  - {fileID: 180820, guid: a07608802ac497743a7f19f6633fdd70, type: 3}
+  - {fileID: 129928, guid: 2d18f84774eae954c9002a33c62fbe8b, type: 3}
+  - {fileID: 191512, guid: 6d8fb94c8f1fb7c4ba277327ad4ba3b2, type: 3}
+  - {fileID: 105608, guid: 9c6af9e56f998094e8a7ade8f0e2a0a9, type: 3}
+  - {fileID: 101470, guid: cf92a1fe287dea2408d8eaac7ac27c2f, type: 3}
+  - {fileID: 179906, guid: 20dfdd4230d28d34fad7c8e1731f5cd0, type: 3}
+  - {fileID: 183216, guid: d02459bf4a092d144baeb3ac2591eb3b, type: 3}
+  stun:
+  - {fileID: 109542, guid: 2ed06ab528b7c474eb9246421cd7c791, type: 3}
+  - {fileID: 1846532664448058, guid: 20980e90dd2e73b419275714d5c124c4, type: 3}

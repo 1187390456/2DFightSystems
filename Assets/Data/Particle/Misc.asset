@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2bdd05c2b518e49bf653ffcde31356, type: 3}
+  m_Name: Misc
+  m_EditorClassIdentifier: 
+  auraTest: {fileID: 109516, guid: 6308f0b3d17858a479f9cb4a9456e13a, type: 3}
+  curvySmoke: {fileID: 117460, guid: 3b85a9e16cc798c4ca3ce98b38fbb8a0, type: 3}
+  musicalNoteExplosion: {fileID: 1211301365084078, guid: ed6b8128683f4094f92b7a556760b26b, type: 3}
+  musicalNote: {fileID: 106150, guid: d68940e546df9254c8891b5c9507cd4c, type: 3}
+  plexus: {fileID: 1548498989132598, guid: beb57d582b696b645928b556533430b2, type: 3}
+  plexusExplosion: {fileID: 1406732261047320, guid: f21836be3103a614db774ed06733eb75, type: 3}
+  typingMessage: {fileID: 156936, guid: cf43a7dd258b42b41a217fc2f452aeda, type: 3}
+  typingMessageLight: {fileID: 172654, guid: d99c8456d28dde44fa44a87e0bfbef3b, type: 3}
+  text:
+  - {fileID: 153454, guid: d3aa5ccf5c3d6bb4aa6aeb2920558a35, type: 3}
+  - {fileID: 189656, guid: 30a1ca85182ce3e439e8d6cb843ab9ad, type: 3}
+  - {fileID: 107418, guid: ea6edc3a0a047a243a9ec62ca1655977, type: 3}
+  - {fileID: 186274, guid: bf180fb3ea7ee6849ae8893ae05aca86, type: 3}
+  shield:
+  - {fileID: 1135644536747142, guid: c105577ec49dfb3408a7a89c3b7730be, type: 3}
+  - {fileID: 1822548102365582, guid: 61ae7d461fc6cda428f5238ac1c4853a, type: 3}
+  - {fileID: 1243474459863584, guid: b8cba1113eab4ae41951ebb3c43200d1, type: 3}
+  - {fileID: 1527444747669750, guid: d689eae7844400f4883b231a5cd72279, type: 3}
+  bombFuse:
+  - {fileID: 196072, guid: 0b4ea991852d6984aab98759fa8d4ebb, type: 3}
+  - {fileID: 119840, guid: 460fc6c4a00afd347a5cca537a1d6fa4, type: 3}

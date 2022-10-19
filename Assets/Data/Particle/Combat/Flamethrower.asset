@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef05909f992f88f449ee229b4e43245d, type: 3}
+  m_Name: Flamethrower
+  m_EditorClassIdentifier: 
+  cartoon:
+  - {fileID: 185442, guid: 8118656e898f2fb4daa469e2393514dd, type: 3}
+  - {fileID: 134572, guid: 7c1b627e705f998448adac9689c44505, type: 3}
+  - {fileID: 135720, guid: efbd9c58ba892da4ca3fa50dcfcd894d, type: 3}
+  - {fileID: 179796, guid: 96db9f59e0051f24ab7a2843ba7a6cb7, type: 3}
+  soft:
+  - {fileID: 131216, guid: ee6a114cec5abb24f89afa63f8f3d574, type: 3}
+  - {fileID: 125330, guid: 52cdf2ccc43c0904bba2008d7a9d4086, type: 3}
+  - {fileID: 143626, guid: 1e14e551300320e4f97cc9c992b4af22, type: 3}
+  - {fileID: 139654, guid: 066053404d559854a8850fd56b0c728e, type: 3}
+  - {fileID: 199852, guid: 14a80385bc51aef4b860cebf3aae7e24, type: 3}
+  - {fileID: 143972, guid: 12f485eacd5cee5468ee56504f42f04d, type: 3}
+  - {fileID: 102854, guid: 6b5931f42d32fcb47849ec0905480f06, type: 3}
+  - {fileID: 179830, guid: 6ec8d4ecb3803764b8b54ecc5897784f, type: 3}
+  spiky:
+  - {fileID: 1648451155831128, guid: 8af3b97aa9cf4b545b494ece58511c3d, type: 3}
+  - {fileID: 1209058567826688, guid: 4393ddc3cd5a82740aa0a8ade8573e7f, type: 3}
+  - {fileID: 1653254497227498, guid: 681e0b2012e0f6b44b29743efc3a14bb, type: 3}
+  - {fileID: 1075899076870710, guid: 0d9f25f0bd58c9144a4abeef1afcc788, type: 3}
+  - {fileID: 1853944158254526, guid: dfe0cf0e0df4ee94492935652d7772ac, type: 3}

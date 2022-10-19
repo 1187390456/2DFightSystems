@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fdf7ae5cbb5b649a5322c717d5f812, type: 3}
+  m_Name: Nova
+  m_EditorClassIdentifier: 
+  fire:
+  - {fileID: 149626, guid: 2aca4c37fa723b4489a42288a1356056, type: 3}
+  - {fileID: 146778, guid: fe954fe78988dd34d97f7c9b0341112a, type: 3}
+  - {fileID: 173972, guid: dadd1929e4ac43047b16074d7bcb5ee6, type: 3}
+  - {fileID: 184608, guid: 9edc33f62cf3ae849badc4cc12fe5f8a, type: 3}
+  frost:
+  - {fileID: 196790, guid: c4687addc3c65b24aab69e2c9efa22c5, type: 3}
+  lightning:
+  - {fileID: 189236, guid: 8b80f8497c25823439546e7fbb1d81a9, type: 3}
+  - {fileID: 160382, guid: b4c6e36503ea28e40b299f5d88269621, type: 3}
+  - {fileID: 136356, guid: cdfcd716b63de1949901e631d78cb0b3, type: 3}
+  - {fileID: 134696, guid: b7e5be8cde65c7c42915ee6e2273d19b, type: 3}
+  standard:
+  - {fileID: 194966, guid: 644ecb149bc651142a6637ca6bb47dd6, type: 3}
+  - {fileID: 162482, guid: 99717fa5b7aacc94e91804bc304d2b93, type: 3}
+  - {fileID: 126184, guid: cab33341e16d3e94cb595dd8726cfdf5, type: 3}
+  - {fileID: 165662, guid: 1ad600d86a1642e4695b4f36187e5f4e, type: 3}

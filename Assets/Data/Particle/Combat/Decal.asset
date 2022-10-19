@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e810324025a1fcd4a8a495fce6b0187a, type: 3}
+  m_Name: Decal
+  m_EditorClassIdentifier: 
+  bullet:
+  - {fileID: 1936032059195924, guid: e5448bf09bf80c84683234d05d3ccf91, type: 3}
+  - {fileID: 1127513611347690, guid: b0701bcc8c338cd46b48680f1a3a1bf6, type: 3}
+  - {fileID: 1766181604779644, guid: 5bc227c2a45a7e44ea8521ddb446b620, type: 3}
+  - {fileID: 1887386285058682, guid: 79eb65b00125a9a43ae9eaa75cb41e3d, type: 3}
+  - {fileID: 1649514149693448, guid: d519ad6ef8ea3cd4f9acf13f6646a601, type: 3}
+  - {fileID: 1861770388729636, guid: 9730ee03d63d26a4fa184edd660d0c19, type: 3}
+  energy:
+  - {fileID: 1901793388993434, guid: 3c25751d0d939b948b4b2bcc2a9c3128, type: 3}
+  - {fileID: 1081232501105962, guid: 9ad869c77f7612f469d3c7ee2fad52ce, type: 3}
+  - {fileID: 1568690613299528, guid: 935aabf6f6492094b92920088f99632a, type: 3}
+  - {fileID: 1793398240317178, guid: 2f634552f7166fb4194e3bf36476ed87, type: 3}
+  explosion:
+  - {fileID: 1885649091934712, guid: 2048bd4dd68bfe14bbbeb2a573517d15, type: 3}
+  - {fileID: 1027697777517218, guid: 628d050c815a3a3448ce1dcdf0578f21, type: 3}
+  - {fileID: 1459768370141980, guid: a83424e30925fb9419a9d80dce7f8399, type: 3}
+  - {fileID: 1164094289420900, guid: a6dd7f2908dfe2d4297923b7528f3538, type: 3}

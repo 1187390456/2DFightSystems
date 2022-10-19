@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
     public bool DashCondition() => state.dash.CheckCanDash() && action.GetDashInput() && state.stateMachine.currentState != state.crouchIdle && state.stateMachine.currentState != state.crouchMove;
 
-    public bool JumpCondition() => InputManager.Instance.jumpInput && state.jump.ChechCanJump();
+    public bool JumpCondition() => InputManager.Instance.jumpInput && state.jump.ChechCanJump() && state.stateMachine.currentState != state.crouchIdle && state.stateMachine.currentState != state.crouchMove;
 
     public bool LedgeCondition() => !sense.Ledge() && sense.Wall() && !sense.Ground();
 

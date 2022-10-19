@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389a7cbcfa9923341892c6127848dc2a, type: 3}
+  m_Name: Magic
+  m_EditorClassIdentifier: 
+  aura:
+  - {fileID: 108178, guid: e053c479a3add9649af9d847a748547d, type: 3}
+  - {fileID: 166724, guid: 254ac81d69ffe6342ad05aa1f459477e, type: 3}
+  - {fileID: 181232, guid: b9cf594d1d8302e4a884738a176ead3a, type: 3}
+  auraSoft:
+  - {fileID: 1899250594192068, guid: 6561be0bdcabd634da8ca71c49c14153, type: 3}
+  - {fileID: 1036245474265904, guid: e1a68788426acc04baef994710608ba7, type: 3}
+  - {fileID: 1343425844583092, guid: 12779f4ab4369fa469e2c9090d6d5a47, type: 3}
+  buff:
+  - {fileID: 145256, guid: 7b117ab47ae99e74fbb811d488c1eb17, type: 3}
+  - {fileID: 187180, guid: 1ed56f4c486ff6141a344e5e5714e1b9, type: 3}
+  - {fileID: 147642, guid: 685c97d007af49549b239b56b6d2000a, type: 3}
+  charge:
+  - {fileID: 147226, guid: 4d496338295339f4ab150256f9d9f4b7, type: 3}
+  - {fileID: 119634, guid: 8d2980ba5e59f33419a0275c1ec29e38, type: 3}
+  - {fileID: 162722, guid: 1fc71432c1bd537489e1be6246b56973, type: 3}
+  circle:
+  - {fileID: 195608, guid: 24e29d528f11acf42974643bee14a607, type: 3}
+  - {fileID: 173324, guid: 8f75fe73ef3ce1e4ab33ff60e0cf9996, type: 3}
+  - {fileID: 171722, guid: 8f3db2ef4b3fd674eafb97a117b99408, type: 3}
+  circleSimple:
+  - {fileID: 1308696705675058, guid: 92f1a4b7c0101cb4f84455289ac65548, type: 3}
+  - {fileID: 1123519404155642, guid: 9823f61a7e929c6468def83c27560f48, type: 3}
+  - {fileID: 1486123758399518, guid: c211cd63eef717741a0578bda14552a9, type: 3}
+  enchant:
+  - {fileID: 164592, guid: 5423bfc84896575469c1270496ce5a32, type: 3}
+  - {fileID: 152882, guid: ee817f2a6f2d36f489f03cdf54902f0b, type: 3}
+  - {fileID: 141596, guid: 6b5cdea243db4bc4b9498aae2aa4c103, type: 3}
+  field:
+  - {fileID: 158776, guid: 524b12464dce5b248a893d67a188da05, type: 3}
+  - {fileID: 158776, guid: c4e46d0b8ddbfe049ac8facbc1652648, type: 3}
+  - {fileID: 134560, guid: 4f491700992cb06488116943d3b5c9b8, type: 3}
+  - {fileID: 117784, guid: db879c9dd49be994b9fcce9fea26448c, type: 3}
+  nova:
+  - {fileID: 185518, guid: 2ef436b6c6313494daf190cd68ebf636, type: 3}
+  - {fileID: 186440, guid: 58b4f35335c59de4d8a92239a48b274f, type: 3}
+  - {fileID: 168694, guid: 9e4fad450282ac64daeb20efbc2b9dfb, type: 3}
+  pillarBlast:
+  - {fileID: 159062, guid: e4fc72c1b3da74d4697708bcd2a9db60, type: 3}
+  - {fileID: 161470, guid: ef2fdb9a8a7d35c448dae6d056e9b1e7, type: 3}
+  - {fileID: 183926, guid: 96d8221c1bb8b404fb8cd7080f372017, type: 3}
+  shield:
+  - {fileID: 106386, guid: 831c85159903ac84399ac3c3e1d5c5ad, type: 3}
+  - {fileID: 155206, guid: 8c346bec16c51e74da8f411f9f41f558, type: 3}
+  - {fileID: 189378, guid: 6419d3d589b2c4249a00a738ba8a870f, type: 3}
+  - {fileID: 166946, guid: 867b9a6f9b54bbe43848d010fbce82f2, type: 3}
+  sphere:
+  - {fileID: 110446, guid: f6322404d6e3b914aa01ac044fb9415e, type: 3}
+  - {fileID: 112812, guid: 347c3709b22d3bb4b800383efe154521, type: 3}
+  - {fileID: 171482, guid: 5bc71fb5e90182941b584e88079e3ec5, type: 3}

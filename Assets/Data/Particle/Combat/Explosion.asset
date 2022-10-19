@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a2422d61213674c8c2c2979a7ce5a4, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  explosions2D:
+  - {fileID: 151244, guid: 8368975de5593844bbfaf74e342fb326, type: 3}
+  - {fileID: 195900, guid: ec61825cb06be72419bb09eee03af08c, type: 3}
+  - {fileID: 157776, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
+  misc:
+  - {fileID: 193104, guid: c2f28a236b0696a4f90a994422019577, type: 3}
+  - {fileID: 194666, guid: 268f984e175944440bf68fb3d316673d, type: 3}
+  - {fileID: 188698, guid: d59453060233d2f49884f7de0b768335, type: 3}
+  - {fileID: 1890581295539120, guid: 0e1c7fb597c927a41893518fb7dc7472, type: 3}
+  - {fileID: 180954, guid: 13e43982d1a0a9d40909a898f9762727, type: 3}
+  - {fileID: 1952076019714368, guid: d42852d7985301b42a647ff270d3d088, type: 3}
+  - {fileID: 185086, guid: 6c4ae31fa47a6c143a4e64ca4b65fc4a, type: 3}
+  - {fileID: 160890, guid: 81a6215dbf618d84cae2c6907f947094, type: 3}
+  - {fileID: 1250201152801508, guid: dd46de4320f3d1b4087b5f9c0a24ab36, type: 3}
+  - {fileID: 1212038522573524, guid: d773d301d86b3254180a6887af308eef, type: 3}
+  - {fileID: 160696, guid: fac9ad46c0307484fba6960de846139d, type: 3}
+  - {fileID: 123268, guid: 775fb3e8f5df827428272416a14d9adf, type: 3}
+  - {fileID: 121052, guid: 45b74d42e5559bf49a14a707b4842b51, type: 3}
+  - {fileID: 188560, guid: 9c3b7f4ace8832b40abe6afe89fbcd91, type: 3}
+  - {fileID: 1272483159307946, guid: cc0bdc9defd87ef4fba2c3954f1bb0d1, type: 3}
+  bulletExplosion:
+  - {fileID: 107096, guid: 79b0a8abb1f641b4a8faa10b904758ea, type: 3}
+  - {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+  - {fileID: 180838, guid: bfbeddd8307f4e441aa8ae4537bf45ad, type: 3}
+  - {fileID: 151354, guid: 666381b24c234194882b77851e943ef1, type: 3}
+  fatExplosion:
+  - {fileID: 130626, guid: e7208592fcd84db46be48b5bce0525a5, type: 3}
+  - {fileID: 132352, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
+  - {fileID: 131008, guid: 1fe35c3ac77275e4d81bc09fcde78105, type: 3}
+  - {fileID: 186150, guid: 0a43d6af30ffda6498fb97d7d3202d7e, type: 3}
+  fireBallExplosion:
+  - {fileID: 193692, guid: 2aa1e7c21640d254492fa8035a6411e1, type: 3}
+  - {fileID: 130848, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
+  - {fileID: 150592, guid: 2c82b2af38b82f442bd9a24539b8d33c, type: 3}
+  - {fileID: 168108, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+  frostExplosion:
+  - {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+  gasExplosion:
+  - {fileID: 106036, guid: 3d9e3e440644d1241849152e3425c62e, type: 3}
+  - {fileID: 180860, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+  - {fileID: 104006, guid: a801d5bc64b7dc44e964c45bd6709a7e, type: 3}
+  - {fileID: 140434, guid: dd38b45e2135c854d87201aa3d863978, type: 3}
+  glitterExplosion:
+  - {fileID: 1128922939517096, guid: 13bf80939900a2a4c8d5a6ac51f555d5, type: 3}
+  - {fileID: 1347205313847050, guid: 49788cbe2dec7fc4b8edb27ab72ce00c, type: 3}
+  - {fileID: 1345836968235680, guid: c7498e97bd688f044a23749dce1cc7e4, type: 3}
+  - {fileID: 1503414589296656, guid: 505f0a9187a0d514ca9afdc34c51a984, type: 3}
+  grenadeExplosion:
+  - {fileID: 161422, guid: 02b55b1514278964187c93c0b09a3dc4, type: 3}
+  - {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+  - {fileID: 164384, guid: b037048ffb73dc4419b4445789d3a04c, type: 3}
+  - {fileID: 154950, guid: f407b02e7947b9143969a306aee2b85c, type: 3}
+  laserExplosion:
+  - {fileID: 102984, guid: 63782bd2b5a23754181adaf65653088a, type: 3}
+  - {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
+  - {fileID: 100238, guid: 26fd612d281730243a5cb8e108261552, type: 3}
+  - {fileID: 130008, guid: f86f92fc4481c664091538209b37547e, type: 3}
+  - {fileID: 134664, guid: 5b2df17ecc30d7b44909bcc7d4a4febd, type: 3}
+  lightningExplosion:
+  - {fileID: 121496, guid: 5e8a137808d7d374487f34e236c723db, type: 3}
+  - {fileID: 175232, guid: 8d867acabedb0f24196923f84f10c13a, type: 3}
+  - {fileID: 136540, guid: 215ff560badfe1d4b8391e64e82c5f4e, type: 3}
+  - {fileID: 160900, guid: 1b1f4eecb848b384f93fd0216a95f56e, type: 3}
+  liquidExplosion:
+  - {fileID: 183846, guid: eb8eb977f3a1f0341ac06e638d078a1c, type: 3}
+  - {fileID: 146266, guid: a13e3c30b47e7aa43a1da0b89a1ef53e, type: 3}
+  - {fileID: 186782, guid: 32e5eec4a4b3ffc4dba1ac0f5bb318be, type: 3}
+  - {fileID: 199860, guid: 8b158db9a52d92c41bd357624c42ac6f, type: 3}
+  magicExplosion:
+  - {fileID: 193442, guid: 12673f4cc7f725d4082ece9c7c724b9c, type: 3}
+  - {fileID: 112034, guid: 8d10f8b48acb63e4989ba5fc3a95100e, type: 3}
+  - {fileID: 102006, guid: ded43eaee385aa94eafade73f78babdb, type: 3}
+  - {fileID: 159854, guid: fb50a68104cea5f438567fcabb8efb69, type: 3}
+  magicSoftExplosion:
+  - {fileID: 177804, guid: 658fc6655c1c78e45a80243a241f1b1e, type: 3}
+  - {fileID: 196622, guid: 34c006058d7d594449f3fb5c03a6d852, type: 3}
+  - {fileID: 152580, guid: 62bc425171c9c964ba37f4fde2b18e46, type: 3}
+  - {fileID: 173316, guid: e5649dd49569c0a449b698021da6dd53, type: 3}
+  - {fileID: 101082, guid: 6b88dc69c37f0ac47825973a9c9dcb1a, type: 3}
+  megaExplosion:
+  - {fileID: 1682620552668852, guid: 00f24abfdf0d75142ad604932304d8c9, type: 3}
+  - {fileID: 1338941449926684, guid: 67bdebbb85b13b245b9a81082c88a910, type: 3}
+  - {fileID: 1156599598187918, guid: 3a42f18a610374a469fdfc06cda3fdf4, type: 3}
+  - {fileID: 1170179563386922, guid: 5a28ab12a60431942ac754ec3f39c551, type: 3}
+  - {fileID: 1979336133080388, guid: 23ffe291646e5a24cb5322ad0784de8c, type: 3}
+  mysticExplosion:
+  - {fileID: 135446, guid: 6546e6efba58af9409ad6ffcc61de6a9, type: 3}
+  - {fileID: 175196, guid: a4ae1c79c8256e84d8a5d48ee87b61b7, type: 3}
+  - {fileID: 112506, guid: 625fd74b8294443449d2aded4ac87947, type: 3}
+  - {fileID: 120778, guid: 632339e29e2ddd64aab6f9dd68facc82, type: 3}
+  novaExplosion:
+  - {fileID: 111992, guid: ef697b4cb271b7642af97a1a70394631, type: 3}
+  - {fileID: 115286, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+  - {fileID: 182876, guid: b69cacae8a5b6f24ea06ba15a8bb910e, type: 3}
+  - {fileID: 182802, guid: 57ac5680dabf21944b5c2d0366061eb9, type: 3}
+  novaSmallExplosion:
+  - {fileID: 109660, guid: 0a09a3a2bbd2966428434f3fade79433, type: 3}
+  - {fileID: 103350, guid: 5ea442f5d97b58843a80992f3d61e220, type: 3}
+  - {fileID: 108204, guid: a895033e3fd07214d80b3e159c61873f, type: 3}
+  - {fileID: 127910, guid: 44b436602194b6a4387c9f987500b13f, type: 3}
+  nukeConeExplosion:
+  - {fileID: 1939352568327336, guid: ad82adc91f9827d48890e80c546cdce0, type: 3}
+  - {fileID: 1324124168371050, guid: 9eb3b1a11c610cd418079f132e291197, type: 3}
+  - {fileID: 1813456884755978, guid: 241480e4d682d6f4b9d35136d8208e8d, type: 3}
+  - {fileID: 1503314963399906, guid: b179a4b6ccaf1ad459bbd10cfc2e1ca4, type: 3}
+  nukeExplosion:
+  - {fileID: 122924, guid: 02602c03e3a632f44a268976f34add18, type: 3}
+  - {fileID: 130346, guid: 07bf9ced87963e24299c2c2a22bfeeb6, type: 3}
+  - {fileID: 136800, guid: 50c0d8c73dfeed248826c384c274984d, type: 3}
+  - {fileID: 160086, guid: c217f262fea9e90468154f70d667707c, type: 3}
+  nukeVerticalExplosion:
+  - {fileID: 134878, guid: 6d8229e80027fc54195fba9200a99df5, type: 3}
+  - {fileID: 150222, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+  - {fileID: 196474, guid: 3a6bd25b5a08b114d8b5d315a2e9376a, type: 3}
+  - {fileID: 120316, guid: ba31194ef34f22e49a0a0b1f178dc13c, type: 3}
+  roundExplosion:
+  - {fileID: 121806, guid: 4dbaeaca9d7e967419f27723f2718287, type: 3}
+  - {fileID: 105310, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
+  - {fileID: 181062, guid: 557d199a6dc5c384c9310c0f11e2f8aa, type: 3}
+  - {fileID: 156506, guid: 8cd1104783594d040862e4173af2522a, type: 3}
+  shadowExplosion:
+  - {fileID: 133642, guid: 721ed883392764d42a3957861e7752c0, type: 3}
+  smallExplosion:
+  - {fileID: 140474, guid: 56e3e0c71ef4cbe4dbda074c547d7bd4, type: 3}
+  - {fileID: 181478, guid: d166c8ca466ba4a42a2c22afdee2d7e1, type: 3}
+  - {fileID: 182438, guid: 2d2dc4db83f8e7d47a43c1d641d30a95, type: 3}
+  - {fileID: 160620, guid: 084b5d8b03e0910468842580b7c7b8ba, type: 3}
+  soulExplosion:
+  - {fileID: 169216, guid: 737959db973360b43bdeb1a4874f1af8, type: 3}
+  - {fileID: 163640, guid: be4058b04abc8fe4ca81c721c18ecb4f, type: 3}
+  - {fileID: 136094, guid: cbf6e26bfae3a4f48acb9bb79ce1e5da, type: 3}
+  - {fileID: 150606, guid: 625165fb93553b14f8ed057807ed752a, type: 3}
+  sparkleExplosion:
+  - {fileID: 1668877456950060, guid: 6c484679447289e46afc215e1ad87857, type: 3}
+  - {fileID: 1714716063501506, guid: ea6fb368ff0ea2e409d54725029e8021, type: 3}
+  - {fileID: 1359934594507606, guid: e87d77b2ce40fbb4cb11a13a0ec604cd, type: 3}
+  - {fileID: 1438902432858508, guid: 70d6dfe08ec8a1447b4822e95e56918e, type: 3}
+  spikyExplosion:
+  - {fileID: 127350, guid: 44053fcf5ec3ddc429076f23c65685ef, type: 3}
+  - {fileID: 183222, guid: f2ee009e61b1177489331d95174281b1, type: 3}
+  - {fileID: 160118, guid: 73a3a14a35c722943ad82f0150bfeb69, type: 3}
+  - {fileID: 124386, guid: a70a24d8868a592499df4cf5b6dbed7d, type: 3}
+  starExplosion:
+  - {fileID: 121188, guid: 27bec7bc47f580b41b60cd2d2cac5908, type: 3}
+  - {fileID: 137758, guid: a67ce15f50785584d97708026f874d99, type: 3}
+  - {fileID: 113576, guid: 471088445f741e64c82f447ba7849c30, type: 3}
+  - {fileID: 106676, guid: f8232d266ed6c8043a5353ca283993ea, type: 3}
+  starIntenseExplosion:
+  - {fileID: 1940008134688730, guid: 6b573e0cc051d6849aba90ea8131e486, type: 3}
+  - {fileID: 1053647077261932, guid: df190b92ca4251a4e82cbf1ed75c726e, type: 3}
+  - {fileID: 1573447895519926, guid: f2bb6fbe63bfed24f8ee027776bfed73, type: 3}
+  - {fileID: 1641374423578230, guid: 43ee247cd05448148b23b129e68abb51, type: 3}
+  stormExplosion:
+  - {fileID: 128324, guid: 4e110ae3c6c4a44438488f03e233bfe1, type: 3}
