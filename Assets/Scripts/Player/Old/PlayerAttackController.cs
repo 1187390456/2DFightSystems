@@ -11,7 +11,6 @@ public class PlayerAttackController : MonoBehaviour
     private Rigidbody2D rb; // 自身刚体
 
     [SerializeField] [Header("有效攻击输入时间")] private float inputTime = 0.2f;
-    [SerializeField] [Header("攻击1造成的伤害")] private float attack1Damage = 10;
     [SerializeField] [Header("攻击检测点")] private Transform attackCheck;
     [SerializeField] [Header("攻击检测半径")] private float attackCheckRadius;
     [SerializeField] [Header("可被攻击层级")] private LayerMask CanBeAttack;
