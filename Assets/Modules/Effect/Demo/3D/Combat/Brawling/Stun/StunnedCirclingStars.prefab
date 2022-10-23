@@ -34,7 +34,7 @@ Transform:
   - {fileID: 499098}
   - {fileID: 443714}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!198 &19864276
 ParticleSystem:
@@ -4791,8 +4791,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -58268825
-  m_SortingLayer: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0

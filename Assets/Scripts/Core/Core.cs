@@ -15,8 +15,6 @@ public class Core : MonoBehaviour
 
     public PlayerState playerState { get; private set; }
 
-    public EnemyState enemyState { get; private set; }
-
     public PlayerStats playerStats { get; private set; }
     public EnemyStats enemyStats { get; private set; }
 
@@ -32,7 +30,6 @@ public class Core : MonoBehaviour
 
         enemyCollisionSenses = GetComponentInChildren<EnemyCollisionSenses>();
         enemyStats = GetComponentInChildren<EnemyStats>();
-        enemyState = GetComponentInChildren<EnemyState>();
         enemyCombat = GetComponentInChildren<EnemyCombat>();
     }
 }

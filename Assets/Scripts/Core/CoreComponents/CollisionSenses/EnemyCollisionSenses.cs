@@ -38,6 +38,9 @@ public class EnemyCollisionSenses : CollisionSenses
     // 近战攻击检测
     public virtual bool MeleeAttack() => Physics2D.Raycast(detectedCheck.position, transform.right, meleeDistance, LayerMask.GetMask("Player"));
 
+    // 保护条件
+    public virtual bool Protect() => !Edge() || Wall();
+
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

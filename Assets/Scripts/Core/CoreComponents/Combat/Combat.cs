@@ -16,12 +16,8 @@ public class Combat : CoreComponent, IDamageable, IKnockbackable
     {
     }
 
-    public void Knckback(float velocity, Vector2 angle, int direction)
+    public virtual void Knckback(float velocity, Vector2 angle, int direction)
     {
-        movement.SetVelocity(velocity, angle, direction);
-        knockbackStartTime = Time.time;
-        movement.canSetVelocity = false;
-        isKnockbacking = true;
     }
 
     public override void Update()

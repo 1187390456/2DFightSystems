@@ -17,8 +17,8 @@ public class P_Dead : P_State
         }
         CanvasHandle.Instance.SetDeadTimer(true);
         player.SetDestory();
-        EffectBox.Instance.Chunk(player.transform.position);
-        EffectBox.Instance.Blood(player.transform.position);
+        //EffectBox.Instance.Chunk(player.transform.position);
+        //EffectBox.Instance.Blood(player.transform.position);
         GameManager.Instance.Rebirth();
     }
 }

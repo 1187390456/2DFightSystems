@@ -7,29 +7,30 @@ using UnityEngine;
 public class SpineTransAction : MonoBehaviour
 {
     [Header("数据资源列表")] public List<SkeletonDataAsset> dataList = new List<SkeletonDataAsset>();
-    private Enemy enemy; // 当前脚本
+
+    //private Enemy enemy; // 当前脚本
     private SkeletonMecanim spineScript; // 骨骼控制脚本
 
-    private float lastChangeTime; // 上次变换时间
-    private float changeTimeSpace = 5.0f; // 变换时间间隔
+    //private float lastChangeTime; // 上次变换时间
+    //private float changeTimeSpace = 5.0f; // 变换时间间隔
 
     private void Awake()
     {
         spineScript = GetComponent<SkeletonMecanim>();
-        enemy = GetComponent<Enemy>();
+        //enemy = GetComponent<Enemy>();
         spineScript.skeletonDataAsset = dataList[0]; // 默认第一个数据
         spineScript.initialSkinName = "V1"; // 初始皮肤
         spineScript.Initialize(true);
-        lastChangeTime = Time.time;
+        //lastChangeTime = Time.time;
     }
 
     private void Update()
     {
-        if (enemy.stateMachine.currentState != enemy.state.dead && Time.time >= lastChangeTime + changeTimeSpace)
-        {
-            ChangeShape();
-            lastChangeTime = Time.time;
-        }
+        //if (enemy.stateMachine.currentState != enemy.dead && Time.time >= lastChangeTime + changeTimeSpace)
+        //{
+        //    ChangeShape();
+        //    lastChangeTime = Time.time;
+        //}
     }
 
     // 切换形态

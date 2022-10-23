@@ -22,4 +22,13 @@ public class PlayerCombat : Combat
         base.Damage(amount);
         playerStats.DecreaseHealth(amount);
     }
+
+    public override void Knckback(float velocity, Vector2 angle, int direction)
+    {
+        base.Knckback(velocity, angle, direction);
+        movement.SetVelocity(velocity, angle, direction);
+        knockbackStartTime = Time.time;
+        movement.canSetVelocity = false;
+        isKnockbacking = true;
+    }
 }

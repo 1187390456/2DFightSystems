@@ -9,16 +9,11 @@ public class PlayerStats : Stats
         base.DecreaseHealth(amount);
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
+            ClearHealth();
             playerState.stateMachine.ChangeState(playerState.dead);
         }
         else
         {
         }
-    }
-
-    public override void IncreaseHealth(float amount)
-    {
-        base.IncreaseHealth(amount);
     }
 }

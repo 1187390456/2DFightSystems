@@ -10,7 +10,7 @@ public class Stats : CoreComponent
     public override void Awake()
     {
         base.Awake();
-        currentHealth = maxHealth;
+        ResetHealth();
     }
 
     public virtual void DecreaseHealth(float amount)
@@ -22,4 +22,8 @@ public class Stats : CoreComponent
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
+
+    public virtual void ResetHealth() => currentHealth = maxHealth;
+
+    public virtual void ClearHealth() => currentHealth = 0;
 }

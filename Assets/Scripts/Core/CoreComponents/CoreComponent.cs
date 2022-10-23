@@ -8,7 +8,6 @@ public class CoreComponent : MonoBehaviour
     protected Transform target;
     protected Movement movement => core.movement;
     protected PlayerState playerState => core.playerState;
-    protected EnemyState enemyState => core.enemyState;
     protected EnemyCollisionSenses enemySense => core.enemyCollisionSenses;
     protected PlayerCollisionSenses playerSense => core.playerCollisionSenses;
 

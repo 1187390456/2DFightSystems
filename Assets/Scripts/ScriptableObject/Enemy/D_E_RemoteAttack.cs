@@ -10,4 +10,5 @@ public class D_E_RemoteAttack : ScriptableObject
     [Header("子弹飞行距离")] public float distance = 10.0f;
     [Header("子弹下降速度(重力大小)")] public float gravityScale = 8.0f;
     [Header("子弹预制件")] public GameObject bullet;
+    [Header("是否是Spine")] public bool isSpine;
 }

@@ -92,17 +92,18 @@ public class ETFXProjectileScript : MonoBehaviour
     // 玩家发射 检测条件
     private bool HitConditionByPlayer()
     {
-        // 墙壁
-        if (hit.collider.GetComponent<Enemy>() == null)
-        {
-            return true;
-        }
-        // 敌人
-        else
-        {
-            var enemy = hit.collider.GetComponent<Enemy>();
-            return enemy.stateMachine.currentState != enemy.state.dead;
-        }
+        //// 墙壁
+        //if (hit.collider.GetComponent<Enemy>() == null)
+        //{
+        //    return true;
+        //}
+        //// 敌人
+        //else
+        //{
+        //    var enemy = hit.collider.GetComponent<Enemy>();
+        //    return enemy.stateMachine.currentState != enemy.dead;
+        //}
+        return false;
     }
 
     // 敌人发射 检测条件
