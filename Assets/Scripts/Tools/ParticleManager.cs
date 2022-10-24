@@ -5,19 +5,6 @@ public class ParticleManager : MonoBehaviour
 {
     public static ParticleManager instance;
 
-    [Header("2D 水")] public GameObject[] water2D;
-    [Header("2D 天气")] public GameObject[] weather2D;
-
-    [Header("炸弹引线")] public GameObject[] bombFuse;
-    [Header("卡通攻击")] public GameObject[] cartoonyPunch;
-    [Header("圆形攻击")] public GameObject[] roundPunch;
-    [Header("柔和攻击")] public GameObject[] softPunch;
-    [Header("眩晕")] public GameObject[] stun;
-    [Header("死亡")] public GameObject[] dead;
-    [Header("地面创痕 - 子弹")] public GameObject[] bulletDecal;
-    [Header("地面创痕 - 能量")] public GameObject[] energyDecal;
-    [Header("地面创痕 - 爆炸")] public GameObject[] explosionDecal;
-
     public void Awake()
     {
         instance = this;
