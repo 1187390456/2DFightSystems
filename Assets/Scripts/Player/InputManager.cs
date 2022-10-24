@@ -209,13 +209,20 @@ public class InputManager : MonoBehaviour
 
     #endregion 闪避
 
-    #region 左右特效切换
+    #region 武器切换
+
+    public bool switchLast;
+    public bool switchNext;
 
     public void CheckSwitchLeft()
     {
         if (keyboard.qKey.wasPressedThisFrame)
         {
-            ETFXFireProjectile.Instance.previousEffect();
+            switchLast = true;
+        }
+        if (keyboard.qKey.wasReleasedThisFrame)
+        {
+            switchLast = false;
         }
     }
 
@@ -223,11 +230,19 @@ public class InputManager : MonoBehaviour
     {
         if (keyboard.eKey.wasPressedThisFrame)
         {
-            ETFXFireProjectile.Instance.nextEffect();
+            switchNext = true;
+        }
+        if (keyboard.eKey.wasReleasedThisFrame)
+        {
+            switchNext = false;
         }
     }
 
-    #endregion 左右特效切换
+    public void UseSwitchLast() => switchLast = false;
+
+    public void UseSwitchNext() => switchNext = false;
+
+    #endregion 武器切换
 }
 
 public enum AttackInput

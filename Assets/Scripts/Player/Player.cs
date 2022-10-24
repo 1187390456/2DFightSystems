@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public Animator at { get; private set; }
     public WeaponInventory weaponInventory { get; private set; }
     public GameObject dashIndicator { get; private set; }
+    public int currentWeaponIndex { get; private set; }
 
     #endregion 基本组件与属性
 
@@ -33,12 +34,46 @@ public class Player : MonoBehaviour
         weaponInventory = GetComponent<WeaponInventory>();
         dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
         dashIndicator.gameObject.SetActive(false);
+        currentWeaponIndex = 0;
+    }
+
+    private void Start()
+    {
+        state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
     }
 
     private void Update()
     {
         at.SetFloat("xVelocity", Mathf.Abs(movement.rbX));
         at.SetFloat("yVelocity", movement.rbY);
+        CheckInput();
+    }
+
+    private void CheckInput()
+    {
+        if (action.GetSwitchLast() && state.stateMachine.currentState != state.firstAttack)
+        {
+            SwitchLastWeapon();
+        }
+        if (action.GetSwitchNext() && state.stateMachine.currentState != state.firstAttack)
+        {
+            SwitchNextWeapon();
+        }
+    }
+
+    public void SwitchNextWeapon()
+    {
+        action.UseSwitchNext();
+        currentWeaponIndex = Mathf.Clamp(currentWeaponIndex + 1, 0, weaponInventory.weapons.Length - 1);
+        Debug.Log(currentWeaponIndex);
+        state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
+    }
+
+    public void SwitchLastWeapon()
+    {
+        action.UseSwitchLast();
+        currentWeaponIndex = Mathf.Clamp(currentWeaponIndex - 1, 0, weaponInventory.weapons.Length - 1);
+        state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
     }
 
     private void StartAnimation() => stateMachine.currentState.StartAnimation();

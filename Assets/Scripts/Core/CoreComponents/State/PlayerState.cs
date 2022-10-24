@@ -66,6 +66,5 @@ public class PlayerState : CoreComponent
         firstAttack = new P_Attack(stateMachine, player, "attack", playerData);
         secondAttack = new P_Attack(stateMachine, player, "attack", playerData);
         stateMachine.Init(idle);
-        firstAttack.SetWeapon(player.weaponInventory.weapons[0]);
     }
 }

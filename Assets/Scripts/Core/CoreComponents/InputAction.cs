@@ -16,11 +16,19 @@ public class InputAction : CoreComponent
 
     public bool GetDashInputStop() => InputManager.Instance.dashInputStop;
 
+    public bool GetSwitchLast() => InputManager.Instance.switchLast;
+
+    public bool GetSwitchNext() => InputManager.Instance.switchNext;
+
     public Vector2 GetDashDirtion() => InputManager.Instance.movementInput;
 
     public void UseDashInput() => InputManager.Instance.UseDashInput();
 
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
+
+    public void UseSwitchLast() => InputManager.Instance.UseSwitchLast();
+
+    public void UseSwitchNext() => InputManager.Instance.UseSwitchNext();
 
     public void UseJumpInputStop() => InputManager.Instance.UseJumpInputStop();
 }

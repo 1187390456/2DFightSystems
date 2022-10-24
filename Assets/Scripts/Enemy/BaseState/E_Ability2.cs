@@ -51,6 +51,7 @@ public class E_Ability2 : E_RemoteAttack
     public override void Update()
     {
         base.Update();
+        if (Player.Instance == null) return;
         if (Player.Instance.transform.position.x < entity.transform.position.x && movement.facingDireciton == 1)
         {
             movement.SetTurn();

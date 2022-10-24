@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   attackInfos:
-  - attackName: AttackStep1
+  - attackName: Sword1
     moveSpeed: 3
     damageAmount: 10
     knockbackSpeed: 10
     knockbackAngle: {x: 1, y: 1}
-  - attackName: AttackStep2
+  - attackName: Sword2
     moveSpeed: 4
     damageAmount: 10
     knockbackSpeed: 15
     knockbackAngle: {x: 1, y: 1}
-  - attackName: AttackStep3
+  - attackName: Sword3
     moveSpeed: 2
     damageAmount: 10
     knockbackSpeed: 20
