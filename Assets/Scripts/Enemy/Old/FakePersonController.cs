@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FakePersonController : MonoBehaviour, IDamageable
+public class FakePersonController : MonoBehaviour, IDamageable, IKnockbackable
 {
     [SerializeField] [Header("最大生命值")] private float maxHealth = 9999;
     [SerializeField] [Header("是否启用受击状态")] private bool canKnockback;
@@ -35,9 +35,9 @@ public class FakePersonController : MonoBehaviour, IDamageable
     private void Awake()
 
     {
-        aliveGobj = transform.Find("Alive").gameObject;
-        topBodyGobj = transform.Find("TopBroken").gameObject;
-        botBodyGobj = transform.Find("BottomBroken").gameObject;
+        aliveGobj = transform.gameObject;
+        topBodyGobj = transform.parent.Find("TopBroken").gameObject;
+        botBodyGobj = transform.parent.Find("BottomBroken").gameObject;
 
         at = aliveGobj.GetComponent<Animator>();
 
@@ -61,33 +61,6 @@ public class FakePersonController : MonoBehaviour, IDamageable
     {
     }
 
-    // 受到伤害回调
-    //public void AcceptPlayerDamage(AttackInfo attackInfo)
-    //{
-    //    currentHealth -= attackInfo.damage;
-    //    at.SetTrigger("damage");
-    //    if (attackInfo.damageSourcePosX > transform.position.x)
-    //    {
-    //        isHitFromLeft = false;
-    //    }
-    //    else
-    //    {
-    //        isHitFromLeft = true;
-    //    }
-    //    at.SetBool("isHitFromLeft", isHitFromLeft);
-    //    var pos = at.transform.position;
-    //    var rot = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
-    //    EffectBox.Instance.FakePersonHit(pos, rot);
-    //    if (canKnockback && currentHealth > 0.0f)
-    //    {
-    //        Knockback();
-    //    }
-    //    if (currentHealth <= 0.0f)
-    //    {
-    //        Died();
-    //    }
-    //}
-
     // 检测受击状态
     private void CheckKnockbackStatu()
     {
@@ -100,13 +73,23 @@ public class FakePersonController : MonoBehaviour, IDamageable
     }
 
     // 击退
-    private void Knockback()
+    private void Knockback(float velocity, Vector2 angle, int direction)
     {
         if (!isBeHiting)
         {
             isBeHiting = true;
             lastBeHitTime = Time.time;
-            aliveRg.velocity = new Vector2(knockbackSpeed.x * knockBackDirection, knockbackSpeed.y);
+            angle.Normalize();
+            if (direction == 1)
+            {
+                at.SetBool("isHitFromLeft", true);
+            }
+            else
+            {
+                at.SetBool("isHitFromLeft", false);
+            }
+
+            aliveRg.velocity = new Vector2(angle.x * velocity, angle.y * velocity * direction);
         }
     }
 
@@ -126,5 +109,19 @@ public class FakePersonController : MonoBehaviour, IDamageable
 
     public void Damage(float amount)
     {
+        Debug.Log("13");
+        currentHealth -= amount;
+        at.SetTrigger("damage");
+        if (currentHealth <= 0.0f)
+        {
+            currentHealth = 0.0f;
+            Died();
+        }
+    }
+
+    public void Knckback(float velocity, Vector2 angle, int direction)
+    {
+        Debug.Log("13");
+        Knockback(velocity, angle, direction);
     }
 }
