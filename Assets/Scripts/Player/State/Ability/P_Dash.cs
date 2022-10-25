@@ -109,6 +109,12 @@ public class P_Dash : P_Ability
                     movement.rb.drag = 0.0f;
                     isAbilityDone = true;
                 }
+                if (sense.Ground())
+                {
+                    movement.rb.drag = 0.0f;
+                    movement.SetVelocityZero();
+                    isAbilityDone = true;
+                }
             }
         }
     }

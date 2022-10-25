@@ -28,7 +28,6 @@ public class EnemyCombat : Combat
     {
         base.Knckback(velocity, angle, direction);
         if (StopCondition()) return;
-        Debug.Log("123");
         movement.SetVelocity(velocity, angle, direction);
         knockbackStartTime = Time.time;
         movement.canSetVelocity = false;
