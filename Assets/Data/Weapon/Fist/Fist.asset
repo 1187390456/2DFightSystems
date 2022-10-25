@@ -13,18 +13,27 @@ MonoBehaviour:
   m_Name: Fist
   m_EditorClassIdentifier: 
   attackInfos:
-  - attackName: Fist1
+  - attackName: Fist
     moveSpeed: 3
     damageAmount: 10
     knockbackSpeed: 5
     knockbackAngle: {x: 1, y: 1}
-  - attackName: Fist2
+    effectArr:
+    - {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
+    rot: 0
+  - attackName: Fist
     moveSpeed: 4
     damageAmount: 10
     knockbackSpeed: 10
     knockbackAngle: {x: 1, y: 1}
-  - attackName: Fist3
+    effectArr:
+    - {fileID: 183892, guid: 77aff4f1c9d07704bafd856e02a46ac9, type: 3}
+    rot: 0
+  - attackName: Fist
     moveSpeed: 2
     damageAmount: 10
     knockbackSpeed: 15
     knockbackAngle: {x: 1, y: 2}
+    effectArr:
+    - {fileID: 111486, guid: f6ac01c8c44430d46815af0e77bdcfdd, type: 3}
+    rot: 0
