@@ -11,4 +11,7 @@ public struct WeaponAttackInfo
 
     public float knockbackSpeed;
     public Vector2 knockbackAngle;
+
+    public GameObject[] effectArr;
+    public float rot; // 旋转度数
 }

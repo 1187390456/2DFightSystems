@@ -18,13 +18,34 @@ MonoBehaviour:
     damageAmount: 10
     knockbackSpeed: 10
     knockbackAngle: {x: 1, y: 1}
+    effectArr:
+    - {fileID: 1140404083555214, guid: e66bddc96394d4a45b8c8fd1ed37a43d, type: 3}
+    - {fileID: 1861272202064540, guid: 2d1b4e33180cb7d4c878efa593a8943d, type: 3}
+    - {fileID: 1751017172077236, guid: 67eb98f97dd474343b4b91ecca212172, type: 3}
+    - {fileID: 1037878741696276, guid: f6b2fd20db5712f4bae7a30cc8ef3e8d, type: 3}
+    - {fileID: 1026872819994170, guid: 68e02ff7a5622a54fa6e052b3de2b29a, type: 3}
+    rot: 60
   - attackName: Sword2
     moveSpeed: 4
     damageAmount: 10
     knockbackSpeed: 15
     knockbackAngle: {x: 1, y: 1}
+    effectArr:
+    - {fileID: 1140404083555214, guid: e66bddc96394d4a45b8c8fd1ed37a43d, type: 3}
+    - {fileID: 1861272202064540, guid: 2d1b4e33180cb7d4c878efa593a8943d, type: 3}
+    - {fileID: 1751017172077236, guid: 67eb98f97dd474343b4b91ecca212172, type: 3}
+    - {fileID: 1037878741696276, guid: f6b2fd20db5712f4bae7a30cc8ef3e8d, type: 3}
+    - {fileID: 1026872819994170, guid: 68e02ff7a5622a54fa6e052b3de2b29a, type: 3}
+    rot: 90
   - attackName: Sword3
     moveSpeed: 2
     damageAmount: 10
     knockbackSpeed: 20
     knockbackAngle: {x: 1, y: 2}
+    effectArr:
+    - {fileID: 1140404083555214, guid: e66bddc96394d4a45b8c8fd1ed37a43d, type: 3}
+    - {fileID: 1861272202064540, guid: 2d1b4e33180cb7d4c878efa593a8943d, type: 3}
+    - {fileID: 1751017172077236, guid: 67eb98f97dd474343b4b91ecca212172, type: 3}
+    - {fileID: 1037878741696276, guid: f6b2fd20db5712f4bae7a30cc8ef3e8d, type: 3}
+    - {fileID: 1026872819994170, guid: 68e02ff7a5622a54fa6e052b3de2b29a, type: 3}
+    rot: 120
