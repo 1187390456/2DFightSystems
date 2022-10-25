@@ -20,18 +20,20 @@ public class EnemyCombat : Combat
     public override void Damage(float amount)
     {
         base.Damage(amount);
+        if (StopCondition()) return;
         enemyStats.DecreaseHealth(amount);
     }
 
     public override void Knckback(float velocity, Vector2 angle, int direction)
     {
         base.Knckback(velocity, angle, direction);
-        if (StopKnockbackCondition()) return;
+        if (StopCondition()) return;
+        Debug.Log("123");
         movement.SetVelocity(velocity, angle, direction);
         knockbackStartTime = Time.time;
         movement.canSetVelocity = false;
         isKnockbacking = true;
     }
 
-    private bool StopKnockbackCondition() => target.GetComponent<Enemy>().ablity2ing || target.GetComponent<Enemy>().deading;
+    private bool StopCondition() => target.GetComponent<Enemy>().ablity2ing || target.GetComponent<Enemy>().deading;
 }
