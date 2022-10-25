@@ -24,21 +24,21 @@ public class Weapon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public virtual void Update()
+    {
+    }
+
     public virtual void Enter()
     {
-        if (attackIndex >= weaponData.amountOfAttacks) attackIndex = 0;
         gameObject.SetActive(true);
         baseAt.SetBool("attack", true);
         weaponAt.SetBool("attack", true);
-        baseAt.SetInteger("attackIndex", attackIndex);
-        weaponAt.SetInteger("attackIndex", attackIndex);
     }
 
     public virtual void Exit()
     {
         baseAt.SetBool("attack", false);
         weaponAt.SetBool("attack", false);
-        attackIndex++;
         gameObject.SetActive(false);
     }
 
