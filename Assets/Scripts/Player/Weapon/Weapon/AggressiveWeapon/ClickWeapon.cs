@@ -10,7 +10,6 @@ public class ClickWeapon : AggressiveWeapon
         WeaponAttackInfo weaponAttackInfo = aggressionWeaponData.attackInfos[attackIndex];
         var randomIndex = Random.Range(0, weaponAttackInfo.effectArr.Length);
         var rot = Quaternion.Euler(0.0f, 0.0f, weaponAttackInfo.rot);
-        Debug.Log(weaponAttackInfo.effectArr[randomIndex].name);
         if (weaponAttackInfo.attackName == "Fist")
         {
             rot = Quaternion.Euler(0.0f, -90.0f, 90.0f);

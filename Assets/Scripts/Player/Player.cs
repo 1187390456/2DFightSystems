@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
     {
         action.UseSwitchNext();
         currentWeaponIndex = Mathf.Clamp(currentWeaponIndex + 1, 0, weaponInventory.weapons.Length - 1);
-        Debug.Log(currentWeaponIndex);
         state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
     }
 

@@ -18,6 +18,7 @@ public class AggressiveWeapon : Weapon
     private void StartMeleeAttack()
     {
         WeaponAttackInfo weaponAttackInfo = aggressionWeaponData.attackInfos[attackIndex];
+
         foreach (var item in damageList.ToList())
         {
             item.Damage(weaponAttackInfo.damageAmount);
