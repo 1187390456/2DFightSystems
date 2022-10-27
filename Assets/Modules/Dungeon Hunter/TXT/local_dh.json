@@ -1,0 +1,724 @@
+pet0,만드라,Mandra,曼德拉,マンドラ
+pet2,해츨링,Hatchling,幼雛,ハッチリン
+pet5,하프 데몬,Half Demon,半妖,ハーフデーモン
+pet4,하프 엔젤,Half Angel,一半是天使,ハーフエンジェル
+pet1,스톤 골렘,Stone Golem,石魔,ストーンゴーレム
+pet3,케르베로스,Cerberus,地獄犬,ケルベロス
+pet6,악령,Evil spirit,煞,悪霊
+Bow_Water_1_1,푸른 염료 활,Blue Dye Bow,藍染料弓,青い染料の弓
+Bow_Fire_1_1,그을린 나무 활,Scorch Wood Bow,陰燃木弓,焼けた木の弓
+Bow_Earth_1_1,나무 활,Wooden Bow,木弓,木の弓
+Bow_Lightning_1_1,떡갈나무 활,Oak Bow,橡樹弓,樫の木の弓
+Bow_Dark_1_1,자색나무 활,PurpleTree Bow,紫木弓,紫色の木の弓
+Bow_LIght_1_1,희미하게 빛나는 활,Shimmering Bow,若隱若現的蝴蝶結,微かに光る弓
+Bow_Water_1_2,서리낀 활,Frosted Bow,磨砂弓,霜枯れた弓
+Bow_Fire_1_2,잿빛나무 활,Ashwood Bow,白蠟木弓,灰色の木の弓
+Bow_Earth_1_2,덩굴나무 활,Vine Bow,藤弓,蔓の木の弓
+Bow_Lightning_1_2,금도금 활,Gold Plated bow,鍍金弓,金めっきの弓
+Bow_Dark_1_2,불길해 보이는 활,Sinister Bow,看似不祥的弓,不吉な弓
+Bow_LIght_1_2,신목의 가지,Branch of a Holy tree,一棵聖樹的分支,神木の枝
+Bow_Water_1_3,겨울나무 활,Wintertree Bow,冬天的樹弓,冬の木の弓
+Bow_Fire_1_3,불씨나무 활,Embertree Bow,餘燼木弓,火種の木の弓
+Bow_Earth_1_3,대나무 활,Bamboo Bow,竹弓,竹弓
+Bow_Lightning_1_3,반짝나무 활,ShinyTree Bow,閃亮的木弓,ピカピカ木の弓
+Bow_Dark_1_3,그림자나무 활,Shadowtree Bow,影木弓,影の木の弓
+Bow_LIght_1_3,요정나무 활,Fairytree Bow,仙女木弓,妖精の木の弓
+Bow_Water_2_1,얼음나무 활,Icetree Bow,冰木弓,氷の木の弓
+Bow_Fire_2_1,불꽃가시 활,Flamethorn Bow,可見火焰弓,炎の刺の弓
+Bow_Earth_2_1,맹독가시 활,Venomousthorn Bow,有毒荊棘弓,劇毒の刺の弓
+Bow_Lightning_2_1,각궁,Horn bow,角弓,角弓
+Bow_Dark_2_1,어둠숲 활,Mirkwood Bow,幽暗密林弓,闇の森の弓
+Bow_LIght_2_1,황금가시 활,Goldthorn Bow,可見金色蝴蝶結,黄金の刺の弓
+Bow_Water_2_2,극지의 활,Polar Bow,兩極的弓,極地の弓
+Bow_Fire_2_2,불나무 활,Firetree Bow,火木弓,火の木の弓
+Bow_Earth_2_2,바이킹의 활,Viking's bow,海盜的弓,バイキングの弓
+Bow_Lightning_2_2,귀족의 사냥 활,Noble's Hunting Bow,貴族狩獵弓,貴族の狩猟弓
+Bow_Dark_2_2,부정한 활,Unholy Bow,不潔之弓,不正な弓
+Bow_LIght_2_2,신령나무 활,Spirittree Bow,精神木弓,神霊の木の弓
+Bow_Water_2_3,설원의 활,Snowy Bow,雪弓,雪原の弓
+Bow_Fire_2_3,불도장 활,Fire Stamp Bow,佛跳牆弓,燃える印の弓
+Bow_Earth_2_3,우거진 숲의 활,Bow of Lush Forest,森林的蝴蝶結,緑豊かな森の弓
+Bow_Lightning_2_3,번쩍나무 활,Flashtree Bow,拋光的木弓,イナズマ木の弓
+Bow_Dark_2_3,저주받은 숲의 활,Bow of Cursed Forest,被詛咒的森林的蝴蝶結,呪われた森の弓
+Bow_LIght_2_3,견습천사의 활,Apprentice Angel's Bow,學徒天使弓,見習い天使の弓
+Bow_Water_3_1,서리의 부름,Call of Frost,霜的呼喚,霜の呼びかけ
+Bow_Fire_3_1,화식조,Cassowary,食火雞,火食い鳥
+Bow_Earth_3_1,바오밥나무 가지 활,Baobab Branch Bow,猴麵包樹分支弓,バオバブの木の枝の弓
+Bow_Lightning_3_1,순금 활,Pure Gold Bow,金色蝴蝶結,純金の弓
+Bow_Dark_3_1,흑요석 활,Obsidian Bow,黑曜石弓,黒曜石の弓
+Bow_LIght_3_1,로즈핀치,Rosefinch,朱雀,ローズピンチ
+Bow_Water_3_2,바다 괴수의 발톱,Claw of Sea Monster,爪海怪,海の怪獣の爪
+Bow_Fire_3_2,휘감는 불꽃,A Burning Flame,糾纏煙花,まとう炎
+Bow_Earth_3_2,밀크스네이크,Milk Snake,牛奶蛇,ミルクスネーク
+Bow_Lightning_3_2,천둥의 메아리,Echoes of Thunder,雷的迴聲,雷のエコー
+Bow_Dark_3_2,고통의 굴레,Bridle of Pain,痛苦的循環,痛みの絆
+Bow_LIght_3_2,빛의 갈무리,Captured of Light,光捕獲,光の集まり
+Bow_Water_3_3,심해의 활,Deep Sea Bow,深鞠躬,深海の弓
+Bow_Fire_3_3,불의 봉인,Seal of the Fire,消防印章,火の封印
+Bow_Earth_3_3,대지의 틈,Niche of the Earth,用地手續,大地の狭間
+Bow_Lightning_3_3,흘러나오는 번개,Flowing Lightning,閃電現身,流れだす雷
+Bow_Dark_3_3,망각의 활,Bow of Oblivion,遺忘之弓,忘却の弓
+Bow_LIght_3_3,신수의 발톱,Claw of Heavenly Beast,達林爪,神獣の爪
+Bow_Water_4_1,쌍둥이 바다뱀,Twin Sea Snakes,雙蛇,双子の海蛇
+Bow_Fire_4_1,영원한 격노의 횃불,Torch of Eternal Fury,永恆火炬之怒,永遠の激怒のトーチ
+Bow_Earth_4_1,가시 도마뱀,Thorny Devil,摩洛克,とげトカゲ
+Bow_Lightning_4_1,낙뢰,Thunderstroke,雷擊,落雷
+Bow_Dark_4_1,그림자 박쥐,Shadow Bat,暗影蝙蝠,影のコウモリ
+Bow_LIght_4_1,타오르는 빛,Blazing light,超炫光,燃える光
+Bow_Water_4_2,룬 문자가 새겨진 활,Runic Engraved Bow,符文刻弓,ルーン文字が刻まれた弓
+Bow_Earth_4_2,진 : 대나무 활,True Bamboo Bow,真：竹弓,真・竹弓
+Bow_Lightning_4_2,천둥새의 날개,Thunderbird's Wing,雷鳥的翅膀,雷鳥の翼
+Bow_Dark_4_2,악마 척추 장궁,Evil spine Longbow,魔鬼的脊柱長弓,悪魔の背骨長弓
+Bow_LIght_4_2,단죄의 날개,Condemnation Wing,譴責翅膀,断罪の翼
+Bow_Water_4_3,세이렌의 노래,Song of Siren,海妖之歌,セイレーンの歌
+Bow_Earth_4_3,드리아드의 선물,Gift of Dryad,樹妖的禮物,ドライアドの贈り物
+Bow_Water_5_1,파도 장궁,Wave Longbow,衝擊波,波の長弓
+Bow_Fire_5_1,지옥 대장장이의 손길,Touch of Hell Blacksmith,地獄的鐵匠觸摸,地獄の鍛冶屋の手
+Bow_Earth_5_1,바나나,Banana,香蕉,バナナ
+Bow_Lightning_5_1,무한한 번개의 활,Bow of Infinite Lightning,無限閃電的弓,無限電光の弓
+Bow_Dark_5_1,광기의 시선,Lunatic Gaze,眼睛瘋狂,狂気の視線
+Bow_LIght_5_1,수호천사의 가호,Protection of Guardian Angel,祝福的守護天使,守護天使の加護
+Bow_Water_5_2,혹한의 송곳니,Fangs of Bitter Cold,方寒,酷寒の牙
+Bow_Fire_5_2,용암 파도 장궁,Lava Wave Longbow,熔岩波長弓,溶岩の波の長弓
+Bow_Earth_5_2,대지 수호자의 활,Earth Warder Bow,地球的保護者弓,大地の守護者の弓
+Bow_Lightning_5_2,번개신의 왕관,Crown of Thunder God,閃電神冠,雷神の王冠
+Bow_Dark_5_2,깊고 깊은 심연,Deep and Deep Abyss,很深很深的深淵,深い深淵
+Bow_Earth_5_3,장미 여왕의 축복,Blessing of Rose Queen,玫瑰女王的祝福,バラの女王の祝福
+Bow_Dark_5_3,끝없는 악몽의 가지,Branches of endless Nightmares,無盡夢魘的種類,無限の悪夢の枝
+Bow_Water_6_1,얼음 불사조의 날개,Wing of Ice Phoenix,冰鳳凰之翼,氷不死鳥の羽
+Bow_Fire_6_1,용암 군주의 손아귀,Grasp of the Lava Lord,君主的熔岩手,溶岩の君主の手の内
+Bow_Earth_6_1,생명의 근원,The source of Life,生命起源,生命の根源
+Bow_Lightning_6_1,뇌룡의 심장,Heart of Lightning Dragon,雷龍心臟,電龍の心臓
+Bow_Dark_6_1,마왕의 통치,Reign of The Demon Lord,惡魔法則,魔王の統治
+Bow_LIght_6_1,대천사의 강림,Descent of the Archangel,天使來臨,大天使の降臨
+Arrow_Water_1_1,푸른 깃 화살,Blue Feather Arrow,藍領箭,青い羽の矢
+Arrow_Fire_1_1,붉은 깃 화살,Red Feather Arrow,紅箭羽,赤い羽の矢
+Arrow_Earth_1_1,혈암 화살,Shale Arrow,頁岩箭頭,頁岩の矢
+Arrow_Lightning_1_1,노란 깃 화살,Yellow Feather Arrow,黃箭羽,黄色い羽の矢
+Arrow_Dark_1_1,보랏빛 깃 화살,Purple Feather Arrow,紫箭羽,紫の羽の矢
+Arrow_Light_1_1,산호빛 화살,Coral Colored Arrow,珊瑚箭頭,サンゴ色の矢
+Arrow_Water_1_2,작살,Harpoon,演出,簎
+Arrow_Fire_1_2,루비 빛 비늘,Ruby Colored Scale,光紅寶石秤,ルビー色の鱗
+Arrow_Earth_1_2,바위 골렘의 손톱,Rock Golem's Nail,指甲岩石傀儡,岩ゴーレムの爪
+Arrow_Lightning_1_2,죽전,Bamboo Arrow,武田,竹矢
+Arrow_Dark_1_2,자수정 빛 비늘,Amethyst Colored Scales,淺紫色鱗片,アメジスト色の鱗
+Arrow_Light_1_2,은은한 빛의 화살,Arrow of Soft Light,在微弱的光線箭頭,ほのかな光の矢
+Arrow_Water_1_3,밧줄 작살,Rope Harpoon,繩演出,綱の簎
+Arrow_Fire_1_3,석류석 빛 화살,Garnet Colored Arrows,石榴石光箭,ガーネット色の矢
+Arrow_Earth_1_3,동화살,Copper Arrow,銅箭,銅の矢
+Arrow_Lightning_1_3,토파즈 빛 화살,Topaz Colored Arrows,黃玉光箭,トパーズ色の矢
+Arrow_Dark_1_3,흑철 화살,Black Iron Arrow,黑色鐵箭,黒い鉄の矢
+Arrow_Light_1_3,헤일로 화살,Halo Arrow,暈箭,暈の矢
+Arrow_Water_2_1,마카로니펭귄,Macaroni Penguin,馬可羅尼企鵝,マカロニペンギン
+Arrow_Fire_2_1,다트,Dart,鏢,ダーツ
+Arrow_Earth_2_1,낡은 황동 화살,Old Brass Arrow,舊銅管箭頭,古い真鍮の矢
+Arrow_Lightning_2_1,편전,Piece Arrow,一片箭,片箭
+Arrow_Dark_2_1,비둘기,Pigeon,鴿子,鳩
+Arrow_Light_2_1,신전,Letter Arrow,寺廟,神箭
+Arrow_Water_2_2,깃이 달린 작살,Feathered Harpoon,領有兩個演出,襟が付いた銛
+Arrow_Fire_2_2,신기전,Shingijeon,神機箭,神機箭
+Arrow_Earth_2_2,녹슨 청동 화살,Rusty Bronze Arrows,生鏽的青銅箭頭,錆び付いた青銅の矢
+Arrow_Lightning_2_2,전기 비늘,Electric scales,電秤,電気の鱗
+Arrow_Dark_2_2,흑요석 화살,Obsidian Arrow,黑曜石箭頭,黒曜石の矢
+Arrow_Light_2_2,플라밍고,Flamingo,火烈鳥,フラミンゴ
+Arrow_Water_2_3,닻,Anchor,錨,アンカー
+Arrow_Fire_2_3,샐러맨더의 비늘,Salamander’s Scale,在民間傳說和傳奇蠑螈的秤,サラマンダーの鱗
+Arrow_Earth_2_3,은화살,Siver Arrow,銀購買,銀の矢
+Arrow_Dark_2_3,톱니날 흑철 화살,Jagged Black Iron Arrow,鐵血黑鐵箭,鋸歯の黒い鉄の矢
+Arrow_Light_2_3,톱니날 헤일로 화살,Jagged Halo Arrow,鋸片鋸齒暈箭,鋸歯の暈の矢
+Arrow_Water_3_1,삼지창,Trident,三叉戟,トライデント
+Arrow_Fire_3_1,호루스의 눈,Eye of Horus,荷魯斯之眼,ホルスの目
+Arrow_Earth_3_1,황금화살,Golden Arrow,金箭,黄金の矢
+Arrow_Lightning_3_1,철전,Iron Arrow,鐵箭頭,鉄の矢
+Arrow_Dark_3_1,뼈 화살,Bone Arrow,骨箭,骨の矢
+Arrow_Light_3_1,축복받은 화살,Blessed Arrow,有福箭,祝福された矢
+Arrow_Water_3_2,눈사태의 징조,Portent of Avalanche,雪崩的跡象,雪崩の兆候
+Arrow_Fire_3_2,불길의 씨앗,Seed of Flame,火焰的種子,炎の種子
+Arrow_Earth_3_2,대지의 경고,Warning of Earth,警告土地,大地の警告
+Arrow_Lightning_3_2,번개 부름이,Lightning Caller,召喚閃電,雷召し
+Arrow_Dark_3_2,엄습하는 그림자,Crawling Shadow,攻擊陰影,掩撃する影
+Arrow_Light_3_2,밝아오는 빛,Brighten Light,明亮的光線來,明けてくる光
+Arrow_Water_3_3,눈의 정수,Essence of Snow,雪精華,目の精髄
+Arrow_Fire_3_3,불꽃의 정수,Essence of Flame,火精華,炎の精髄
+Arrow_Earth_3_3,땅의 정수,Essence of Land,土精華,地の精髄
+Arrow_Lightning_3_3,번개의 정수,Essence of Lightning,電精華,雷の精髄
+Arrow_Dark_3_3,어둠의 정수,Essence of Dark,黑精華,闇の精髄
+Arrow_Light_3_3,빛의 정수,Essence of Light,光精華,光の精髄
+Arrow_Water_4_1,얼음 삼지창,Ice Trident,冰三叉戟,氷のトライデント
+Arrow_Fire_4_1,로켓,Rocket,火箭,ロケット
+Arrow_Earth_4_1,피어나는 화살,Blooming Arrow,盛開的箭頭,咲く矢
+Arrow_Lightning_4_1,천둥의 정수,Essence of Thunder,雷精華,雷の精髄
+Arrow_Dark_4_1,육량시,Axe Blade Arrow,斧刃箭,六兩矢
+Arrow_Light_4_1,큐피드의 화살,Cupid’s Arrow,丘比特的箭,キューピッドの矢
+Arrow_Water_4_2,몰아치는 소나기,Driving Shower,席捲淋浴,追い立てる俄雨
+Arrow_Fire_4_2,소용돌이치는 불꽃,Swirling Flame,旋轉火焰,渦巻く炎
+Arrow_Earth_4_2,격동하는 대지,Turbulent Earth,動盪的土地,激動する大地
+Arrow_Lightning_4_2,요동치는 번개,Thundering Lightning,閃電擊中的顛簸,揺れ動く雷
+Arrow_Dark_4_2,나선형 공포,Spiral Fear,恐懼螺旋,螺旋の恐怖
+Arrow_Light_4_2,빛의 선풍,Whirlwind of Light,光感,光の旋風
+Arrow_Water_4_3,고드름 화살,Icicle Arrow,冰柱箭頭,つららの矢
+Arrow_Fire_4_3,불사조의 깃털,Phoenix Feather,鳳凰羽毛,不死鳥の羽
+Arrow_Earth_4_3,퍼져나가는 생명,Spreading Life,攤開生活,広がっていく命
+Arrow_Dark_4_3,저주받은 화살,Cursed Arrow,詛咒箭,呪われた矢
+Arrow_Light_4_3,천상의 숨결,Breath of Heaven,天堂的氣息,天上の息吹
+Arrow_Water_5_1,뚫어뻥,Plunger,柱塞,ラバーカップ
+Arrow_Fire_5_1,꼬치구이,Skewers,串,串焼き
+Arrow_Earth_5_1,시들지 않는 장미,Rose of Eternity,玫瑰不凋,枯れないバラ
+Arrow_Lightning_5_1,뇌룡의 비늘,Lightning Dragon’s Scales,閃電龍的鱗片,電龍の鱗
+Arrow_Dark_5_1,생선뼈,Fish Bone,魚刺,魚の骨
+Arrow_Light_5_1,지식의 연필,Pencil of Rore,鉛筆知識,知識の鉛筆
+Arrow_Water_5_2,눈보라,Blizzard,暴風雪,吹雪
+Arrow_Fire_5_2,불보라,Firestorm,看哪火,ファイアストーム
+Arrow_Earth_5_2,대지의 분노,Fury of Earth,大地之怒,大地の怒り
+Arrow_Lightning_5_2,날벼락,Thunderbolt,霹靂,青天の霹靂
+Arrow_Dark_5_2,악몽,Nightmare,惡夢,悪夢
+Arrow_Light_5_2,카타르시스,Catharsis,導瀉,カタルシス
+Arrow_Water_5_3,얼어붙은 연꽃,Frozen Lotus,速凍蓮子,凍りついた蓮
+Arrow_Earth_5_3,공작새,Peacock,孔雀,クジャク
+Arrow_Lightning_5_3,못 말리는 닭,Hot shots Chicken,未幹雞糞,あきれる鶏
+Arrow_Water_6_1,절대영도,Absolute Zero,絕對零度,絶対零度
+Arrow_Fire_6_1,태양폭풍,Solar Storm,太陽風暴,太陽嵐
+Arrow_Earth_6_1,경천동지,Earthshattering,專案組,驚天動地
+Arrow_Lightning_6_1,신의 심판,Divine Judgment,神的審判,神の審判
+Arrow_Dark_6_1,집단광기,Collective Madness,集體瘋狂,集団狂気
+Arrow_Light_6_1,불멸의 빛,Immortal Light,不滅之光,不滅の光
+Mon_Water_00,바다 슬라임,Sea Slime,海煤泥,海スライム
+Mon_Water_01,심해 슬라임,Deep Sea Slime,深海泥,深海スライム
+Mon_Water_02,얼음 슬라임,Ice Slime,冰泥,氷スライム
+Mon_Water_03,서리 거미,Frost Spider,冰霜蜘蛛,霜クモ
+Mon_Water_04,가오리,Stingray,黃貂魚,エイ
+Mon_Water_05,해골 해적,Skeleton Pirate,骷髏海盜,海賊スケルトン
+Mon_Water_06,냉기의 해골,Frozen Skeleton,冷凍骨架,冷気のスケルトン
+Mon_Water_07,산호의 정령,Coral Ent,珊瑚耳鼻喉科,サンゴの精霊
+Mon_Water_08,겨울나무정령,Winter Ent,冬季耳鼻喉科,冬の木の精霊
+Mon_Water_09,얼음의 정령,Ice Elemental,冰元素,氷の精霊
+Mon_Water_10,얼어붙은 샐러맨더,Frozen Salamander,冷凍蠑螈,凍りついたサラマンダー
+Mon_Water_11,쥐가오리,Manta rays,蝠鱝,マンタ
+Mon_Water_12,얼음 버섯괴물,Ice Mushroom Monster,冰蘑菇怪物,氷のキノコモンスター
+Mon_Water_13,낚시꾼 고블린,Angler Goblin,垂釣者哥布林,ゴブリン釣り人
+Mon_Water_14,어부 고블린,Fisherman Goblin,漁夫哥布林,ゴブリン漁師
+Mon_Water_15,고블린 얼음마법사,Goblin Ice Wizard,冰哥布林魔法師,氷のゴブリンウィザード
+Mon_Water_Boss_0,해골 선장,Skeleton Captain,骷髏船長,キャプテンスケルトン
+Mon_Water_Boss_1,서리 골렘,Frost Golem,冰霜傀儡,霜ゴーレム
+Mon_Water_Boss_2,설원 맘모스,Snow Mammoth,斯諾猛獁,雪原マンモス
+Mon_Fire_00,고열의 슬라임,High Fever Slime,高熱煤泥,高熱スライム
+Mon_Fire_01,용암 슬라임,Lava Slime,熔岩泥,溶岩スライム
+Mon_Fire_02,용암 거미,Lava Spider,熔岩蜘蛛,溶岩クモ
+Mon_Fire_03,샐러맨더,Salamander,蠑,サラマンダー
+Mon_Fire_04,숯불 나무정령,Charcoal Fire Ent,炭火耳鼻喉科,炭火の木の精霊
+Mon_Fire_05,타오르는 해골,Blazing Skeleton,燃燒的骷髏,燃えるスケルトン
+Mon_Fire_06,방화범,Firebug,螢火,放火犯
+Mon_Fire_07,불의 정령,Fire Elemental,火元素,火の精霊
+Mon_Fire_08,불타는 유령,Burning ghost,鬼燒,燃えるゴースト
+Mon_Fire_09,용암 버섯괴물,Lava Mushroom Monster,熔岩蘑菇怪物,溶岩のキノコモンスター
+Mon_Fire_10,불꽃 고블린,Flame Goblin,火焰哥布林,炎のゴブリン
+Mon_Fire_11,고블린 불꽃곡예사,Goblin Flame Contortionist,火焰哥布林雜技演員,炎のゴブリン曲芸師
+Mon_Fire_12,악마 고블린,Demon Goblin,惡魔哥布林,悪魔ゴブリン
+Mon_Fire_13,고블린 화염마법사,Goblin Flame Wizard,火焰哥布林魔法師,炎のゴブリンウィザード
+Mon_Fire_Boss_0,용암 골렘,Lava Golem,熔岩傀儡,溶岩ゴーレム
+Mon_Fire_Boss_1,지옥의 악마,Hell Demon,地獄惡魔,地獄の悪魔
+Mon_Fire_Boss_2,불의 마녀,Fire Witch,消防女巫,火の魔女
+Mon_Earth_00,슬라임,Slime,粘液,スライム
+Mon_Earth_01,머드 슬라임,Mud Slime,泥泥,マッドスライム
+Mon_Earth_02,신록의 슬라임,Fresh green Slime,新鮮的綠色史萊姆,新緑のスライム
+Mon_Earth_03,하수구 쥐,Sewer Rat,下水道老鼠,下水道ネズミ
+Mon_Earth_04,고블린,Goblin,哥布林,ゴブリン
+Mon_Earth_05,고블린 졸개,Goblin Lackey,哥布林跟班,ゴブリン手下
+Mon_Earth_06,고블린 분대장,Goblin Squad Leader,哥布林班長,ゴブリン分隊長
+Mon_Earth_07,고블린 검투사,Goblin Gladiator,哥布林鬥士,ゴブリン剣闘士
+Mon_Earth_08,호랑 거미,Tiger Spider,虎蜘蛛,虎クモ
+Mon_Earth_09,버섯,Mushroom monster,蘑菇怪物,キノコ
+Mon_Earth_10,만드라고라,Mandragora,Mandragora,マンドラゴラ
+Mon_Earth_11,당그라고라,Carrotdragora,Carrotdragora,人参ドラゴラ
+Mon_Earth_12,배추드라고라,Cabbagedragora,Cabbagedragora,白菜ドラゴラ
+Mon_Earth_13,선인드라고라,Cactusdragora,Cactusdragora,先人ドラゴラ
+Mon_Earth_14,나무정령,Ent,耳鼻喉科,木の精霊
+Mon_Earth_15,죄수(여),Prisoner(Female),囚徒（女）,囚人（女）
+Mon_Earth_16,죄수(남),Prisoner(male),囚徒（男）,囚人（男）
+Mon_Earth_17,흉악범,a vicious criminal,惡性犯罪,凶悪犯
+Mon_Earth_18,숲의 정령,Forest Elemental,森林元素,森の精霊
+Mon_Earth_Boss_0,킹 슬라임,King Slime,史萊姆王,キングスライム
+Mon_Earth_Boss_1,시체꽃 만드라고라,Titan Arum Mandragora,泰坦魔芋花曼陀羅,死体の花のマンドラゴラ
+Mon_Earth_Boss_2,바위 골렘,Rock Golem,岩石傀儡,岩ゴーレム
+Mon_Earth_Boss_3,무기징역수,a Lifer,一個被判無期徒刑,無期懲役ができ
+Mon_Earth_Boss_4,숲의 마녀,Forest witch,森林女巫,森の魔女
+Mon_Elec_00,전류가 흐르는 슬라임,Electric Slime,電動煤泥,電流が流れるスライム
+Mon_Elec_01,꿀벌,Bee,蜜蜂,ミツバチ
+Mon_Elec_02,플라즈마 거미,Plasma Globe Spider,等離子球蜘蛛,プラズマクモ
+Mon_Elec_03,번개의 정령,Lightning Elemental,閃電元素,雷の精霊
+Mon_Elec_04,다람쥐,Squirrel,松鼠,リス
+Mon_Elec_05,청설모,Red squirrel,紅松鼠,青鼠
+Mon_Elec_06,전기 가오리,Electric Stingray,電動黃貂魚,電気エイ
+Mon_Elec_07,전기 샐러맨더,Electric Salamander,電動蠑螈,電気サラマンダー
+Mon_Elec_08,일벌,Worker Bee,工蜂,ハタラキバチ
+Mon_Elec_09,번개 맞은 나무정령,Lightning Ant,閃電螞蟻,雷に打た木の精霊
+Mon_Elec_10,감전된 해골,Electric shock Skeleton,電擊骨架,感電されたスケルトン
+Mon_Elec_11,번개 고블린,Lightning Goblin,閃電哥布林,雷ゴブリン
+Mon_Elec_12,번개 고블린 졸개,Lightning Goblin Lackey,閃電哥布林加載,雷ゴブリン手下
+Mon_Elec_13,고블린 번개마법사,Goblin Lightning Wizard,閃電哥布林巫師,雷のゴブリンウィザード
+Mon_Elec_Boss_0,번개 골렘,Lightning Golem,閃電傀儡,雷ゴーレム
+Mon_Elec_Boss_1,람쥐썬더,Squirrel Thunder,松鼠雷霆,サンダーリス
+Mon_Elec_Boss_2,여왕 벌,Queen Bee,蜂后,女王蜂
+Mon_Dark_00,핏빛 슬라임,Blood Slime,血泥,血色スライム
+Mon_Dark_01,독액 슬라임,Venom Slime,毒液煤泥,毒液スライム
+Mon_Dark_02,섬뜩한 슬라임,Eerie slime,令人毛骨悚然的煤泥,不気味なスライム
+Mon_Dark_03,그늘거미,Recluse,隱士,陰クモ
+Mon_Dark_04,피를 머금은 거미,Bloody Spider,血色蜘蛛,血を含んだクモ
+Mon_Dark_05,맹독거미,Poisonous Spider,毒蜘蛛,猛毒クモ
+Mon_Dark_06,해골 고블린,Skeleton Goblin,骷髏哥布林,スケルトンゴブリン
+Mon_Dark_07,해골,Skeleton,骨架,スケルトン
+Mon_Dark_08,해골 죄수,Skeleton Prisoner,骷髏囚徒,囚人スケルトン
+Mon_Dark_09,해골 방랑자,Skeleton Wanderer,骷髏流浪者,放浪者スケルトン
+Mon_Dark_10,좀비,Zombie,殭屍,ゾンビ
+Mon_Dark_11,미라,Mummy,木乃伊,ミラ
+Mon_Dark_12,귀신들린 나무정령,Haunted Ent,鬧鬼耳鼻喉科,悪霊付きの木の精霊
+Mon_Dark_13,유령,Ghost,鬼,幽霊
+Mon_Dark_14,망령,Wraith,怨靈,亡霊
+Mon_Dark_15,맹독의 정령,Poison Elemental,毒元素,猛毒の精霊
+Mon_Dark_16,죽음의 정령,Death Elemental,死亡元素,死の精霊
+Mon_Dark_Boss_0,흑요석 골렘,Obsidian Golem,黑曜石魔像,黒曜石ゴーレム
+Mon_Dark_Boss_1,사신,Grim Reaper,死神,死神
+Mon_Dark_Boss_2,뱀파이어,Vampire,吸血鬼,ヴァンパイア
+Mon_Dark_Boss_3,듀라한,Durahan,杜拉漢,デュラハン
+Mon_Dark_Boss_4,타락천사,Fallen Angel,墮落天使,堕落天使
+Mon_Light_00,브론즈 슬라임,Bronze Slime,青銅煤泥,ブロンズスライム
+Mon_Light_01,실버 슬라임,Silver Slime,銀泥,シルバースライム
+Mon_Light_02,골드 슬라임,Gold Slime,黃金史萊姆,ゴールドスライム
+Mon_Light_03,무지개 슬라임,Rainbow Slime,彩虹煤泥,虹スライム
+Mon_Light_04,신수 거미,Heavenly Beast Spider,天工野獸蜘蛛,神獣のクモ
+Mon_Light_05,광휘의 정령,Brilliance Elemental,華晨元素,光輝の精霊
+Mon_Light_06,성화의 샐러맨더,Sacred Fire Salamander,神聖之火蠑螈,聖火のサラマンダー
+Mon_Light_07,천사,Angel,天使,天使
+Mon_Light_08,은빛의 천사,Silver angel,銀天使,銀色の天使
+Mon_Light_Boss_0,황금 골렘,Golden Golem,金傀儡,黄金ゴーレム
+Mon_Light_Boss_1,하늘의 천사,Heaven angel,天堂的天使,空の天使
+Mon_Light_Boss_2,성기사의 영혼,Paladin's Spirit,聖騎士的精神,聖騎士の魂
+Mon_Light_Boss_3,대천사,Archangel,天使,大天使
+skill_aspeed,바람 정령의 축복,Wind Spirit's Blessing,風靈的祝福,風の精霊の祝福
+skill_atk,죽음의 광기,Death madness,死亡的瘋狂,死の狂気
+skill_gold,황금왕의 위력,The power of the golden king,黃金國王的權力,黄金王の威力
+skill_oneshot,일격 필살,Blow Shot,打擊射擊,一撃必殺
+dungeon001,불길한 숲-1,Ominous Forest-1,不祥的森林-1,不吉な森-1
+dungeon002,불길한 숲-2,Ominous Forest-2,不祥的森林-2,不吉な森-2
+dungeon003,불길한 숲-3,Ominous Forest-3,不祥的森林-3,不吉な森-3
+dungeon004,불길한 숲-4,Ominous Forest-4,不祥的森林-4,不吉な森-4
+dungeon005,불길한 숲-5,Ominous Forest-5,不祥的森林-5,不吉な森-5
+dungeon006,불길한 숲-6,Ominous Forest-6,不祥的森林-6,不吉な森-6
+dungeon007,불길한 숲-7,Ominous Forest-7,不祥的森林-7,不吉な森-7
+dungeon008,불길한 숲-8,Ominous Forest-8,不祥的森林-8,不吉な森-8
+dungeon009,불길한 숲-9,Ominous Forest-9,不祥的森林-9,不吉な森-9
+dungeon010,불길한 숲-10,Ominous Forest-10,不祥的森林-10,不吉な森-10
+dungeon011,불타는 땅-1,Burning Ground-1,燃燒地面-1,灼熱の大地-1
+dungeon012,해저 유적-1,Undersea Ruins-1,海底遺址-1,海底の遺跡-1
+dungeon013,불타는 땅-2,Burning Ground-2,燃燒地面-2,灼熱の大地-2
+dungeon014,해저 유적-2,Undersea Ruins-2,海底遺址-2,海底の遺跡-2
+dungeon015,불타는 땅-3,Burning Ground-3,燃燒地面-3,灼熱の大地-3
+dungeon016,망자의 협곡-1,Canyon of the Dead-1,死者的峽谷-1,亡者の峡谷-1
+dungeon017,불타는 땅-4,Burning Ground-4,灼燒地面-4,灼熱の大地-4
+dungeon018,망자의 협곡-2,Canyon of the Dead-2,死者的峽谷-2,亡者の峡谷-2
+dungeon019,불타는 땅-5,Burning Ground-5,燃燒地面-5,灼熱の大地-5
+dungeon020,망자의 협곡-3,Canyon of the Dead-3,死者的峽谷-3,亡者の峡谷-3
+dungeon021,불타는 땅-6,Burning Ground-6,燃燒地面-6,灼熱の大地-6
+dungeon022,망자의 협곡-4,Canyon of the Dead-4,死者的峽谷-4,亡者の峡谷-4
+dungeon023,불타는 땅-7,Burning Ground-7,燃燒地面-7,灼熱の大地-7
+dungeon024,뱀파이어 성-1,Vampire Castle-1,吸血鬼城堡-1,ヴァンパイアの城-1
+dungeon025,무법 지대-1,Lawless Zone-1,勞利斯區-1,無法地帯-1
+dungeon026,뱀파이어 성-2,Vampire Castle-2,吸血鬼城堡-2,ヴァンパイアの城-2
+dungeon027,해저 유적-3,Undersea Ruins-3,海底遺址-3,海底の遺跡-3
+dungeon028,뱀파이어 성-3,Vampire Castle-3,吸血鬼城堡-3,ヴァンパイアの城-3
+dungeon029,무법 지대-2,Lawless Zone-2,勞利斯區-2,無法地帯-2
+dungeon030,뱀파이어 성-4,Vampire Castle-4,吸血鬼城堡-4,ヴァンパイアの城-4
+dungeon031,무법 지대-3,Lawless Zone-3,勞利斯區-3,無法地帯-3
+dungeon032,무법 지대-4,Lawless Zone-4,勞利斯區-4,無法地帯-4
+dungeon033,무법 지대-5,Lawless Zone-5,勞利斯區-5,無法地帯-5
+dungeon034,무법 지대-6,Lawless Zone-6,勞利斯區-6,無法地帯-6
+dungeon035,해저 유적-4,Undersea Ruins-4,海底遺址-4,海底の遺跡-4
+dungeon036,번개 지대-1,Lightning Zone-1,防雷區-1,雷の地帯-1
+dungeon037,번개 지대-2,Lightning Zone-2,防雷區-2,雷の地帯-2
+dungeon038,번개 지대-3,Lightning Zone-3,閃電區-3,雷の地帯-3
+dungeon039,번개 지대-4,Lightning Zone-4,防雷區-4,雷の地帯-4
+dungeon040,번개 지대-5,Lightning Zone-5,閃電區-5,雷の地帯-5
+dungeon041,번개 지대-6,Lightning Zone-6,防雷區-6,雷の地帯-6
+dungeon042,해저 유적-5,Undersea Ruins-5,海底遺址-5,海底の遺跡-5
+dungeon043,얼어붙은 땅-1,Frozen ground-1,凍土-1,凍て付いた地-1
+dungeon044,해저 유적-6,Undersea Ruins-6,海底遺址-6,海底の遺跡-6
+dungeon045,얼어붙은 땅-2,Frozen ground-2,凍土-2,凍て付いた地-2
+dungeon046,얼어붙은 땅-3,Frozen ground-3,凍土-3,凍て付いた地-3
+dungeon047,얼어붙은 땅-4,Frozen ground-4,凍土-4,凍て付いた地-4
+dungeon048,얼어붙은 땅-5,Frozen ground-5,凍土-5,凍て付いた地-5
+dungeon049,얼어붙은 땅-6,Frozen ground-6,凍土-6,凍て付いた地-6
+dungeon050,얼어붙은 땅-7,Frozen ground-7,凍土-7,凍て付いた地-7
+dungeon051,그림자 땅-1,Shadow land -1,暗影土地-1,影の地-1
+dungeon052,하늘 섬-1,Sky Island -1,天空島-1,空の島-1
+dungeon053,그림자 땅-2,Shadow land-2,暗影土地-2,影の地-2
+dungeon054,하늘 섬-2,Sky Island-2,天空島-2,空の島-2
+dungeon055,하늘 섬-3,Sky Island-3,天空島-3,空の島-3
+dungeon056,그림자 땅-3,Shadow land-3,暗影土地-3,影の地-3
+dungeon057,그림자 땅-4,Shadow land-4,暗影土地-4,影の地-4
+dungeon058,그림자 땅-5,Shadow land-5,暗影土地-5,影の地-5
+dungeon059,하늘 섬-4,Sky Island-4,天空島-4,空の島-4
+dungeon060,하늘 섬-5,Sky Island-5,天空島-5,空の島-5
+dungeon061,하늘 섬-6,Sky Island-6,天空島-6,空の島-6
+dungeon062,하늘 섬-7,Sky Island-7,天空島-7,空の島-7
+dungeon063,하늘 섬-8,Sky Island-8,天空島-8,空の島-8
+menu_upgrade,강화,Upgrade,加強,強化
+menu_equip,장비,Equipment,設備,装備
+menu_pet,펫,Pet,寵物,ペット
+menu_arti,유물,Artifact,文物,遺物
+menu_quest,퀘스트,Quest,任務,クエスト
+menu_shop,상점,Shop,店,ショップ
+menu_skill,스킬,Skill,技能,スキル
+menu_bow,활,Bow,弓,弓
+menu_arrow,화살,Arrow,箭頭,矢
+menu_cos,코스튬,Costume,服裝,コスチューム
+menu_book,도감,Encyclopedia,插圖,図鑑
+menu_disassemble,분해,Disassemble,分解,分解
+menu_exchange,교환,Exchange,交換,交換
+getarti,유물 발굴,Discovering Artifacts,探索神器,遺物発掘
+getartidesc,다양한 능력을 가진 유물을 발굴합니다.,Discover Artifact that have various abilities.,探索擁有多樣能力的神器,様々な能力を持った遺物を発掘します。
+menu_ele,속성 강화,Reinforce Elements,加強財產,属性強化
+menu_adv,모험,Adventure,冒險,冒険
+menu_dunop,던전 점령,Occupy Dungeon,地下城的職業,ダンジョン占領
+menu_dunwa,던전 창고,Dungeon Warehouse,地下城倉庫,ダンジョン倉庫
+dun_normal,일반 던전,Normal Dungeon,一般地下城,一般ダンジョン
+dun_boss,보스 던전,Boss Dungeon,地牢老闆,ボスダンジョン
+dun_op,점령한 던전,Occupied Dungeon,捕獲的地牢,占領したダンジョン
+dun_mon,등장 몬스터,Appearing Monster,怪物介紹,登場モンスター
+dun_reward,점령 보상,Occupation Reward,佔地補償,占領報酬
+dun_pro,시간당 생산량,Output per Hour,每小時產量,時間あたりの生産量
+start,시작,Start,開始,開始
+up_wa,던전 창고 업그레이드,Upgrade Dungeon WareHouse,地牢倉庫升級,ダンジョン倉庫アップグレード
+questtype0,업적,Acheivement,成就,業績
+questtype1,반복 퀘스트,Repeatable Quest,重複性任務,反復クエスト
+questdaily,일일 퀘스트,Daily Quest,每日任務,デイリークエスト
+pack,패키지,Package,禮包,パッケージ
+gold,골드,Gold,金錢,ゴールド
+emerald,에메랄드,Emerald,翠,エメラルド
+diamond,다이아몬드,Diamond,鑽石,ダイヤモンド
+quest_0,일일 퀘스트 완료,Clear Daily Quest,清除每日任務,デイリークエスト完了
+quest_1,던전 창고 보상 받기,Get Dungeon Warehouse Reward,獲取地牢倉庫獎勵,ダンジョン倉庫補償受ける
+quest_2,주사위 사용하기,Use Dice,使用骰子,サイコロを回す
+quest_3,장비 획득하기,Get Equipment,拿裝備,装備を獲得する
+quest_4,장비 분해하기,Disassemble Equipment,拆卸設備,装備を分解する
+quest_5,광고 시청하기,Watch Ads,觀看廣告,広告を視聴する
+quest_6,스테이지 클리어,Stage Clear,舞台清除,ステージクリア
+quest_7,몬스터 사냥,Hunting Monster,狩獵怪物,モンスター狩り
+quest_8,플레이타임,Play Time,遊玩時間,プレイタイム
+quest_9,스킬 레벨업,Level up Skill,等級最高技能,スキルレベルアップ
+quest_10,전체 유물 레벨,Total Artifacts Level,總共神器等級,全体遺物レベル
+quest_11,활 수집,Bow Collection,集電弓,弓の収集
+quest_12,화살 수집,Arrow Collection,箭系列,矢の収集
+quest_13,코스튬 수집,Costume Collection,服裝系列,コスチュームの収集
+quest_14,펫 수집,Pet Collection,寵物收集,ペットの収集
+quest_15,펫 레벨업,Level up Pet,等級達到寵物,ペットレベルアップ
+pet_skillname0,만드라의 보은,Favor of Mandra,讓拉感謝,マンドラの恩返し
+pet_skillname1,단단한 골렘,Solid Golem,固體傀儡,堅いゴーレム
+pet_skillname2,드래곤의 욕망,Dragon's desire,龍人的心願,ドラゴンの欲望
+pet_skillname3,영혼 물어뜯기,Soul biting,筆挺的靈魂,魂の噛みちぎり
+pet_skillname4,천사의 시계,Angel's watch,天使的手錶,天使の時計
+pet_skillname5,악마의 저주,Evil curse,詛咒的魔鬼,悪魔の呪い
+pet_skillname6,유령 손길,Ghost touch,幽冥,幽霊の手
+pet_skilldesc0,$$초마다 몬스터 처치 골드 획득,Get Monster Kill Gold every $$ seconds,獲取怪物殺死金每$$秒,$$秒ごとにモンスター退治ゴールド獲得
+pet_skilldesc1,보스 전투 시간 증가,Boss battle time increase,Boss戰時間的增加,ボスとの戦闘時間の増加
+pet_skilldesc2,던전 골드생산량 증가,Dungeon Gold Output Increase,地牢黃金產量增加,ダンジョンのゴールド生産量の増加
+pet_skilldesc3,적 등장시 5%확률로 적 체력 감소,5% chance to reduce the enemy's HP when the enemy appears,5％的機率降低敵人的HP，當敵人出現,敵の登場の時5％の確率で敵の体力が低下
+pet_skilldesc4,주사위 생성 시간 감소,Reduced dice creation time,減少骰子創建時間,サイコロの作成時間の短縮
+pet_skilldesc5,적 체력 감소,Enemy HP reduction,敵人HP減少,敵の体力の低下
+pet_skilldesc6,스테이지 클리어시 확률적으로 속성석 획득,Chance to acquire element stones when stage clear,機會獲取元素石頭時明確階段,ステージクリアの時に確率的に属性石の獲得
+hunt,사냥하기,Hunt,狩獵,狩り
+af_normal01,고대 팔찌,Ancient Bracelet,古手鍊,古代のブレスレット
+af_normal11,추격자 장갑,Gloves of the Chaser,追趕者手套,追撃者の手袋
+af_normal02,야생 반지,Savage ring,野生環,野生のリング
+af_normal03,영혼사냥꾼 벨트,SoulHunter’s belt,靈魂獵手腰帶,魂ハンターのベルト
+af_normal04,불멸의 황금반지,Immortal golden ring,不朽的金戒指,不滅の金の指輪
+af_normal05,불의 심장,Heart of fire,火的心臟,火の心臓
+af_normal06,님프의 결혼반지,nymph's wedding ring,童姥的結婚戒指,ニンフの結婚指輪
+af_normal07,숲지기 신발,Grove Keeper’s boots,伍茲成為鞋,森番の靴
+af_normal08,수호 팔찌,bracelet of guardian,守護手鐲,守護のブレスレット
+af_normal09,성전사 갑옷,Crusader armor,十字軍裝甲,聖戦士の鎧
+af_normal10,그림자 망토,Shadow cloak,暗影斗篷,影のマント
+af_water,물 속성 강화,Reinforce Water Element,加強水屬性,水属性強化
+af_fire,불 속성 강화,Reinforce Fire Element,加強火屬性,火属性強化
+af_earth,땅 속성 강화,Reinforce Earth Element,加強土屬性,地属性強化
+af_thunder,번개 속성 강화,Reinforce Thunder Element,加強電屬性,雷属性強化
+af_light,빛 속성 강화,Reinforce Light Element,加強光屬性,光属性強化
+af_dark,어둠 속성 강화,Reinforce Dark Element,加強黑屬性,闇属性強化
+af_desc_water,물 속성 공격력,Water Element Damage,水屬性攻權,水属性攻撃力
+af_desc_fire,불 속성 공격력,Fire Element Damage,火屬性攻權,火属性攻撃力
+af_desc_earth,땅 속성 공격력,Earth Element Damage,土屬性攻權,地属性攻撃力
+af_desc_thunder,번개 속성 공격력,Thunder Element Damage,電屬性攻權,雷属性攻撃力
+af_desc_light,빛 속성 공격력,Light Element Damage,光屬性攻權,光属性攻撃力
+af_desc_dark,어둠 속성 공격력,Dark Element Damage,黑屬性攻權,闇属性攻撃力
+up_dmg,공격력,Damage,進攻力量,攻撃力
+up_cridmg,치명타 공격력,Critical Damage,暴擊傷害,クリティカル攻撃力
+up_crichance,치명타 확률,Critical Chance,致命一擊,クリティカル確率
+up_mongold,몬스터 처치 골드,Monster kill gold,怪物困境金,モンスター退治ゴールド
+upad_dmg,고급 공격력,Advanced Damage,先進的攻擊,高級攻撃力
+upad_cridmg,고급 치명타 공격력,Advanced Critical Damage,高級暴擊傷害,高級クリティカル攻撃力
+upad_crichance,고급 치명타 확률,Advanced Critical Chance,高級暴擊,高級クリティカル確率
+upad_mongold,고급 몬스터 처치 골드,Advanced Monster kill gold,高級怪物困境金,高級モンスター退治ゴールド
+getbow,활 획득하기,Get Bow,為了得到一個蝴蝶結,弓を獲得する
+getarrow,화살 획득하기,Get Arrow,獲取箭頭,矢を獲得する
+get,받기,Get,獲取,受け取り
+ok,확인,OK,好,確認
+gift,선물,Gift,禮物,プレゼント
+reward,보상,Reward,獎勵,報酬
+rewardcom,보상을 받았습니다,You Got Reward,你獲得了獎勵,受領完了
+touchstart,터치해서 시작하기,Touch To Start,開始遊戲,タッチで開始する
+equip,장착,Equip,裝備,装着
+equipped,장착 중,Equipped,已裝備,装着中
+unequip,해제,Unequip,未裝備,解除
+quiver,화살통,Quiver,顫動,矢筒
+useskill,스킬 사용하기,Use Skill,使用技巧,スキルを使用する
+getadbuff,광고버프 활성화,Activation Ads Buff,廣告BUFF激活,広告バフ活性化
+setting,설정,Setting,設定,設定
+savebattery,절전모드,Power Saving Mode,省電模式,節電モード
+op_music,배경음악,BGM,背景音樂,BGM
+op_fx,효과음,FX,音效,FX
+op_review,리뷰,Review,評論,レビュー
+op_contact,문의,Contact,聯絡,お問い合わせ
+op_name,닉네임 변경,Change NickName,更改暱稱,ニックネーム変更
+op_lang,언어 변경,Change Language,更改語言,言語変更
+op_fb,페이스북,Facebook,Facebook,Facebook
+reviewask,응원해주세요!,Please Cheer Developer!,鼓勵製作者吧!,応援して下さい！
+reviewyes,응원하기,Cheer,鼓勵!,応援する
+reviewno,나중에 하기,Later,晚點,後でする
+just_gift,그냥 선물,Just Gift,只是禮物,ただのプレゼント
+weekend_gift,주말 선물,Weekend Gift,每周禮物,週末プレゼント
+surprise_gift,깜짝 선물,Surprise Gift,驚喜禮物,サプライズ
+iap_once,단 1회 구매 가능!,Only once purchase possible!,限購一次!,たった1回限定！
+iap_repeatable,반복 구매 가능,Repeat purchase available,可重複購買,繰り返し購入可能
+revoke7,7일 이상된 선물은 자동으로 삭제 됩니다.,The gift is more than 7 days will be automatically deleted.,禮物只要超過七天就會被自動刪除,受け取れなかったプレゼントは7日後に削除されます。
+rank,랭킹,Ranking,排名,ランキング
+changename,닉네임을 정하세요,Enter your Nickname,輸入您的暱稱,あなたのニックネームを教えてください
+chooselogin,로그인 방식,Log in with,登入方式,ログイン方法
+lostaccount,게임 삭제시 복구 불가,Can not recover when deleting game,刪除遊戲時將無法復原存檔,ゲームを削除すると復旧できません
+policycheck,이용약관 및 개인정보처리방침 동의,Agree Terms of Service and Privacy Policy,同意服務條款以及隱私權政策,サービス契約およびプライバシーポリシーの規約に同意します
+policy,개인정보처리방침 동의,Privacy Policy Agreement,隱私權政策,プライバシーポリシー契約
+rule,이용약관 동의,Terms of Service Agreement,服務條款,サービス契約の利用規約
+reconnect_reward,재접속 보상,Revisit Reward,回訪獎勵,お帰り報酬
+daily_reward,출석 보상,Daily Reward,每日獎勵,デイリー報酬
+toprank,최고 스테이지,Top Stage,Top Stage,Top Stage
+purchase_complete,구매 완료,Purchase Complete,購買完成,購入完了
+canceled,취소되었습니다,Canceled,已取消,キャンセルされました
+checkpurchase,구입 확인,Purchase confirmation,購買確認,購入確認
+askpurchase,구입하시겠습니까?,Would you like to Purchase?,你確定要購買嗎?,購入しますか？
+yes,예,Yes,好,はい
+no,아니오,No,不,いいえ
+terms,이용약관,Terms of Service,服務條款,利用規約
+toomanyeq,장비가 너무 많습니다,There are too many equipments,好像太多裝備囉,装備が多すぎます。
+updatever,최신 버전으로 업데이트 하세요,Please update to the latest version,請更新至最新版本,最新バージョンにアップデートしてください。
+tooshort,너무 짧습니다.,Too Short,太短了,短すぎます。
+notavailable,사용 불가,Not Available,無法使用,使用できません。
+requireinternet,게임을 플레이하기 위해서 인터넷 연결이 필요합니다.,This game requires internet connection to play.,遊玩時一定要連上網路喔,このゲームのプレイにはネット接続が必要です。
+lvup,레벨 업,Level Up,升級,レベルアップ
+advancement,승급,Advancement,進步,アップグレード
+combine,조합,Combine,結合,組み合わせ
+current,현재,Current,當前,現在
+next,다음,Next,下一個,次
+cost,비용,Cost,成本,コスト
+dice,주사위,Dice,骰子,サイコロ
+dicegame,주사위 게임,Dice Game,骰子遊戲,サイコロゲーム
+result,결과,Result,結果,結果
+poef,보유 효과,Possession Effect,擁有效果,保有効果
+eqef,착용 효과,Equipped Effect,裝備效果,装備効果
+cos_hair,머리,Hair,頭髮,頭
+cos_face,얼굴,Face,臉部,顔
+cos_body,의상,Cloth,衣服,衣装
+repeatmode,반복 모드,Repeat Mode,重複模式,リピートモード
+aspeed,공격속도,Attack Speed,攻擊速度,攻撃速度
+atk_water,물 속성 공격을 합니다,Attack with Water Element,水屬性攻擊,水属性の攻撃をします
+atk_fire,불 속성 공격을 합니다,Attack with Fire Element,火屬性攻擊,火属性の攻撃をします
+atk_earth,땅 속성 공격을 합니다,Attack with Earth Element,土屬性攻擊,地属性の攻撃をします
+atk_thunder,번개 속성 공격을 합니다,Attack with Thunder Element,電屬性攻擊,雷属性の攻撃をします
+atk_light,빛 속성 공격을 합니다,Attack with Light Element,光屬性攻擊,光属性の攻撃をします
+atk_dark,어둠 속성 공격을 합니다,Attack with Dark Element,黑屬性攻擊,闇属性攻撃をします
+gacha,뽑기,Gacha,扭蛋,ガチャ
+gacha_bow,활 뽑기,Bow Gacha,弓扭蛋,弓ガチャ
+gacha_arrow,화살 뽑기,Arrow Gacha,箭頭扭蛋,矢ガチャ
+gacha_free,무료 뽑기,Free Gacha,免費扭蛋,無料ガチャ
+firstpurchase,첫 구매 혜택,First Purchase Benefits,首次購買的好處,最初限定の購入特典
+growdesc,미션을 클리어하고 보상을 받으세요.,Clear the mission and Get rewards.,完成任務並獲得獎勵。,クエストをクリアして報酬を獲得しよう。
+general,일반,General,一般,一般
+currency,재화,Currency,貨幣,財貨
+dh_autoskip,자동 버프 및 광고스킵 30일,Auto Buff and Skip Ads 30days,自動Buff和廣告跳過30天,自動バフと広告スキップ30日
+dh_growstage,스테이지 성장 패키지,Stage Grow Package,階段增長包,ステージ成長パッケージ
+dh_growdungeon,던전 성장 패키지,Dungeon Occupying Package,地牢佔用封裝,ダンジョン成長パッケージ
+dh_diabox,다이아 상자,Box of Diamond,一箱的鑽石,ダイヤモンドの箱
+dh_diabarrel,다이아 통,Barrel of Diamond,一桶的鑽石,ダイヤモンドの桶
+dh_diabucket,다이아 바구니,Bucket of Diamond,一籃的鑽石,ダイヤモンドのバケツ
+dh_diabag,다이아 가방,Bag of Diamond,一袋的鑽石,ダイヤモンドのバッグ
+dh_diapouch,다이아 주머니,Pouch of Diamond,一包的鑽石,ダイヤモンドのポーチ
+dh_embox,에메랄드 상자,Box of Emerald,一箱的翠,エメラルドの箱
+dh_embarrel,에메랄드 통,Barrel of Emerald,一桶的翠,エメラルドの桶
+dh_embucket,에메랄드 바구니,Bucket of Emerald,一籃的翠,エメラルドのバケツ
+dh_embag,에메랄드 가방,Bag of Emerald,一袋的翠,エメラルドのバッグ
+dh_empouch,에메랄드 주머니,Pouch of Emerald,一包的翠,エメラルドのポーチ
+body_000,초보 사냥꾼,Beginner Hunter,新手獵人,初心者ハンター
+body_001,두정갑,Dujeong Armor,頭釘甲,頭釘甲
+body_002,산적,Bandit,土匪,山賊
+body_003,귀족,Noble,高貴,貴族
+body_004,양궁선수,Modern Archery,現代射箭,アーチェリーの選手
+body_005,에스키모,Eskimo,愛斯基摩,エスキモー
+body_006,피터팬,Peter Pan,彼得潘,ピーターパン
+body_007,군단병,Legionnaire,軍團,軍団兵
+body_008,이모탈 갑옷,Immortal Armor,不朽的護甲,イモータルの鎧
+body_009,화랑,Hwarang,花郎,ファラン
+body_010,중세 해병,Medieval Marine,中世紀的海洋,中世の海兵隊員
+body_011,근위대,Royal Guard,皇家衛隊,近衛隊
+body_012,반흡혈귀,Half Vampire,半吸血鬼,ハーフ吸血鬼
+body_013,나쁜 남자,Bad Guy,壞人,悪い男
+body_014,상인,Merchant,商人,商人
+body_015,순찰대장,Watchmaster,巡邏隊長,巡察隊長
+body_016,소림사,Battle Monk,僧之戰,少林寺
+body_017,숙련된 궁수,Expert Archer,專家射手,熟練したハンター
+body_018,헤르메스의 전언,Message of Hermes,愛馬仕的留言,エルメスの伝言
+body_019,역병 의사,Plague Doctor,瘟疫醫生,疫病の医師
+body_020,바이킹,Viking,海盜,バイキング
+body_021,현상금 사냥꾼,Bounty Hunter,賞金獵人,バウンティハンター
+body_022,그림자 암살자,Shadow Assassin,暗影刺客,影の暗殺者
+body_023,처형자,Executioner,劊子手,処刑者
+body_024,승려복,Monk,僧,僧侶服
+body_025,판금 갑옷,Plate Armor,板甲,プレートメイル
+body_026,물의 수행자,Water Monastic,水罰酒,水の修行者
+body_027,첩보원,Infiltrator,滲透者,スパイ
+body_028,자경단원,Vigilante,維吉蘭特,自警団員
+body_029,오아시스 파수꾼,Oasis Keeper,綠洲守護者,オアシスキーパー
+body_030,전문 모험가,Expert Adventurer,專家冒險家,専門冒険者
+body_031,붐 가이,Boom Guy,蓋伊轟,ブームガイ
+body_032,숲 위장복,Forest Camouflage,森林迷彩,森の迷彩服
+body_033,삼총사,Three Musketeers,三劍客,三銃士
+body_034,길리 슈트,Ghillie Suit,吉利服,ギリースーツ
+body_035,무도가,Martial Artist,武術家,武道家
+body_036,협객,Knight Errant,武俠,男達
+body_037,청룡의 기백,Spirit of Blue Dragon,藍龍之魂,青龍の気迫
+body_038,백부장,Centurion,百夫長,百人隊長
+body_039,장궁병,Longbowman,長弓手,章弓兵
+body_040,돌격대장,Warbringer,戰神,突撃隊長
+body_041,백전노장,Veteran,老將,百戦錬磨
+body_042,억만장자의 위대한 발명품,The Great Invention of Billionaire,億萬富翁的偉大發明,億万長者の偉大な発明品
+body_043,헌신적인 영웅들의 지도자,Leader of Dedicated Heroes,專用英雄的領袖,献身的な英雄たちの指導者
+body_044,해적선장,Pirate Captain,海盜船長,海賊キャプテン
+body_045,고위 저격수,Senior Sniper,資深狙擊手,高位狙撃手
+body_046,요리사,Chef,廚師,シェフ
+body_047,명궁,Famous Bowman,著名的鮑曼,名弓
+body_048,용병 궁수,Mercenary Archer,傭兵射手,傭兵ハンター
+body_049,디지털 위장복,Digital Camouflage,數碼迷彩,デジタルの迷彩服
+face_000,기본 얼굴,Basic Face,基本面對,基本顔
+face_001,우는 얼굴,Crying Face,哭臉,泣き顔
+face_002,수면안대,Sleep Mask,睡眠面膜,睡眠眼帯
+face_003,덴탈 마스크,Dental Mask,牙科面膜,デンタルマスク
+face_004,오드아이,Odd Eye,奇眼,オッドアイ
+face_005,감은 눈,Closed Eyes,閉只眼,閉じた目
+face_006,양반 수염,Beard,鬍子,両班のひげ
+face_007,카이저 수염,Kaiser Beard,凱澤鬍子,カイザーのひげ
+face_008,하트 안대,Heart Eye patch,心臟眼罩,ハート眼帯
+face_009,심안,Mind Vision,心靈視界,心眼
+face_010,멀미하는 얼굴,Sick Face,面對生病,乗り物酔いする顔
+face_011,코주부 안경,Big Nose Glasses,大鼻子眼鏡,鼻眼鏡
+face_012,누구인가?,Golden Eye Patch,黃金眼補丁,金の眼鏡
+face_013,다크서클,Dark Circles,黑眼圈,クマ
+face_014,뱅뱅이 안경,Coke Bottle Glasses,可樂瓶。,ぐるぐるメガネ
+face_015,맥주 부츠 선글라스,Beer Boots Sunglasses,啤酒靴子太陽鏡,ビールブーツサングラス
+face_016,단안경,Monocle,單片眼鏡,モノクル
+face_017,3자눈,3 Shape Eyes,3形狀的眼睛,腫らした目
+face_018,반창고,Adhesive Plaster,膏藥,絆創膏
+face_019,슈퍼히어로 안경,Superhero Glasses,超級英雄眼鏡,スーパーヒーローメガネ
+face_020,해골 마스크,Skull Mask,骷髏面具,スケルトンマスク
+face_021,아름다운 튤립,Beautiful Tulip,美麗的鬱金香,美しいチューリップ
+face_022,하이랜더,Highlander,漢蘭達,ハイランダー
+face_023,전투의 신,God of Battle,戰鬥的神,戦闘の新
+face_024,삼백안,Small Pupils,小瞳孔,三白眼
+face_025,해골 얼굴,Skull Face,骷髏頭,スケルトンの顔
+face_026,꿰맨 얼굴,Sewed Face,面對縫,縫った顔
+face_027,명품 선글라스,Luxury Sunglasses,豪華太陽鏡,名品サングラス
+face_028,8비트 선글라스,Thug Life sunglass,暴徒生活太陽鏡,８ビットサングラス
+face_029,줄무늬 파티 안경,Striped Party Glasses,條紋黨的眼鏡,ストライプパーティーメガネ
+face_030,요가의 달인,Yoga Master,瑜伽大師,ヨガの達人
+face_031,송충이 눈썹,Thick Eyebrows,濃濃的眉毛,毛虫眉毛
+face_032,피어싱,Piercing,沖孔,ピアス
+face_033,도깨비 눈,Goblin Eyes,精靈的眼睛,鬼の目
+face_034,얇은 눈동자,Thin Pupil,薄瞳孔,薄い瞳
+hair_000,파란 머리,Blue Hair,藍頭髮,青い髪
+hair_001,빗자루 머리,Flat top Hair,平頂頭髮,ほうきヘア
+hair_002,장발 머리,Long Hair,長發,長髪
+hair_003,리젠트 머리,Pompadour Hair,蓬巴杜髮型,リージェントヘア
+hair_004,빡빡 머리,Bald Head,光頭,ハゲ頭
+hair_005,두정 투구,Dujeong Helmet,頭釘頭盔,頭釘かぶと
+hair_006,갓,Gat,蓋特,笠
+hair_007,역병의사 가면,Plague Doctor Mask,瘟疫醫生面膜,疫病の医師の仮面
+hair_008,빵 봉투,Bread Bag,麵包袋,パンの袋
+hair_009,갈레아,Galea,加萊亞,ガレア
+hair_010,브로콜리 머리,Broccoli Hair,西蘭花頭髮,ブロッコリーヘア
+hair_011,사과 모자,Apple Hat,蘋果帽子,リンゴの帽子
+hair_012,잭 오 랜턴,Jack O’ Lantern,南瓜頭,ジャックオーランタン
+hair_013,국군 베레모,Korean Army Beret,韓國陸軍貝雷帽,国軍ベレー帽
+hair_014,각시탈,Bridal Mask,新娘面具,仮面
+hair_015,우샨카,Ushanka,蘇聯毛帽,ウシャンカ
+hair_016,엘프의 두건,Elven Hood,精靈胡德,エルフのフード
+hair_017,방독면,Gas Mask,防毒面具,ガスマスク
+hair_018,천사의 고리,Angel Ring,天使戒指,天使の輪
+hair_019,악마의 뿔,Devil Horns,惡魔角,悪魔の角
+hair_020,빨간 머리,Red Hair,紅發,赤髪
+hair_021,바가지 머리,Bowl Cut,碗切,おかっぱ頭
+hair_022,무사 머리,Samurai Hair,武士髮型,サムライヘア
+hair_023,고글,Goggles,風鏡,ゴーグル
+hair_024,이모탈 가면,Immortal Mask,不朽的面膜,イモータルの仮面
+hair_025,잠수모,Diving Helm,潛水頭盔,潜水帽
+hair_026,두건,Hooded,連帽,フード
+hair_027,브이 마스크,V Mask,V面膜,Vのマスク
+hair_028,해적선장 모자,Pirate Captain Hat,海盜船長帽,海賊キャプテンの帽子
+hair_029,까까머리,Buzz Cut,寸頭,坊主頭
+skillblow_desc,장착한 화살을 한번에 발사합니다,Fires equipped arrows at once,火一下子配備箭頭,装着している矢を一度に発射します
+skillcool_desc,스킬 쿨타임 감소,Reduce Skill cooldown,減少技能冷卻時間,スキルクールタイムの減少
+skillbuff_desc,스킬 버프 지속시간 증가,Increase Skill Buff duration,提高技能技能的持續時間,スキルバフ持続時間の増加
+skillcool_title,마음가짐,Preparation,伺机待发,心構え
+skillbuff_title,고장난 시계,Broken Watch,摔壞的手錶,故障した時計
+onemore,한번 더,One More Time,再一次,もう1回
+elship,속성 관계,Elemental Relationship,元素關係,属性関係
+freesupply,무료 보급소,Free Supply,免費供應,無料供給
+notenough,재화가 부족합니다.,Not enough currency.,沒有足夠的貨幣。,財貨が足りません。
+toshop,상점으로 이동하시겠습니까?,Do you want to go to the store?,您想去商店嗎？,ショップに移動しますか？
+twodevice,여러기기 사용 시 게임을 완전 종료하고 진행하십시오.,When using multiple devices，exit the game completely before proceeding.,如果您使用大量設備，請在運行遊戲之前完全退出遊戲。,多数の機器を使用している場合は、ゲームを完全に終了してから実行してください。
+exit,종료하시겠습니까?,Are you sure you want to quit?,你真的真的要離開嗎?,終了しますか？
+reducedmg,받는 데미지 감소,Reduce Damage received,減少傷害,受けるダメージの減少
+arrowdmg,활 공격력,Arrow Damage,弓攻擊力,弓の攻撃力
+petdogpvp,공격시 10% 확률로 불속성 공격을 합니다,10% chance to Attack with Fire Element when Player Attacking,獵人攻擊時攻擊火屬性攻擊的機率10%,攻撃する時、10％の確率で火属性の攻撃をします。
+petghostpvp,적 공격 회피,Avoid Enemy Attacks,避免敵人的攻擊,敵の攻撃を回避
+pvpreduce,PVP 티켓 생성 시간 감소,Reduce PVP ticket creation time,减少PVP入場券生成時間,PVPチケットの作成時間の減少
+pvpticket,PVP 티켓,PVP Ticket,PVP入場券,PVPチケット
+remaintime,남은 시간,Remain Time,還剩時間,残りの時間
+enter,입장하기,Enter,入場,入場
+pvpquestdaily,PVP 일일 퀘스트,PVP Daily Quest,每日任務,PVPデイリークエスト
+pvptry,PVP 하기,Try PVP,嘗試PVP,PVPで遊ぶ
+rewardvic,승리 보상,Victory Reward,勝利報酬,勝利報酬
+rewardlose,패배 보상,Lose Reward,敗北報酬,敗北報酬
+rewardweek,주간 랭크 보상,Weekly Rank Reward,週間順位報酬,週間ランク報酬
+pvpinfo,PVP 설명,PVP Description,PVP説明,PVP説明
+challenge,도전,Challenge,挑戰,挑戦
+matchinfo,대전 정보,Match information,竞赛信息,大戦情報
+matchresult,전투 결과,Match Result,戰鬥結果,戦闘結果
+noticket,PVP 티켓이 부족합니다.,Not enough PVP tickets.,不足PVP入場券,PVPチケットが足りません。
+giveupinfo,기권시 티켓은 반환되지 않습니다.,Tickets will not be returned if Give up.,PVP入場券不會歸還如果你放棄。,棄権するとチケットは返還されません。
+icon,아이콘,Icon,圖示,アイコン
+wing,날개,Wing,翅膀,翼
+waitroom,대기실,Waiting Room,候客室,待機室
+pvplonginfo,PVP 랭킹은 매주 재설정됩니다. </br>PVP 기록이 없을 경우 스테이지 랭킹 기준으로 기본 랭킹이 정해집니다.</br>주간 랭킹 보상은 지난주 랭킹에 따라 지급됩니다. </br>자신보다 랭킹이 높은 상대를 이기면 </comma> </br> 상대 랭킹을 차지하고 상대는 랭킹이 한 단계 떨어집니다. </br>많은 사용자가 동시에 PVP를 하는 경우 </comma> 랭킹이 자주 변경 될 수 있습니다.,PVP ranking is reset every week.</br>If there is no PVP record</comma> the basic ranking will be determined based on the stage ranking.</br>Weekly ranking rewards are paid according to last week's ranking.</br>If you win an opponent with a higher ranking than you</comma> </br>the opponent's ranking is taken and the opponent's ranking drops by one level.</br>If many users perform PVP at the same time</comma>the ranking may change frequently.,PVP順位是初始化每週。如果沒有PVP記錄</comma>基本順位將根據舞臺順位確定。</br>週刊順位報酬是發給按照上週順位。</br>如果你勝利的比你高的順位的對手</comma></br>那麼你是搶奪對方的順位</comma></br>而對手的順位會下降一個順位。</br>如果很多獵人同時進行PVP</comma>則順位可能會經常改變。,PVPランキングは一週ごとに初期化されます。PVP記録のない場合には</comma>ステージランキングに基づいて順位が決まります。</br>週間ランキング報酬は先週のランキングに基づいて支給されます。</br>自分よりランキングの高い相手に勝った場合</comma></br>相手のランキングを奪い</comma>相手はランキングが1ランク下がります。</br>同時に多くのユーザーがPVPを行う場合は</comma>ランキングが継続的に変わることができます。
+map_earth,불길한 숲,Ominous Forest,不祥的森林,不吉な森
+map_fire,불타는 땅,Burning Ground,燃燒地面,灼熱の大地
+map_dark,망자의 협곡,Canyon of the Dead,死者的峽谷,亡者の峡谷
+map_thunder,번개 지대,Lightning Zone,防雷區,雷の地帯
+map_water,얼어붙은 땅,Frozen ground,凍土,凍て付いた地
+map_light,하늘 섬,Sky Island ,天空島,空の島
+wing_fire,용암 불꽃,Lava Flame,熔岩火花,溶岩の火花
+wing_water,얼음 돌풍,Ice Wing,冰之旋風,氷の旋風
+wing_thunder,번개의 흔적,Trail of Lightning,電之痕跡,稲妻の跡
+wing_earth,대지의 숨결,Breath of the Earth,地之氣息,地の息吹
+wing_light,불멸의 빛,Immortal light,不滅之光,不滅の光
+wing_dark,공허의 촉수,Void tentacle,空虛之触手,空虚の触手
+portal,왕국 포탈,Kingdom portal,王國門戶,王国ポータル
+portal_desc,왕국의 몬스터들을 사냥해준 당신에게 </br> 왕국에서 포탈을 지원해줬습니다. </br> 포탈을 사용하면 스테이지가 절반이 되지만</br>루비를 획득할 수 있습니다. </br> 루비를 사용해서 더욱 더 강해지세요!,Because you hunted monsters</comma></br>the kingdom supported you the portal.</br>If use the portal</comma>you get rubies</comma></br>but the stage goes down in half </br>Be Stronger using Ruby!,您狩獵了王國的怪物</comma></br>王國為您提供了門戶。</br> 使用門戶網站</comma></br>您可以賺取紅寶石而不是將舞台減半。</br>用紅寶石變得更強吧！,王国のモンスターたちを狩ってくれたあなたに</br>王国からポータルを支援しました。 </br>ポータルを使うとステージが半分減少しますが、</br>ルビーを獲得できます。 </br>ルビーを使ってさらに強くなりましょう！
+ruby,루비,Ruby,紅寶石,ルビー
+use,사용하기,Use,使用,使用
+upgraderuby,루비 강화,Ruby buff,紅寶石增強,ルビー強化
+portal_desc2,포탈을 무사히 통과하고 루비를 획득했습니다!,You have successfully passed the portal and got Ruby!,您已成功通過門戶並贏得了紅寶石！,ポータルを無事に通過してルビーを獲得しました！

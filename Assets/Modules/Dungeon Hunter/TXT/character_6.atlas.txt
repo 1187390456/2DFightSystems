@@ -1,0 +1,90 @@
+
+character_6.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+armL1
+  rotate: false
+  xy: 215, 143
+  size: 69, 103
+  orig: 69, 103
+  offset: 0, 0
+  index: -1
+armL2
+  rotate: false
+  xy: 110, 141
+  size: 103, 105
+  orig: 103, 105
+  offset: 0, 0
+  index: -1
+armL3
+  rotate: true
+  xy: 286, 143
+  size: 103, 66
+  orig: 103, 66
+  offset: 0, 0
+  index: -1
+armR1
+  rotate: true
+  xy: 186, 34
+  size: 105, 103
+  orig: 105, 103
+  offset: 0, 0
+  index: -1
+armR2
+  rotate: true
+  xy: 2, 14
+  size: 113, 73
+  orig: 113, 73
+  offset: 0, 0
+  index: -1
+armR3
+  rotate: true
+  xy: 77, 15
+  size: 112, 107
+  orig: 112, 107
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 129
+  size: 106, 117
+  orig: 106, 117
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 291, 66
+  size: 75, 69
+  orig: 75, 69
+  offset: 0, 0
+  index: -1
+legL
+  rotate: false
+  xy: 340, 14
+  size: 48, 50
+  orig: 48, 50
+  offset: 0, 0
+  index: -1
+legL2
+  rotate: true
+  xy: 291, 2
+  size: 62, 47
+  orig: 62, 47
+  offset: 0, 0
+  index: -1
+legR
+  rotate: false
+  xy: 354, 199
+  size: 43, 47
+  orig: 43, 47
+  offset: 0, 0
+  index: -1
+legR2
+  rotate: true
+  xy: 354, 155
+  size: 42, 41
+  orig: 42, 41
+  offset: 0, 0
+  index: -1

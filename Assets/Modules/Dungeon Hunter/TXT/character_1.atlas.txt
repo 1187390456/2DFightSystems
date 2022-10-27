@@ -1,0 +1,237 @@
+
+character_1.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eyeL
+  rotate: true
+  xy: 191, 66
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+eyeL_2
+  rotate: true
+  xy: 191, 40
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+eyeL_3
+  rotate: true
+  xy: 164, 25
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+eyeL_4
+  rotate: false
+  xy: 216, 33
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+eyeR
+  rotate: false
+  xy: 242, 38
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+eyeR_2
+  rotate: true
+  xy: 269, 31
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+eyeR_3
+  rotate: true
+  xy: 242, 11
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+eyeR_4
+  rotate: true
+  xy: 212, 6
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+hair_1
+  rotate: false
+  xy: 110, 5
+  size: 28, 41
+  orig: 28, 41
+  offset: 0, 0
+  index: -1
+hair_2
+  rotate: false
+  xy: 140, 21
+  size: 22, 69
+  orig: 22, 69
+  offset: 0, 0
+  index: -1
+hair_3
+  rotate: true
+  xy: 65, 13
+  size: 33, 43
+  orig: 33, 43
+  offset: 0, 0
+  index: -1
+hair_4
+  rotate: false
+  xy: 356, 119
+  size: 88, 33
+  orig: 88, 33
+  offset: 0, 0
+  index: -1
+hair_5
+  rotate: true
+  xy: 306, 9
+  size: 75, 44
+  orig: 75, 44
+  offset: 0, 0
+  index: -1
+hair_6
+  rotate: false
+  xy: 164, 51
+  size: 25, 39
+  orig: 25, 39
+  offset: 0, 0
+  index: -1
+hair_7
+  rotate: false
+  xy: 352, 6
+  size: 49, 36
+  orig: 49, 36
+  offset: 0, 0
+  index: -1
+hair_8
+  rotate: false
+  xy: 65, 48
+  size: 73, 42
+  orig: 73, 42
+  offset: 0, 0
+  index: -1
+hair_9
+  rotate: true
+  xy: 306, 86
+  size: 90, 48
+  orig: 90, 48
+  offset: 0, 0
+  index: -1
+눈썹
+  rotate: true
+  xy: 189, 9
+  size: 29, 21
+  orig: 29, 21
+  offset: 0, 0
+  index: -1
+머리뒤
+  rotate: true
+  xy: 43, 15
+  size: 27, 18
+  orig: 27, 18
+  offset: 0, 0
+  index: -1
+몸
+  rotate: true
+  xy: 356, 44
+  size: 68, 86
+  orig: 68, 86
+  offset: 0, 0
+  index: -1
+얼굴
+  rotate: true
+  xy: 378, 167
+  size: 87, 79
+  orig: 87, 79
+  offset: 0, 0
+  index: -1
+오른다리
+  rotate: false
+  xy: 444, 6
+  size: 56, 37
+  orig: 56, 37
+  offset: 0, 0
+  index: -1
+오른발
+  rotate: true
+  xy: 403, 2
+  size: 40, 36
+  orig: 40, 36
+  offset: 0, 0
+  index: -1
+오른손
+  rotate: true
+  xy: 356, 154
+  size: 22, 19
+  orig: 22, 19
+  offset: 0, 0
+  index: -1
+왼다리
+  rotate: true
+  xy: 226, 58
+  size: 118, 78
+  orig: 118, 78
+  offset: 0, 0
+  index: -1
+입
+  rotate: false
+  xy: 377, 156
+  size: 15, 9
+  orig: 15, 9
+  offset: 0, 0
+  index: -1
+코
+  rotate: true
+  xy: 394, 159
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+팔
+  rotate: true
+  xy: 2, 92
+  size: 162, 222
+  orig: 162, 222
+  offset: 0, 0
+  index: -1
+펄럭1
+  rotate: true
+  xy: 444, 45
+  size: 67, 52
+  orig: 67, 52
+  offset: 0, 0
+  index: -1
+펄럭2
+  rotate: false
+  xy: 2, 9
+  size: 39, 33
+  orig: 39, 33
+  offset: 0, 0
+  index: -1
+화살
+  rotate: false
+  xy: 459, 114
+  size: 32, 140
+  orig: 32, 140
+  offset: 0, 0
+  index: -1
+활시위(아래)
+  rotate: true
+  xy: 226, 178
+  size: 76, 150
+  orig: 76, 150
+  offset: 0, 0
+  index: -1
+활시위(위)
+  rotate: false
+  xy: 2, 44
+  size: 61, 46
+  orig: 61, 46
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,55 @@
+
+character_8.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+레이어 269
+  rotate: true
+  xy: 152, 68
+  size: 71, 69
+  orig: 71, 69
+  offset: 0, 0
+  index: -1
+레이어 270
+  rotate: true
+  xy: 123, 5
+  size: 55, 94
+  orig: 55, 94
+  offset: 0, 0
+  index: -1
+레이어 271
+  rotate: false
+  xy: 2, 62
+  size: 148, 191
+  orig: 148, 191
+  offset: 0, 0
+  index: -1
+레이어 272
+  rotate: true
+  xy: 2, 2
+  size: 58, 119
+  orig: 58, 119
+  offset: 0, 0
+  index: -1
+레이어 273
+  rotate: true
+  xy: 219, 21
+  size: 45, 93
+  orig: 45, 93
+  offset: 0, 0
+  index: -1
+레이어 276
+  rotate: true
+  xy: 152, 141
+  size: 112, 94
+  orig: 112, 94
+  offset: 0, 0
+  index: -1
+레이어 277
+  rotate: true
+  xy: 223, 71
+  size: 68, 55
+  orig: 68, 55
+  offset: 0, 0
+  index: -1

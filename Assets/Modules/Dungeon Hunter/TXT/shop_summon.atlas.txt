@@ -1,0 +1,118 @@
+
+shop_summon.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/elementicon_dark
+  rotate: false
+  xy: 560, 50
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/elementicon_electric
+  rotate: false
+  xy: 560, 26
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/elementicon_fire
+  rotate: false
+  xy: 560, 2
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/elementicon_ground
+  rotate: false
+  xy: 584, 50
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/elementicon_light
+  rotate: false
+  xy: 584, 26
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/elementicon_water
+  rotate: false
+  xy: 584, 2
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+image/shop_summon_arrow1
+  rotate: true
+  xy: 158, 58
+  size: 63, 179
+  orig: 63, 179
+  offset: 0, 0
+  index: -1
+image/shop_summon_arrow2
+  rotate: true
+  xy: 158, 9
+  size: 47, 132
+  orig: 47, 132
+  offset: 0, 0
+  index: -1
+image/shop_summon_arrow3
+  rotate: true
+  xy: 292, 9
+  size: 47, 132
+  orig: 47, 132
+  offset: 0, 0
+  index: -1
+image/shop_summon_arrow4
+  rotate: false
+  xy: 41, 15
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+image/shop_summon_arrow5
+  rotate: false
+  xy: 2, 15
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+image/shop_summon_bow1
+  rotate: true
+  xy: 339, 58
+  size: 63, 179
+  orig: 63, 179
+  offset: 0, 0
+  index: -1
+image/shop_summon_bow2
+  rotate: true
+  xy: 426, 9
+  size: 47, 132
+  orig: 47, 132
+  offset: 0, 0
+  index: -1
+image/shop_summon_bow3
+  rotate: true
+  xy: 520, 74
+  size: 47, 132
+  orig: 47, 132
+  offset: 0, 0
+  index: -1
+image/shop_summon_bow4
+  rotate: false
+  xy: 80, 15
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+image/shop_summon_bow5
+  rotate: false
+  xy: 119, 15
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1

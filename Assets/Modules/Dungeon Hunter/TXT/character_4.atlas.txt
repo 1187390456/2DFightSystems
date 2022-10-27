@@ -1,0 +1,111 @@
+
+character_4.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ㅠ
+  rotate: false
+  xy: 245, 190
+  size: 25, 64
+  orig: 25, 64
+  offset: 0, 0
+  index: -1
+레이어 250
+  rotate: false
+  xy: 209, 56
+  size: 56, 65
+  orig: 56, 65
+  offset: 0, 0
+  index: -1
+레이어 267
+  rotate: false
+  xy: 271, 149
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+레이어 270
+  rotate: false
+  xy: 2, 4
+  size: 62, 87
+  orig: 62, 87
+  offset: 0, 0
+  index: -1
+레이어 271
+  rotate: true
+  xy: 171, 123
+  size: 131, 72
+  orig: 131, 72
+  offset: 0, 0
+  index: -1
+레이어 272
+  rotate: true
+  xy: 107, 3
+  size: 18, 17
+  orig: 18, 17
+  offset: 0, 0
+  index: -1
+레이어 273
+  rotate: true
+  xy: 126, 5
+  size: 16, 14
+  orig: 16, 14
+  offset: 0, 0
+  index: -1
+레이어 274
+  rotate: false
+  xy: 90, 98
+  size: 79, 156
+  orig: 79, 156
+  offset: 0, 0
+  index: -1
+레이어 275
+  rotate: false
+  xy: 2, 93
+  size: 86, 161
+  orig: 86, 161
+  offset: 0, 0
+  index: -1
+레이어 276
+  rotate: true
+  xy: 237, 10
+  size: 44, 36
+  orig: 44, 36
+  offset: 0, 0
+  index: -1
+레이어 277
+  rotate: true
+  xy: 245, 127
+  size: 61, 24
+  orig: 61, 24
+  offset: 0, 0
+  index: -1
+레이어 278
+  rotate: true
+  xy: 66, 11
+  size: 80, 39
+  orig: 80, 39
+  offset: 0, 0
+  index: -1
+레이어 279
+  rotate: true
+  xy: 107, 23
+  size: 73, 100
+  orig: 73, 100
+  offset: 0, 0
+  index: -1
+레이어 280
+  rotate: false
+  xy: 267, 72
+  size: 34, 53
+  orig: 34, 53
+  offset: 0, 0
+  index: -1
+레이어 281
+  rotate: false
+  xy: 209, 2
+  size: 26, 52
+  orig: 26, 52
+  offset: 0, 0
+  index: -1

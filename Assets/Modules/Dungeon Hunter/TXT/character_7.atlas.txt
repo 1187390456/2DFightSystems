@@ -1,0 +1,76 @@
+
+character_7.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+headL
+  rotate: false
+  xy: 274, 153
+  size: 105, 101
+  orig: 105, 101
+  offset: 0, 0
+  index: -1
+headR
+  rotate: false
+  xy: 381, 103
+  size: 81, 58
+  orig: 81, 58
+  offset: 0, 0
+  index: -1
+레이어 278
+  rotate: true
+  xy: 2, 94
+  size: 160, 270
+  orig: 160, 270
+  offset: 0, 0
+  index: -1
+레이어 279
+  rotate: true
+  xy: 381, 163
+  size: 91, 115
+  orig: 91, 115
+  offset: 0, 0
+  index: -1
+레이어 283
+  rotate: false
+  xy: 125, 2
+  size: 101, 48
+  orig: 101, 48
+  offset: 0, 0
+  index: -1
+레이어 285
+  rotate: true
+  xy: 2, 16
+  size: 76, 121
+  orig: 76, 121
+  offset: 0, 0
+  index: -1
+레이어 285 복사
+  rotate: true
+  xy: 125, 52
+  size: 40, 132
+  orig: 40, 132
+  offset: 0, 0
+  index: -1
+레이어 286
+  rotate: false
+  xy: 259, 54
+  size: 85, 34
+  orig: 85, 34
+  offset: 0, 0
+  index: -1
+레이어 287
+  rotate: false
+  xy: 274, 90
+  size: 96, 61
+  orig: 96, 61
+  offset: 0, 0
+  index: -1
+레이어 288
+  rotate: true
+  xy: 464, 102
+  size: 59, 34
+  orig: 59, 34
+  offset: 0, 0
+  index: -1
