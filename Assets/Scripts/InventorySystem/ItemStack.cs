@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace InventorySystem
@@ -8,12 +6,19 @@ namespace InventorySystem
     [Serializable]
     public class ItemStack
     {
-        [SerializeField] [Header("物体定义信息")] private ItemDefinition _item;
+        [SerializeField] [Header("物体定义信息")] private ItemDefinition _itemDefinition;
         [SerializeField] [Header("物体数量")] private int _numberOfItems;
 
-        public ItemDefinition Item => _item;
+        // 构造物体
+        public ItemStack(ItemDefinition item, int numberOfItems)
+        {
+            _itemDefinition = item;
+            _numberOfItems = numberOfItems;
+        }
 
-        public bool CanStack => Item != null && _item.CanStack;
+        public ItemDefinition ItemDefinition => _itemDefinition;
+
+        public bool CanStack => ItemDefinition != null && _itemDefinition.CanStack;
 
         public int NumberOfItems
         {
@@ -23,12 +28,6 @@ namespace InventorySystem
                 value = Mathf.Clamp(value, 0, 999);
                 _numberOfItems = CanStack ? value : 1;
             }
-        }
-
-        public ItemStack(ItemDefinition item, int numberOfItems)
-        {
-            _item = item;
-            _numberOfItems = numberOfItems;
         }
 
         public ItemStack()

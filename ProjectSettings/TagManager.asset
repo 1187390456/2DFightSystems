@@ -20,7 +20,7 @@ TagManager:
   - Died
   - RebirthRang
   - Weapon
-  - 
+  - Items
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 700682651
+    locked: 0
+  - name: Items
+    uniqueID: 2972286105
     locked: 0
   - name: Player
     uniqueID: 2038711275

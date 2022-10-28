@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace InventorySystem
 {
@@ -8,6 +6,8 @@ namespace InventorySystem
     {
         [SerializeField] [Header("物体堆栈信息")] private ItemStack _itemStack;
         [SerializeField] [Header("当前精灵渲染")] private SpriteRenderer _spriteRenderer;
+
+        public ItemStack ItemStack => _itemStack;
 
         private void OnValidate()
         {
@@ -18,13 +18,19 @@ namespace InventorySystem
         {
             if (_itemStack == null) return;
 
-            _spriteRenderer.sprite = _itemStack.Item.GameSprite;
+            _spriteRenderer.sprite = _itemStack.ItemDefinition.GameSprite;
 
             _itemStack.NumberOfItems = _itemStack.NumberOfItems;
 
-            var name = _itemStack.Item.Name;
+            var name = _itemStack.ItemDefinition.Name;
             var number = _itemStack.CanStack ? _itemStack.NumberOfItems.ToString() : "not allow stack";
             gameObject.name = $"{name}({number})";
+        }
+
+        public ItemStack Pick()
+        {
+            Destroy(gameObject);
+            return _itemStack;
         }
     }
 }
