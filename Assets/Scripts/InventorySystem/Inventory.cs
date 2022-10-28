@@ -8,8 +8,9 @@ namespace InventorySystem
     public class Inventory : MonoBehaviour
     {
         [SerializeField] [Header("库存大小")] private int _size;
-        [SerializeField] [Header("插槽列表")] private List<InventorySolt> Slots;
+        [SerializeField] [Header("插槽列表")] private List<InventorySolt> _slots;
 
+        public List<InventorySolt> Slots => _slots;
         public int Size => _size;
 
         private void OnValidate()
@@ -20,13 +21,13 @@ namespace InventorySystem
         // 自动调整列表大小
         private void AdjustSize()
         {
-            Slots ??= new List<InventorySolt>();
-            if (Slots.Count > Size) Slots.RemoveRange(Size, Slots.Count - Size);
-            if (Slots.Count < Size) Slots.AddRange(new InventorySolt[Size - Slots.Count]);
+            _slots ??= new List<InventorySolt>();
+            if (_slots.Count > _size) _slots.RemoveRange(_size, _slots.Count - _size);
+            if (_slots.Count < _size) _slots.AddRange(new InventorySolt[_size - _slots.Count]);
         }
 
         // 判断库存是否已满 list.Count() 返回指定条件存在的个数
-        public bool IsFull() => Slots.Count(x => x.HasItem) >= Size;
+        public bool IsFull() => _slots.Count(x => x.HasItem) >= _size;
 
         // 能否接收物体 库存未满 或者 当前物体插槽中存在
         public bool CanAcceptItem(ItemStack itemStack)
@@ -41,7 +42,7 @@ namespace InventorySystem
         /// <param name="item">当前物体信息</param>
         /// <param name="onlyCanStack">是否只寻找可堆叠的物品</param>
         /// <returns></returns>
-        public InventorySolt FindSolt(ItemDefinition itemDefinition, bool onlyCanStack = false) => Slots.FirstOrDefault(x => x.ItemDefinition == itemDefinition && (itemDefinition.CanStack || !onlyCanStack));
+        public InventorySolt FindSolt(ItemDefinition itemDefinition, bool onlyCanStack = false) => _slots.FirstOrDefault(x => x.ItemDefinition == itemDefinition && (itemDefinition.CanStack || !onlyCanStack));
 
         public ItemStack AddItem(ItemStack itemStack)
         {
@@ -57,7 +58,7 @@ namespace InventorySystem
             else
             {
                 // 开启新插槽(找到一个当前未存储物体的插槽) 存储当前新状态
-                relevantSlot = Slots.First(x => !x.HasItem);
+                relevantSlot = _slots.First(x => !x.HasItem);
                 relevantSlot.NewState = itemStack;
             }
             return relevantSlot.NewState;
