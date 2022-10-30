@@ -13,9 +13,30 @@ namespace InventorySystem
         public List<InventorySolt> Slots => _slots;
         public int Size => _size;
 
+        private int _activeSlotIndex;
+
+        public int ActiveSlotIndex
+        {
+            get => _activeSlotIndex;
+            private set
+            {
+                _slots[_activeSlotIndex].Active = false;
+                _activeSlotIndex = value < 0 ? _size - 1 : value % _size; // 小于0 则为 最后一个 否则 返回余数
+                _slots[_activeSlotIndex].Active = true;
+            }
+        }
+
         private void OnValidate()
         {
             AdjustSize();
+        }
+
+        private void Awake()
+        {
+            if (_size > 0)
+            {
+                _slots[0].Active = true;
+            }
         }
 
         // 自动调整列表大小
@@ -34,6 +55,21 @@ namespace InventorySystem
         {
             var slotWithCanStackItem = FindSolt(itemStack.ItemDefinition, true);
             return !IsFull() || slotWithCanStackItem != null;
+        }
+
+        // 是否拥有指定数量的物体
+        public bool HasItem(ItemStack itemStack, bool checkNumberOfItems = false)
+        {
+            var itemSlot = FindSolt(itemStack.ItemDefinition);
+            if (itemSlot == null) return false;
+            if (!checkNumberOfItems) return true;
+            // 如果可堆叠 检测插槽存放物体的数量 是否大于指定物品数量
+            if (itemStack.ItemDefinition.CanStack)
+            {
+                return itemSlot.NumberOfItems >= itemStack.NumberOfItems;
+            }
+            // 不可堆叠 检测存在多少个该物体 然后计算数量判断是否大于指定物品数量
+            return _slots.Count(x => x.ItemDefinition == itemStack.ItemDefinition) >= itemStack.NumberOfItems;
         }
 
         /// <summary>
@@ -62,6 +98,51 @@ namespace InventorySystem
                 relevantSlot.NewState = itemStack;
             }
             return relevantSlot.NewState;
+        }
+
+        public ItemStack RemoveItem(int index, bool spawn = false)
+        {
+            if (!_slots[index].HasItem) throw new InventoryException(InventoryOperation.Remove, "Slot is Empty !");
+            if (spawn && TryGetComponent<GameItemSpawner>(out var itemSpawner))
+            {
+                itemSpawner.SpawnItem(_slots[index].NewState);
+            }
+            ClearSlot(index);
+            return new ItemStack();
+        }
+
+        public ItemStack RemoveItem(ItemStack itemStack)
+        {
+            var itemSlot = FindSolt(itemStack.ItemDefinition);
+            // 移除物体不存在
+            if (itemSlot == null) throw new InventoryException(InventoryOperation.Remove, "Not Item in the  Inventory !");
+            // 移除物体数量大于存储数量
+            if (itemSlot.ItemDefinition.CanStack && itemSlot.NumberOfItems < itemStack.NumberOfItems)
+                throw new InventoryException(InventoryOperation.Remove, "Not enough Items");
+            // 移除物品数量 可堆叠且数量大于0时 返回当前物品 否则清空
+            itemSlot.NumberOfItems -= itemStack.NumberOfItems;
+            if (itemSlot.ItemDefinition.CanStack && itemSlot.NumberOfItems > 0)
+            {
+                return itemSlot.NewState;
+            }
+            itemSlot.Clear();
+
+            return new ItemStack();
+        }
+
+        public void ClearSlot(int index)
+        {
+            _slots[index].Clear();
+        }
+
+        public void SetSlotIndex(int index)
+        {
+            ActiveSlotIndex = index;
+        }
+
+        public InventorySolt GetInventorySolt()
+        {
+            return _slots[ActiveSlotIndex];
         }
     }
 }

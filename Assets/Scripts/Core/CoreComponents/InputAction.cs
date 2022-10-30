@@ -8,6 +8,8 @@ public class InputAction : CoreComponent
 
     public int GetYInput() => InputManager.Instance.yInput;
 
+    public bool GetJumpInput() => InputManager.Instance.jumpInput;
+
     public bool GetJumpInputStop() => InputManager.Instance.jumpInputStop;
 
     public bool GetCatchInput() => InputManager.Instance.catchInput;
@@ -16,9 +18,13 @@ public class InputAction : CoreComponent
 
     public bool GetDashInputStop() => InputManager.Instance.dashInputStop;
 
-    public bool GetSwitchLast() => InputManager.Instance.switchLast;
+    public bool GetSwitchPrevious() => InputManager.Instance.switchPrevious;
 
     public bool GetSwitchNext() => InputManager.Instance.switchNext;
+
+    public bool GetYKeyInput() => InputManager.Instance.yKeyInput;
+
+    public bool GetHKeyInput() => InputManager.Instance.hKeyInput;
 
     public Vector2 GetDashDirtion() => InputManager.Instance.movementInput;
 
@@ -26,9 +32,13 @@ public class InputAction : CoreComponent
 
     public void UseJumpInput() => InputManager.Instance.UseJumpInput();
 
-    public void UseSwitchLast() => InputManager.Instance.UseSwitchLast();
+    public void UseSwitchPrevious() => InputManager.Instance.UseSwichPrevious();
 
     public void UseSwitchNext() => InputManager.Instance.UseSwitchNext();
+
+    public void UseYKeyInput() => InputManager.Instance.UseYKey();
+
+    public void UseHKeyInput() => InputManager.Instance.UseHKey();
 
     public void UseJumpInputStop() => InputManager.Instance.UseJumpInputStop();
 }

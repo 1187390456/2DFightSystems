@@ -11,7 +11,7 @@ namespace InventorySystem
 
         [SerializeField] [Header("物体堆当前状态")] private ItemStack _state;
 
-        private bool _active;
+        private bool _active { get; set; }
 
         public bool HasItem => _state?.ItemDefinition != null;
         public ItemDefinition ItemDefinition => _state?.ItemDefinition;
@@ -52,9 +52,9 @@ namespace InventorySystem
 
         // 通知状态改变事件
 
-        public void NotifyAboutStateChange()
+        private void NotifyAboutStateChange()
         {
-            StateChanged?.Invoke(this, new InventorySlotStateChangedArgs(NewState, Active));
+            StateChanged?.Invoke(this, new InventorySlotStateChangedArgs(_state, _active));
         }
 
         // 清空库存方法

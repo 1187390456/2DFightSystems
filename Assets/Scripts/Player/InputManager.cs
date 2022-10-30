@@ -31,8 +31,10 @@ public class InputManager : MonoBehaviour
             CheckJump();
             CheckAttack();
             CheckDash();
-            CheckSwitchLeft();
-            CheckSwitchRight();
+            CheckSwitchPrevious();
+            CheckSwitchNext();
+            CheckYKeyInput();
+            CheckHKeyInput();
             CheckCatch();
         }
         JumpFix();
@@ -70,11 +72,11 @@ public class InputManager : MonoBehaviour
 
     private void CheckCatch()
     {
-        if (keyboard.yKey.wasPressedThisFrame)
+        if (keyboard.tKey.wasPressedThisFrame)
         {
             catchInput = true;
         }
-        if (keyboard.yKey.wasReleasedThisFrame)
+        if (keyboard.tKey.wasReleasedThisFrame)
         {
             catchInput = false;
         }
@@ -211,22 +213,22 @@ public class InputManager : MonoBehaviour
 
     #region 武器切换
 
-    public bool switchLast;
+    public bool switchPrevious;
     public bool switchNext;
 
-    public void CheckSwitchLeft()
+    public void CheckSwitchPrevious()
     {
         if (keyboard.qKey.wasPressedThisFrame)
         {
-            switchLast = true;
+            switchPrevious = true;
         }
         if (keyboard.qKey.wasReleasedThisFrame)
         {
-            switchLast = false;
+            switchPrevious = false;
         }
     }
 
-    public void CheckSwitchRight()
+    public void CheckSwitchNext()
     {
         if (keyboard.eKey.wasPressedThisFrame)
         {
@@ -238,11 +240,51 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void UseSwitchLast() => switchLast = false;
+    public void UseSwichPrevious() => switchPrevious = false;
 
     public void UseSwitchNext() => switchNext = false;
 
     #endregion 武器切换
+
+    #region Y键 打开背包
+
+    public bool yKeyInput;
+
+    private void CheckYKeyInput()
+    {
+        if (keyboard.yKey.wasPressedThisFrame)
+        {
+            yKeyInput = true;
+        }
+        if (keyboard.yKey.wasReleasedThisFrame)
+        {
+            yKeyInput = false;
+        }
+    }
+
+    public void UseYKey() => yKeyInput = false;
+
+    #endregion Y键 打开背包
+
+    #region H丢弃物品
+
+    public bool hKeyInput;
+
+    private void CheckHKeyInput()
+    {
+        if (keyboard.hKey.wasPressedThisFrame)
+        {
+            hKeyInput = true;
+        }
+        if (keyboard.hKey.wasReleasedThisFrame)
+        {
+            hKeyInput = false;
+        }
+    }
+
+    public void UseHKey() => hKeyInput = false;
+
+    #endregion H丢弃物品
 }
 
 public enum AttackInput

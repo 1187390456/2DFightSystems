@@ -18,7 +18,7 @@ namespace InventorySystem
 
         public ItemDefinition ItemDefinition => _itemDefinition;
 
-        public bool CanStack => ItemDefinition != null && _itemDefinition.CanStack;
+        public bool CanStack => _itemDefinition != null && _itemDefinition.CanStack;
 
         public int NumberOfItems
         {

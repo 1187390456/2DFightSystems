@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using InventorySystem;
+using InventorySystem.UI;
+using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     public WeaponInventory weaponInventory { get; private set; }
     public GameObject dashIndicator { get; private set; }
     public int currentWeaponIndex { get; private set; }
+    public Inventory _inventory { get; private set; }
+    public bool inInventorying { get; set; }
 
     #endregion 基本组件与属性
 
@@ -31,10 +35,12 @@ public class Player : MonoBehaviour
         Instance = this;
         core = transform.Find("Core").GetComponent<Core>();
         at = GetComponent<Animator>();
+        _inventory = transform.Find("Inventory").GetComponent<Inventory>();
         weaponInventory = GetComponent<WeaponInventory>();
         dashIndicator = transform.Find("DashDirectionIndicator").gameObject;
         dashIndicator.gameObject.SetActive(false);
         currentWeaponIndex = 0;
+        inInventorying = true;
     }
 
     private void Start()
@@ -51,29 +57,68 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
-        if (action.GetSwitchLast() && state.stateMachine.currentState != state.firstAttack)
+        if (inInventorying)
         {
-            SwitchLastWeapon();
+            if (action.GetSwitchPrevious())
+            {
+                action.UseSwitchPrevious();
+                SwitchPreviousInventoryIndex();
+            }
+            if (action.GetSwitchNext())
+            {
+                action.UseSwitchNext();
+                SwitchNextInventoryIndex();
+            }
+            if (action.GetHKeyInput())
+            {
+                action.UseHKeyInput();
+                if (_inventory.GetInventorySolt().HasItem)
+                {
+                    _inventory.RemoveItem(_inventory.ActiveSlotIndex, true);
+                }
+            }
         }
-        if (action.GetSwitchNext() && state.stateMachine.currentState != state.firstAttack)
+        else
         {
-            SwitchNextWeapon();
+            if (action.GetSwitchPrevious() && state.stateMachine.currentState != state.firstAttack)
+            {
+                action.UseSwitchPrevious();
+                SwitchPreviousWeapon();
+            }
+            if (action.GetSwitchNext() && state.stateMachine.currentState != state.firstAttack)
+            {
+                action.UseSwitchNext();
+                SwitchNextWeapon();
+            }
+        }
+        if (action.GetYKeyInput())
+        {
+            action.UseYKeyInput();
+            OpenInventory();
         }
     }
 
+    #region 操作
+
     public void SwitchNextWeapon()
     {
-        action.UseSwitchNext();
         currentWeaponIndex = Mathf.Clamp(currentWeaponIndex + 1, 0, weaponInventory.weapons.Length - 1);
         state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
     }
 
-    public void SwitchLastWeapon()
+    public void SwitchPreviousWeapon()
     {
-        action.UseSwitchLast();
         currentWeaponIndex = Mathf.Clamp(currentWeaponIndex - 1, 0, weaponInventory.weapons.Length - 1);
         state.firstAttack.SetWeapon(weaponInventory.weapons[currentWeaponIndex]);
     }
+
+    public void SwitchNextInventoryIndex() => _inventory.SetSlotIndex(_inventory.ActiveSlotIndex + 1);
+
+    public void SwitchPreviousInventoryIndex() => _inventory.SetSlotIndex(_inventory.ActiveSlotIndex - 1);
+
+    public void OpenInventory() => UI_Inventory.Instance.OpenInventory();
+
+    #endregion 操作
 
     private void StartAnimation() => stateMachine.currentState.StartAnimation();
 
