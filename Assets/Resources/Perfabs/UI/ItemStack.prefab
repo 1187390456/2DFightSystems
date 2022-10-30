@@ -51,6 +51,11 @@ MonoBehaviour:
     _itemDefinition: {fileID: 11400000, guid: f3f45ace6e2cb3a4086f3de7b68fcda6, type: 2}
     _numberOfItems: 3
   _spriteRenderer: {fileID: 5481409508863537719}
+  _colliderEnableAfter: 1
+  _throwGravity: 2
+  _maxForce: 5
+  _minForce: 3
+  _throwYForce: 5
 --- !u!212 &5481409508863537719
 SpriteRenderer:
   m_ObjectHideFlags: 0

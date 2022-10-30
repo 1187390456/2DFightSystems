@@ -16,7 +16,7 @@ namespace InventorySystem
             item.transform.position = transform.position;
             var gameItemScript = item.GetComponent<GameItem>();
             gameItemScript.ItemStack = new ItemStack(itemStack.ItemDefinition, itemStack.NumberOfItems);
-            gameItemScript.Throw(transform.localScale.x);
+            gameItemScript.Throw(Player.Instance.movement.facingDireciton);
         }
     }
 }
