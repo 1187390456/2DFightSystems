@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        InitPool();
+        //  InitPool();
     }
 
     // 初始化对象池

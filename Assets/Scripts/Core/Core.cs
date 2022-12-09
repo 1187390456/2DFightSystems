@@ -4,32 +4,21 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
-    public InputAction inputAction { get; private set; }
-    public Movement movement { get; private set; }
-    public EnemyCombat enemyCombat { get; private set; }
-    public PlayerCombat playerCombat { get; private set; }
+    public InputAction inputAction { get => GetComponentInChildren<InputAction>(); }
 
-    public PlayerCollisionSenses playerCollisionSenses { get; private set; }
+    public Movement movement { get => GetComponentInChildren<Movement>(); }
 
-    public EnemyCollisionSenses enemyCollisionSenses { get; private set; }
+    public EnemyCombat enemyCombat { get => GetComponentInChildren<EnemyCombat>(); }
 
-    public PlayerState playerState { get; private set; }
+    public PlayerCombat playerCombat { get => GetComponentInChildren<PlayerCombat>(); }
 
-    public PlayerStats playerStats { get; private set; }
-    public EnemyStats enemyStats { get; private set; }
+    public PlayerCollisionSenses playerCollisionSenses { get => GetComponentInChildren<PlayerCollisionSenses>(); }
 
-    private void Awake()
-    {
-        movement = GetComponentInChildren<Movement>();
-        inputAction = GetComponentInChildren<InputAction>();
+    public EnemyCollisionSenses enemyCollisionSenses { get => GetComponentInChildren<EnemyCollisionSenses>(); }
 
-        playerCollisionSenses = GetComponentInChildren<PlayerCollisionSenses>();
-        playerState = GetComponentInChildren<PlayerState>();
-        playerCombat = GetComponentInChildren<PlayerCombat>();
-        playerStats = GetComponentInChildren<PlayerStats>();
+    public PlayerState playerState { get => GetComponentInChildren<PlayerState>(); }
 
-        enemyCollisionSenses = GetComponentInChildren<EnemyCollisionSenses>();
-        enemyStats = GetComponentInChildren<EnemyStats>();
-        enemyCombat = GetComponentInChildren<EnemyCombat>();
-    }
+    public PlayerStats playerStats { get => GetComponentInChildren<PlayerStats>(); }
+
+    public EnemyStats enemyStats { get => GetComponentInChildren<EnemyStats>(); }
 }

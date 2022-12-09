@@ -9,11 +9,66 @@ public class Player : MonoBehaviour
     #region 核心
 
     public Core core { get; private set; }
-    public Movement movement => core.movement;
-    public PlayerCollisionSenses sense => core.playerCollisionSenses;
-    public InputAction action => core.inputAction;
-    public PlayerState state => core.playerState;
-    public PlayerStats stats => core.playerStats;
+
+    public Movement movement
+    {
+        get
+        {
+            if (core == null)
+            {
+                core = transform.Find("Core").GetComponent<Core>();
+            }
+            return core.movement;
+        }
+    }
+
+    public PlayerCollisionSenses sense
+    {
+        get
+        {
+            if (core == null)
+            {
+                core = transform.Find("Core").GetComponent<Core>();
+            }
+            return core.playerCollisionSenses;
+        }
+    }
+
+    public InputAction action
+    {
+        get
+        {
+            if (core == null)
+            {
+                core = transform.Find("Core").GetComponent<Core>();
+            }
+            return core.inputAction;
+        }
+    }
+
+    public PlayerState state
+    {
+        get
+        {
+            if (core == null)
+            {
+                core = transform.Find("Core").GetComponent<Core>();
+            }
+            return core.playerState;
+        }
+    }
+
+    public PlayerStats stats
+    {
+        get
+        {
+            if (core == null)
+            {
+                core = transform.Find("Core").GetComponent<Core>();
+            }
+            return core.playerStats;
+        }
+    }
 
     #endregion 核心
 
@@ -21,7 +76,12 @@ public class Player : MonoBehaviour
 
     public P_StateMachine stateMachine => state.stateMachine;
     public static Player Instance { get; private set; }
-    public Animator at { get; private set; }
+
+    public Animator at
+    {
+        get => GetComponent<Animator>();
+    }
+
     public WeaponInventory weaponInventory { get; private set; }
     public GameObject dashIndicator { get; private set; }
     public int currentWeaponIndex { get; private set; }
@@ -34,7 +94,6 @@ public class Player : MonoBehaviour
     {
         Instance = this;
         core = transform.Find("Core").GetComponent<Core>();
-        at = GetComponent<Animator>();
         _inventory = transform.Find("Inventory").GetComponent<Inventory>();
         weaponInventory = GetComponent<WeaponInventory>();
         dashIndicator = transform.Find("DashDirectionIndicator").gameObject;

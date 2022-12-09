@@ -12,7 +12,7 @@ namespace InventorySystem
         public void SpawnItem(ItemStack itemStack)
         {
             if (_itemBasePrefabs == null) return;
-            var item = PrefabUtility.InstantiatePrefab(_itemBasePrefabs) as GameObject;
+            var item = Instantiate(_itemBasePrefabs);
             item.transform.position = transform.position;
             var gameItemScript = item.GetComponent<GameItem>();
             gameItemScript.ItemStack = new ItemStack(itemStack.ItemDefinition, itemStack.NumberOfItems);
