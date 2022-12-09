@@ -17,6 +17,7 @@ public class E_Dead : E_State
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("死了");
         isdeadOver = false;
         entity.deading = true;
         currentTransparent = 1;
@@ -29,6 +30,7 @@ public class E_Dead : E_State
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("复活了");
         entity.deading = false;
         currentTransparent = 1;
         entity.isUseAbility2 = false;
@@ -50,6 +52,7 @@ public class E_Dead : E_State
     public override void Update()
     {
         base.Update();
+        Debug.Log("死亡中");
         // 死后逐渐消失
         if (!isdeadOver && deadData.isSpine && Time.time - startTime >= 1.833f)
         {
@@ -62,6 +65,7 @@ public class E_Dead : E_State
         }
         if (!isdeadOver && deadData.canRebirth && Time.time >= startTime + deadData.rebirthTime + 1.833f)
         {
+            Debug.Log("复活");
             isdeadOver = true;
         }
     }

@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public GameObject stunEffect;
 
     [HideInInspector] public bool isUseAbility2 = false;
+
     public bool ablity2ing { get; set; }
 
     public bool deading { get; set; }

@@ -70,7 +70,8 @@ public class ETFXProjectileScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 7)
                 {
-                    // 玩家
+                    hit.collider.GetComponentInChildren<IDamageable>().Damage(10.0f); // 单个敌人伤害
+                    hit.collider.GetComponentInChildren<IKnockbackable>().Knckback(10.0f, new Vector2(1.0f, 1.0f), Player.Instance.movement.facingDireciton); // 单个敌人伤害
                 }
                 CreateEffect();
             }
@@ -82,7 +83,8 @@ public class ETFXProjectileScript : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 8)
                 {
-                    // 敌人
+                    hit.collider.GetComponentInChildren<IDamageable>().Damage(10.0f); // 玩家伤害
+                    hit.collider.GetComponentInChildren<IKnockbackable>().Knckback(10.0f, new Vector2(1.0f, 1.0f), hit.collider.GetComponentInChildren<Core>().movement.facingDireciton); // 单个敌人伤害
                 }
                 CreateEffect();
             }
@@ -92,24 +94,23 @@ public class ETFXProjectileScript : MonoBehaviour
     // 玩家发射 检测条件
     private bool HitConditionByPlayer()
     {
-        //// 墙壁
-        //if (hit.collider.GetComponent<Enemy>() == null)
-        //{
-        //    return true;
-        //}
-        //// 敌人
-        //else
-        //{
-        //    var enemy = hit.collider.GetComponent<Enemy>();
-        //    return enemy.stateMachine.currentState != enemy.dead;
-        //}
-        return false;
+        // 墙壁
+        if (hit.collider.GetComponent<Enemy>() == null)
+        {
+            return true;
+        }
+        // 敌人
+        else
+        {
+            var enemy = hit.collider.GetComponent<Enemy>();
+            return enemy && !enemy.deading;
+        }
     }
 
     // 敌人发射 检测条件
     private bool HitConditionByEnemy()
     {
-        return Player.Instance.state.stateMachine.currentState != Player.Instance.state.dash;
+        return Player.Instance && Player.Instance.transform && Player.Instance.state.stateMachine.currentState != Player.Instance.state.dash;
     }
 
     // 生成特效

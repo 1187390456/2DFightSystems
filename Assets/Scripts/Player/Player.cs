@@ -1,5 +1,6 @@
 ﻿using InventorySystem;
 using InventorySystem.UI;
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         {
             if (core == null)
             {
+                if (transform == null) throw new Exception("玩家已销毁!");
                 core = transform.Find("Core").GetComponent<Core>();
             }
             return core.playerState;
